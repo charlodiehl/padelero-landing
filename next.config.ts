@@ -2,12 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    // Permite imágenes locales y de dominios externos si se agregan en el futuro
-    unoptimized: false,
-  },
-  // Redirect raíz a sí misma (standalone landing)
-  async redirects() {
-    return [];
+    unoptimized: true, // sirve las imágenes directamente sin procesar
   },
 };
 

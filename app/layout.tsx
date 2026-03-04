@@ -12,20 +12,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://padelero.app'),
-  title: 'Padelero — Tu pádel, sin fricción',
-  description: 'Reservá canchas en segundos, armá partidos, subí tu ranking y conectá con jugadores de tu nivel en Argentina.',
+  title: 'Padelero — La mejor app de pádel de la Argentina',
+  description: 'La mejor app de pádel de la Argentina. Reservá canchas en segundos, armá partidos, subí tu ranking y conectá con jugadores de tu nivel.',
   keywords: ['padel', 'turnos', 'canchas', 'partidos', 'argentina', 'deportes', 'reservas'],
   openGraph: {
-    title: 'Padelero — Tu pádel, sin fricción',
-    description: 'Reservá canchas en segundos, armá partidos y conectá con jugadores de tu nivel en Argentina.',
+    title: 'Padelero — La mejor app de pádel de la Argentina',
+    description: 'La mejor app de pádel de la Argentina. Reservá canchas, armá partidos y conectá con jugadores de tu nivel.',
     type: 'website',
     locale: 'es_AR',
     siteName: 'Padelero',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Padelero — Tu pádel, sin fricción',
-    description: 'Reservá canchas en segundos, armá partidos y conectá con jugadores de tu nivel en Argentina.',
+    title: 'Padelero — La mejor app de pádel de la Argentina',
+    description: 'La mejor app de pádel de la Argentina. Reservá canchas, armá partidos y conectá con jugadores de tu nivel.',
   },
 };
 
