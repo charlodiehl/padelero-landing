@@ -163,8 +163,8 @@ function Nav() {
           ))}
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <Link href="https://padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
-          <Link href="https://padelero.app/register" className="bg-[#C8F542] text-black text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-md shadow-[#C8F542]/20">
+          <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
+          <Link href="https://app.padelero.app/register" className="bg-[#C8F542] text-black text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-md shadow-[#C8F542]/20">
             Empezar gratis
           </Link>
         </div>
@@ -178,8 +178,8 @@ function Nav() {
             <a key={h} href={h} onClick={()=>setOpen(false)} className="block text-zinc-200 py-2.5 border-b border-zinc-800/60 last:border-0 font-medium">{l}</a>
           ))}
           <div className="pt-3 space-y-2">
-            <Link href="https://padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href="https://padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
+            <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
+            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -229,7 +229,7 @@ export default function LandingPage() {
             Reservá canchas en segundos, armá partidos, subí tu ranking y conectá con jugadores de tu nivel en todo el país.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://padelero.app/register" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-base px-9 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/30">
+            <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-base px-9 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/30">
               Empezar gratis <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="#jugadores" className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-base px-9 py-4 rounded-2xl hover:bg-white/20 transition-all">
@@ -348,7 +348,7 @@ export default function LandingPage() {
                   </div>
                 ))}
               </div>
-              <Link href="https://padelero.app/register" className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-bold px-7 py-3.5 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-lg shadow-[#C8F542]/20">
+              <Link href="https://app.padelero.app/register" className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-bold px-7 py-3.5 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-lg shadow-[#C8F542]/20">
                 Probalo gratis <ArrowRight size={15} />
               </Link>
             </div>
@@ -464,7 +464,7 @@ export default function LandingPage() {
               <span style={{ background:'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>vos jugás</span>
             </h2>
             <p className="text-zinc-300 text-lg max-w-xl mx-auto mb-10">Desde una cancha en el conurbano hasta un rooftop en Palermo. La plataforma que conecta a todos los jugadores de Argentina.</p>
-            <Link href="https://padelero.app/clubes" className="inline-flex items-center gap-2 border border-white/30 bg-white/5 backdrop-blur text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/15 transition-all">
+            <Link href="https://app.padelero.app/clubes" className="inline-flex items-center gap-2 border border-white/30 bg-white/5 backdrop-blur text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/15 transition-all">
               Ver todos los clubes <ArrowRight size={16} />
             </Link>
           </Reveal>
@@ -549,7 +549,7 @@ export default function LandingPage() {
               </h2>
               <p className="text-zinc-400 text-lg md:text-xl mb-10">Gratis para jugadores. Sin tarjeta de crédito.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="https://padelero.app/register" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-lg px-10 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-2xl shadow-[#C8F542]/25">
+                <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-lg px-10 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-2xl shadow-[#C8F542]/25">
                   Crear cuenta gratis <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 border border-zinc-600 text-white font-semibold text-lg px-10 py-4 rounded-2xl hover:border-zinc-400 hover:bg-white/5 transition-all">
@@ -576,8 +576,8 @@ export default function LandingPage() {
             <div>
               <h4 className="text-white font-bold text-xs mb-4 uppercase tracking-[.15em]">Producto</h4>
               <div className="space-y-2.5 text-sm text-zinc-400">
-                <Link href="https://padelero.app/register" className="block hover:text-white transition-colors">Crear cuenta</Link>
-                <Link href="https://padelero.app/login"    className="block hover:text-white transition-colors">Ingresar</Link>
+                <Link href="https://app.padelero.app/register" className="block hover:text-white transition-colors">Crear cuenta</Link>
+                <Link href="https://app.padelero.app/login"    className="block hover:text-white transition-colors">Ingresar</Link>
                 <a href="#funciones"   className="block hover:text-white transition-colors">Funciones</a>
                 <a href="#clubes"      className="block hover:text-white transition-colors">Para clubes</a>
               </div>
