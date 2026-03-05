@@ -191,10 +191,19 @@ function Nav() {
 export default function LandingPage() {
   const statsRef = useRef<HTMLDivElement>(null);
   const [statsOn, setStatsOn] = useState(false);
+  const [realStats, setRealStats] = useState<{ jugadores: number; clubes: number } | null>(null);
+
   useEffect(()=>{
     const el = statsRef.current; if(!el) return;
     const obs = new IntersectionObserver(([e])=>{ if(e.isIntersecting){ setStatsOn(true); obs.disconnect(); } },{ threshold:.2 });
     obs.observe(el); return ()=>obs.disconnect();
+  },[]);
+
+  useEffect(()=>{
+    fetch('https://app.padelero.app/api/stats')
+      .then(r => r.json())
+      .then(d => setRealStats(d))
+      .catch(() => {});
   },[]);
 
   return (
@@ -216,7 +225,7 @@ export default function LandingPage() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8F542] opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C8F542]" />
             </span>
-            228+ jugadores activos en Argentina
+            {realStats ? `${realStats.jugadores}+` : '228+'} jugadores activos en Argentina
           </div>
           <h1 className="text-5xl sm:text-7xl lg:text-[90px] font-black leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
             <span className="block text-white">La mejor app</span>
@@ -249,11 +258,9 @@ export default function LandingPage() {
           <Image src={IMG.aerial} alt="Club de pádel visto desde el aire" fill className="object-cover opacity-15" />
           <div className="absolute inset-0 bg-black/75" />
         </div>
-        <div ref={statsRef} className="relative max-w-3xl mx-auto px-5 py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
-          <Stat n={228}  label="Jugadores"  active={statsOn} />
-          <Stat n={12}   label="Clubes"     active={statsOn} />
-          <Stat n={1400} label="Reservas"   active={statsOn} />
-          <Stat n={48}   label="Torneos"    active={statsOn} />
+        <div ref={statsRef} className="relative max-w-xl mx-auto px-5 py-16 grid grid-cols-2 gap-16">
+          <Stat n={realStats?.jugadores ?? 228} label="Jugadores" active={statsOn} />
+          <Stat n={realStats?.clubes ?? 12}     label="Clubes"    active={statsOn} />
         </div>
       </section>
 
