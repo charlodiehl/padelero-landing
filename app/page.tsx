@@ -238,12 +238,12 @@ export default function LandingPage() {
             Reservá canchas en segundos, armá partidos, subí tu ranking y conectá con jugadores de tu nivel en todo el país.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-base px-9 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/30">
-              Empezar gratis <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <Link href="https://app.padelero.app/login" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-base px-9 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/30">
+              Iniciar sesión <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <a href="#jugadores" className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-base px-9 py-4 rounded-2xl hover:bg-white/20 transition-all">
-              Ver cómo funciona
-            </a>
+            <Link href="https://app.padelero.app/register" className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-base px-9 py-4 rounded-2xl hover:bg-white/20 transition-all">
+              Registrarme
+            </Link>
           </div>
         </div>
         <a href="#stats" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-white/40 hover:text-white/60 transition-colors" style={{ animation:'bounce 2s infinite' }}>
