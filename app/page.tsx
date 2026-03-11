@@ -580,7 +580,7 @@ export default function LandingPage() {
                   <WhatsAppIcon className="w-5 h-5" /> Contacto para clubes
                 </a>
               </div>
-              <p className="text-zinc-600 text-sm mt-8">🇦🇷 Ya somos 228+ jugadores. Unite a la comunidad.</p>
+              <p className="text-zinc-600 text-sm mt-8">🇦🇷 Ya somos {realStats ? `${realStats.jugadores}+` : '228+'} jugadores. Unite a la comunidad.</p>
             </div>
           </Reveal>
         </div>
@@ -617,7 +617,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t border-zinc-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
-            <span>© 2025 Padelero. Todos los derechos reservados.</span>
+            <span>© 2026 Padelero. Todos los derechos reservados.</span>
             <div className="flex gap-6"><a href="#" className="hover:text-zinc-400 transition-colors">Términos</a><a href="#" className="hover:text-zinc-400 transition-colors">Privacidad</a></div>
           </div>
         </div>

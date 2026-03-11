@@ -597,7 +597,7 @@ function Circuito() {
           <div className="rounded-3xl p-8 md:p-12 text-center" style={{ background: `${GREEN}12`, border: `1px solid ${GREEN}30` }}>
             <Award className="mx-auto mb-4" size={32} style={{ color: GREEN }} />
             <p className="text-5xl font-black mb-2" style={{ color: GREEN }}>240 pts</p>
-            <p className="text-zinc-400 mb-6">Acumulados en 3 fechas · Circuito 2025 · 6ta Caballeros</p>
+            <p className="text-zinc-400 mb-6">Acumulados en 3 fechas · Circuito 2026 · 6ta Caballeros</p>
             <div className="flex items-center justify-center gap-2">
               <Crown size={18} className="text-yellow-400" />
               <span className="font-bold text-white text-lg">#1 en el ranking del circuito</span>
@@ -973,7 +973,7 @@ function Footer() {
           </div>
         </div>
         <div className="border-t border-zinc-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
-          <span>© 2025 Padelero. Todos los derechos reservados.</span>
+          <span>© 2026 Padelero. Todos los derechos reservados.</span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-zinc-400 transition-colors">Términos</a>
             <a href="#" className="hover:text-zinc-400 transition-colors">Privacidad</a>
