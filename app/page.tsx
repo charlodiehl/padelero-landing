@@ -161,6 +161,9 @@ function Nav() {
           {[['#jugadores','Jugadores'],['#clubes','Clubes'],['#funciones','Funciones']].map(([h,l])=>(
             <a key={h} href={h} className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">{l}</a>
           ))}
+          <Link href="/torneos" className="flex items-center gap-1.5 text-sm font-bold transition-colors" style={{ color: '#C8F542' }}>
+            <Trophy size={13} /> Torneos
+          </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
@@ -177,6 +180,7 @@ function Nav() {
           {[['#jugadores','Jugadores'],['#clubes','Clubes'],['#funciones','Funciones']].map(([h,l])=>(
             <a key={h} href={h} onClick={()=>setOpen(false)} className="block text-zinc-200 py-2.5 border-b border-zinc-800/60 last:border-0 font-medium">{l}</a>
           ))}
+          <Link href="/torneos" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏆 Torneos</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
             <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
@@ -426,34 +430,47 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══ TORNEOS — bracket con rooftop CABA ════════════════════════════════ */}
-      <section className="py-24 px-5 bg-zinc-950">
+      {/* ══ TORNEOS — teaser a /torneos ════════════════════════════════════════ */}
+      <section className="py-10 px-5 bg-zinc-950">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <Reveal from="left">
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/3] group">
-                <Image src={IMG.torneo} alt="Torneo de pádel argentino" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur border border-white/10 rounded-xl px-4 py-2.5">
-                  <div className="text-[#C8F542] font-black">Torneo de Primavera</div>
-                  <div className="text-zinc-400 text-xs">Bracket automático · Padelero</div>
+          <Reveal>
+            <Link href="/torneos" className="group relative rounded-3xl overflow-hidden flex flex-col md:flex-row items-center gap-0 hover:scale-[1.01] transition-transform duration-300 block">
+              {/* Imagen izquierda */}
+              <div className="relative w-full md:w-[420px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0">
+                <Image src="/landing/torneo-accion.png" alt="Sistema de torneos Padelero" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900 hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900 md:hidden" />
+              </div>
+              {/* Contenido derecho */}
+              <div className="flex-1 bg-zinc-900 border border-zinc-800 group-hover:border-[#C8F542]/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
+                <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">
+                  <Trophy className="w-3 h-3" /> Sistema de Torneos
+                </div>
+                <h2 className="text-2xl md:text-3xl font-black text-white mb-3 leading-tight">
+                  Ranking, circuitos anuales<br />y categorías reales
+                </h2>
+                <p className="text-zinc-400 mb-6 leading-relaxed text-sm md:text-base">
+                  Inscribite por categoría, acumulá puntos en cada torneo, seguí tu posición en el ranking y ascendé de categoría cuando lo merecés.
+                </p>
+                <div className="grid grid-cols-2 gap-2 mb-7">
+                  {[
+                    { v: '9', l: 'Categorías' },
+                    { v: '100', l: 'Pts al ganar' },
+                    { v: '2', l: 'Formatos' },
+                    { v: '∞', l: 'Circuitos' },
+                  ].map(({ v, l }) => (
+                    <div key={l} className="bg-black/40 rounded-xl p-3 text-center border border-white/5">
+                      <p className="text-lg font-black text-[#C8F542]">{v}</p>
+                      <p className="text-[10px] text-zinc-500">{l}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-6 py-3 rounded-xl group-hover:bg-[#d4ff4a] transition-colors">
+                  Ver sistema de torneos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </Reveal>
-            <Reveal from="right" delay={100}>
-              <div>
-                <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">Torneos</div>
-                <h2 className="text-3xl md:text-4xl font-black text-white mb-5 leading-tight">Organizá torneos sin Excel ni papel</h2>
-                <p className="text-zinc-400 mb-6 leading-relaxed">Cargás las parejas y Padelero arma los grupos, genera el bracket, asigna canchas y optimiza horarios para usar todas las canchas en paralelo.</p>
-                {['Grupos automáticos por nivel','Bracket de fases visuales','Resultados en tiempo real para todos','Notificaciones a los participantes'].map(t=>(
-                  <div key={t} className="flex items-center gap-3 mb-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8F542] flex-shrink-0" />
-                    <span className="text-zinc-300 text-sm">{t}</span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -587,6 +604,7 @@ export default function LandingPage() {
                 <Link href="https://app.padelero.app/login"    className="block hover:text-white transition-colors">Ingresar</Link>
                 <a href="#funciones"   className="block hover:text-white transition-colors">Funciones</a>
                 <a href="#clubes"      className="block hover:text-white transition-colors">Para clubes</a>
+                <Link href="/torneos" className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Sistema de Torneos</Link>
               </div>
             </div>
             <div>
