@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {
   Calendar, Trophy, Users, MessageCircle, BarChart3,
   CheckCircle2, ArrowRight, Star, ChevronDown, Smartphone,
-  Clock, Shield, TrendingUp, Menu, X,
+  Clock, Shield, TrendingUp, Menu, X, Home, Building2,
 } from 'lucide-react';
 
 // ─── WhatsApp Icon SVG ────────────────────────────────────────────────────────
@@ -157,12 +157,20 @@ function Nav() {
           <Image src="/logo.png" alt="Padelero" width={28} height={28} className="rounded-md" />
           <span className="font-black text-white text-xl tracking-tight">Padelero</span>
         </Link>
-        <div className="hidden md:flex items-center gap-7">
-          {[['#jugadores','Jugadores'],['#clubes','Clubes'],['#funciones','Funciones']].map(([h,l])=>(
-            <a key={h} href={h} className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">{l}</a>
-          ))}
-          <Link href="/torneos" className="flex items-center gap-1.5 text-sm font-bold transition-colors" style={{ color: '#C8F542' }}>
-            <Trophy size={13} /> Torneos
+        <div className="hidden md:flex items-center gap-6">
+          <Link
+            href="/torneos"
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
+            style={{ color: '#C8F542' }}
+          >
+            <Trophy size={14} /> Torneos
+          </Link>
+          <Link
+            href="/clubes"
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
+            style={{ color: '#C8F542' }}
+          >
+            <Home size={14} /> Clubes
           </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
@@ -177,10 +185,8 @@ function Nav() {
       </div>
       {open && (
         <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
-          {[['#jugadores','Jugadores'],['#clubes','Clubes'],['#funciones','Funciones']].map(([h,l])=>(
-            <a key={h} href={h} onClick={()=>setOpen(false)} className="block text-zinc-200 py-2.5 border-b border-zinc-800/60 last:border-0 font-medium">{l}</a>
-          ))}
           <Link href="/torneos" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏆 Torneos</Link>
+          <Link href="/clubes" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏠 Clubes</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
             <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
@@ -405,9 +411,14 @@ export default function LandingPage() {
                     </Reveal>
                   ))}
                 </div>
-                <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-7 py-3.5 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/20">
-                  <WhatsAppIcon className="w-4 h-4" /> Escribinos por WhatsApp <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-7 py-3.5 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/20">
+                    <WhatsAppIcon className="w-4 h-4" /> Escribinos por WhatsApp <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <Link href="/clubes" className="inline-flex items-center gap-2 border border-zinc-600 text-white font-semibold px-7 py-3.5 rounded-xl hover:border-[#C8F542]/50 hover:bg-white/5 transition-all">
+                    <Building2 size={15} /> Ver todo para clubes
+                  </Link>
+                </div>
               </div>
             </Reveal>
             <Reveal from="right" delay={150}>
@@ -430,7 +441,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══ TORNEOS — teaser a /torneos ════════════════════════════════════════ */}
+      {/* ══ TORNEOS + CLUBES — teasers a /torneos y /clubes ═══════════════════ */}
       <section className="py-10 px-5 bg-zinc-950">
         <div className="max-w-6xl mx-auto">
           <Reveal>
@@ -467,6 +478,44 @@ export default function LandingPage() {
                 </div>
                 <div className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-6 py-3 rounded-xl group-hover:bg-[#d4ff4a] transition-colors">
                   Ver sistema de torneos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </Link>
+          </Reveal>
+
+          {/* Clubes teaser */}
+          <Reveal delay={80}>
+            <Link href="/clubes" className="group relative rounded-3xl overflow-hidden flex flex-col md:flex-row items-center gap-0 hover:scale-[1.01] transition-transform duration-300 block mt-5">
+              <div className="relative w-full md:w-[420px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0">
+                <Image src="/landing/club-lleno.jpg" alt="Plataforma para clubes de pádel" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900 hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900 md:hidden" />
+              </div>
+              <div className="flex-1 bg-zinc-900 border border-zinc-800 group-hover:border-[#C8F542]/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
+                <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">
+                  <Building2 className="w-3 h-3" /> Para Clubes
+                </div>
+                <h2 className="text-2xl md:text-3xl font-black text-white mb-3 leading-tight">
+                  Más reservas. Cero llamadas.<br />En 24 horas.
+                </h2>
+                <p className="text-zinc-400 mb-6 leading-relaxed text-sm md:text-base">
+                  Agente WhatsApp IA que gestiona reservas solo, torneos sin Excel, rankings que retienen jugadores y métricas de tu negocio en tiempo real.
+                </p>
+                <div className="grid grid-cols-2 gap-2 mb-7">
+                  {[
+                    { v: '0', l: 'llamadas manuales' },
+                    { v: '+40%', l: 'más reservas' },
+                    { v: '24/7', l: 'bot activo' },
+                    { v: '24 hs', l: 'para empezar' },
+                  ].map(({ v, l }) => (
+                    <div key={l} className="bg-black/40 rounded-xl p-3 text-center border border-white/5">
+                      <p className="text-lg font-black text-[#C8F542]">{v}</p>
+                      <p className="text-[10px] text-zinc-500">{l}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-6 py-3 rounded-xl group-hover:bg-[#d4ff4a] transition-colors">
+                  Ver plataforma para clubes <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </Link>
@@ -605,6 +654,7 @@ export default function LandingPage() {
                 <a href="#funciones"   className="block hover:text-white transition-colors">Funciones</a>
                 <a href="#clubes"      className="block hover:text-white transition-colors">Para clubes</a>
                 <Link href="/torneos" className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Sistema de Torneos</Link>
+                <Link href="/clubes"  className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Para Clubes</Link>
               </div>
             </div>
             <div>
