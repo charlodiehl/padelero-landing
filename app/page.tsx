@@ -496,7 +496,7 @@ export default function LandingPage() {
                   <Building2 className="w-3 h-3" /> Para Clubes
                 </div>
                 <h2 className="text-2xl md:text-3xl font-black text-white mb-3 leading-tight">
-                  Más reservas. Cero llamadas.<br />En 24 horas.
+                  Más reservas. IA en WhatsApp.<br />Torneos y más.
                 </h2>
                 <p className="text-zinc-400 mb-6 leading-relaxed text-sm md:text-base">
                   Agente WhatsApp IA que gestiona reservas solo, torneos sin Excel, rankings que retienen jugadores y métricas de tu negocio en tiempo real.

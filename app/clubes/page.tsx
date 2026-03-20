@@ -228,13 +228,13 @@ function Hero() {
               animation: 'shimmer 4s linear infinite',
             }}
           >
-            Cero llamadas.
+            IA en WhatsApp.
           </span>
-          <span className="block text-white">En 24 horas.</span>
+          <span className="block text-white">Torneos y más.</span>
         </h1>
 
         <p className="text-base md:text-xl text-zinc-300 max-w-xl mx-auto mb-10 leading-relaxed">
-          El sistema completo para tu club de pádel: reservas automáticas por WhatsApp, torneos, rankings y métricas en tiempo real. Sin llamadas, sin Excel, sin caos.
+          Agente de IA en WhatsApp que atiende tus reservas las 24 hs, torneos sin Excel, rankings que retienen jugadores y métricas de tu negocio. Todo en una sola plataforma.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -257,9 +257,9 @@ function Hero() {
 
         <div className="grid grid-cols-3 gap-3 max-w-md mx-auto">
           {[
-            { v: '0', l: 'llamadas manuales', icon: MessageCircle },
+            { v: 'IA', l: 'Agente WhatsApp', icon: MessageCircle },
             { v: '+40%', l: 'más reservas', icon: TrendingUp },
-            { v: '24/7', l: 'bot activo', icon: Zap },
+            { v: '∞', l: 'Torneos y rankings', icon: Trophy },
           ].map(({ v, l, icon: Icon }) => (
             <div key={l} className="bg-black/50 backdrop-blur border border-white/10 rounded-2xl p-3.5 text-center">
               <Icon className="mx-auto mb-1.5" size={15} style={{ color: GREEN }} />
