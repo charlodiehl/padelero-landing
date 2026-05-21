@@ -7,6 +7,7 @@ import {
   Calendar, Trophy, Users, MessageCircle, BarChart3,
   CheckCircle2, ArrowRight, Star, ChevronDown, Smartphone,
   Clock, Shield, TrendingUp, Menu, X, Home, Building2,
+  Sparkles, Heart, Medal, GraduationCap, Swords,
 } from 'lucide-react';
 
 // ─── WhatsApp Icon SVG ────────────────────────────────────────────────────────
@@ -172,6 +173,13 @@ function Nav() {
           >
             <Home size={14} /> Clubes
           </Link>
+          <Link
+            href="/pro"
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
+            style={{ color: '#C8F542' }}
+          >
+            <Sparkles size={14} /> Padelero Pro
+          </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
@@ -187,6 +195,7 @@ function Nav() {
         <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
           <Link href="/torneos" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏆 Torneos</Link>
           <Link href="/clubes" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏠 Clubes</Link>
+          <Link href="/pro" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>✨ Padelero Pro</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
             <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
@@ -244,8 +253,11 @@ export default function LandingPage() {
               la Argentina.
             </span>
           </h1>
-          <p className="text-base md:text-xl text-zinc-300 max-w-xl mx-auto mb-10 leading-relaxed">
-            Reservá canchas en segundos, armá partidos, subí tu ranking y conectá con jugadores de tu nivel en todo el país.
+          <p className="text-base md:text-xl text-zinc-300 max-w-xl mx-auto mb-4 leading-relaxed">
+            Todo lo que te ofrecen las otras apps — y más. <span className="text-[#C8F542] font-semibold">Gratis</span>.
+          </p>
+          <p className="text-sm md:text-base text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed">
+            Reservas, torneos, clases, ranking, matchmaking, partidos abiertos y agente WhatsApp 24/7.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="https://app.padelero.app/login" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-base px-9 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/30">
@@ -254,6 +266,23 @@ export default function LandingPage() {
             <Link href="https://app.padelero.app/register" className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-base px-9 py-4 rounded-2xl hover:bg-white/20 transition-all">
               Registrarme
             </Link>
+          </div>
+
+          {/* Badges de disponibilidad */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 text-xs text-zinc-400">
+            <span className="opacity-70">Disponible en:</span>
+            <a href="https://apps.apple.com/ar/app/padelero/id6753211918" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=app.padelero" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.119 12l2.579-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+              Google Play
+            </a>
+            <a href="https://app.padelero.app" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              app.padelero.app
+            </a>
           </div>
         </div>
         <a href="#stats" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-white/40 hover:text-white/60 transition-colors" style={{ animation:'bounce 2s infinite' }}>
@@ -307,11 +336,13 @@ export default function LandingPage() {
             </Reveal>
             <div className="grid grid-cols-2 gap-3">
               <Card delay={0}   icon={Calendar}     title="Reservá en 30 segundos"   desc="Elegí club, cancha y horario desde el celu. Confirmación instantánea." />
-              <Card delay={60}  icon={Users}         title="Armá el partido"           desc="Encontrá rivales de tu nivel e invitá amigos para completar parejas." />
-              <Card delay={120} icon={Trophy}        title="Subí tu ranking"           desc="Jugá torneos, acumulá puntos y seguí tu progreso frente a tu ciudad." />
-              <Card delay={180} icon={MessageCircle} title="WhatsApp 24/7"             desc="Reservá y cancelá directo por WhatsApp. El bot responde al instante." />
-              <Card delay={240} icon={BellIcon}      title="Alertas de disponibilidad" desc="¿Se liberó un turno? Te avisamos antes que nadie para que no pierdas." />
-              <Card delay={300} icon={Smartphone}    title="App instalable"            desc="En tu pantalla de inicio sin descargar nada. Rápida como una app nativa." />
+              <Card delay={60}  icon={Swords}        title="Partidos abiertos"         desc="Buscá partidos abiertos en tu club o creá uno y que se sumen otros jugadores." />
+              <Card delay={120} icon={Heart}         title='Match Maker'               desc='Encontrá rivales o compañeros de tu nivel — tipo "Tinder" pero para pádel.' />
+              <Card delay={180} icon={GraduationCap} title="Clases con profes"          desc="Reservá clases particulares o grupales con profesores activos del club." />
+              <Card delay={240} icon={Medal}         title="Ranking & ELO"              desc="Tu nivel medido en categorías 1ra a 9na. Subí jugando partidos competitivos." />
+              <Card delay={300} icon={Trophy}        title="Torneos"                   desc="Inscribite a torneos del club, mirá fixtures y ranking en tiempo real." />
+              <Card delay={360} icon={MessageCircle} title="Agente WhatsApp 24/7"       desc="Un agente AI te atiende por WhatsApp: reserva, cancela, busca turnos. Siempre." />
+              <Card delay={420} icon={Smartphone}    title="iOS · Android · Web"        desc="En las tiendas de Apple y Google, o usalo direct en app.padelero.app." />
             </div>
           </div>
         </div>
