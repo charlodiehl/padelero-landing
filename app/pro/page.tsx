@@ -3,6 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
+const IMG = {
+  hero: '/landing/pro-hero.jpg',
+  nightCourts: '/landing/pro-night-courts.jpg',
+  clubOwner: '/landing/pro-club-owner.jpg',
+};
 import {
   Sparkles, ArrowRight, MessageCircle, CheckCircle2,
   Menu, X, Home, Trophy, Zap, Megaphone, Users, Heart,
@@ -138,7 +144,19 @@ export default function ProPage() {
       <Nav />
 
       {/* HERO */}
-      <section className="relative pt-32 pb-20 px-5">
+      <section className="relative pt-32 pb-20 px-5 overflow-hidden">
+        {/* Imagen de fondo (cancha en la pampa con hologramas) */}
+        <div className="absolute inset-0">
+          <Image
+            src={IMG.hero}
+            alt="Padelero Pro — cancha de pádel en la pampa argentina con visualizaciones IA"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+        </div>
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-[#C8F542]/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative max-w-5xl mx-auto text-center">
           <Reveal>
@@ -186,8 +204,17 @@ export default function ProPage() {
       </section>
 
       {/* CÓMO FUNCIONA */}
-      <section className="py-20 bg-zinc-950/80 px-5">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative py-20 px-5 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={IMG.nightCourts}
+            alt="Canchas de pádel al aire libre con bordes verde lima de noche"
+            fill
+            className="object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-zinc-950/80" />
+        </div>
+        <div className="relative max-w-5xl mx-auto">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-black text-center mb-3">¿Cómo funciona?</h2>
             <p className="text-zinc-400 text-center mb-14">3 pasos y tu club empieza a crecer solo.</p>
@@ -328,10 +355,20 @@ export default function ProPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-20 px-5">
-        <div className="max-w-3xl mx-auto">
+      <section className="relative py-20 px-5 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={IMG.clubOwner}
+            alt="Dueño de un club de pádel en la pampa argentina, atardecer"
+            fill
+            className="object-cover opacity-30"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
+        </div>
+        <div className="relative max-w-3xl mx-auto">
           <Reveal>
-            <div className="rounded-3xl border border-[#C8F542]/30 bg-gradient-to-br from-[#C8F542]/10 to-zinc-900/40 p-8 sm:p-12 text-center space-y-6">
+            <div className="rounded-3xl border border-[#C8F542]/30 bg-gradient-to-br from-[#C8F542]/10 to-zinc-900/60 backdrop-blur-sm p-8 sm:p-12 text-center space-y-6">
               <Sparkles className="w-12 h-12 mx-auto" style={{ color: GREEN }} />
               <h3 className="text-2xl sm:text-3xl font-black">
                 ¿Activamos Padelero Pro en tu club?
@@ -344,7 +381,7 @@ export default function ProPage() {
                 wa.me/2324549325
                 <ArrowRight size={18} />
               </a>
-              <p className="text-xs text-zinc-500 italic">
+              <p className="text-xs text-zinc-400 italic">
                 Carlos Diehl · Especialista en agentes de IA
               </p>
             </div>
