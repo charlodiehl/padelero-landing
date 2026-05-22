@@ -13,7 +13,7 @@ import {
   Sparkles, ArrowRight, MessageCircle, CheckCircle2,
   Menu, X, Home, Trophy, Zap, Megaphone, Users, Heart,
   Repeat, ShieldCheck, RefreshCw, TrendingUp, GraduationCap,
-  Building2, Calendar,
+  Building2, Calendar, Brain,
 } from 'lucide-react';
 
 const GREEN = '#C8F542';
@@ -241,6 +241,106 @@ export default function ProPage() {
         </div>
       </section>
 
+      {/* DIAGRAMA DE AGENTES */}
+      <section id="agentes" className="py-20 px-5 bg-gradient-to-b from-zinc-950 via-black to-zinc-950">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-4">
+                Arquitectura
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+                4 agentes especializados trabajando <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>en serie</span>
+              </h2>
+              <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+                Un <strong className="text-white">Orchestrator</strong> planea, <strong className="text-white">3 Workers</strong> ejecutan, un <strong className="text-white">Validator</strong> revisa antes de mandar nada al jugador.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <AgentDiagramLanding />
+          </Reveal>
+
+          {/* WORKERS DETALLE */}
+          <div className="grid md:grid-cols-3 gap-5 mt-16">
+            <WorkerCardLanding
+              emoji="🎾"
+              color="#22c55e"
+              title="Yield"
+              subtitle="Precio + Ocupación"
+              description="Detecta horarios flojos y los ataca con promo flash o ajuste de precio dentro de tu piso/techo."
+              tools={['Promo Flash', 'Pricing Dinámico']}
+            />
+            <WorkerCardLanding
+              emoji="💚"
+              color="#0ea5e9"
+              title="Retention"
+              subtitle="Cuidar jugadores"
+              description="Rescata jugadores que dejaron de venir, los incentiva con un beneficio y los saluda en su cumpleaños."
+              tools={['Recuperar Inactivos', 'Incentivo Personalizado', 'Cumpleaños']}
+            />
+            <WorkerCardLanding
+              emoji="📣"
+              color="#f59e0b"
+              title="Marketing"
+              subtitle="Atraer demanda"
+              description="Crea cancha abierta cuando hay hueco, arma equipos compatibles, llena clases con cupo libre."
+              tools={['Cancha Abierta', 'Match Maker', 'Llenar Clases']}
+            />
+          </div>
+
+          {/* OPS BOX */}
+          <Reveal delay={180}>
+            <div className="mt-8 rounded-2xl border border-purple-500/30 bg-purple-500/5 p-6 md:p-8 grid md:grid-cols-[auto_1fr] gap-6 items-center">
+              <div className="w-16 h-16 rounded-2xl bg-purple-500/20 border-2 border-purple-500/40 flex items-center justify-center text-3xl flex-shrink-0">
+                ⚙️
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-purple-300">Worker Ops · Reacciona a eventos</h3>
+                <p className="text-zinc-400 text-sm mt-1">
+                  Además del loop cada 6 horas, hay tareas que se disparan en tiempo real:
+                </p>
+                <div className="mt-3 grid sm:grid-cols-2 gap-3">
+                  <div className="text-sm">
+                    <span className="text-purple-300 font-bold">🛡️ Anti No-Show.</span>{' '}
+                    <span className="text-zinc-300">4h antes pide confirmación. Si no, libera la cancha automáticamente.</span>
+                  </div>
+                  <div className="text-sm">
+                    <span className="text-purple-300 font-bold">🔁 Reagendado Auto.</span>{' '}
+                    <span className="text-zinc-300">Cuando alguien cancela, le ofrece 3 horarios alternativos antes de soltar el slot.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* MODOS */}
+          <Reveal delay={240}>
+            <div className="mt-12">
+              <h3 className="text-center text-lg font-bold text-zinc-300 mb-6">Vos decidís el nivel de autonomía por cada herramienta</h3>
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div className="rounded-2xl border border-zinc-700 bg-zinc-900/50 p-5 text-center">
+                  <div className="text-4xl mb-3">🔴</div>
+                  <h4 className="font-bold text-base mb-1">Apagado</h4>
+                  <p className="text-xs text-zinc-400">La herramienta está desactivada. El agente nunca la usa.</p>
+                </div>
+                <div className="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5 text-center">
+                  <div className="text-4xl mb-3">🟡</div>
+                  <h4 className="font-bold text-base mb-1 text-amber-300">Sugerir</h4>
+                  <p className="text-xs text-zinc-400">Propone y vos aprobás. Por defecto el primer mes.</p>
+                </div>
+                <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5 text-center">
+                  <div className="text-4xl mb-3">🟢</div>
+                  <h4 className="font-bold text-base mb-1 text-emerald-300">Auto-seguro</h4>
+                  <p className="text-xs text-zinc-400">Ejecuta solo, siempre pasando por el validator adversarial.</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* TOOLS */}
       <section id="tools" className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
@@ -418,3 +518,135 @@ function Box({ label, value, sub, accent }: { label: string; value: string; sub:
 
 // Calendar is imported but unused in this file — keep TS happy
 void Calendar;
+
+/* ── DIAGRAMA DE AGENTES ─────────────────────────────────────────────── */
+
+function AgentDiagramLanding() {
+  return (
+    <div className="w-full max-w-4xl mx-auto">
+      {/* Orchestrator */}
+      <div className="flex justify-center">
+        <div className="rounded-2xl border-2 border-[#C8F542]/50 bg-gradient-to-br from-[#C8F542]/20 via-[#C8F542]/10 to-transparent px-6 py-4 shadow-xl shadow-[#C8F542]/10 text-center min-w-[240px]">
+          <div className="flex items-center justify-center gap-2">
+            <Brain className="h-5 w-5" style={{ color: GREEN }} />
+            <span className="font-bold text-base text-white">Orchestrator</span>
+          </div>
+          <div className="text-xs text-zinc-400 mt-1">Planea misiones cada 6 horas</div>
+          <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Claude Sonnet</div>
+        </div>
+      </div>
+
+      {/* Conector */}
+      <div className="flex justify-center my-2">
+        <div className="w-px h-8 bg-gradient-to-b from-[#C8F542]/60 to-zinc-700" />
+      </div>
+
+      {/* Línea horizontal + 3 workers */}
+      <div className="relative">
+        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[66%] h-px bg-zinc-700" />
+        <div className="hidden md:flex justify-around absolute top-0 left-[16%] right-[16%]">
+          <div className="w-px h-4 bg-zinc-700" />
+          <div className="w-px h-4 bg-zinc-700" />
+          <div className="w-px h-4 bg-zinc-700" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 pt-4 md:pt-6">
+          <MiniWorker emoji="🎾" color="#22c55e" name="Yield" hint="Precio + ocupación" />
+          <MiniWorker emoji="💚" color="#0ea5e9" name="Retention" hint="Cuidar jugadores" />
+          <MiniWorker emoji="📣" color="#f59e0b" name="Marketing" hint="Atraer demanda" />
+        </div>
+      </div>
+
+      {/* Workers → Validator */}
+      <div className="flex justify-center my-2 mt-4">
+        <div className="w-px h-8 bg-gradient-to-b from-zinc-700 to-purple-500/60" />
+      </div>
+
+      {/* Validator */}
+      <div className="flex justify-center">
+        <div className="rounded-2xl border-2 border-purple-500/50 bg-gradient-to-br from-purple-500/15 via-purple-500/5 to-transparent px-6 py-4 shadow-xl shadow-purple-500/10 text-center min-w-[280px]">
+          <div className="flex items-center justify-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-purple-400" />
+            <span className="font-bold text-base text-white">Validator</span>
+          </div>
+          <div className="text-xs text-zinc-400 mt-1">Hard rules + LLM adversarial</div>
+          <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Aprueba o rechaza</div>
+        </div>
+      </div>
+
+      {/* Validator → Acción */}
+      <div className="flex justify-center my-2">
+        <div className="w-px h-8 bg-gradient-to-b from-purple-500/60 to-emerald-500/60" />
+      </div>
+
+      {/* Acciones */}
+      <div className="flex justify-center">
+        <div className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-500/50 bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 px-5 py-2 shadow-md">
+          <Zap className="h-4 w-4 text-emerald-400 fill-emerald-400/30" />
+          <span className="font-bold text-sm text-emerald-300">Acciones ejecutadas</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MiniWorker({ emoji, color, name, hint }: { emoji: string; color: string; name: string; hint: string }) {
+  return (
+    <div
+      className="rounded-2xl border-2 p-4 shadow-sm transition-all hover:shadow-md bg-white/5"
+      style={{ borderColor: `${color}40` }}
+    >
+      <div className="flex items-center gap-3">
+        <div
+          className="h-10 w-10 rounded-xl grid place-items-center text-xl shadow-inner flex-shrink-0"
+          style={{ backgroundColor: `${color}25`, border: `2px solid ${color}50` }}
+        >
+          {emoji}
+        </div>
+        <div>
+          <div className="font-bold text-sm text-white">{name}</div>
+          <div className="text-[11px] text-zinc-400 leading-tight">{hint}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WorkerCardLanding({
+  emoji, color, title, subtitle, description, tools,
+}: {
+  emoji: string; color: string; title: string; subtitle: string;
+  description: string; tools: string[];
+}) {
+  return (
+    <div
+      className="rounded-2xl border-2 p-5 bg-white/5 backdrop-blur-sm transition-all hover:bg-white/[0.07]"
+      style={{ borderColor: `${color}40` }}
+    >
+      <div className="flex items-center gap-3 mb-3">
+        <div
+          className="h-12 w-12 rounded-xl grid place-items-center text-2xl"
+          style={{ backgroundColor: `${color}25`, border: `2px solid ${color}50` }}
+        >
+          {emoji}
+        </div>
+        <div>
+          <h3 className="font-bold text-base text-white">{title}</h3>
+          <p className="text-[11px] text-zinc-400">{subtitle}</p>
+        </div>
+      </div>
+      <p className="text-sm text-zinc-300 leading-relaxed">{description}</p>
+      <div className="mt-4 flex flex-wrap gap-1.5">
+        {tools.map((t) => (
+          <span
+            key={t}
+            className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md"
+            style={{ backgroundColor: `${color}20`, color, border: `1px solid ${color}40` }}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
