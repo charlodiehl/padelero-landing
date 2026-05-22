@@ -532,7 +532,7 @@ function AgentDiagramLanding() {
             <Brain className="h-5 w-5" style={{ color: GREEN }} />
             <span className="font-bold text-base text-white">Orchestrator</span>
           </div>
-          <div className="text-xs text-zinc-400 mt-1">Planea misiones cada 6 horas</div>
+          <div className="text-xs text-zinc-400 mt-1">Planea tareas cada 6 horas</div>
           <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Claude Sonnet</div>
         </div>
       </div>
