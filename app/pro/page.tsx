@@ -254,7 +254,7 @@ export default function ProPage() {
                 4 agentes especializados trabajando <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>en serie</span>
               </h2>
               <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-                Un <strong className="text-white">Orchestrator</strong> planea, <strong className="text-white">3 Workers</strong> ejecutan, un <strong className="text-white">Validator</strong> revisa antes de mandar nada al jugador.
+                Un <strong className="text-white">Cerebro</strong> planea, <strong className="text-white">3 Trabajadores</strong> ejecutan, un <strong className="text-white">Validador</strong> revisa antes de mandar nada al jugador.
               </p>
             </div>
           </Reveal>
@@ -268,24 +268,24 @@ export default function ProPage() {
             <WorkerCardLanding
               icon={Gauge}
               color="#22c55e"
-              title="Yield"
-              subtitle="Precio + Ocupación"
+              title="Ocupación"
+              subtitle="Llena canchas + ajusta precio"
               description="Detecta horarios flojos y los ataca con promo flash o ajuste de precio dentro de tu piso/techo."
-              tools={['Promo Flash', 'Pricing Dinámico']}
+              tools={['Promo Flash', 'Precio Dinámico']}
             />
             <WorkerCardLanding
               icon={Heart}
               color="#0ea5e9"
-              title="Retention"
-              subtitle="Cuidar jugadores"
+              title="Fidelización"
+              subtitle="Cuida tus jugadores"
               description="Rescata jugadores que dejaron de venir, los incentiva con un beneficio y los saluda en su cumpleaños."
               tools={['Recuperar Inactivos', 'Incentivo Personalizado', 'Cumpleaños']}
             />
             <WorkerCardLanding
               icon={Megaphone}
               color="#f59e0b"
-              title="Marketing"
-              subtitle="Atraer demanda"
+              title="Promoción"
+              subtitle="Atrae nueva demanda"
               description="Crea cancha abierta cuando hay hueco, arma equipos compatibles, llena clases con cupo libre."
               tools={['Cancha Abierta', 'Match Maker', 'Llenar Clases']}
             />
@@ -298,7 +298,7 @@ export default function ProPage() {
                 <Cog className="w-8 h-8 text-purple-300" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-purple-300">Worker Ops · Reacciona a eventos</h3>
+                <h3 className="text-xl font-bold text-purple-300">Trabajador Operaciones · reacciona a eventos</h3>
                 <p className="text-zinc-400 text-sm mt-1">
                   Además del loop cada 6 horas, hay tareas que se disparan en tiempo real:
                 </p>
@@ -334,7 +334,7 @@ export default function ProPage() {
                 <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5 text-center">
                   <div className="text-4xl mb-3">🟢</div>
                   <h4 className="font-bold text-base mb-1 text-emerald-300">Auto-seguro</h4>
-                  <p className="text-xs text-zinc-400">Ejecuta solo, siempre pasando por el validator adversarial.</p>
+                  <p className="text-xs text-zinc-400">Ejecuta solo, siempre pasando por el validador crítico.</p>
                 </div>
               </div>
             </div>
@@ -530,7 +530,7 @@ function AgentDiagramLanding() {
         <div className="rounded-2xl border-2 border-[#C8F542]/50 bg-gradient-to-br from-[#C8F542]/20 via-[#C8F542]/10 to-transparent px-6 py-4 shadow-xl shadow-[#C8F542]/10 text-center min-w-[240px]">
           <div className="flex items-center justify-center gap-2">
             <Brain className="h-5 w-5" style={{ color: GREEN }} />
-            <span className="font-bold text-base text-white">Orchestrator</span>
+            <span className="font-bold text-base text-white">Cerebro</span>
           </div>
           <div className="text-xs text-zinc-400 mt-1">Planea tareas cada 6 horas</div>
           <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Claude Sonnet</div>
@@ -552,9 +552,9 @@ function AgentDiagramLanding() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 pt-4 md:pt-6">
-          <MiniWorker icon={Gauge} color="#22c55e" name="Yield" hint="Precio + ocupación" />
-          <MiniWorker icon={Heart} color="#0ea5e9" name="Retention" hint="Cuidar jugadores" />
-          <MiniWorker icon={Megaphone} color="#f59e0b" name="Marketing" hint="Atraer demanda" />
+          <MiniWorker icon={Gauge} color="#22c55e" name="Ocupación" hint="Llena canchas vacías" />
+          <MiniWorker icon={Heart} color="#0ea5e9" name="Fidelización" hint="Cuida jugadores" />
+          <MiniWorker icon={Megaphone} color="#f59e0b" name="Promoción" hint="Atrae demanda" />
         </div>
       </div>
 
@@ -568,9 +568,9 @@ function AgentDiagramLanding() {
         <div className="rounded-2xl border-2 border-purple-500/50 bg-gradient-to-br from-purple-500/15 via-purple-500/5 to-transparent px-6 py-4 shadow-xl shadow-purple-500/10 text-center min-w-[280px]">
           <div className="flex items-center justify-center gap-2">
             <ShieldCheck className="h-5 w-5 text-purple-400" />
-            <span className="font-bold text-base text-white">Validator</span>
+            <span className="font-bold text-base text-white">Validador</span>
           </div>
-          <div className="text-xs text-zinc-400 mt-1">Hard rules + LLM adversarial</div>
+          <div className="text-xs text-zinc-400 mt-1">Reglas estrictas + IA crítica</div>
           <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Aprueba o rechaza</div>
         </div>
       </div>
