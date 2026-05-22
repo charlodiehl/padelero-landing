@@ -13,7 +13,8 @@ import {
   Sparkles, ArrowRight, MessageCircle, CheckCircle2,
   Menu, X, Home, Trophy, Zap, Megaphone, Users, Heart,
   Repeat, ShieldCheck, RefreshCw, TrendingUp, GraduationCap,
-  Building2, Calendar, Brain,
+  Building2, Calendar, Brain, Gauge, Cog,
+  type LucideIcon,
 } from 'lucide-react';
 
 const GREEN = '#C8F542';
@@ -265,7 +266,7 @@ export default function ProPage() {
           {/* WORKERS DETALLE */}
           <div className="grid md:grid-cols-3 gap-5 mt-16">
             <WorkerCardLanding
-              emoji="🎾"
+              icon={Gauge}
               color="#22c55e"
               title="Yield"
               subtitle="Precio + Ocupación"
@@ -273,7 +274,7 @@ export default function ProPage() {
               tools={['Promo Flash', 'Pricing Dinámico']}
             />
             <WorkerCardLanding
-              emoji="💚"
+              icon={Heart}
               color="#0ea5e9"
               title="Retention"
               subtitle="Cuidar jugadores"
@@ -281,7 +282,7 @@ export default function ProPage() {
               tools={['Recuperar Inactivos', 'Incentivo Personalizado', 'Cumpleaños']}
             />
             <WorkerCardLanding
-              emoji="📣"
+              icon={Megaphone}
               color="#f59e0b"
               title="Marketing"
               subtitle="Atraer demanda"
@@ -293,8 +294,8 @@ export default function ProPage() {
           {/* OPS BOX */}
           <Reveal delay={180}>
             <div className="mt-8 rounded-2xl border border-purple-500/30 bg-purple-500/5 p-6 md:p-8 grid md:grid-cols-[auto_1fr] gap-6 items-center">
-              <div className="w-16 h-16 rounded-2xl bg-purple-500/20 border-2 border-purple-500/40 flex items-center justify-center text-3xl flex-shrink-0">
-                ⚙️
+              <div className="w-16 h-16 rounded-2xl bg-purple-500/20 border-2 border-purple-500/40 flex items-center justify-center flex-shrink-0">
+                <Cog className="w-8 h-8 text-purple-300" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-purple-300">Worker Ops · Reacciona a eventos</h3>
@@ -551,9 +552,9 @@ function AgentDiagramLanding() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 pt-4 md:pt-6">
-          <MiniWorker emoji="🎾" color="#22c55e" name="Yield" hint="Precio + ocupación" />
-          <MiniWorker emoji="💚" color="#0ea5e9" name="Retention" hint="Cuidar jugadores" />
-          <MiniWorker emoji="📣" color="#f59e0b" name="Marketing" hint="Atraer demanda" />
+          <MiniWorker icon={Gauge} color="#22c55e" name="Yield" hint="Precio + ocupación" />
+          <MiniWorker icon={Heart} color="#0ea5e9" name="Retention" hint="Cuidar jugadores" />
+          <MiniWorker icon={Megaphone} color="#f59e0b" name="Marketing" hint="Atraer demanda" />
         </div>
       </div>
 
@@ -590,7 +591,7 @@ function AgentDiagramLanding() {
   );
 }
 
-function MiniWorker({ emoji, color, name, hint }: { emoji: string; color: string; name: string; hint: string }) {
+function MiniWorker({ icon: Icon, color, name, hint }: { icon: LucideIcon; color: string; name: string; hint: string }) {
   return (
     <div
       className="rounded-2xl border-2 p-4 shadow-sm transition-all hover:shadow-md bg-white/5"
@@ -598,10 +599,10 @@ function MiniWorker({ emoji, color, name, hint }: { emoji: string; color: string
     >
       <div className="flex items-center gap-3">
         <div
-          className="h-10 w-10 rounded-xl grid place-items-center text-xl shadow-inner flex-shrink-0"
+          className="h-10 w-10 rounded-xl grid place-items-center shadow-inner flex-shrink-0"
           style={{ backgroundColor: `${color}25`, border: `2px solid ${color}50` }}
         >
-          {emoji}
+          <Icon className="h-5 w-5" style={{ color }} aria-hidden />
         </div>
         <div>
           <div className="font-bold text-sm text-white">{name}</div>
@@ -613,9 +614,9 @@ function MiniWorker({ emoji, color, name, hint }: { emoji: string; color: string
 }
 
 function WorkerCardLanding({
-  emoji, color, title, subtitle, description, tools,
+  icon: Icon, color, title, subtitle, description, tools,
 }: {
-  emoji: string; color: string; title: string; subtitle: string;
+  icon: LucideIcon; color: string; title: string; subtitle: string;
   description: string; tools: string[];
 }) {
   return (
@@ -625,10 +626,10 @@ function WorkerCardLanding({
     >
       <div className="flex items-center gap-3 mb-3">
         <div
-          className="h-12 w-12 rounded-xl grid place-items-center text-2xl"
+          className="h-12 w-12 rounded-xl grid place-items-center"
           style={{ backgroundColor: `${color}25`, border: `2px solid ${color}50` }}
         >
-          {emoji}
+          <Icon className="h-6 w-6" style={{ color }} aria-hidden />
         </div>
         <div>
           <h3 className="font-bold text-base text-white">{title}</h3>
