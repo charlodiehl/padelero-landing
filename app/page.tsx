@@ -246,10 +246,20 @@ export default function LandingPage() {
             </span>
             {realStats ? `${realStats.jugadores}+` : '228+'} jugadores activos en Argentina
           </div>
-          <h1 className="text-5xl sm:text-7xl lg:text-[90px] font-black leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
+          <h1 className="text-5xl sm:text-7xl lg:text-[90px] font-black leading-[.95] mb-6 tracking-tight drop-shadow-2xl">
             <span className="block text-white">La mejor app</span>
             <span className="block text-white">de pádel de</span>
-            <span className="block mt-1" style={{ background:'linear-gradient(135deg,#C8F542 0%,#7ec800 60%,#C8F542 100%)', backgroundSize:'200% auto', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', animation:'shimmer 4s linear infinite' }}>
+            <span
+              className="block mt-1 pb-2"
+              style={{
+                background: 'linear-gradient(135deg,#C8F542 0%,#7ec800 60%,#C8F542 100%)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                animation: 'shimmer 4s linear infinite',
+                lineHeight: 1.05,
+              }}
+            >
               la Argentina.
             </span>
           </h1>
