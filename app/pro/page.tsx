@@ -132,47 +132,29 @@ const TOOLS: Tool[] = [
   { icon: Building2,      emoji: '🏢', title: 'Referidos entre clubes',      desc: 'Si traés otro club que activa Pro, ganás 1% de su facturación mensual por 12 meses.', example: '5 clubes referidos × $5M GMV → +$25k/mes' },
 ];
 
-/** Habilidades activables del agente con su % estimado de impacto sobre el GMV mensual.
- *  Calibrado con datos reales de clubes argentinos mid-size (~5M GMV).
- *  Activando los principales: ~20%. Activando todos: 27% (cap a 30%). */
-const HABILIDADES = [
-  { key: 'promo_flash',       label: 'Promo Flash',           impact: 5, hint: 'Detecta slots vacíos y manda promo flash a top jugadores', defaultOn: true,  emoji: '⚡' },
-  { key: 'recuperar',         label: 'Recuperar inactivos',   impact: 4, hint: 'Rescata jugadores que dejaron de venir 30+ días',          defaultOn: true,  emoji: '💌' },
-  { key: 'pricing',           label: 'Pricing dinámico',      impact: 3, hint: 'Surge en peak, descuento en horarios flojos',              defaultOn: true,  emoji: '📈' },
-  { key: 'torneos',           label: 'Torneos automáticos',   impact: 5, hint: 'Llena torneos al 100% y arma extras (32 jug × $25k típico)', defaultOn: true,  emoji: '🏆' },
-  { key: 'anti_no_show',      label: 'Anti no-show',          impact: 2, hint: 'Confirma 4h antes y libera slot si no responde',           defaultOn: true,  emoji: '✅' },
-  { key: 'reagendado',        label: 'Reagendado auto',       impact: 1, hint: 'Convierte cancelaciones en reservas reprogramadas',        defaultOn: true,  emoji: '🔁' },
-  { key: 'cancha_abierta',    label: 'Cancha Abierta',        impact: 3, hint: 'Crea partidos automáticos cuando hay hueco',               defaultOn: false, emoji: '🎾' },
-  { key: 'match_maker',       label: 'Match Maker',           impact: 2, hint: 'Empareja jugadores compatibles entre tus favoritos',      defaultOn: false, emoji: '🤝' },
-  { key: 'llenar_clases',     label: 'Llenar clases',         impact: 2, hint: 'Promociona clases con cupo libre al segmento ideal',      defaultOn: false, emoji: '📚' },
-] as const;
-
 export default function ProPage() {
   const [gmv, setGmv] = useState(5_000_000);
-  const [activas, setActivas] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(HABILIDADES.map((h) => [h.key, h.defaultOn]))
-  );
   const planArs = 150_000; // aproximado a USD 100
 
-  // ── Calculadora ROI con habilidades activables ─────────────────────
-  // Suma los % de impacto de cada habilidad activa, capped al 30%
-  // (techo razonable — más es ya marketing).
-  const crecimientoPctRaw = HABILIDADES.reduce(
-    (acc, h) => (activas[h.key] ? acc + h.impact : acc),
-    0
-  );
-  const crecimientoPct = Math.min(crecimientoPctRaw, 30); // cap honesto
-  const crecimiento = Math.round((gmv * crecimientoPct) / 100);
-  const gmvNuevo = gmv + crecimiento;
+  // ── Calculadora ROI versión "vendedora" — número anual gigante ────
+  // Asume +20% mensual conservador (TODAS las habilidades activas).
+  // Estimación promedio de mercado argentino mid-size.
+  const CRECIMIENTO_PCT = 20;
+  const crecimientoMensual = Math.round((gmv * CRECIMIENTO_PCT) / 100);
+  const gmvNuevo = gmv + crecimientoMensual;
   const feeVariable = Math.round(gmvNuevo * 0.03);
-  const costoPro = planArs + feeVariable;
-  const gananciaNeta = crecimiento - costoPro;
-  // Punto de equilibrio: X*gmv = planArs + (1+X)*gmv*0.03 → X = (planArs + gmv*0.03) / (gmv*0.97)
-  const breakEvenPct = gmv > 0 ? ((planArs + gmv * 0.03) / (gmv * 0.97)) * 100 : 0;
-  const pierdePlata = gananciaNeta < 0;
-
-  const toggleHabilidad = (key: string) => {
-    setActivas((prev) => ({ ...prev, [key]: !prev[key] }));
+  const costoMensual = planArs + feeVariable;
+  const gananciaNetaMensual = crecimientoMensual - costoMensual;
+  const gananciaNetaAnual = gananciaNetaMensual * 12;
+  const pierdePlata = gananciaNetaMensual < 0;
+  // Desglose narrado del mes 1 (proporcional al GMV)
+  const breakdown = {
+    promoFlash: Math.round(gmv * 0.05),
+    recuperar: Math.round(gmv * 0.04),
+    torneoExtra: Math.round(gmv * 0.05),
+    pricing: Math.round(gmv * 0.03),
+    antiNoShow: Math.round(gmv * 0.02),
+    reagendado: Math.round(gmv * 0.01),
   };
 
   return (
@@ -413,20 +395,20 @@ export default function ProPage() {
         </div>
       </section>
 
-      {/* CALCULADORA */}
+      {/* CALCULADORA — versión vendedora · número anual gigante */}
       <section className="py-20 bg-zinc-950/80 px-5">
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/30 rounded-full px-3 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-4">
-                ¿Te conviene?
+                Tu plata real
               </div>
               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
-                Mirá la cuenta con <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>tu plata real</span>
+                Cuánto <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>se mete</span> tu club por año
               </h2>
               <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
-                Movés el slider con tu facturación mensual y ves cuánto pagás vs cuánto te
-                hacemos crecer. La promesa: <strong className="text-white">crecerte +10% mensual</strong>.
+                Moviendo el slider con tu facturación mensual ves cuánto te dejamos extra a vos en 12 meses.
+                Estimado conservador <strong className="text-white">(+20% mensual)</strong> sobre clubes argentinos reales.
               </p>
             </div>
           </Reveal>
@@ -437,13 +419,11 @@ export default function ProPage() {
               <div>
                 <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
                   <span className="text-sm text-zinc-400">Tu facturación mensual por Padelero:</span>
-                  <span className="text-2xl sm:text-3xl font-black tabular-nums">
-                    ${gmv.toLocaleString('es-AR')}
-                  </span>
+                  <span className="text-2xl sm:text-3xl font-black tabular-nums">${gmv.toLocaleString('es-AR')}</span>
                 </div>
                 <input
                   type="range"
-                  min={300_000}
+                  min={500_000}
                   max={20_000_000}
                   step={100_000}
                   value={gmv}
@@ -451,210 +431,174 @@ export default function ProPage() {
                   className="w-full accent-[#C8F542]"
                 />
                 <div className="flex justify-between text-[10px] text-zinc-500 mt-1">
-                  <span>$300k</span>
+                  <span>$500k</span>
                   <span>$5M</span>
                   <span>$20M</span>
                 </div>
               </div>
 
-              {/* HABILIDADES ACTIVABLES */}
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-4 sm:p-6">
-                <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                  <div>
-                    <h3 className="font-bold text-base sm:text-lg">Activá las habilidades del agente</h3>
-                    <p className="text-xs text-zinc-400 mt-0.5">
-                      Cada tilde estima crecimiento sobre tu GMV mensual. Calibrado con clubes reales.
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
-                      Crecimiento estimado
-                    </div>
-                    <div className="text-3xl font-black tabular-nums" style={{ color: GREEN }}>
-                      +{crecimientoPct}%
-                    </div>
-                    {crecimientoPctRaw > 30 && (
-                      <div className="text-[10px] text-amber-400 mt-0.5">
-                        (cap a 30% — ya es mucho)
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-2">
-                  {HABILIDADES.map((h) => {
-                    const on = activas[h.key];
-                    return (
-                      <button
-                        key={h.key}
-                        type="button"
-                        onClick={() => toggleHabilidad(h.key)}
-                        className={`group flex items-center gap-3 rounded-xl border-2 px-3 py-2.5 text-left transition-all ${
-                          on
-                            ? 'border-[#C8F542]/50 bg-[#C8F542]/[0.08]'
-                            : 'border-white/10 bg-white/[0.02] hover:border-white/20'
-                        }`}
-                      >
-                        <div
-                          className={`h-5 w-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                            on
-                              ? 'border-[#C8F542] bg-[#C8F542]'
-                              : 'border-zinc-600 bg-transparent'
-                          }`}
-                        >
-                          {on && (
-                            <svg viewBox="0 0 20 20" fill="black" className="h-3.5 w-3.5">
-                              <path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" />
-                            </svg>
-                          )}
-                        </div>
-                        <span className="text-base flex-shrink-0">{h.emoji}</span>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-2">
-                            <div className={`font-bold text-sm ${on ? 'text-white' : 'text-zinc-400'}`}>
-                              {h.label}
-                            </div>
-                            <div
-                              className={`text-xs font-black tabular-nums flex-shrink-0 ${
-                                on ? 'text-[#C8F542]' : 'text-zinc-500'
-                              }`}
-                            >
-                              +{h.impact}%
-                            </div>
-                          </div>
-                          <div className="text-[11px] text-zinc-500 leading-tight">{h.hint}</div>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Promesa */}
-              <div className="flex items-center justify-center gap-2 pt-2">
-                <ArrowRight className="w-4 h-4 text-[#C8F542] rotate-90 animate-pulse" />
-                <span className="text-xs sm:text-sm text-zinc-300">
-                  Con las habilidades activas, estimamos{' '}
-                  <span className="inline-flex items-center gap-1 font-bold" style={{ color: GREEN }}>
-                    <TrendingUp className="w-3.5 h-3.5" />
-                    +{crecimientoPct}% mensual
-                  </span>
-                </span>
-              </div>
-
-              {/* Crecimiento vs Costo · lado a lado */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                {/* + Crecimiento */}
-                <div className="rounded-2xl border-2 border-[#C8F542]/40 bg-[#C8F542]/[0.06] p-5 sm:p-6 relative overflow-hidden">
-                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: `${GREEN}30` }} />
-                  <div className="relative">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-lg font-black" style={{ color: GREEN }}>+</span>
-                      <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: GREEN }}>
-                        Crecemos tu facturación
-                      </span>
-                    </div>
-                    <div className="text-3xl md:text-4xl font-black tabular-nums" style={{ color: GREEN }}>
-                      +${crecimiento.toLocaleString('es-AR')}
-                    </div>
-                    <div className="text-xs text-zinc-400 mt-2">
-                      ${gmv.toLocaleString('es-AR')} → ${gmvNuevo.toLocaleString('es-AR')} este mes
-                    </div>
-                  </div>
-                </div>
-
-                {/* - Costo */}
-                <div className="rounded-2xl border-2 border-white/15 bg-white/[0.03] p-5 sm:p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg font-black text-zinc-400">−</span>
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">
-                      Costo del Pro
-                    </span>
-                  </div>
-                  <div className="text-3xl md:text-4xl font-black tabular-nums text-white">
-                    −${costoPro.toLocaleString('es-AR')}
-                  </div>
-                  <div className="text-xs text-zinc-500 mt-2 space-y-0.5">
-                    <div>Plan fijo: ${planArs.toLocaleString('es-AR')} <span className="text-[10px] text-zinc-600">(USD 100)</span></div>
-                    <div>+ 3% sobre nuevo GMV: ${feeVariable.toLocaleString('es-AR')}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Igual flecha */}
-              <div className="flex items-center justify-center">
-                <div className="h-px w-12 bg-white/10" />
-                <ArrowRight className="w-4 h-4 text-zinc-500 mx-2 rotate-90" />
-                <div className="h-px w-12 bg-white/10" />
-              </div>
-
-              {/* Ganancia neta — el héroe */}
-              <div
-                className={`rounded-3xl border-2 p-6 sm:p-8 text-center relative overflow-hidden ${
-                  pierdePlata
-                    ? 'border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-transparent'
-                    : 'border-[#C8F542]/40 bg-gradient-to-br from-[#C8F542]/20 via-emerald-500/10 to-[#C8F542]/5 shadow-2xl shadow-[#C8F542]/10'
-                }`}
-              >
+              {/* DISPLAY GIGANTE — número anual */}
+              <div className={`rounded-3xl border-2 p-6 md:p-10 text-center relative overflow-hidden ${
+                pierdePlata
+                  ? 'border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-transparent'
+                  : 'border-[#C8F542]/50 bg-gradient-to-br from-[#C8F542]/20 via-emerald-500/15 to-[#C8F542]/5 shadow-2xl shadow-[#C8F542]/10'
+              }`}>
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full blur-3xl" style={{ backgroundColor: pierdePlata ? '#f59e0b30' : `${GREEN}40` }} />
-                  <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-emerald-500/20 rounded-full blur-3xl" />
+                  <div className="absolute -top-10 left-1/4 w-72 h-72 rounded-full blur-3xl" style={{ backgroundColor: pierdePlata ? '#f59e0b30' : `${GREEN}50` }} />
+                  <div className="absolute -bottom-10 right-1/4 w-64 h-64 bg-emerald-500/30 rounded-full blur-3xl" />
                 </div>
                 <div className="relative">
-                  <div
-                    className="text-[10px] uppercase tracking-widest font-bold mb-2"
-                    style={{ color: pierdePlata ? '#f59e0b' : GREEN }}
-                  >
-                    {pierdePlata ? '⚠️ A este nivel todavía no conviene' : '💰 Ganás neto por mes'}
-                  </div>
-                  <div
-                    className="text-4xl md:text-6xl font-black tabular-nums"
-                    style={{ color: pierdePlata ? '#fbbf24' : GREEN }}
-                  >
-                    {gananciaNeta >= 0 ? '+' : ''}${gananciaNeta.toLocaleString('es-AR')}
-                  </div>
-                  <div className="text-xs sm:text-sm text-zinc-300 mt-3 max-w-md mx-auto">
-                    {pierdePlata ? (
-                      <>
-                        Con esta facturación necesitamos crecerte un{' '}
-                        <strong className="text-white">{breakEvenPct.toFixed(1)}%</strong> para empatar.
-                        El Pro empieza a tener ROI claro arriba de ~$2,3M de GMV mensual.
-                      </>
-                    ) : (
-                      <>
-                        Esa es <strong className="text-white">plata extra</strong> a tu bolsillo
-                        cada mes, después de pagar el Pro completo.
-                      </>
-                    )}
-                  </div>
+                  {pierdePlata ? (
+                    <>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-amber-400 mb-3">
+                        ⚠️ Tu club todavía es chico para Pro
+                      </div>
+                      <div className="text-3xl md:text-5xl font-black text-amber-400 tabular-nums">
+                        ${gananciaNetaAnual.toLocaleString('es-AR')} / año
+                      </div>
+                      <div className="text-sm text-zinc-300 mt-4 max-w-md mx-auto">
+                        A este nivel de facturación, el costo Pro supera el crecimiento estimado.
+                        Activá Pro cuando tu club factura al menos $1,5M/mes.
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-[10px] uppercase tracking-widest font-bold mb-3 flex items-center justify-center gap-2" style={{ color: GREEN }}>
+                        <Sparkles className="w-3.5 h-3.5" />
+                        Tu club gana extra al activar Padelero Pro
+                      </div>
+                      <div className="text-5xl md:text-7xl font-black tabular-nums leading-none drop-shadow-2xl" style={{ color: GREEN }}>
+                        +${gananciaNetaAnual.toLocaleString('es-AR')}
+                      </div>
+                      <div className="text-xl md:text-2xl font-extrabold text-white mt-3">
+                        por año
+                      </div>
+                      <div className="text-sm text-zinc-300 mt-4 max-w-xl mx-auto">
+                        Estimado conservador: <strong className="text-white">+20% de crecimiento mensual</strong> sobre tu GMV actual, menos el costo del Pro. Eso son{' '}
+                        <strong style={{ color: GREEN }}>+${gananciaNetaMensual.toLocaleString('es-AR')}/mes</strong>{' '}
+                        directos a tu bolsillo.
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
 
-              {/* Break-even + sin compromiso */}
-              <div className="grid sm:grid-cols-2 gap-3">
-                <div className="flex items-start gap-2 text-xs bg-black/30 rounded-lg p-4 border border-white/5">
-                  <CheckCircle2 className="w-4 h-4 text-[#C8F542] flex-shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <div className="font-bold text-white">Punto de equilibrio</div>
-                    <div className="text-zinc-400">
-                      Con crecer solo <strong className="text-white">{breakEvenPct.toFixed(1)}%</strong> mensual
-                      empatás. Arriba de eso, todo es tu ganancia.
+              {/* CASO NARRADO mes 1 */}
+              {!pierdePlata && (
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6 space-y-4">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1">
+                      Lo que pasa típicamente · mes 1
+                    </div>
+                    <h3 className="font-bold text-base sm:text-lg text-white">
+                      De dónde sale ese{' '}
+                      <span style={{ color: GREEN }}>+${crecimientoMensual.toLocaleString('es-AR')}</span>{' '}
+                      de crecimiento
+                    </h3>
+                    <p className="text-xs text-zinc-400 mt-1">
+                      Estimación basada en clubes argentinos mid-size. Tu caso puede variar arriba o abajo.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    {[
+                      { emoji: '⚡', label: 'Promo flash llena slots vacíos', detail: '~14 slots non-peak rescatados / mes', amount: breakdown.promoFlash },
+                      { emoji: '💌', label: 'Recuperar jugadores inactivos', detail: '~28 jugadores que dejaron de venir vuelven', amount: breakdown.recuperar },
+                      { emoji: '🏆', label: 'Torneo automático extra', detail: '32 jug × $25k inscripción (segmentado por nivel)', amount: breakdown.torneoExtra },
+                      { emoji: '📈', label: 'Pricing dinámico', detail: 'Surge en peak, descuento en horarios flojos', amount: breakdown.pricing },
+                      { emoji: '✅', label: 'Anti no-show + Reagendado', detail: 'Recupera ~20% de cancelaciones', amount: breakdown.antiNoShow + breakdown.reagendado },
+                    ].map((row, i) => (
+                      <div key={i} className="flex items-center gap-3 py-1">
+                        <div className="text-base flex-shrink-0">{row.emoji}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-semibold text-white">{row.label}</div>
+                          <div className="text-[11px] text-zinc-500">{row.detail}</div>
+                        </div>
+                        <div className="text-sm font-bold tabular-nums flex-shrink-0" style={{ color: GREEN }}>
+                          +${row.amount.toLocaleString('es-AR')}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="border-t border-white/10 pt-3 flex items-center justify-between">
+                    <div className="text-sm font-semibold text-white">Crecimiento total mes 1</div>
+                    <div className="text-xl font-extrabold tabular-nums" style={{ color: GREEN }}>
+                      +${crecimientoMensual.toLocaleString('es-AR')}
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-zinc-400">
+                    <div>− Costo Pro (${planArs.toLocaleString('es-AR')} plan + 3% nuevo GMV)</div>
+                    <div className="tabular-nums">−${costoMensual.toLocaleString('es-AR')}</div>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-white/10 pt-3">
+                    <div className="text-sm font-bold text-white">Ganancia neta mes 1</div>
+                    <div className="text-2xl font-black tabular-nums" style={{ color: GREEN }}>
+                      +${gananciaNetaMensual.toLocaleString('es-AR')}
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-2 text-xs bg-black/30 rounded-lg p-4 border border-white/5">
-                  <CheckCircle2 className="w-4 h-4 text-[#C8F542] flex-shrink-0 mt-0.5" />
-                  <div className="space-y-1">
-                    <div className="font-bold text-white">Sin compromiso</div>
-                    <div className="text-zinc-400">
-                      Si el agente no entrega, lo pausás. Toda la plataforma sigue gratis.
-                      Cero penalidades.
+              )}
+            </div>
+          </Reveal>
+
+          {/* VOS sin Pro vs Vos con Pro */}
+          <Reveal delay={200}>
+            <div className="mt-10 rounded-3xl border-2 border-white/10 bg-zinc-900/40 overflow-hidden">
+              <div className="p-6 sm:p-8 border-b border-white/10">
+                <h3 className="font-black text-xl sm:text-2xl text-white">
+                  Vos sin Pro <span className="text-zinc-500">·</span> Vos con Pro
+                </h3>
+                <p className="text-sm text-zinc-400 mt-1">
+                  Lo que cambia el día que activás el agente.
+                </p>
+              </div>
+              <div className="divide-y divide-white/5">
+                {[
+                  { task: 'Marketing por WhatsApp',  before: 'Mandás manual cuando te acordás (5-8h/sem)', after: 'Auto. Cada acción pasa por validador antes.' },
+                  { task: 'Recuperar inactivos',     before: 'Nada o muy poco. Se van y no vuelven.',       after: 'Auto. 28 rescates/mes con mensaje personalizado.' },
+                  { task: 'Cancha abierta',          before: 'Llenás a ~70%, manualmente',                  after: 'Match maker arma equipos compatibles, llenás al 100%.' },
+                  { task: 'Torneos',                 before: '2/semana, llenado a media máquina',           after: 'Mismos 2 + 1 extra/mes automático, llenado completo.' },
+                  { task: 'Clases con cupo libre',   before: 'Quedan vacías o las regalás',                  after: 'Auto. Invita al segmento ideal del club.' },
+                  { task: 'Precios',                 before: 'Fijo todo el año. Plata sobre la mesa.',       after: 'Surge en peak, descuento en flojo. Piso/techo configurables.' },
+                  { task: 'Decisiones de gestión',   before: 'A "ojímetro". No sabés qué funciona.',        after: 'Reflexión semanal automatizada con learnings.' },
+                ].map((row, i) => (
+                  <div key={i} className="px-6 sm:px-8 py-4 grid grid-cols-1 sm:grid-cols-[180px_1fr_1fr] gap-2 sm:gap-4 items-start">
+                    <div className="text-sm font-bold text-white">{row.task}</div>
+                    <div className="flex items-start gap-2 text-xs">
+                      <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-zinc-500 line-through">{row.before}</span>
+                    </div>
+                    <div className="flex items-start gap-2 text-xs">
+                      <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: GREEN }} />
+                      <span className="text-zinc-200 font-medium">{row.after}</span>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </Reveal>
+
+          {/* Costo de inacción */}
+          {!pierdePlata && (
+            <Reveal delay={300}>
+              <div className="mt-6 rounded-2xl border-2 border-red-500/30 bg-red-500/[0.05] p-5 sm:p-6">
+                <div className="flex items-start gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-red-500/15 grid place-items-center flex-shrink-0">
+                    <RefreshCw className="w-5 h-5 text-red-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-black text-base text-white">Cada mes que esperás cuesta plata</div>
+                    <p className="text-sm text-zinc-300 mt-1 leading-relaxed">
+                      Si esperás 6 meses para activar Pro, son{' '}
+                      <strong className="text-red-400 tabular-nums">−${(gananciaNetaMensual * 6).toLocaleString('es-AR')}</strong>{' '}
+                      que el agente te hubiera dejado en el bolsillo. La competencia que active antes te lleva ventaja en data y diferenciación.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 
