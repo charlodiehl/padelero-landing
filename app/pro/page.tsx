@@ -133,12 +133,22 @@ const TOOLS: Tool[] = [
 ];
 
 export default function ProPage() {
-  const [gmv, setGmv] = useState(2_000_000);
+  const [gmv, setGmv] = useState(5_000_000);
   const planArs = 150_000; // aproximado a USD 100
-  const gmvPct = Math.round(gmv * 0.03);
-  const total = planArs + gmvPct;
-  const incremento = Math.round(gmv * 0.01);
-  const beneficio3 = Math.round(gmv * 0.03 - total + planArs * 0.97);
+
+  // ── Calculadora ROI con escenario REAL del 10% ────────────────────
+  // La promesa del agente: crecer la facturación al menos +10% mensual.
+  // El costo Pro = plan fijo + 3% del GMV nuevo (post-crecimiento).
+  const PROMESA_PCT = 0.10;
+  const crecimiento = Math.round(gmv * PROMESA_PCT);
+  const gmvNuevo = gmv + crecimiento;
+  const feeVariable = Math.round(gmvNuevo * 0.03);
+  const costoPro = planArs + feeVariable;
+  const gananciaNeta = crecimiento - costoPro;
+  // Punto de equilibrio: % mínimo de crecimiento para ganancia neta = 0
+  // X*gmv = planArs + (1+X)*gmv*0.03 → X = (planArs + gmv*0.03) / (gmv*0.97)
+  const breakEvenPct = gmv > 0 ? ((planArs + gmv * 0.03) / (gmv * 0.97)) * 100 : 0;
+  const pierdePlata = gananciaNeta < 0;
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -383,17 +393,28 @@ export default function ProPage() {
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-black mb-3">Calculá si te conviene</h2>
-              <p className="text-zinc-400">Movés el slider con tu facturación mensual y ves cuánto pagás y cuánto necesitamos crecerte para que valga la pena.</p>
+              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/30 rounded-full px-3 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-4">
+                ¿Te conviene?
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+                Mirá la cuenta con <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>tu plata real</span>
+              </h2>
+              <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+                Movés el slider con tu facturación mensual y ves cuánto pagás vs cuánto te
+                hacemos crecer. La promesa: <strong className="text-white">crecerte +10% mensual</strong>.
+              </p>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 space-y-8">
+            <div className="rounded-3xl border-2 border-white/10 bg-gradient-to-br from-white/[0.03] via-[#C8F542]/[0.02] to-white/[0.03] p-6 sm:p-10 space-y-6">
+              {/* Slider GMV */}
               <div>
-                <div className="flex items-baseline justify-between mb-3">
-                  <span className="text-sm text-zinc-400">Tu facturación mensual:</span>
-                  <span className="text-2xl sm:text-3xl font-black tabular-nums">${gmv.toLocaleString('es-AR')}</span>
+                <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
+                  <span className="text-sm text-zinc-400">Tu facturación mensual por Padelero:</span>
+                  <span className="text-2xl sm:text-3xl font-black tabular-nums">
+                    ${gmv.toLocaleString('es-AR')}
+                  </span>
                 </div>
                 <input
                   type="range"
@@ -411,17 +432,128 @@ export default function ProPage() {
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-3 gap-3">
-                <Box label="Pagás por mes" value={`$${total.toLocaleString('es-AR')}`} sub={`Plan + 3% × $${gmv.toLocaleString('es-AR')}`} />
-                <Box label="Necesitamos crecerte" value={`+$${incremento.toLocaleString('es-AR')}`} sub="Para que ganes más de lo que pagás" accent="primary" />
-                <Box label="Si crecemos 3%" value={`+$${beneficio3.toLocaleString('es-AR')}`} sub="Beneficio neto a tu favor" accent="success" />
+              {/* Promesa */}
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <ArrowRight className="w-4 h-4 text-[#C8F542] rotate-90 animate-pulse" />
+                <span className="text-xs sm:text-sm text-zinc-300">
+                  Si el agente cumple su promesa{' '}
+                  <span className="inline-flex items-center gap-1 font-bold" style={{ color: GREEN }}>
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    +10% mensual
+                  </span>
+                </span>
               </div>
 
-              <div className="flex items-start gap-2 text-sm text-zinc-300 bg-black/30 rounded-lg p-4">
-                <CheckCircle2 className="w-5 h-5 text-[#C8F542] flex-shrink-0 mt-0.5" />
-                <p>
-                  <strong>La promesa:</strong> el sistema tiene que hacerte crecer más de 1% mensual. Si no, apagás Pro en cualquier momento sin compromiso. Toda la plataforma queda gratis como antes.
-                </p>
+              {/* Crecimiento vs Costo · lado a lado */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                {/* + Crecimiento */}
+                <div className="rounded-2xl border-2 border-[#C8F542]/40 bg-[#C8F542]/[0.06] p-5 sm:p-6 relative overflow-hidden">
+                  <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: `${GREEN}30` }} />
+                  <div className="relative">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-lg font-black" style={{ color: GREEN }}>+</span>
+                      <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: GREEN }}>
+                        Crecemos tu facturación
+                      </span>
+                    </div>
+                    <div className="text-3xl md:text-4xl font-black tabular-nums" style={{ color: GREEN }}>
+                      +${crecimiento.toLocaleString('es-AR')}
+                    </div>
+                    <div className="text-xs text-zinc-400 mt-2">
+                      ${gmv.toLocaleString('es-AR')} → ${gmvNuevo.toLocaleString('es-AR')} este mes
+                    </div>
+                  </div>
+                </div>
+
+                {/* - Costo */}
+                <div className="rounded-2xl border-2 border-white/15 bg-white/[0.03] p-5 sm:p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg font-black text-zinc-400">−</span>
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">
+                      Costo del Pro
+                    </span>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-black tabular-nums text-white">
+                    −${costoPro.toLocaleString('es-AR')}
+                  </div>
+                  <div className="text-xs text-zinc-500 mt-2 space-y-0.5">
+                    <div>Plan fijo: ${planArs.toLocaleString('es-AR')} <span className="text-[10px] text-zinc-600">(USD 100)</span></div>
+                    <div>+ 3% sobre nuevo GMV: ${feeVariable.toLocaleString('es-AR')}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Igual flecha */}
+              <div className="flex items-center justify-center">
+                <div className="h-px w-12 bg-white/10" />
+                <ArrowRight className="w-4 h-4 text-zinc-500 mx-2 rotate-90" />
+                <div className="h-px w-12 bg-white/10" />
+              </div>
+
+              {/* Ganancia neta — el héroe */}
+              <div
+                className={`rounded-3xl border-2 p-6 sm:p-8 text-center relative overflow-hidden ${
+                  pierdePlata
+                    ? 'border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-transparent'
+                    : 'border-[#C8F542]/40 bg-gradient-to-br from-[#C8F542]/20 via-emerald-500/10 to-[#C8F542]/5 shadow-2xl shadow-[#C8F542]/10'
+                }`}
+              >
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full blur-3xl" style={{ backgroundColor: pierdePlata ? '#f59e0b30' : `${GREEN}40` }} />
+                  <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-emerald-500/20 rounded-full blur-3xl" />
+                </div>
+                <div className="relative">
+                  <div
+                    className="text-[10px] uppercase tracking-widest font-bold mb-2"
+                    style={{ color: pierdePlata ? '#f59e0b' : GREEN }}
+                  >
+                    {pierdePlata ? '⚠️ A este nivel todavía no conviene' : '💰 Ganás neto por mes'}
+                  </div>
+                  <div
+                    className="text-4xl md:text-6xl font-black tabular-nums"
+                    style={{ color: pierdePlata ? '#fbbf24' : GREEN }}
+                  >
+                    {gananciaNeta >= 0 ? '+' : ''}${gananciaNeta.toLocaleString('es-AR')}
+                  </div>
+                  <div className="text-xs sm:text-sm text-zinc-300 mt-3 max-w-md mx-auto">
+                    {pierdePlata ? (
+                      <>
+                        Con esta facturación necesitamos crecerte un{' '}
+                        <strong className="text-white">{breakEvenPct.toFixed(1)}%</strong> para empatar.
+                        El Pro empieza a tener ROI claro arriba de ~$2,3M de GMV mensual.
+                      </>
+                    ) : (
+                      <>
+                        Esa es <strong className="text-white">plata extra</strong> a tu bolsillo
+                        cada mes, después de pagar el Pro completo.
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Break-even + sin compromiso */}
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="flex items-start gap-2 text-xs bg-black/30 rounded-lg p-4 border border-white/5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C8F542] flex-shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <div className="font-bold text-white">Punto de equilibrio</div>
+                    <div className="text-zinc-400">
+                      Con crecer solo <strong className="text-white">{breakEvenPct.toFixed(1)}%</strong> mensual
+                      empatás. Arriba de eso, todo es tu ganancia.
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2 text-xs bg-black/30 rounded-lg p-4 border border-white/5">
+                  <CheckCircle2 className="w-4 h-4 text-[#C8F542] flex-shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <div className="font-bold text-white">Sin compromiso</div>
+                    <div className="text-zinc-400">
+                      Si el agente no entrega, lo pausás. Toda la plataforma sigue gratis.
+                      Cero penalidades.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -495,24 +627,6 @@ export default function ProPage() {
         <Link href="/" className="hover:text-white">← Volver a Padelero</Link>
         <p className="mt-3">© {new Date().getFullYear()} Padelero · Argentina 🇦🇷</p>
       </footer>
-    </div>
-  );
-}
-
-function Box({ label, value, sub, accent }: { label: string; value: string; sub: string; accent?: 'primary' | 'success' }) {
-  return (
-    <div className={`rounded-xl border p-4 ${
-      accent === 'primary' ? 'border-[#C8F542]/30 bg-[#C8F542]/10' :
-      accent === 'success' ? 'border-emerald-500/30 bg-emerald-500/10' :
-      'border-white/10 bg-white/5'
-    }`}>
-      <div className="text-[10px] uppercase tracking-wider text-zinc-400">{label}</div>
-      <div className={`text-xl sm:text-2xl font-black tabular-nums mt-1 ${
-        accent === 'primary' ? 'text-[#C8F542]' :
-        accent === 'success' ? 'text-emerald-400' :
-        'text-white'
-      }`}>{value}</div>
-      <div className="text-[11px] text-zinc-500 mt-1">{sub}</div>
     </div>
   );
 }
