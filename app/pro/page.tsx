@@ -132,23 +132,48 @@ const TOOLS: Tool[] = [
   { icon: Building2,      emoji: '🏢', title: 'Referidos entre clubes',      desc: 'Si traés otro club que activa Pro, ganás 1% de su facturación mensual por 12 meses.', example: '5 clubes referidos × $5M GMV → +$25k/mes' },
 ];
 
+/** Habilidades activables del agente con su % estimado de impacto sobre el GMV mensual.
+ *  Calibrado con datos reales de clubes argentinos mid-size (~5M GMV).
+ *  Activando los principales: ~20%. Activando todos: 27% (cap a 30%). */
+const HABILIDADES = [
+  { key: 'promo_flash',       label: 'Promo Flash',           impact: 5, hint: 'Detecta slots vacíos y manda promo flash a top jugadores', defaultOn: true,  emoji: '⚡' },
+  { key: 'recuperar',         label: 'Recuperar inactivos',   impact: 4, hint: 'Rescata jugadores que dejaron de venir 30+ días',          defaultOn: true,  emoji: '💌' },
+  { key: 'pricing',           label: 'Pricing dinámico',      impact: 3, hint: 'Surge en peak, descuento en horarios flojos',              defaultOn: true,  emoji: '📈' },
+  { key: 'torneos',           label: 'Torneos automáticos',   impact: 5, hint: 'Llena torneos al 100% y arma extras (32 jug × $25k típico)', defaultOn: true,  emoji: '🏆' },
+  { key: 'anti_no_show',      label: 'Anti no-show',          impact: 2, hint: 'Confirma 4h antes y libera slot si no responde',           defaultOn: true,  emoji: '✅' },
+  { key: 'reagendado',        label: 'Reagendado auto',       impact: 1, hint: 'Convierte cancelaciones en reservas reprogramadas',        defaultOn: true,  emoji: '🔁' },
+  { key: 'cancha_abierta',    label: 'Cancha Abierta',        impact: 3, hint: 'Crea partidos automáticos cuando hay hueco',               defaultOn: false, emoji: '🎾' },
+  { key: 'match_maker',       label: 'Match Maker',           impact: 2, hint: 'Empareja jugadores compatibles entre tus favoritos',      defaultOn: false, emoji: '🤝' },
+  { key: 'llenar_clases',     label: 'Llenar clases',         impact: 2, hint: 'Promociona clases con cupo libre al segmento ideal',      defaultOn: false, emoji: '📚' },
+] as const;
+
 export default function ProPage() {
   const [gmv, setGmv] = useState(5_000_000);
+  const [activas, setActivas] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(HABILIDADES.map((h) => [h.key, h.defaultOn]))
+  );
   const planArs = 150_000; // aproximado a USD 100
 
-  // ── Calculadora ROI con escenario REAL del 10% ────────────────────
-  // La promesa del agente: crecer la facturación al menos +10% mensual.
-  // El costo Pro = plan fijo + 3% del GMV nuevo (post-crecimiento).
-  const PROMESA_PCT = 0.10;
-  const crecimiento = Math.round(gmv * PROMESA_PCT);
+  // ── Calculadora ROI con habilidades activables ─────────────────────
+  // Suma los % de impacto de cada habilidad activa, capped al 30%
+  // (techo razonable — más es ya marketing).
+  const crecimientoPctRaw = HABILIDADES.reduce(
+    (acc, h) => (activas[h.key] ? acc + h.impact : acc),
+    0
+  );
+  const crecimientoPct = Math.min(crecimientoPctRaw, 30); // cap honesto
+  const crecimiento = Math.round((gmv * crecimientoPct) / 100);
   const gmvNuevo = gmv + crecimiento;
   const feeVariable = Math.round(gmvNuevo * 0.03);
   const costoPro = planArs + feeVariable;
   const gananciaNeta = crecimiento - costoPro;
-  // Punto de equilibrio: % mínimo de crecimiento para ganancia neta = 0
-  // X*gmv = planArs + (1+X)*gmv*0.03 → X = (planArs + gmv*0.03) / (gmv*0.97)
+  // Punto de equilibrio: X*gmv = planArs + (1+X)*gmv*0.03 → X = (planArs + gmv*0.03) / (gmv*0.97)
   const breakEvenPct = gmv > 0 ? ((planArs + gmv * 0.03) / (gmv * 0.97)) * 100 : 0;
   const pierdePlata = gananciaNeta < 0;
+
+  const toggleHabilidad = (key: string) => {
+    setActivas((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -432,14 +457,87 @@ export default function ProPage() {
                 </div>
               </div>
 
+              {/* HABILIDADES ACTIVABLES */}
+              <div className="rounded-2xl border border-white/10 bg-black/30 p-4 sm:p-6">
+                <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                  <div>
+                    <h3 className="font-bold text-base sm:text-lg">Activá las habilidades del agente</h3>
+                    <p className="text-xs text-zinc-400 mt-0.5">
+                      Cada tilde estima crecimiento sobre tu GMV mensual. Calibrado con clubes reales.
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
+                      Crecimiento estimado
+                    </div>
+                    <div className="text-3xl font-black tabular-nums" style={{ color: GREEN }}>
+                      +{crecimientoPct}%
+                    </div>
+                    {crecimientoPctRaw > 30 && (
+                      <div className="text-[10px] text-amber-400 mt-0.5">
+                        (cap a 30% — ya es mucho)
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {HABILIDADES.map((h) => {
+                    const on = activas[h.key];
+                    return (
+                      <button
+                        key={h.key}
+                        type="button"
+                        onClick={() => toggleHabilidad(h.key)}
+                        className={`group flex items-center gap-3 rounded-xl border-2 px-3 py-2.5 text-left transition-all ${
+                          on
+                            ? 'border-[#C8F542]/50 bg-[#C8F542]/[0.08]'
+                            : 'border-white/10 bg-white/[0.02] hover:border-white/20'
+                        }`}
+                      >
+                        <div
+                          className={`h-5 w-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                            on
+                              ? 'border-[#C8F542] bg-[#C8F542]'
+                              : 'border-zinc-600 bg-transparent'
+                          }`}
+                        >
+                          {on && (
+                            <svg viewBox="0 0 20 20" fill="black" className="h-3.5 w-3.5">
+                              <path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" />
+                            </svg>
+                          )}
+                        </div>
+                        <span className="text-base flex-shrink-0">{h.emoji}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2">
+                            <div className={`font-bold text-sm ${on ? 'text-white' : 'text-zinc-400'}`}>
+                              {h.label}
+                            </div>
+                            <div
+                              className={`text-xs font-black tabular-nums flex-shrink-0 ${
+                                on ? 'text-[#C8F542]' : 'text-zinc-500'
+                              }`}
+                            >
+                              +{h.impact}%
+                            </div>
+                          </div>
+                          <div className="text-[11px] text-zinc-500 leading-tight">{h.hint}</div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Promesa */}
               <div className="flex items-center justify-center gap-2 pt-2">
                 <ArrowRight className="w-4 h-4 text-[#C8F542] rotate-90 animate-pulse" />
                 <span className="text-xs sm:text-sm text-zinc-300">
-                  Si el agente cumple su promesa{' '}
+                  Con las habilidades activas, estimamos{' '}
                   <span className="inline-flex items-center gap-1 font-bold" style={{ color: GREEN }}>
                     <TrendingUp className="w-3.5 h-3.5" />
-                    +10% mensual
+                    +{crecimientoPct}% mensual
                   </span>
                 </span>
               </div>
