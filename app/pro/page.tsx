@@ -558,7 +558,7 @@ export default function ProPage() {
                   { task: 'Marketing por WhatsApp',  before: 'Mandás manual cuando te acordás (5-8h/sem)', after: 'Auto. Cada acción pasa por validador antes.' },
                   { task: 'Recuperar inactivos',     before: 'Nada o muy poco. Se van y no vuelven.',       after: 'Auto. 28 rescates/mes con mensaje personalizado.' },
                   { task: 'Cancha abierta',          before: 'Llenás a ~70%, manualmente',                  after: 'Match maker arma equipos compatibles, llenás al 100%.' },
-                  { task: 'Torneos',                 before: '2/semana, llenado a media máquina',           after: 'Mismos 2 + 1 extra/mes automático, llenado completo.' },
+                  { task: 'Torneos',                 before: '2/finde a 75% de llenado · o delegás al 80% a externo',  after: 'Match maker llena al 100% · capturás el 100% de la comisión.' },
                   { task: 'Clases con cupo libre',   before: 'Quedan vacías o las regalás',                  after: 'Auto. Invita al segmento ideal del club.' },
                   { task: 'Precios',                 before: 'Fijo todo el año. Plata sobre la mesa.',       after: 'Surge en peak, descuento en flojo. Piso/techo configurables.' },
                   { task: 'Decisiones de gestión',   before: 'A "ojímetro". No sabés qué funciona.',        after: 'Reflexión semanal automatizada con learnings.' },
@@ -599,6 +599,181 @@ export default function ProPage() {
               </div>
             </Reveal>
           )}
+        </div>
+      </section>
+
+      {/* TORNEOS · EL CASO MÁS GRANDE */}
+      <section className="py-20 px-5">
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-3 py-1 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
+                🏆 El caso más grande
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+                Los torneos son <span className="text-amber-400">$6,4 millones/mes</span><br className="hidden sm:block"/> que hoy se te escapan
+              </h2>
+              <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+                Datos típicos de clubes argentinos mid-size: 2 torneos por fin de semana,
+                32 jugadores cada uno, $25.000 de inscripción.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={100}>
+            {/* La cuenta del mercado */}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 mb-5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Torneos</div>
+                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-white">8/mes</div>
+                  <div className="text-[11px] text-zinc-500 mt-1">2 por finde</div>
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Jugadores</div>
+                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-white">32</div>
+                  <div className="text-[11px] text-zinc-500 mt-1">por torneo</div>
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Inscripción</div>
+                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-white">$25k</div>
+                  <div className="text-[11px] text-zinc-500 mt-1">por jugador</div>
+                </div>
+                <div className="bg-amber-500/10 rounded-xl py-2 -my-2">
+                  <div className="text-[10px] uppercase tracking-widest text-amber-400 font-bold">Potencial</div>
+                  <div className="text-2xl sm:text-3xl font-black text-amber-400 tabular-nums mt-1">$6,4M</div>
+                  <div className="text-[11px] text-zinc-500 mt-1">por mes</div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
+              {/* Sin Pro */}
+              <div className="rounded-2xl border-2 border-red-500/30 bg-red-500/[0.06] p-5 sm:p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <X className="w-5 h-5 text-red-400" />
+                  <h3 className="font-black text-base text-white">Hoy sin Pro</h3>
+                </div>
+                <ul className="space-y-3 text-sm text-zinc-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
+                    <div>
+                      <strong className="text-white">~25% no se llenan completos.</strong>
+                      <div className="text-xs text-zinc-500 mt-0.5">
+                        Quedan 4-8 cupos vacíos por torneo · $200k+ que dejás en la mesa
+                      </div>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
+                    <div>
+                      <strong className="text-white">O delegás al organizador externo.</strong>
+                      <div className="text-xs text-zinc-500 mt-0.5">
+                        Te llevás solo el 20% de la inscripción · el 80% se va afuera
+                      </div>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
+                    <div>
+                      <strong className="text-white">Mucho tiempo armando convocatorias.</strong>
+                      <div className="text-xs text-zinc-500 mt-0.5">
+                        4-6h por torneo entre WhatsApp, listas y categorías
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div className="mt-4 pt-4 border-t border-red-500/20 text-center">
+                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Te quedás con</div>
+                  <div className="text-3xl font-black text-red-400 tabular-nums mt-1">~$960k/mes</div>
+                  <div className="text-[11px] text-zinc-500 mt-1">si delegás al 80%</div>
+                </div>
+              </div>
+
+              {/* Con Pro */}
+              <div
+                className="rounded-2xl border-2 p-5 sm:p-6 relative overflow-hidden shadow-2xl"
+                style={{
+                  borderColor: `${GREEN}66`,
+                  background: `linear-gradient(135deg, ${GREEN}15, ${GREEN}05, transparent)`,
+                  boxShadow: `0 25px 50px -12px ${GREEN}1a`,
+                }}
+              >
+                <div className="absolute -top-10 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: `${GREEN}30` }} />
+                <div className="relative">
+                  <div className="flex items-center gap-2 mb-3">
+                    <CheckCircle2 className="w-5 h-5" style={{ color: GREEN }} />
+                    <h3 className="font-black text-base text-white">Con Padelero Pro</h3>
+                  </div>
+                  <ul className="space-y-3 text-sm text-zinc-300">
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: GREEN }} className="flex-shrink-0 mt-0.5">•</span>
+                      <div>
+                        <strong className="text-white">Match Maker llena al 100%.</strong>
+                        <div className="text-xs text-zinc-500 mt-0.5">
+                          Detecta jugadores compatibles y los invita por WhatsApp segmentado
+                        </div>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: GREEN }} className="flex-shrink-0 mt-0.5">•</span>
+                      <div>
+                        <strong className="text-white">Capturás el 100% de la comisión.</strong>
+                        <div className="text-xs text-zinc-500 mt-0.5">
+                          El agente reemplaza al organizador externo · te quedás con todo
+                        </div>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: GREEN }} className="flex-shrink-0 mt-0.5">•</span>
+                      <div>
+                        <strong className="text-white">+ 1 torneo extra/mes automático.</strong>
+                        <div className="text-xs text-zinc-500 mt-0.5">
+                          Segmentado por nivel · armado y promocionado solo
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div className="mt-4 pt-4 border-t text-center" style={{ borderColor: `${GREEN}33` }}>
+                    <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: GREEN }}>Te quedás con</div>
+                    <div className="text-3xl font-black tabular-nums mt-1" style={{ color: GREEN }}>~$7,2M/mes</div>
+                    <div className="text-[11px] text-zinc-500 mt-1">capturando el 100%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={300}>
+            <div
+              className="mt-5 rounded-2xl border-2 p-5 sm:p-6 text-center shadow-2xl"
+              style={{
+                borderColor: `${GREEN}66`,
+                background: `linear-gradient(135deg, #10b98125, ${GREEN}15, #10b98105)`,
+                boxShadow: `0 25px 50px -12px ${GREEN}1a`,
+              }}
+            >
+              <div className="text-[10px] uppercase tracking-widest text-emerald-300 font-bold mb-2">
+                💰 Solo de torneos, si hoy delegás al 80%
+              </div>
+              <div className="text-4xl md:text-6xl font-black tabular-nums" style={{ color: GREEN }}>
+                +$6.240.000 / mes
+              </div>
+              <div className="text-sm text-zinc-300 mt-3 max-w-xl mx-auto">
+                Eso son <strong className="text-white">+$74.880.000/año</strong> que hoy se van
+                afuera del club. Con Pro, se quedan en tu bolsillo (menos el costo del Pro,
+                que se paga solo varias veces).
+              </div>
+            </div>
+          </Reveal>
+
+          <p className="text-[11px] text-zinc-500 text-center mt-4 italic max-w-2xl mx-auto">
+            Si vos hoy organizás los torneos sin delegar, el agente igual te ayuda a llenarlos al
+            100% (+$1,6M/mes) y a hacer un torneo extra cada mes (+$800k). Cualquier caso,
+            convertís lo que hoy es esfuerzo en plata.
+          </p>
         </div>
       </section>
 
