@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 const TITLE = 'Padelero Pro — Tu club que crece solo con IA';
 const DESC =
-  'Activá los agentes de IA que llenan turnos vacíos, recuperan jugadores perdidos y suben tu facturación mes a mes. USD 100/mes + 3% de tu facturación.';
+  'Activá los agentes de IA que llenan turnos vacíos, recuperan jugadores perdidos y suben tu facturación mes a mes. USD 20/mes + 3% de tu facturación.';
 const OG_URL = 'https://padelero.app/landing/pro-og.jpg';
 
 export const metadata: Metadata = {

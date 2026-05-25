@@ -134,7 +134,7 @@ const TOOLS: Tool[] = [
 
 export default function ProPage() {
   const [gmv, setGmv] = useState(5_000_000);
-  const planArs = 150_000; // aproximado a USD 100
+  const planArs = 30_000; // aproximado a USD 20
 
   // ── Calculadora ROI versión "vendedora" — número anual gigante ────
   // Asume +20% mensual conservador (TODAS las habilidades activas).
@@ -195,7 +195,7 @@ export default function ProPage() {
           <Reveal delay={150}>
             {/* Precio */}
             <div className="inline-flex flex-wrap items-baseline justify-center gap-x-2 mb-8 rounded-2xl border border-white/10 bg-white/5 px-6 py-4">
-              <span className="text-3xl sm:text-4xl font-black tabular-nums">USD 100</span>
+              <span className="text-3xl sm:text-4xl font-black tabular-nums">USD 20</span>
               <span className="text-zinc-400">/mes</span>
               <span className="text-zinc-500 mx-2">+</span>
               <span className="text-2xl sm:text-3xl font-bold tabular-nums">3%</span>
