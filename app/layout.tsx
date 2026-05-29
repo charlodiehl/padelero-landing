@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { HelpWidget } from '@/components/help-widget/HelpWidget';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -32,7 +33,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Widget de soporte/feedback flotante. La landing es dominio
+            distinto de la app, así que el widget llama a app.padelero.app
+            para crear tickets. */}
+        <HelpWidget source="landing" apiBase="https://app.padelero.app" />
+      </body>
     </html>
   );
 }
