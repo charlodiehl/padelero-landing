@@ -10,6 +10,17 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
+import {
+  Lightbulb,
+  Bug,
+  HelpCircle,
+  AlertTriangle,
+  Sparkles,
+  Bot,
+  Rocket,
+  ChevronUp,
+  type LucideIcon,
+} from 'lucide-react';
 import { TicketForm } from '@/components/help-widget/TicketForm';
 
 const API_BASE = 'https://app.padelero.app';
@@ -39,12 +50,14 @@ const ESTADO_COLOR: Record<RoadmapItem['estado'], string> = {
   resuelto: '#34d399',
 };
 
-const TIPO_EMOJI: Record<RoadmapItem['tipo'], string> = {
-  bug: '🐛',
-  idea: '💡',
-  duda: '❓',
-  urgente: '🔥',
-  sin_clasificar: '✨',
+// Iconos propios (lucide) por tipo — mismo set que usa el resto de la app
+// y la landing, en vez de emojis genéricos.
+const TIPO_ICON: Record<RoadmapItem['tipo'], { Icon: LucideIcon; color: string }> = {
+  bug: { Icon: Bug, color: '#f87171' },
+  idea: { Icon: Lightbulb, color: GREEN },
+  duda: { Icon: HelpCircle, color: '#60a5fa' },
+  urgente: { Icon: AlertTriangle, color: '#fb923c' },
+  sin_clasificar: { Icon: Sparkles, color: 'rgba(255,255,255,0.55)' },
 };
 
 // Fingerprint simple: hash del navigator + screen + timezone. No es
@@ -176,7 +189,8 @@ export default function RoadmapPage() {
             marginBottom: 14,
           }}
         >
-          🤖 Construido por agentes de IA
+          <Bot size={14} strokeWidth={2.5} />
+          Construido por agentes de IA
         </div>
         <h1
           style={{
@@ -317,7 +331,9 @@ export default function RoadmapPage() {
               background: `${GREEN}06`,
             }}
           >
-            <div style={{ fontSize: 36, marginBottom: 12 }}>🚀</div>
+            <div style={{ marginBottom: 14, display: 'flex', justifyContent: 'center' }}>
+              <Rocket size={40} color={GREEN} strokeWidth={1.5} />
+            </div>
             <div
               style={{
                 fontSize: 17,
@@ -364,6 +380,7 @@ export default function RoadmapPage() {
         <div style={{ display: 'grid', gap: 12 }}>
           {filtered.map((it) => {
             const isVoted = voted.has(it.id);
+            const { Icon: TipoIcon, color: tipoColor } = TIPO_ICON[it.tipo];
             return (
               <div
                 key={it.id}
@@ -400,7 +417,7 @@ export default function RoadmapPage() {
                     gap: 2,
                   }}
                 >
-                  <span style={{ fontSize: 14 }}>▲</span>
+                  <ChevronUp size={18} strokeWidth={2.5} />
                   <span
                     style={{
                       fontSize: 16,
@@ -423,7 +440,7 @@ export default function RoadmapPage() {
                       flexWrap: 'wrap',
                     }}
                   >
-                    <span style={{ fontSize: 18 }}>{TIPO_EMOJI[it.tipo]}</span>
+                    <TipoIcon size={18} color={tipoColor} strokeWidth={2} />
                     <span
                       style={{
                         fontSize: 10,

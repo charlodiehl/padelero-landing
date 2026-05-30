@@ -16,6 +16,7 @@
  */
 
 import { useState, useRef } from 'react';
+import { Lightbulb, Bug, Paperclip, CheckCircle2, X, type LucideIcon } from 'lucide-react';
 
 interface TicketFormProps {
   source: 'app' | 'landing' | 'club-portal';
@@ -27,20 +28,28 @@ interface TicketFormProps {
 }
 
 const PRIMARY = '#C8F542';
-const TIPOS = [
+const TIPOS: ReadonlyArray<{
+  value: 'idea' | 'bug';
+  label: string;
+  Icon: LucideIcon;
+  color: string;
+  desc: string;
+}> = [
   {
     value: 'idea',
     label: 'Proponer una mejora',
-    emoji: '💡',
+    Icon: Lightbulb,
+    color: PRIMARY,
     desc: 'Sugerí algo que querés que hagamos',
   },
   {
     value: 'bug',
     label: 'Reportar un problema',
-    emoji: '🐛',
+    Icon: Bug,
+    color: '#f87171',
     desc: 'Algo no está funcionando bien',
   },
-] as const;
+];
 
 export function TicketForm({
   source,
@@ -173,7 +182,9 @@ export function TicketForm({
           fontFamily: 'system-ui, -apple-system, sans-serif',
         }}
       >
-        <div style={{ fontSize: 36, marginBottom: 10 }}>✅</div>
+        <div style={{ marginBottom: 12, display: 'flex', justifyContent: 'center' }}>
+          <CheckCircle2 size={42} color={PRIMARY} strokeWidth={2} />
+        </div>
         <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 6 }}>
           Listo, lo tenemos
         </div>
@@ -231,7 +242,9 @@ export function TicketForm({
                 transition: 'all 0.15s',
               }}
             >
-              <div style={{ fontSize: 22, marginBottom: 4 }}>{t.emoji}</div>
+              <div style={{ marginBottom: 6 }}>
+                <t.Icon size={22} color={selected ? PRIMARY : t.color} strokeWidth={2} />
+              </div>
               <div style={{ fontWeight: 700, fontSize: 13 }}>{t.label}</div>
               <div
                 style={{
@@ -326,7 +339,8 @@ export function TicketForm({
             gap: 8,
           }}
         >
-          📎 Adjuntar imagen
+          <Paperclip size={16} />
+          Adjuntar imagen
         </button>
       ) : (
         <div
@@ -367,12 +381,13 @@ export function TicketForm({
               width: 28,
               height: 28,
               cursor: 'pointer',
-              fontSize: 16,
-              lineHeight: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             aria-label="Quitar imagen"
           >
-            ×
+            <X size={16} />
           </button>
         </div>
       )}
