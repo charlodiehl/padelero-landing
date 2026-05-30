@@ -159,6 +159,25 @@ export default function RoadmapPage() {
         >
           ← Volver al inicio
         </Link>
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            background: `${GREEN}11`,
+            border: `1px solid ${GREEN}33`,
+            color: GREEN,
+            padding: '6px 12px',
+            borderRadius: 999,
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: 1.5,
+            textTransform: 'uppercase',
+            marginBottom: 14,
+          }}
+        >
+          🤖 Construido por agentes de IA
+        </div>
         <h1
           style={{
             fontSize: 32,
@@ -173,15 +192,29 @@ export default function RoadmapPage() {
         </h1>
         <p
           style={{
-            color: 'rgba(255,255,255,0.6)',
+            color: 'rgba(255,255,255,0.65)',
             fontSize: 15,
-            marginTop: 8,
+            marginTop: 10,
             marginBottom: 0,
-            maxWidth: 600,
+            maxWidth: 640,
+            lineHeight: 1.55,
           }}
         >
-          Mejoras que la comunidad pidió. Votá las que más te gustan o sumá tu
-          idea — vamos atacando las que más votos juntan.
+          Padelero lo codean agentes de IA: vos mandás tu mejora, el equipo de
+          agentes la analiza y la puede construir sin agencia ni esperas
+          eternas. Mientras más votos junta una idea, antes la atacamos.
+        </p>
+        <p
+          style={{
+            color: 'rgba(255,255,255,0.4)',
+            fontSize: 13,
+            marginTop: 8,
+            marginBottom: 0,
+            maxWidth: 640,
+          }}
+        >
+          Abierto a jugadores, clubes, dueños, profes — cualquiera puede
+          proponer.
         </p>
       </header>
 
@@ -278,20 +311,54 @@ export default function RoadmapPage() {
         {!loading && filtered.length === 0 && (
           <div
             style={{
-              padding: 60,
+              padding: '50px 24px',
               textAlign: 'center',
-              color: 'rgba(255,255,255,0.4)',
-              border: '1px dashed rgba(255,255,255,0.1)',
-              borderRadius: 12,
+              border: `1px dashed ${GREEN}33`,
+              borderRadius: 14,
+              background: `${GREEN}06`,
             }}
           >
-            <div style={{ fontSize: 32, marginBottom: 8 }}>💭</div>
-            <div style={{ fontSize: 14 }}>
-              Todavía no hay mejoras públicas {filtro !== 'todos' && 'en esta categoría'}.
+            <div style={{ fontSize: 36, marginBottom: 12 }}>🚀</div>
+            <div
+              style={{
+                fontSize: 17,
+                fontWeight: 700,
+                color: '#fff',
+                marginBottom: 6,
+              }}
+            >
+              {filtro === 'todos'
+                ? 'El roadmap está esperando tu idea'
+                : 'Nada en esta categoría todavía'}
             </div>
-            <div style={{ fontSize: 12, marginTop: 4 }}>
-              ¡Mandá la primera!
+            <div
+              style={{
+                fontSize: 13,
+                color: 'rgba(255,255,255,0.55)',
+                maxWidth: 380,
+                margin: '0 auto 18px',
+                lineHeight: 1.5,
+              }}
+            >
+              Sé el primero en proponer algo. Los agentes van a leerlo y, si
+              suma votos, lo construimos.
             </div>
+            <button
+              type="button"
+              onClick={() => setShowChat(true)}
+              style={{
+                background: GREEN,
+                color: '#0a0a0a',
+                border: 'none',
+                padding: '10px 20px',
+                borderRadius: 999,
+                fontSize: 14,
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+            >
+              + Sugerí la primera mejora
+            </button>
           </div>
         )}
 

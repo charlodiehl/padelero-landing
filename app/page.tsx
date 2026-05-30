@@ -676,6 +676,59 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ══ MEJORAS: AI agents + comunidad ═══════════════════════════════════ */}
+      <section className="relative py-24 overflow-hidden border-t border-white/5" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #050505 100%)' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 30% 50%, rgba(200,245,66,0.06), transparent 60%)' }} />
+        <div className="relative max-w-5xl mx-auto px-5">
+          <Reveal>
+            <div className="text-center">
+              <div
+                className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/30 rounded-full px-4 py-1.5 mb-6 text-xs font-bold uppercase tracking-widest"
+                style={{ color: '#C8F542' }}
+              >
+                <span>🤖</span> Hecho con IA · construilo con nosotros
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-6">
+                Padelero lo <span style={{ color: '#C8F542' }}>programan agentes de IA</span>.
+                <br />
+                Vos elegís qué hacemos primero.
+              </h2>
+              <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-3">
+                Cada mejora que mandás entra al backlog, los agentes la
+                analizan y la pueden codear sin pasar por una agencia ni
+                esperar tres meses.
+              </p>
+              <p className="text-zinc-500 text-sm leading-relaxed max-w-2xl mx-auto">
+                Mientras más votos junta una idea, más rápido la atacamos. Sin
+                betas pagas, sin promesas vacías — vos ves el roadmap entero
+                en tiempo real.
+              </p>
+
+              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link
+                  href="/mejoras"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-base font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  style={{ background: '#C8F542', color: '#0a0a0a' }}
+                >
+                  Ver el roadmap →
+                </Link>
+                <Link
+                  href="/mejoras"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium text-white border border-white/15 hover:border-white/30 transition-colors"
+                >
+                  Sumá tu idea
+                </Link>
+              </div>
+
+              <p className="text-zinc-600 text-xs mt-6">
+                Abierto a jugadores, clubes, dueños, profes — cualquiera puede
+                proponer.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ══ FOOTER ═══════════════════════════════════════════════════════════ */}
       <footer className="border-t border-zinc-800 bg-zinc-950 px-5 py-14">
         <div className="max-w-6xl mx-auto">
@@ -696,6 +749,7 @@ export default function LandingPage() {
                 <a href="#clubes"      className="block hover:text-white transition-colors">Para clubes</a>
                 <Link href="/torneos" className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Sistema de Torneos</Link>
                 <Link href="/clubes"  className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Para Clubes</Link>
+                <Link href="/mejoras" className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Roadmap · Sugerí mejoras</Link>
               </div>
             </div>
             <div>
