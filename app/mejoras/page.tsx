@@ -20,11 +20,14 @@ import {
   Bot,
   Rocket,
   ChevronUp,
+  Menu,
+  X,
   type LucideIcon,
 } from 'lucide-react';
 import { TicketForm } from '@/components/help-widget/TicketForm';
 
 const API_BASE = 'https://app.padelero.app';
+const APP = 'https://app.padelero.app';
 const GREEN = '#C8F542';
 
 interface RoadmapItem {
@@ -82,6 +85,107 @@ function getFingerprint(): string {
   const fp = `fp_${Math.abs(hash).toString(36)}_${Date.now().toString(36)}`;
   localStorage.setItem('padelero_fp', fp);
   return fp;
+}
+
+/* ─── Nav (mismo patrón que /torneos) ──────────────────────────────── */
+
+function Nav() {
+  const [sc, setSc] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const fn = () => setSc(window.scrollY > 40);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+
+  const links: [string, string][] = [
+    ['/', 'Inicio'],
+    ['/torneos', 'Torneos'],
+    ['/pro', 'Pro'],
+  ];
+
+  return (
+    <nav
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        sc ? 'bg-black/85 backdrop-blur-2xl border-b border-white/5 shadow-lg shadow-black/40' : ''
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
+            <span className="font-black text-white text-lg tracking-tight">Padelero</span>
+          </Link>
+          <span className="hidden md:block text-zinc-600">/</span>
+          <span className="hidden md:flex items-center gap-1.5 text-sm font-bold" style={{ color: GREEN }}>
+            <Lightbulb size={13} /> Mejoras
+          </span>
+        </div>
+
+        <div className="hidden md:flex items-center gap-6">
+          {links.map(([h, l]) => (
+            <Link
+              key={h}
+              href={h}
+              className="text-zinc-400 hover:text-white text-sm font-medium transition-colors"
+            >
+              {l}
+            </Link>
+          ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href={`${APP}/login`}
+            className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors"
+          >
+            Ingresar
+          </Link>
+          <Link
+            href={`${APP}/register`}
+            className="text-sm font-bold px-5 py-2 rounded-xl transition-all hover:scale-105 shadow-md"
+            style={{ background: GREEN, color: '#000', boxShadow: `0 4px 20px ${GREEN}33` }}
+          >
+            Empezar gratis
+          </Link>
+        </div>
+
+        <button className="md:hidden text-zinc-300 hover:text-white" onClick={() => setOpen((v) => !v)}>
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
+          {links.map(([h, l]) => (
+            <Link
+              key={h}
+              href={h}
+              onClick={() => setOpen(false)}
+              className="block text-zinc-200 py-2.5 border-b border-zinc-800/60 last:border-0 font-medium"
+            >
+              {l}
+            </Link>
+          ))}
+          <div className="pt-3 space-y-2">
+            <Link
+              href={`${APP}/login`}
+              className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold"
+            >
+              Ingresar
+            </Link>
+            <Link
+              href={`${APP}/register`}
+              className="block w-full text-center py-3 rounded-xl font-black"
+              style={{ background: GREEN, color: '#000' }}
+            >
+              Empezar gratis
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 }
 
 export default function RoadmapPage() {
@@ -152,6 +256,8 @@ export default function RoadmapPage() {
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
+      <Nav />
+
       {/* Header / Hero con imagen de IA */}
       <header
         style={{
@@ -164,13 +270,13 @@ export default function RoadmapPage() {
         {/* Imagen de fondo generada con IA */}
         <Image
           src="/landing/roadmap-agentes.jpg"
-          alt="Cancha de pádel en la pampa argentina con un roadmap holográfico construido por agentes de IA"
+          alt="Agentes de IA construyendo el logo de Padelero"
           fill
           priority
           sizes="100vw"
           style={{
             objectFit: 'cover',
-            objectPosition: 'center 30%',
+            objectPosition: 'center 42%',
             zIndex: -2,
           }}
         />
@@ -188,21 +294,9 @@ export default function RoadmapPage() {
           style={{
             maxWidth: 980,
             margin: '0 auto',
-            padding: '24px 20px 36px',
+            padding: '104px 20px 44px',
           }}
         >
-          <Link
-            href="/"
-            style={{
-              color: 'rgba(255,255,255,0.7)',
-              textDecoration: 'none',
-              fontSize: 13,
-              display: 'inline-block',
-              marginBottom: 12,
-            }}
-          >
-            ← Volver al inicio
-          </Link>
           <div
             style={{
               display: 'inline-flex',
