@@ -10,7 +10,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
-import { ChatBot } from '@/components/help-widget/ChatBot';
+import { TicketForm } from '@/components/help-widget/TicketForm';
 
 const API_BASE = 'https://app.padelero.app';
 const GREEN = '#C8F542';
@@ -273,19 +273,18 @@ export default function RoadmapPage() {
               cursor: 'pointer',
             }}
           >
-            {showChat ? 'Cerrar chat' : '+ Sugerí una mejora'}
+            {showChat ? 'Cerrar' : '+ Sugerí una mejora'}
           </button>
         </div>
 
-        {/* Chat embebido */}
+        {/* Form embebido */}
         {showChat && (
           <div style={{ marginBottom: 24, maxWidth: 600 }}>
-            <ChatBot
+            <TicketForm
               source="landing"
               apiBase={API_BASE}
-              height={520}
-              forceContact
-              onTicketCreated={() => {
+              needsContact
+              onSuccess={() => {
                 setTimeout(() => {
                   fetchItems();
                   setShowChat(false);
