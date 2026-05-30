@@ -10,6 +10,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Lightbulb,
   Bug,
@@ -151,85 +152,120 @@ export default function RoadmapPage() {
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
-      {/* Header */}
+      {/* Header / Hero con imagen de IA */}
       <header
         style={{
-          padding: '24px 20px',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          maxWidth: 980,
-          margin: '0 auto',
+          position: 'relative',
+          overflow: 'hidden',
+          borderBottom: `1px solid ${GREEN}1f`,
+          isolation: 'isolate',
         }}
       >
-        <Link
-          href="/"
+        {/* Imagen de fondo generada con IA */}
+        <Image
+          src="/landing/roadmap-agentes.jpg"
+          alt="Cancha de pádel en la pampa argentina con un roadmap holográfico construido por agentes de IA"
+          fill
+          priority
+          sizes="100vw"
           style={{
-            color: 'rgba(255,255,255,0.5)',
-            textDecoration: 'none',
-            fontSize: 13,
-            display: 'inline-block',
-            marginBottom: 12,
+            objectFit: 'cover',
+            objectPosition: 'center 30%',
+            zIndex: -2,
           }}
-        >
-          ← Volver al inicio
-        </Link>
+        />
+        {/* Overlays para legibilidad del texto */}
         <div
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            background: `${GREEN}11`,
-            border: `1px solid ${GREEN}33`,
-            color: GREEN,
-            padding: '6px 12px',
-            borderRadius: 999,
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: 1.5,
-            textTransform: 'uppercase',
-            marginBottom: 14,
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1,
+            background:
+              'linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.72) 55%, #0a0a0a 100%)',
+          }}
+        />
+        <div
+          style={{
+            maxWidth: 980,
+            margin: '0 auto',
+            padding: '24px 20px 36px',
           }}
         >
-          <Bot size={14} strokeWidth={2.5} />
-          Construido por agentes de IA
+          <Link
+            href="/"
+            style={{
+              color: 'rgba(255,255,255,0.7)',
+              textDecoration: 'none',
+              fontSize: 13,
+              display: 'inline-block',
+              marginBottom: 12,
+            }}
+          >
+            ← Volver al inicio
+          </Link>
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              background: 'rgba(10,10,10,0.55)',
+              backdropFilter: 'blur(4px)',
+              border: `1px solid ${GREEN}55`,
+              color: GREEN,
+              padding: '6px 12px',
+              borderRadius: 999,
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: 1.5,
+              textTransform: 'uppercase',
+              marginBottom: 14,
+            }}
+          >
+            <Bot size={14} strokeWidth={2.5} />
+            Construido por agentes de IA
+          </div>
+          <h1
+            style={{
+              fontSize: 38,
+              fontWeight: 800,
+              margin: 0,
+              lineHeight: 1.05,
+              background: `linear-gradient(135deg, ${GREEN}, #7ec800)`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            Roadmap
+          </h1>
+          <p
+            style={{
+              color: 'rgba(255,255,255,0.85)',
+              fontSize: 15,
+              marginTop: 12,
+              marginBottom: 0,
+              maxWidth: 600,
+              lineHeight: 1.55,
+              textShadow: '0 1px 12px rgba(0,0,0,0.6)',
+            }}
+          >
+            Padelero lo codean agentes de IA: vos mandás tu mejora, el equipo de
+            agentes la analiza y la puede construir sin agencia ni esperas
+            eternas. Mientras más votos junta una idea, antes la atacamos.
+          </p>
+          <p
+            style={{
+              color: 'rgba(255,255,255,0.6)',
+              fontSize: 13,
+              marginTop: 8,
+              marginBottom: 0,
+              maxWidth: 600,
+              textShadow: '0 1px 12px rgba(0,0,0,0.6)',
+            }}
+          >
+            Abierto a jugadores, clubes, dueños, profes — cualquiera puede
+            proponer.
+          </p>
         </div>
-        <h1
-          style={{
-            fontSize: 32,
-            fontWeight: 800,
-            margin: 0,
-            background: `linear-gradient(135deg, ${GREEN}, #7ec800)`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          Roadmap
-        </h1>
-        <p
-          style={{
-            color: 'rgba(255,255,255,0.65)',
-            fontSize: 15,
-            marginTop: 10,
-            marginBottom: 0,
-            maxWidth: 640,
-            lineHeight: 1.55,
-          }}
-        >
-          Padelero lo codean agentes de IA: vos mandás tu mejora, el equipo de
-          agentes la analiza y la puede construir sin agencia ni esperas
-          eternas. Mientras más votos junta una idea, antes la atacamos.
-        </p>
-        <p
-          style={{
-            color: 'rgba(255,255,255,0.4)',
-            fontSize: 13,
-            marginTop: 8,
-            marginBottom: 0,
-            maxWidth: 640,
-          }}
-        >
-          Abierto a jugadores, clubes, dueños, profes — cualquiera puede
-          proponer.
-        </p>
       </header>
 
       <div
