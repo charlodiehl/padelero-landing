@@ -366,6 +366,48 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ══ MATCH — conocé jugadores en canchas abiertas ════════════════════ */}
+      <section id="match" className="relative py-28 overflow-hidden">
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[420px] h-[420px] rounded-full blur-[140px] pointer-events-none" style={{ background: 'rgba(200,245,66,0.12)' }} />
+        <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-10 items-center relative">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">
+              🔥 Nuevo · Match
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-white leading-[1.05] mb-4">
+              El pádel ya no es{' '}
+              <span style={{ background: 'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                solo pádel
+              </span>
+            </h2>
+            <p className="text-zinc-400 text-lg leading-relaxed mb-6">
+              Sumate a una <strong className="text-white">cancha abierta</strong>, jugá, y conocé a la
+              gente que va. Deslizá, dale like y si hay <strong className="text-white">match</strong>… ya
+              tienen con quién jugar (y lo que pinte 😏).
+            </p>
+            <div className="flex flex-wrap gap-2.5 mb-6">
+              {[
+                { e: '🟢', t: 'Soltero', c: '#22c55e' },
+                { e: '🟡', t: 'Si pinta pinta', c: '#eab308' },
+                { e: '🔴', t: 'Casado', c: '#ef4444' },
+              ].map((s) => (
+                <span key={s.t} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold" style={{ background: `${s.c}1a`, color: s.c, border: `1px solid ${s.c}44` }}>
+                  {s.e} {s.t}
+                </span>
+              ))}
+            </div>
+            <p className="text-zinc-500 text-sm font-medium">Solo +18 · Solo en canchas abiertas</p>
+          </Reveal>
+
+          <Reveal from="right">
+            <div className="relative rounded-[28px] overflow-hidden border border-[#C8F542]/20 shadow-2xl shadow-black/60 max-w-sm mx-auto">
+              <Image src="/landing/match-social.jpg" alt="Match en canchas abiertas de Padelero" width={864} height={1080} className="w-full h-auto" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[28px] pointer-events-none" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ══ CÓMO FUNCIONA — 3 pasos ═════════════════════════════════════════ */}
       <section className="py-20 bg-zinc-950/80 px-5">
         <div className="max-w-5xl mx-auto">
