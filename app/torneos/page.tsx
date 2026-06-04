@@ -73,6 +73,7 @@ function Nav() {
     ['#ranking', 'Ranking'],
     ['#categorias', 'Categorías'],
     ['#clubes', 'Para clubes'],
+    ['/nosotros', 'Nosotros'],
   ];
 
   return (

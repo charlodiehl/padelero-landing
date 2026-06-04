@@ -102,6 +102,7 @@ function Nav() {
     ['/', 'Inicio'],
     ['/torneos', 'Torneos'],
     ['/pro', 'Pro'],
+    ['/nosotros', 'Nosotros'],
   ];
 
   return (

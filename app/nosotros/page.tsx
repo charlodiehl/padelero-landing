@@ -127,6 +127,10 @@ export default function NosotrosPage() {
 
       {/* HERO */}
       <section className="relative pt-32 pb-20 px-5 overflow-hidden">
+        <div className="absolute inset-0 -z-20">
+          <Image src="/landing/nosotros-hero.png" alt="" fill priority className="object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/80 to-black" />
+        </div>
         <div className="absolute inset-0 -z-10 opacity-60"
           style={{ background: `radial-gradient(60% 50% at 50% 0%, ${GREEN}18, transparent 70%)` }} />
         <div className="max-w-3xl mx-auto text-center">

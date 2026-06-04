@@ -134,6 +134,7 @@ function Nav() {
     ['#torneos', 'Torneos'],
     ['#ranking', 'Rankings'],
     ['#metricas', 'Métricas'],
+    ['/nosotros', 'Nosotros'],
   ];
 
   return (

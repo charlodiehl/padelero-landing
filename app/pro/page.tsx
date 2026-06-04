@@ -83,6 +83,9 @@ function Nav() {
           <Link href="/pro" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg bg-[#C8F542]/10" style={{ color: GREEN }}>
             <Sparkles size={14} /> Padelero Pro
           </Link>
+          <Link href="/nosotros" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10" style={{ color: GREEN }}>
+            <Users size={14} /> Nosotros
+          </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
@@ -99,6 +102,7 @@ function Nav() {
           <Link href="/torneos" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>🏆 Torneos</Link>
           <Link href="/clubes" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>🏠 Clubes</Link>
           <Link href="/pro" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>✨ Padelero Pro</Link>
+          <Link href="/nosotros" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>🚀 Nosotros</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
             <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
