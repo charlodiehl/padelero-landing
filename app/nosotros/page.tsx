@@ -151,7 +151,7 @@ export default function NosotrosPage() {
       {/* HERO */}
       <section className="relative isolate pt-32 pb-20 px-5 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image src="/landing/nosotros-hero.png" alt="" fill priority className="object-cover opacity-[0.65]" />
+          <Image src="/landing/nosotros-bg.jpg" alt="" fill priority className="object-cover opacity-[0.7]" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-black" />
           <div className="absolute inset-0 opacity-60"
             style={{ background: `radial-gradient(60% 50% at 50% 0%, ${GREEN}18, transparent 70%)` }} />
