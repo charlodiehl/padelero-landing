@@ -7,7 +7,7 @@ import {
   Calendar, Trophy, Users, MessageCircle, BarChart3,
   CheckCircle2, ArrowRight, Star, ChevronDown, Smartphone,
   Clock, Shield, TrendingUp, Menu, X, Home, Building2,
-  Sparkles, Heart, Medal, GraduationCap, Swords, Lightbulb,
+  Sparkles, Heart, Medal, GraduationCap, Swords, Lightbulb, Rocket,
 } from 'lucide-react';
 
 // ─── WhatsApp Icon SVG ────────────────────────────────────────────────────────
@@ -187,6 +187,13 @@ function Nav() {
           >
             <Lightbulb size={14} /> Mejoras
           </Link>
+          <Link
+            href="/nosotros"
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
+            style={{ color: '#C8F542' }}
+          >
+            <Rocket size={14} /> Nosotros
+          </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
           <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
@@ -204,6 +211,7 @@ function Nav() {
           <Link href="/clubes" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏠 Clubes</Link>
           <Link href="/pro" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>✨ Padelero Pro</Link>
           <Link href="/mejoras" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>💡 Mejoras</Link>
+          <Link href="/nosotros" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🚀 Nosotros</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
             <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
