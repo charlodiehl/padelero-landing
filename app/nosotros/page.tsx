@@ -149,14 +149,14 @@ export default function NosotrosPage() {
       <Nav />
 
       {/* HERO */}
-      <section className="relative pt-32 pb-20 px-5 overflow-hidden">
-        <div className="absolute inset-0 -z-20">
+      <section className="relative isolate pt-32 pb-20 px-5 overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <Image src="/landing/nosotros-hero.png" alt="" fill priority className="object-cover opacity-[0.65]" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/55 to-black" />
+          <div className="absolute inset-0 opacity-60"
+            style={{ background: `radial-gradient(60% 50% at 50% 0%, ${GREEN}18, transparent 70%)` }} />
         </div>
-        <div className="absolute inset-0 -z-10 opacity-60"
-          style={{ background: `radial-gradient(60% 50% at 50% 0%, ${GREEN}18, transparent 70%)` }} />
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <Reveal><Eyebrow>La oportunidad</Eyebrow></Reveal>
           <Reveal delay={80}>
             <h1 className="mt-6 text-4xl md:text-6xl font-black leading-[1.05] tracking-tight">
