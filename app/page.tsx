@@ -9,6 +9,7 @@ import {
   Clock, Shield, TrendingUp, Menu, X, Home, Building2,
   Sparkles, Heart, Medal, GraduationCap, Swords, Lightbulb, Rocket,
 } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 
 // ─── WhatsApp Icon SVG ────────────────────────────────────────────────────────
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -309,6 +310,14 @@ export default function LandingPage() {
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               app.padelero.app
             </a>
+          </div>
+
+          {/* QR para escanear desde la compu y bajar la app en el celu (solo desktop) */}
+          <div className="hidden md:flex flex-col items-center gap-2 mt-7">
+            <div className="bg-white p-3 rounded-2xl shadow-xl shadow-black/40">
+              <QRCodeSVG value="https://padelero.app/descargar" size={104} bgColor="#ffffff" fgColor="#0A0A0A" level="M" />
+            </div>
+            <span className="text-xs text-zinc-400">Escaneá con tu celu para descargar la app</span>
           </div>
         </div>
         <a href="#stats" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-white/40 hover:text-white/60 transition-colors" style={{ animation:'bounce 2s infinite' }}>
