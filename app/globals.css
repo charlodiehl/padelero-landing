@@ -1,17 +1,65 @@
-@import "tailwindcss";
+/* ═══════════════════════════════════════════════════════════════════
+   TOKENS DE COLOR — el spec de CSS obliga a que los @import sean lo
+   primero del archivo.
 
-:root {
-  --green: #C8F542;
-  --green-dark: #7ec800;
+   lima.css  → :root                      → tema por DEFECTO = producción
+   pino.css  → :root[data-theme="pino"]   → opt-in, especificidad (0,2,0)
+
+   Los dos archivos son copia textual de los del app (padelero/src/styles/
+   tokens/). El gemelo en hex para todo lo que corre fuera del navegador
+   (metadata de Next, OG, emails) está en lib/theme/brand.ts — generado
+   por scripts/brand/tokens-to-ts.mjs, no editar a mano.
+
+   ⚠ Formato obligatorio de los tokens: triplete HSL sin comas.
+      Ver la explicación completa en la cabecera de lima.css.
+   ═══════════════════════════════════════════════════════════════════ */
+@import "tailwindcss";
+@import "../styles/tokens/lima.css";
+@import "../styles/tokens/pino.css";
+
+/* ═══════════════════════════════════════════════════════════════════
+   Tailwind v4 — el tema se declara acá, en CSS, no en tailwind.config.ts.
+   `inline` hace que Tailwind emita la referencia var() tal cual en vez de
+   copiar el valor resuelto, que es lo que permite que data-theme="pino"
+   repinte todo en caliente. La opacidad (bg-primary/10, border-border/60)
+   la resuelve Tailwind con color-mix sobre esta misma referencia.
+   ═══════════════════════════════════════════════════════════════════ */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-foreground-subtle: hsl(var(--foreground-subtle));
+  --color-card: hsl(var(--card));
+  --color-surface-2: hsl(var(--surface-2));
+  --color-surface-3: hsl(var(--surface-3));
+  --color-surface-sunken: hsl(var(--surface-sunken));
+  --color-scrim: hsl(var(--scrim));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-hover: hsl(var(--primary-hover));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-border-strong: hsl(var(--border-strong));
 }
+
+/* ───────────────────────────────────────────────────────────────────
+   Token LOCAL de la landing. El degradado firma de la landing NO es el
+   del app (#C8F542 → #7EE0A0 → #2FD6C4): acá es lima → verde oliva
+   (#C8F542 → #7EC800), repetido 20 veces en estilos inline. Ese extremo
+   profundo no existe en el sistema, así que vive acá y no en lima.css /
+   pino.css, que se mantienen como copia textual del app.
+     lima: #7EC800 exacto (round-trip verificado)
+     pino: Verde Pista #2E6B4A del manual — mismo gesto verde → verde hondo
+   ─────────────────────────────────────────────────────────────────── */
+:root { --brand-deep: 82.2 100% 39.2%; }
+:root[data-theme="pino"] { --brand-deep: 148 40% 30%; }
 
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
 body {
-  background: #000;
-  color: #fff;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }

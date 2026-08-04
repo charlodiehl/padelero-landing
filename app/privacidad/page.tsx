@@ -16,14 +16,14 @@ export default function PrivacidadPage() {
         maxWidth: '768px',
         margin: '0 auto',
         padding: '48px 24px',
-        color: '#fff',
+        color: 'hsl(var(--foreground))',
         lineHeight: 1.6,
       }}
     >
       <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>
         Política de Privacidad
       </h1>
-      <p style={{ fontSize: '14px', color: '#888', marginBottom: '32px' }}>
+      <p style={{ fontSize: '14px', color: 'hsl(var(--muted-foreground))', marginBottom: '32px' }}>
         Última actualización: {LAST_UPDATED}
       </p>
 
@@ -177,7 +177,7 @@ const ulStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-  color: '#C8F542',
+  color: 'hsl(var(--primary))',
   textDecoration: 'underline',
 };
 

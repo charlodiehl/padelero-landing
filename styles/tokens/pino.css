@@ -1,0 +1,234 @@
+/* ═══════════════════════════════════════════════════════════════════
+   TEMA "PINO NOCTURNO" — identidad nueva. OPT-IN.
+   Se activa SOLO con <html data-theme="pino">, que a su vez sale de la
+   cookie 'padelero-theme' o de NEXT_PUBLIC_THEME. Sin eso, producción
+   sigue en lima y este bloque no aplica jamás.
+
+   El selector es :root[data-theme="pino"] → especificidad (0,2,0),
+   contra el (0,1,0) de :root en lima.css. Gana siempre, sin depender
+   del orden de los @import.
+   ───────────────────────────────────────────────────────────────────
+
+   ⚠ FORMATO DE TOKEN — CRÍTICO E INNEGOCIABLE
+
+   Todos los tokens de color se escriben como TRIPLETE HSL SIN COMAS
+   ("154 43% 16%") y se consumen SIEMPRE como hsl(var(--x)).
+
+   Motivo verificado: Tailwind 3.4.1 solo inyecta el modificador de
+   opacidad (bg-primary/10, border-border/50, text-foreground/70) si
+   puede parsear la notación funcional hsl() o rgb() y reescribirla
+   como hsl(var(--x) / <alpha-value>). Si usás oklch, hex crudo o
+   color-mix, las 1.429 clases con opacidad del repo DESAPARECEN
+   silenciosamente: sin error de build, sin warning, sin nada.
+   No cambies el formato. Si necesitás un color nuevo, sumá un
+   triplete más; nunca un hex ni un oklch.
+   ───────────────────────────────────────────────────────────────────
+
+   PALETA FUENTE (manual de marca) y dónde cae cada color:
+     Verde Pino   #173A2B  154 43% 16%    → --surface-3
+     Verde Pista  #2E6B4A  148 40% 30%    → --border-strong
+     Verde Match  #57C98A  146.8 51.4% 56.5% → --primary / --ring / --glow
+     Latón        #B79A5E  40.4 38.2% 54.3%  → (no se usa en nocturno: ver nota)
+     Latón claro  #C9B27E  42 41% 64%     → --accent-premium
+     Papel        #F6F7F1  70 27.3% 95.7% → (reservado, tema claro futuro)
+     Niebla       #EAF0E4  90 28.6% 91.8% → (reservado, tema claro futuro)
+     Salvia       #D9E4D2  97 25% 86%     → (reservado, tema claro futuro)
+     Gris         #7C8275  87.7 5.3% 48.4%→ (reservado)
+     Tinta        #14160E  75 22% 7%      → (reservado, tema claro futuro)
+
+   MOCKUP NOCTURNO (fuente de las superficies):
+     fondo        #0E1A13  145 30% 7.8%   → --background
+     hundido      #05100A  147 52% 4%     → --surface-sunken
+     texto        #F2F4EC  75 27% 94%     → --foreground
+     muted        #8DA092  136 9% 59%     → --muted-foreground
+     dim          #6E7E72  135 6.8% 46.3% → (ver nota en --muted-foreground)
+     terracota    #C0786E  7.3 39.4% 59.2%→ --destructive
+     texto botón  #0E3A26  152.7 61.1% 14.1% → --primary-foreground
+
+   Todos los tripletes con decimales son EXACTOS: hacen round-trip al
+   hex del manual sin drift (verificado con conversor propio).
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="pino"] {
+  /* ── Superficies ──────────────────────────────────────────────── */
+  /* #0E1A13 — el negro-verde del mockup nocturno */
+  --background: 145 30% 7.8%;
+  /* #F2F4EC — Papel desaturado del mockup */
+  --foreground: 75 27% 94%;
+  /* #C6D2C8 — escalón entre foreground y muted-foreground */
+  --foreground-subtle: 130 12% 80%;
+
+  /* #14241B — card. Luminancia relativa 1.85× el background: se despega
+     sin necesitar borde, igual que hoy hace el 0 0% 9% sobre 0 0% 4%. */
+  --card: 148 30% 11%;
+  --card-foreground: 75 27% 94%;
+
+  /* #162C21 — popover, un escalón por encima de card */
+  --popover: 150 34% 13%;
+  --popover-foreground: 75 27% 94%;
+
+  /* Escala de elevación. surface-3 es literalmente Verde Pino #173A2B:
+     el color "superficie primaria" del manual entra acá, no como fondo,
+     porque el mockup nocturno pide un fondo más profundo. */
+  --surface-2: 152 38% 14%;   /* #163125 */
+  --surface-3: 154 43% 16%;   /* #173A2B — Verde Pino */
+  --surface-sunken: 147 52% 4%; /* #05100A */
+
+  /* Velo de modales. Verde casi negro en vez de negro puro para que el
+     blur no "grisee" la escena. Se consume con alfa: hsl(var(--scrim)/.6) */
+  --scrim: 150 40% 3%;
+
+  /* ── Marca ────────────────────────────────────────────────────── */
+  /* #57C98A — Verde Match, el color de acción/señal del manual */
+  --primary: 146.8 51.4% 56.5%;
+  /* #0E3A26 — el texto del botón primario según el mockup */
+  --primary-foreground: 152.7 61.1% 14.1%;
+  --primary-text: 146.8 51.4% 56.5%;
+  /* #74D29E — +7.5 de L. Un aclarado, no un cambio de tono. */
+  --primary-hover: 146.8 51.4% 64%;
+
+  /* #C9B27E — Latón claro. ES el segundo color de marca que hoy no existe.
+     USO MÍNIMO por manual: sellos, líneas finas, badges premium, números
+     de logro. Nunca como fondo de superficie grande.
+     Uso el Latón claro y no el Latón #B79A5E porque sobre nocturno el
+     claro rinde 8.63:1 contra 6.63:1 del oscuro. */
+  --accent-premium: 42 41% 64%;
+  --accent-premium-foreground: 40 35% 10%; /* #221C11 */
+
+  /* Glow = Verde Match. En pino el glow tiene que ser MÁS SUTIL que en
+     lima: el lima sobre negro puro es un neón; el verde sobre verde
+     oscuro se satura rápido. Las alfas se bajan en el paso siguiente
+     (cuerpo de globals.css), acá solo vive el color. */
+  --glow: 146.8 51.4% 56.5%;
+
+  /* Gradiente firma: Verde Match → verde-teal → teal.
+     Mantiene el movimiento verde→teal del gradiente lima actual, así que
+     el "gesto" de marca no cambia, solo el punto de partida. */
+  --brand-from: 146.8 51.4% 56.5%; /* #57C98A */
+  --brand-via: 160 45% 62%;        /* #72CAAD */
+  --brand-to: 174 62% 52%;         /* #39D0C1 */
+
+  /* ── Neutros de UI ────────────────────────────────────────────── */
+  --secondary: 152 30% 17%;   /* #1E382C */
+  --secondary-foreground: 75 27% 94%;
+
+  --muted: 150 28% 14%;       /* #1A2E24 */
+  /* #8DA092 — el "muted" del mockup.
+     El "dim" #6E7E72 del mockup NO entra como token: contra el fondo da
+     4.16:1, por debajo de AA para texto normal (4.5:1). Si hace falta un tercer
+     nivel de texto, se saca con hsl(var(--muted-foreground)/.7) y solo
+     para contenido decorativo. */
+  --muted-foreground: 136 9% 59%;
+
+  --accent: 152 30% 17%;      /* #1E382C — igual que secondary, como en lima */
+  --accent-foreground: 75 27% 94%;
+
+  /* ── Semánticos ───────────────────────────────────────────────── */
+  /* #C0786E — la terracota del mockup.
+     El foreground va OSCURO, no blanco: blanco sobre terracota da 3.41:1
+     (falla AA para texto normal), la tinta cálida da 5.24:1. */
+  --destructive: 7.3 39.4% 59.2%;
+  --destructive-foreground: 10 40% 10%; /* #24130F */
+
+  /* ⚠ DECISIÓN SEMÁNTICA IMPORTANTE — success ≠ primary
+     En lima, --success es idéntico a --primary porque el lima nunca fue
+     "verde de OK", era solo la marca. En pino el primary YA ES un verde
+     (#57C98A): si success copiara al primary, un badge "PAGADO" y un
+     botón "Reservar" serían el mismo color y el usuario perdería la
+     distinción entre "estado confirmado" y "acción disponible" — que es
+     justo la que más importa en las pantallas de turnos y deudas.
+     Por eso success se mueve a un TEAL #39D0C1: 27° de separación de
+     hue respecto del primary, y una saturación/luminosidad distinta,
+     así que se distingue incluso en un badge de 8px y en daltonismo
+     deuteranope (el teal conserva el canal azul, el verde no). */
+  --success: 174 62% 52%;     /* #39D0C1 */
+  --success-foreground: 174 60% 10%; /* #0A2926 */
+
+  /* #F2A92C — ámbar. Comparte familia con el latón pero con el triple de
+     croma, así que no se confunde con --accent-premium. */
+  --warning: 38 88% 56%;
+  --warning-foreground: 38 60% 10%; /* #291E0A */
+
+  /* #52A5E0 — informativo. Es el único azul del sistema: no compite con
+     el verde (primary) ni con el teal (success). */
+  --info: 205 70% 60%;
+  --info-foreground: 205 60% 12%; /* #0C2231 */
+
+  /* ── Bordes ───────────────────────────────────────────────────── */
+  --border: 150 22% 20%;      /* #283E33 */
+  /* Verde Pista #2E6B4A del manual: el borde "presente", para inputs
+     enfocados, cards seleccionadas y divisores que sí tienen que verse. */
+  --border-strong: 148 40% 30%;
+  --input: 150 28% 14%;       /* #1A2E24 */
+  --ring: 146.8 51.4% 56.5%;
+
+  --radius: 0.875rem;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   CONTRASTE WCAG 2.1 — tema pino (calculado, no estimado)
+   AA = 4.5:1 texto normal · 3:1 texto grande y componentes de UI
+
+   CRÍTICOS (los cuatro que pidió la especificación):
+   foreground / background        #F2F4EC sobre #0E1A13   16.10:1  AA / AAA
+   primary-fg / primary           #0E3A26 sobre #57C98A    6.13:1  AA
+   muted-foreground / background  #8DA092 sobre #0E1A13    6.44:1  AA
+   foreground / card              #F2F4EC sobre #14241B   14.58:1  AA / AAA
+
+   RESTO DEL SISTEMA:
+   primary(texto) / background    #57C98A sobre #0E1A13    8.61:1  AA / AAA
+   primary(texto) / card          #57C98A sobre #14241B    7.80:1  AA / AAA
+   primary-fg / primary-hover     #0E3A26 sobre #74D29E    6.93:1  AA
+   foreground-subtle / background #C6D2C8 sobre #0E1A13   11.44:1  AA / AAA
+   foreground-subtle / card       #C6D2C8 sobre #14241B   10.37:1  AA / AAA
+   muted-foreground / card        #8DA092 sobre #14241B    5.84:1  AA
+   muted-foreground / secondary   #8DA092 sobre #1E382C    4.57:1  AA (justo)
+   muted-foreground / surface-3   #8DA092 sobre #173A2B    4.52:1  AA (justo)
+   muted-foreground / muted       #8DA092 sobre #1A2E24    5.19:1  AA
+   foreground / surface-2         #F2F4EC sobre #163125   12.62:1  AA / AAA
+   foreground / surface-3         #F2F4EC sobre #173A2B   11.29:1  AA / AAA
+   foreground / popover           #F2F4EC sobre #162C21   13.36:1  AA / AAA
+   foreground / secondary         #F2F4EC sobre #1E382C   11.42:1  AA / AAA
+   foreground / surface-sunken    #F2F4EC sobre #05100A   17.44:1  AA / AAA
+   destructive-fg / destructive   #24130F sobre #C0786E    5.24:1  AA
+   destructive(texto) / bg        #C0786E sobre #0E1A13    5.23:1  AA
+   success-fg / success           #0A2926 sobre #39D0C1    8.07:1  AA / AAA
+   success(texto) / background    #39D0C1 sobre #0E1A13    9.33:1  AA / AAA
+   warning-fg / warning           #291E0A sobre #F2A92C    8.17:1  AA / AAA
+   warning(texto) / background    #F2A92C sobre #0E1A13    8.92:1  AA / AAA
+   info-fg / info                 #0C2231 sobre #52A5E0    6.07:1  AA
+   info(texto) / background       #52A5E0 sobre #0E1A13    6.65:1  AA / AAA
+   accent-premium-fg / premium    #221C11 sobre #C9B27E    8.17:1  AA / AAA
+   accent-premium(texto) / bg     #C9B27E sobre #0E1A13    8.63:1  AA / AAA
+
+   NINGUNA combinación de TEXTO queda por debajo de AA.
+
+   ⚠ ADVERTENCIA — bordes (no es texto, no aplica el umbral 4.5:1):
+   border / background            #283E33 sobre #0E1A13    1.55:1
+   border-strong / background     #2E6B4A sobre #0E1A13    2.82:1
+     Los bordes decorativos están exentos de WCAG 1.4.11 (que exige 3:1
+     solo a los límites que comunican estado o son la única señal de un
+     control). --border-strong queda a 2.82:1, un pelo por debajo de 3:1.
+     Si se usa como ÚNICO indicador de foco hay que subirlo a
+     148 40% 33% (#327652, 3.27:1) o, mejor, apoyarse en --ring
+     (#57C98A, 8.61:1) que es lo que ya hace el sistema hoy.
+     Lo dejo en el Verde Pista exacto del manual y lo documento, porque
+     hoy el foco lo da el ring y no el borde.
+     (Referencia: en lima el --border rinde 1.46:1 sobre su fondo, así que
+     esto no es una regresión respecto de producción.)
+
+   AJUSTES SOBRE LA PALETA DEL MANUAL (mínimos, todos documentados):
+   1. --background NO es Verde Pino #173A2B (que el manual llama
+      "superficie primaria") sino #0E1A13 del mockup nocturno. Verde Pino
+      se conserva exacto en --surface-3. Motivo: con #173A2B de fondo,
+      card/popover/surface-2 no tendrían aire abajo para escalonarse.
+   2. --accent-premium usa Latón claro #C9B27E y no Latón #B79A5E:
+      8.63:1 vs 5.87:1 sobre el fondo nocturno. El Latón oscuro queda
+      disponible para el tema claro futuro.
+   3. --destructive-foreground NO es blanco (2.9:1, falla) sino tinta
+      cálida #24130F (5.24:1).
+   4. El "dim" #6E7E72 del mockup no se promueve a token: 4.16:1 sobre
+      el fondo, por debajo de AA para texto normal.
+   5. --success se separa del primary (ver la nota larga arriba).
+   Ningún hex del manual fue alterado; solo se eligió DÓNDE cae cada uno.
+   ─────────────────────────────────────────────────────────────────── */

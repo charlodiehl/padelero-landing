@@ -28,7 +28,7 @@ import { TicketForm } from '@/components/help-widget/TicketForm';
 
 const API_BASE = 'https://app.padelero.app';
 const APP = 'https://app.padelero.app';
-const GREEN = '#C8F542';
+const GREEN = 'hsl(var(--primary))';
 
 interface RoadmapItem {
   id: string;
@@ -61,7 +61,7 @@ const TIPO_ICON: Record<RoadmapItem['tipo'], { Icon: LucideIcon; color: string }
   idea: { Icon: Lightbulb, color: GREEN },
   duda: { Icon: HelpCircle, color: '#60a5fa' },
   urgente: { Icon: AlertTriangle, color: '#fb923c' },
-  sin_clasificar: { Icon: Sparkles, color: 'rgba(255,255,255,0.55)' },
+  sin_clasificar: { Icon: Sparkles, color: 'hsl(var(--foreground) / 0.55)' },
 };
 
 // Fingerprint simple: hash del navigator + screen + timezone. No es
@@ -108,16 +108,16 @@ function Nav() {
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        sc ? 'bg-black/85 backdrop-blur-2xl border-b border-white/5 shadow-lg shadow-black/40' : ''
+        sc ? 'bg-background/85 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-scrim/40' : ''
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
-            <span className="font-black text-white text-lg tracking-tight">Padelero</span>
+            <span className="font-black text-foreground text-lg tracking-tight">Padelero</span>
           </Link>
-          <span className="hidden md:block text-zinc-600">/</span>
+          <span className="hidden md:block text-muted-foreground/50">/</span>
           <span className="hidden md:flex items-center gap-1.5 text-sm font-bold" style={{ color: GREEN }}>
             <Lightbulb size={13} /> Mejoras
           </span>
@@ -128,7 +128,7 @@ function Nav() {
             <Link
               key={h}
               href={h}
-              className="text-zinc-400 hover:text-white text-sm font-medium transition-colors"
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             >
               {l}
             </Link>
@@ -138,32 +138,32 @@ function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href={`${APP}/login`}
-            className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors"
+            className="text-muted-foreground hover:text-foreground text-sm px-3 py-1.5 transition-colors"
           >
             Ingresar
           </Link>
           <Link
             href={`${APP}/register`}
             className="text-sm font-bold px-5 py-2 rounded-xl transition-all hover:scale-105 shadow-md"
-            style={{ background: GREEN, color: '#000', boxShadow: `0 4px 20px ${GREEN}33` }}
+            style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 4px 20px hsl(var(--primary) / 0.2)` }}
           >
             Empezar gratis
           </Link>
         </div>
 
-        <button className="md:hidden text-zinc-300 hover:text-white" onClick={() => setOpen((v) => !v)}>
+        <button className="md:hidden text-foreground-subtle hover:text-foreground" onClick={() => setOpen((v) => !v)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-foreground/5 px-5 pb-5">
           {links.map(([h, l]) => (
             <Link
               key={h}
               href={h}
               onClick={() => setOpen(false)}
-              className="block text-zinc-200 py-2.5 border-b border-zinc-800/60 last:border-0 font-medium"
+              className="block text-foreground-subtle py-2.5 border-b border-border/60 last:border-0 font-medium"
             >
               {l}
             </Link>
@@ -171,14 +171,14 @@ function Nav() {
           <div className="pt-3 space-y-2">
             <Link
               href={`${APP}/login`}
-              className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold"
+              className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold"
             >
               Ingresar
             </Link>
             <Link
               href={`${APP}/register`}
               className="block w-full text-center py-3 rounded-xl font-black"
-              style={{ background: GREEN, color: '#000' }}
+              style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
             >
               Empezar gratis
             </Link>
@@ -252,8 +252,8 @@ export default function RoadmapPage() {
     <div
       style={{
         minHeight: '100vh',
-        background: '#0a0a0a',
-        color: '#fff',
+        background: 'hsl(var(--background))',
+        color: 'hsl(var(--foreground))',
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
@@ -264,7 +264,7 @@ export default function RoadmapPage() {
         style={{
           position: 'relative',
           overflow: 'hidden',
-          borderBottom: `1px solid ${GREEN}1f`,
+          borderBottom: `1px solid hsl(var(--primary) / 0.122)`,
           isolation: 'isolate',
         }}
       >
@@ -288,7 +288,7 @@ export default function RoadmapPage() {
             inset: 0,
             zIndex: -1,
             background:
-              'linear-gradient(to bottom, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.72) 55%, #0a0a0a 100%)',
+              'linear-gradient(to bottom, hsl(var(--background) / 0.45) 0%, hsl(var(--background) / 0.72) 55%, hsl(var(--background)) 100%)',
           }}
         />
         <div
@@ -303,9 +303,9 @@ export default function RoadmapPage() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
-              background: 'rgba(10,10,10,0.55)',
+              background: 'hsl(var(--background) / 0.55)',
               backdropFilter: 'blur(4px)',
-              border: `1px solid ${GREEN}55`,
+              border: `1px solid hsl(var(--primary) / 0.333)`,
               color: GREEN,
               padding: '6px 12px',
               borderRadius: 999,
@@ -325,7 +325,7 @@ export default function RoadmapPage() {
               fontWeight: 800,
               margin: 0,
               lineHeight: 1.05,
-              background: `linear-gradient(135deg, ${GREEN}, #7ec800)`,
+              background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -334,13 +334,13 @@ export default function RoadmapPage() {
           </h1>
           <p
             style={{
-              color: 'rgba(255,255,255,0.85)',
+              color: 'hsl(var(--foreground) / 0.85)',
               fontSize: 15,
               marginTop: 12,
               marginBottom: 0,
               maxWidth: 600,
               lineHeight: 1.55,
-              textShadow: '0 1px 12px rgba(0,0,0,0.6)',
+              textShadow: '0 1px 12px hsl(var(--scrim) / 0.6)',
             }}
           >
             Padelero lo codean agentes de IA: vos mandás tu mejora, el equipo de
@@ -349,12 +349,12 @@ export default function RoadmapPage() {
           </p>
           <p
             style={{
-              color: 'rgba(255,255,255,0.6)',
+              color: 'hsl(var(--foreground) / 0.6)',
               fontSize: 13,
               marginTop: 8,
               marginBottom: 0,
               maxWidth: 600,
-              textShadow: '0 1px 12px rgba(0,0,0,0.6)',
+              textShadow: '0 1px 12px hsl(var(--scrim) / 0.6)',
             }}
           >
             Abierto a jugadores, clubes, dueños, profes — cualquiera puede
@@ -386,9 +386,9 @@ export default function RoadmapPage() {
                   onClick={() => setFiltro(f)}
                   style={{
                     background:
-                      filtro === f ? GREEN : 'rgba(255,255,255,0.05)',
-                    color: filtro === f ? '#0a0a0a' : '#fff',
-                    border: '1px solid rgba(255,255,255,0.08)',
+                      filtro === f ? GREEN : 'hsl(var(--foreground) / 0.05)',
+                    color: filtro === f ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
+                    border: '1px solid hsl(var(--foreground) / 0.08)',
                     padding: '8px 14px',
                     borderRadius: 999,
                     fontSize: 13,
@@ -409,7 +409,7 @@ export default function RoadmapPage() {
             onClick={() => setShowChat((s) => !s)}
             style={{
               background: GREEN,
-              color: '#0a0a0a',
+              color: 'hsl(var(--primary-foreground))',
               border: 'none',
               padding: '10px 18px',
               borderRadius: 999,
@@ -445,7 +445,7 @@ export default function RoadmapPage() {
             style={{
               padding: 60,
               textAlign: 'center',
-              color: 'rgba(255,255,255,0.4)',
+              color: 'hsl(var(--foreground) / 0.4)',
             }}
           >
             Cargando…
@@ -457,9 +457,9 @@ export default function RoadmapPage() {
             style={{
               padding: '50px 24px',
               textAlign: 'center',
-              border: `1px dashed ${GREEN}33`,
+              border: `1px dashed hsl(var(--primary) / 0.2)`,
               borderRadius: 14,
-              background: `${GREEN}06`,
+              background: `hsl(var(--primary) / 0.024)`,
             }}
           >
             <div style={{ marginBottom: 14, display: 'flex', justifyContent: 'center' }}>
@@ -469,7 +469,7 @@ export default function RoadmapPage() {
               style={{
                 fontSize: 17,
                 fontWeight: 700,
-                color: '#fff',
+                color: 'hsl(var(--foreground))',
                 marginBottom: 6,
               }}
             >
@@ -480,7 +480,7 @@ export default function RoadmapPage() {
             <div
               style={{
                 fontSize: 13,
-                color: 'rgba(255,255,255,0.55)',
+                color: 'hsl(var(--foreground) / 0.55)',
                 maxWidth: 380,
                 margin: '0 auto 18px',
                 lineHeight: 1.5,
@@ -494,7 +494,7 @@ export default function RoadmapPage() {
               onClick={() => setShowChat(true)}
               style={{
                 background: GREEN,
-                color: '#0a0a0a',
+                color: 'hsl(var(--primary-foreground))',
                 border: 'none',
                 padding: '10px 20px',
                 borderRadius: 999,
@@ -516,8 +516,8 @@ export default function RoadmapPage() {
               <div
                 key={it.id}
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: 'hsl(var(--foreground) / 0.03)',
+                  border: '1px solid hsl(var(--foreground) / 0.06)',
                   borderRadius: 12,
                   padding: 16,
                   display: 'flex',
@@ -534,13 +534,13 @@ export default function RoadmapPage() {
                     minWidth: 56,
                     padding: '8px 4px',
                     background: isVoted
-                      ? `${GREEN}22`
-                      : 'rgba(255,255,255,0.05)',
+                      ? `hsl(var(--primary) / 0.133)`
+                      : 'hsl(var(--foreground) / 0.05)',
                     border: isVoted
                       ? `1px solid ${GREEN}`
-                      : '1px solid rgba(255,255,255,0.08)',
+                      : '1px solid hsl(var(--foreground) / 0.08)',
                     borderRadius: 10,
-                    color: isVoted ? GREEN : '#fff',
+                    color: isVoted ? GREEN : 'hsl(var(--foreground))',
                     cursor: isVoted ? 'default' : 'pointer',
                     display: 'flex',
                     flexDirection: 'column',
@@ -601,7 +601,7 @@ export default function RoadmapPage() {
                     <p
                       style={{
                         fontSize: 13,
-                        color: 'rgba(255,255,255,0.65)',
+                        color: 'hsl(var(--foreground) / 0.65)',
                         margin: 0,
                         lineHeight: 1.5,
                       }}

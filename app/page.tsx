@@ -85,8 +85,8 @@ function Stat({ n, label, suffix='+', active }: { n:number; label:string; suffix
   const v = useCounter(n, 1600, active);
   return (
     <div className="text-center">
-      <div className="text-4xl md:text-6xl font-black text-[#C8F542] tabular-nums">{v.toLocaleString('es-AR')}{suffix}</div>
-      <div className="text-[11px] text-zinc-400 mt-2 font-bold uppercase tracking-[.2em]">{label}</div>
+      <div className="text-4xl md:text-6xl font-black text-primary tabular-nums">{v.toLocaleString('es-AR')}{suffix}</div>
+      <div className="text-[11px] text-muted-foreground mt-2 font-bold uppercase tracking-[.2em]">{label}</div>
     </div>
   );
 }
@@ -95,12 +95,12 @@ function Stat({ n, label, suffix='+', active }: { n:number; label:string; suffix
 function Card({ icon:Icon, title, desc, delay }:{ icon:React.ElementType; title:string; desc:string; delay:number }) {
   return (
     <Reveal delay={delay}>
-      <div className="group bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 hover:border-[#C8F542]/40 transition-all duration-300 hover:-translate-y-1 h-full">
-        <div className="w-10 h-10 bg-[#C8F542]/15 rounded-xl flex items-center justify-center mb-3 group-hover:bg-[#C8F542]/25 transition-colors">
-          <Icon className="w-5 h-5 text-[#C8F542]" />
+      <div className="group bg-foreground/5 border border-foreground/10 rounded-2xl p-5 hover:bg-foreground/10 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1 h-full">
+        <div className="w-10 h-10 bg-primary/15 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary/25 transition-colors">
+          <Icon className="w-5 h-5 text-primary" />
         </div>
-        <h3 className="text-white font-bold text-sm mb-1.5">{title}</h3>
-        <p className="text-zinc-400 text-xs leading-relaxed">{desc}</p>
+        <h3 className="text-foreground font-bold text-sm mb-1.5">{title}</h3>
+        <p className="text-muted-foreground text-xs leading-relaxed">{desc}</p>
       </div>
     </Reveal>
   );
@@ -117,28 +117,28 @@ function WApp() {
   const { ref, inView } = useInView(.2);
   return (
     <div ref={ref} className="relative mx-auto max-w-[280px]">
-      <div className="bg-[#111] rounded-[2.5rem] border-2 border-zinc-700 p-2.5 shadow-2xl">
+      <div className="bg-[#111] rounded-[2.5rem] border-2 border-border-strong p-2.5 shadow-2xl">
         <div className="rounded-[2rem] overflow-hidden bg-[#0e1117]">
           <div className="bg-[#075E54] px-4 py-2.5 flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-[#C8F542] rounded-full flex items-center justify-center text-black font-black text-xs">P</div>
-            <div><div className="text-white text-xs font-bold">Padelero</div><div className="text-green-400 text-[10px]">en línea</div></div>
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-black text-xs">P</div>
+            <div><div className="text-foreground text-xs font-bold">Padelero</div><div className="text-green-400 text-[10px]">en línea</div></div>
           </div>
           <div className="min-h-[300px] p-2.5 space-y-2">
             {MSGS.map((m,i) => (
               <div key={i} className={`flex ${m.u==='user'?'justify-end':'justify-start'}`}
                 style={{ opacity:inView?1:0, transform:inView?'none':'translateY(6px)', transition:`opacity .4s ease ${m.d}ms, transform .4s ease ${m.d}ms` }}>
-                <div className={`max-w-[88%] rounded-xl px-2.5 py-1.5 text-[10px] whitespace-pre-line leading-relaxed ${m.u==='user'?'bg-[#005C4B] text-white rounded-tr-none':'bg-[#202C33] text-zinc-100 rounded-tl-none'}`}>
+                <div className={`max-w-[88%] rounded-xl px-2.5 py-1.5 text-[10px] whitespace-pre-line leading-relaxed ${m.u==='user'?'bg-[#005C4B] text-foreground rounded-tr-none':'bg-[#202C33] text-foreground rounded-tl-none'}`}>
                   {m.t}
                 </div>
               </div>
             ))}
           </div>
-          <div className="bg-[#1a1a1a] px-3 py-2 border-t border-white/5">
-            <div className="bg-[#2a2a2a] rounded-full px-3 py-1.5 text-zinc-600 text-[10px]">Escribí un mensaje...</div>
+          <div className="bg-[#1a1a1a] px-3 py-2 border-t border-foreground/5">
+            <div className="bg-[#2a2a2a] rounded-full px-3 py-1.5 text-muted-foreground/50 text-[10px]">Escribí un mensaje...</div>
           </div>
         </div>
       </div>
-      <div className="absolute -inset-6 bg-[#C8F542]/8 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute -inset-6 bg-primary/8 rounded-full blur-3xl -z-10 pointer-events-none" />
     </div>
   );
 }
@@ -153,69 +153,69 @@ function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
   return (
-    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc?'bg-black/85 backdrop-blur-2xl border-b border-white/5 shadow-lg shadow-black/40':''}`}>
+    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc?'bg-background/85 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-scrim/40':''}`}>
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Image src="/logo.png" alt="Padelero" width={28} height={28} className="rounded-md" />
-          <span className="font-black text-white text-xl tracking-tight">Padelero</span>
+          <span className="font-black text-foreground text-xl tracking-tight">Padelero</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           <Link
             href="/torneos"
-            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
-            style={{ color: '#C8F542' }}
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10"
+            style={{ color: 'hsl(var(--primary))' }}
           >
             <Trophy size={14} /> Torneos
           </Link>
           <Link
             href="/clubes"
-            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
-            style={{ color: '#C8F542' }}
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10"
+            style={{ color: 'hsl(var(--primary))' }}
           >
             <Home size={14} /> Clubes
           </Link>
           <Link
             href="/pro"
-            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
-            style={{ color: '#C8F542' }}
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10"
+            style={{ color: 'hsl(var(--primary))' }}
           >
             <Sparkles size={14} /> Padelero Pro
           </Link>
           <Link
             href="/mejoras"
-            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
-            style={{ color: '#C8F542' }}
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10"
+            style={{ color: 'hsl(var(--primary))' }}
           >
             <Lightbulb size={14} /> Mejoras
           </Link>
           <Link
             href="/nosotros"
-            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10"
-            style={{ color: '#C8F542' }}
+            className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10"
+            style={{ color: 'hsl(var(--primary))' }}
           >
             <Rocket size={14} /> Nosotros
           </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
-          <Link href="https://app.padelero.app/register" className="bg-[#C8F542] text-black text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-md shadow-[#C8F542]/20">
+          <Link href="https://app.padelero.app/login" className="text-muted-foreground hover:text-foreground text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
+          <Link href="https://app.padelero.app/register" className="bg-primary text-primary-foreground text-sm font-bold px-5 py-2 rounded-xl hover:bg-primary-hover transition-all hover:scale-105 shadow-md shadow-primary/20">
             Empezar gratis
           </Link>
         </div>
-        <button className="md:hidden text-zinc-300 hover:text-white" onClick={()=>setOpen(v=>!v)}>
+        <button className="md:hidden text-foreground-subtle hover:text-foreground" onClick={()=>setOpen(v=>!v)}>
           {open?<X size={22}/>:<Menu size={22}/>}
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
-          <Link href="/torneos" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏆 Torneos</Link>
-          <Link href="/clubes" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🏠 Clubes</Link>
-          <Link href="/pro" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>✨ Padelero Pro</Link>
-          <Link href="/mejoras" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>💡 Mejoras</Link>
-          <Link href="/nosotros" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: '#C8F542' }}>🚀 Nosotros</Link>
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-foreground/5 px-5 pb-5">
+          <Link href="/torneos" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: 'hsl(var(--primary))' }}>🏆 Torneos</Link>
+          <Link href="/clubes" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: 'hsl(var(--primary))' }}>🏠 Clubes</Link>
+          <Link href="/pro" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: 'hsl(var(--primary))' }}>✨ Padelero Pro</Link>
+          <Link href="/mejoras" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: 'hsl(var(--primary))' }}>💡 Mejoras</Link>
+          <Link href="/nosotros" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: 'hsl(var(--primary))' }}>🚀 Nosotros</Link>
           <div className="pt-3 space-y-2">
-            <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
+            <Link href="https://app.padelero.app/login" className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold">Ingresar</Link>
+            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-black">Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -243,33 +243,33 @@ export default function LandingPage() {
   },[]);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav />
 
       {/* ══ HERO — cancha en la Pampa con bandera ══════════════════════════ */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={IMG.hero} alt="Cancha de pádel en la Pampa" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/45 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/25 via-transparent to-background/25" />
         </div>
-        <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-[#C8F542]/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-8 text-sm font-semibold text-white">
+          <div className="inline-flex items-center gap-2 bg-foreground/10 backdrop-blur border border-foreground/20 rounded-full px-4 py-1.5 mb-8 text-sm font-semibold text-foreground">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C8F542] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C8F542]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
             {realStats ? `${realStats.jugadores}+` : '228+'} jugadores activos en Argentina
           </div>
           <h1 className="text-5xl sm:text-7xl lg:text-[90px] font-black leading-[.95] mb-6 tracking-tight drop-shadow-2xl">
-            <span className="block text-white">La mejor app</span>
-            <span className="block text-white">de pádel de</span>
+            <span className="block text-foreground">La mejor app</span>
+            <span className="block text-foreground">de pádel de</span>
             <span
               className="block mt-1 pb-2"
               style={{
-                background: 'linear-gradient(135deg,#C8F542 0%,#7ec800 60%,#C8F542 100%)',
+                background: 'linear-gradient(135deg,hsl(var(--primary)) 0%,hsl(var(--brand-deep)) 60%,hsl(var(--primary)) 100%)',
                 backgroundSize: '200% auto',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -280,33 +280,33 @@ export default function LandingPage() {
               la Argentina.
             </span>
           </h1>
-          <p className="text-base md:text-xl text-zinc-300 max-w-xl mx-auto mb-4 leading-relaxed">
-            Todo lo que te ofrecen las otras apps — y más. <span className="text-[#C8F542] font-semibold">Gratis</span>.
+          <p className="text-base md:text-xl text-foreground-subtle max-w-xl mx-auto mb-4 leading-relaxed">
+            Todo lo que te ofrecen las otras apps — y más. <span className="text-primary font-semibold">Gratis</span>.
           </p>
-          <p className="text-sm md:text-base text-zinc-400 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
             Reservas, torneos, clases, ranking, matchmaking, partidos abiertos y agente WhatsApp 24/7.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.padelero.app/login" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-base px-9 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/30">
+            <Link href="https://app.padelero.app/login" className="group flex items-center justify-center gap-2 bg-primary text-primary-foreground font-black text-base px-9 py-4 rounded-2xl hover:bg-primary-hover transition-all hover:scale-105 shadow-xl shadow-primary/30">
               Iniciar sesión <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="https://app.padelero.app/register" className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-base px-9 py-4 rounded-2xl hover:bg-white/20 transition-all">
+            <Link href="https://app.padelero.app/register" className="flex items-center justify-center gap-2 bg-foreground/10 backdrop-blur border border-foreground/20 text-foreground font-semibold text-base px-9 py-4 rounded-2xl hover:bg-foreground/20 transition-all">
               Registrarme
             </Link>
           </div>
 
           {/* Badges de disponibilidad */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 text-xs text-zinc-400">
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 text-xs text-muted-foreground">
             <span className="opacity-70">Disponible en:</span>
-            <a href="https://apps.apple.com/ar/app/padelero/id6768067562" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+            <a href="https://apps.apple.com/ar/app/padelero/id6768067562" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 transition-colors">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
               App Store
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.padelero.app" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+            <a href="https://play.google.com/store/apps/details?id=com.padelero.app" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 transition-colors">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.119 12l2.579-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
               Google Play
             </a>
-            <a href="https://app.padelero.app" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+            <a href="https://app.padelero.app" target="_blank" rel="noopener" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-foreground/10 bg-foreground/5 hover:bg-foreground/10 transition-colors">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               app.padelero.app
             </a>
@@ -314,23 +314,23 @@ export default function LandingPage() {
 
           {/* QR para escanear desde la compu y bajar la app en el celu (solo desktop) */}
           <div className="hidden md:flex flex-col items-center gap-2 mt-7">
-            <div className="bg-white p-3 rounded-2xl shadow-xl shadow-black/40">
+            <div className="bg-white p-3 rounded-2xl shadow-xl shadow-scrim/40">
               <QRCodeSVG value="https://padelero.app/descargar" size={104} bgColor="#ffffff" fgColor="#0A0A0A" level="M" />
             </div>
-            <span className="text-xs text-zinc-400">Escaneá con tu celu para descargar la app</span>
+            <span className="text-xs text-muted-foreground">Escaneá con tu celu para descargar la app</span>
           </div>
         </div>
-        <a href="#stats" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-white/40 hover:text-white/60 transition-colors" style={{ animation:'bounce 2s infinite' }}>
+        <a href="#stats" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-foreground/40 hover:text-foreground/60 transition-colors" style={{ animation:'bounce 2s infinite' }}>
           <span className="text-[10px] uppercase tracking-[.3em]">Descubrí más</span>
           <ChevronDown size={15} />
         </a>
       </section>
 
       {/* ══ STATS — vista aérea barrio porteño ═════════════════════════════ */}
-      <section id="stats" className="relative border-y border-white/5 overflow-hidden">
+      <section id="stats" className="relative border-y border-foreground/5 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={IMG.aerial} alt="Club de pádel visto desde el aire" fill className="object-cover opacity-15" />
-          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-background/75" />
         </div>
         <div ref={statsRef} className="relative max-w-xl mx-auto px-5 py-16 grid grid-cols-2 gap-16">
           <Stat n={realStats?.jugadores ?? 228} label="Jugadores" active={statsOn} />
@@ -343,17 +343,17 @@ export default function LandingPage() {
         {/* Imagen de fondo suave */}
         <div className="absolute inset-0">
           <Image src={IMG.lifestyle} alt="Jugadores argentinos" fill className="object-cover opacity-10" />
-          <div className="absolute inset-0 bg-black/90" />
+          <div className="absolute inset-0 bg-background/90" />
         </div>
         <div className="relative max-w-6xl mx-auto px-5">
           <Reveal>
             <div className="text-center mb-14">
-              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">Para jugadores</div>
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">Para jugadores</div>
               <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
                 Todo lo que necesitás
-                <span style={{ background:'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}> para jugar más</span>
+                <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}> para jugar más</span>
               </h2>
-              <p className="text-zinc-400 text-lg max-w-lg mx-auto">Sin llamadas, sin esperas. Tu cancha a un mensaje de distancia.</p>
+              <p className="text-muted-foreground text-lg max-w-lg mx-auto">Sin llamadas, sin esperas. Tu cancha a un mensaje de distancia.</p>
             </div>
           </Reveal>
 
@@ -362,10 +362,10 @@ export default function LandingPage() {
             <Reveal from="left">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
                 <Image src={IMG.lifestyle} alt="Amigos jugando pádel en Argentina" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur border border-white/10 rounded-xl px-4 py-2">
-                  <div className="text-[#C8F542] font-black text-lg">30 seg</div>
-                  <div className="text-zinc-400 text-xs">para reservar tu cancha</div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 bg-background/60 backdrop-blur border border-foreground/10 rounded-xl px-4 py-2">
+                  <div className="text-primary font-black text-lg">30 seg</div>
+                  <div className="text-muted-foreground text-xs">para reservar tu cancha</div>
                 </div>
               </div>
             </Reveal>
@@ -385,21 +385,21 @@ export default function LandingPage() {
 
       {/* ══ MATCH — conocé jugadores en canchas abiertas ════════════════════ */}
       <section id="match" className="relative py-28 overflow-hidden">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[420px] h-[420px] rounded-full blur-[140px] pointer-events-none" style={{ background: 'rgba(200,245,66,0.12)' }} />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[420px] h-[420px] rounded-full blur-[140px] pointer-events-none" style={{ background: 'hsl(var(--primary) / 0.12)' }} />
         <div className="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-10 items-center relative">
           <Reveal>
-            <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">
               🔥 Nuevo · Match
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white leading-[1.05] mb-4">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-[1.05] mb-4">
               El pádel ya no es{' '}
-              <span style={{ background: 'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              <span style={{ background: 'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 solo pádel
               </span>
             </h2>
-            <p className="text-zinc-400 text-lg leading-relaxed mb-6">
-              Sumate a una <strong className="text-white">cancha abierta</strong>, jugá, y conocé a la
-              gente que va. Deslizá, dale like y si hay <strong className="text-white">match</strong>… ya
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+              Sumate a una <strong className="text-foreground">cancha abierta</strong>, jugá, y conocé a la
+              gente que va. Deslizá, dale like y si hay <strong className="text-foreground">match</strong>… ya
               tienen con quién jugar (y lo que pinte 😏).
             </p>
             <div className="flex flex-wrap gap-2.5 mb-6">
@@ -413,27 +413,27 @@ export default function LandingPage() {
                 </span>
               ))}
             </div>
-            <p className="text-zinc-500 text-sm font-medium">Solo +18 · Solo en canchas abiertas</p>
+            <p className="text-muted-foreground/70 text-sm font-medium">Solo +18 · Solo en canchas abiertas</p>
           </Reveal>
 
           <Reveal from="right">
-            <div className="relative rounded-[28px] overflow-hidden border border-[#C8F542]/20 shadow-2xl shadow-black/60 max-w-sm mx-auto">
+            <div className="relative rounded-[28px] overflow-hidden border border-primary/20 shadow-2xl shadow-scrim/60 max-w-sm mx-auto">
               <Image src="/landing/match-social.jpg" alt="Match en canchas abiertas de Padelero" width={864} height={1080} className="w-full h-auto" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[28px] pointer-events-none" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-foreground/10 rounded-[28px] pointer-events-none" />
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* ══ CÓMO FUNCIONA — 3 pasos ═════════════════════════════════════════ */}
-      <section className="py-20 bg-zinc-950/80 px-5">
+      <section className="py-20 bg-background/80 px-5">
         <div className="max-w-5xl mx-auto">
           <Reveal><div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Reservar es así de fácil</h2>
-            <p className="text-zinc-400">Tres pasos y estás en la cancha</p>
+            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">Reservar es así de fácil</h2>
+            <p className="text-muted-foreground">Tres pasos y estás en la cancha</p>
           </div></Reveal>
           <div className="grid md:grid-cols-3 gap-5 relative">
-            <div className="hidden md:block absolute top-10 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-gradient-to-r from-transparent via-[#C8F542]/25 to-transparent" />
+            <div className="hidden md:block absolute top-10 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
             {[
               { n:'01', icon:Smartphone,   t:'Abrí Padelero',    d:'Desde padelero.app o directo por WhatsApp. Sin descargar nada. Listo en 30 segundos.' },
               { n:'02', icon:Calendar,     t:'Elegí tu horario', d:'Mirá disponibilidad en tiempo real y elegí el turno que te queda bien.' },
@@ -441,12 +441,12 @@ export default function LandingPage() {
             ].map((s,i)=>(
               <Reveal key={i} delay={i*100}>
                 <div className="flex flex-col items-center text-center p-6">
-                  <div className="relative w-18 h-18 rounded-full border-2 border-zinc-700 bg-zinc-900 flex items-center justify-center mb-5 w-20 h-20">
-                    <s.icon className="w-7 h-7 text-[#C8F542]" />
-                    <span className="absolute -top-1.5 -right-1.5 bg-[#C8F542] text-black text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
+                  <div className="relative w-18 h-18 rounded-full border-2 border-border-strong bg-card flex items-center justify-center mb-5 w-20 h-20">
+                    <s.icon className="w-7 h-7 text-primary" />
+                    <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
                   </div>
-                  <h3 className="text-white font-bold text-lg mb-2">{s.t}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{s.d}</p>
+                  <h3 className="text-foreground font-bold text-lg mb-2">{s.t}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -459,21 +459,21 @@ export default function LandingPage() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <Reveal from="left">
             <div>
-              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">Agente WhatsApp con IA</div>
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">Agente WhatsApp con IA</div>
               <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
                 Reservás sin <br />
-                <span style={{ background:'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>salir de WhatsApp</span>
+                <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>salir de WhatsApp</span>
               </h2>
-              <p className="text-zinc-400 text-lg mb-8 leading-relaxed">Mandá un mensaje a cualquier hora. En segundos tenés tu turno confirmado, cancelado o consultado. Sin hablar con nadie.</p>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">Mandá un mensaje a cualquier hora. En segundos tenés tu turno confirmado, cancelado o consultado. Sin hablar con nadie.</p>
               <div className="space-y-3 mb-8">
                 {['Reserva y cancelación instantánea','Consulta horarios disponibles','Ver tus turnos activos','Disponible las 24 hs, los 7 días'].map(t=>(
                   <div key={t} className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8F542] flex-shrink-0" />
-                    <span className="text-zinc-300 text-sm">{t}</span>
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span className="text-foreground-subtle text-sm">{t}</span>
                   </div>
                 ))}
               </div>
-              <Link href="https://app.padelero.app/register" className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-bold px-7 py-3.5 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-lg shadow-[#C8F542]/20">
+              <Link href="https://app.padelero.app/register" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-7 py-3.5 rounded-xl hover:bg-primary-hover transition-all hover:scale-105 shadow-lg shadow-primary/20">
                 Probalo gratis <ArrowRight size={15} />
               </Link>
             </div>
@@ -486,19 +486,19 @@ export default function LandingPage() {
       <section id="clubes" className="relative py-28 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={IMG.clubInt} alt="Club de pádel galpón porteño" fill className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/60" />
         </div>
         <div className="relative max-w-6xl mx-auto px-5">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <Reveal from="left">
               <div>
-                <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1 text-white text-xs font-bold uppercase tracking-widest mb-5">Para clubes</div>
-                <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+                <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/15 rounded-full px-4 py-1 text-foreground text-xs font-bold uppercase tracking-widest mb-5">Para clubes</div>
+                <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
                   Digitalizá tu club. <br />
-                  <span style={{ background:'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>En 24 horas.</span>
+                  <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>En 24 horas.</span>
                 </h2>
-                <p className="text-zinc-300 text-lg mb-8 leading-relaxed">Dejá de gestionar todo por WhatsApp. Padelero administra tu agenda, jugadores y torneos en un solo lugar.</p>
+                <p className="text-foreground-subtle text-lg mb-8 leading-relaxed">Dejá de gestionar todo por WhatsApp. Padelero administra tu agenda, jugadores y torneos en un solo lugar.</p>
                 <div className="space-y-3 mb-8">
                   {[
                     { icon:Calendar,     t:'Agenda automática',        d:'Canchas, horarios y precios configurados una vez.' },
@@ -507,23 +507,23 @@ export default function LandingPage() {
                     { icon:BarChart3,    t:'Métricas en tiempo real',   d:'Ocupación, ingresos y jugadores activos.' },
                   ].map((f,i)=>(
                     <Reveal key={f.t} delay={i*70}>
-                      <div className="flex gap-3 p-3.5 bg-white/5 backdrop-blur border border-white/10 rounded-xl hover:bg-white/10 hover:border-[#C8F542]/30 transition-all">
-                        <div className="w-8 h-8 bg-[#C8F542]/15 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <f.icon className="w-4 h-4 text-[#C8F542]" />
+                      <div className="flex gap-3 p-3.5 bg-foreground/5 backdrop-blur border border-foreground/10 rounded-xl hover:bg-foreground/10 hover:border-primary/30 transition-all">
+                        <div className="w-8 h-8 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <f.icon className="w-4 h-4 text-primary" />
                         </div>
                         <div>
-                          <div className="text-white font-bold text-sm">{f.t}</div>
-                          <div className="text-zinc-400 text-xs mt-0.5">{f.d}</div>
+                          <div className="text-foreground font-bold text-sm">{f.t}</div>
+                          <div className="text-muted-foreground text-xs mt-0.5">{f.d}</div>
                         </div>
                       </div>
                     </Reveal>
                   ))}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-7 py-3.5 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-xl shadow-[#C8F542]/20">
+                  <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-primary text-primary-foreground font-black px-7 py-3.5 rounded-xl hover:bg-primary-hover transition-all hover:scale-105 shadow-xl shadow-primary/20">
                     <WhatsAppIcon className="w-4 h-4" /> Escribinos por WhatsApp <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                   </a>
-                  <Link href="/clubes" className="inline-flex items-center gap-2 border border-zinc-600 text-white font-semibold px-7 py-3.5 rounded-xl hover:border-[#C8F542]/50 hover:bg-white/5 transition-all">
+                  <Link href="/clubes" className="inline-flex items-center gap-2 border border-border-strong text-foreground font-semibold px-7 py-3.5 rounded-xl hover:border-primary/50 hover:bg-foreground/5 transition-all">
                     <Building2 size={15} /> Ver todo para clubes
                   </Link>
                 </div>
@@ -537,10 +537,10 @@ export default function LandingPage() {
                   { v:'+40%',l:'más reservas',        s:'Promedio en clubes digitalizados' },
                   { v:'∞',   l:'torneos posibles',    s:'Brackets automáticos' },
                 ].map(s=>(
-                  <div key={s.l} className="bg-black/60 backdrop-blur border border-white/10 rounded-2xl p-4 text-center hover:border-[#C8F542]/30 transition-colors">
-                    <div className="text-[#C8F542] font-black text-2xl mb-0.5">{s.v}</div>
-                    <div className="text-white text-xs font-bold leading-tight">{s.l}</div>
-                    <div className="text-zinc-500 text-[9px] mt-1">{s.s}</div>
+                  <div key={s.l} className="bg-background/60 backdrop-blur border border-foreground/10 rounded-2xl p-4 text-center hover:border-primary/30 transition-colors">
+                    <div className="text-primary font-black text-2xl mb-0.5">{s.v}</div>
+                    <div className="text-foreground text-xs font-bold leading-tight">{s.l}</div>
+                    <div className="text-muted-foreground/70 text-[9px] mt-1">{s.s}</div>
                   </div>
                 ))}
               </div>
@@ -550,25 +550,25 @@ export default function LandingPage() {
       </section>
 
       {/* ══ TORNEOS + CLUBES — teasers a /torneos y /clubes ═══════════════════ */}
-      <section className="py-10 px-5 bg-zinc-950">
+      <section className="py-10 px-5 bg-background">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <Link href="/torneos" className="group relative rounded-3xl overflow-hidden flex flex-col md:flex-row items-center gap-0 hover:scale-[1.01] transition-transform duration-300 block">
               {/* Imagen izquierda */}
               <div className="relative w-full md:w-[420px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0">
                 <Image src="/landing/torneo-accion.png" alt="Sistema de torneos Padelero" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900 hidden md:block" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900 md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card md:hidden" />
               </div>
               {/* Contenido derecho */}
-              <div className="flex-1 bg-zinc-900 border border-zinc-800 group-hover:border-[#C8F542]/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
-                <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">
+              <div className="flex-1 bg-card border border-border group-hover:border-primary/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
+                <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">
                   <Trophy className="w-3 h-3" /> Sistema de Torneos
                 </div>
-                <h2 className="text-2xl md:text-3xl font-black text-white mb-3 leading-tight">
+                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3 leading-tight">
                   Ranking, circuitos anuales<br />y categorías reales
                 </h2>
-                <p className="text-zinc-400 mb-6 leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm md:text-base">
                   Inscribite por categoría, acumulá puntos en cada torneo, seguí tu posición en el ranking y ascendé de categoría cuando lo merecés.
                 </p>
                 <div className="grid grid-cols-2 gap-2 mb-7">
@@ -578,13 +578,13 @@ export default function LandingPage() {
                     { v: '2', l: 'Formatos' },
                     { v: '∞', l: 'Circuitos' },
                   ].map(({ v, l }) => (
-                    <div key={l} className="bg-black/40 rounded-xl p-3 text-center border border-white/5">
-                      <p className="text-lg font-black text-[#C8F542]">{v}</p>
-                      <p className="text-[10px] text-zinc-500">{l}</p>
+                    <div key={l} className="bg-background/40 rounded-xl p-3 text-center border border-foreground/5">
+                      <p className="text-lg font-black text-primary">{v}</p>
+                      <p className="text-[10px] text-muted-foreground/70">{l}</p>
                     </div>
                   ))}
                 </div>
-                <div className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-6 py-3 rounded-xl group-hover:bg-[#d4ff4a] transition-colors">
+                <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-black px-6 py-3 rounded-xl group-hover:bg-primary-hover transition-colors">
                   Ver sistema de torneos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -596,17 +596,17 @@ export default function LandingPage() {
             <Link href="/clubes" className="group relative rounded-3xl overflow-hidden flex flex-col md:flex-row items-center gap-0 hover:scale-[1.01] transition-transform duration-300 block mt-5">
               <div className="relative w-full md:w-[420px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0">
                 <Image src="/landing/club-lleno.jpg" alt="Plataforma para clubes de pádel" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900 hidden md:block" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900 md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card hidden md:block" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card md:hidden" />
               </div>
-              <div className="flex-1 bg-zinc-900 border border-zinc-800 group-hover:border-[#C8F542]/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
-                <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-5">
+              <div className="flex-1 bg-card border border-border group-hover:border-primary/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
+                <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">
                   <Building2 className="w-3 h-3" /> Para Clubes
                 </div>
-                <h2 className="text-2xl md:text-3xl font-black text-white mb-3 leading-tight">
+                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3 leading-tight">
                   Más reservas. IA en WhatsApp.<br />Torneos y más.
                 </h2>
-                <p className="text-zinc-400 mb-6 leading-relaxed text-sm md:text-base">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm md:text-base">
                   Agente WhatsApp IA que gestiona reservas solo, torneos sin Excel, rankings que retienen jugadores y métricas de tu negocio en tiempo real.
                 </p>
                 <div className="grid grid-cols-2 gap-2 mb-7">
@@ -616,13 +616,13 @@ export default function LandingPage() {
                     { v: '24/7', l: 'bot activo' },
                     { v: '24 hs', l: 'para empezar' },
                   ].map(({ v, l }) => (
-                    <div key={l} className="bg-black/40 rounded-xl p-3 text-center border border-white/5">
-                      <p className="text-lg font-black text-[#C8F542]">{v}</p>
-                      <p className="text-[10px] text-zinc-500">{l}</p>
+                    <div key={l} className="bg-background/40 rounded-xl p-3 text-center border border-foreground/5">
+                      <p className="text-lg font-black text-primary">{v}</p>
+                      <p className="text-[10px] text-muted-foreground/70">{l}</p>
                     </div>
                   ))}
                 </div>
-                <div className="inline-flex items-center gap-2 bg-[#C8F542] text-black font-black px-6 py-3 rounded-xl group-hover:bg-[#d4ff4a] transition-colors">
+                <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-black px-6 py-3 rounded-xl group-hover:bg-primary-hover transition-colors">
                   Ver plataforma para clubes <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -635,17 +635,17 @@ export default function LandingPage() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={IMG.rooftop} alt="Cancha de pádel en rooftop Buenos Aires" fill className="object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
         </div>
         <div className="relative max-w-5xl mx-auto px-5 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1 text-white text-xs font-bold uppercase tracking-widest mb-6">Buenos Aires · Córdoba · Rosario</div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">
+            <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/15 rounded-full px-4 py-1 text-foreground text-xs font-bold uppercase tracking-widest mb-6">Buenos Aires · Córdoba · Rosario</div>
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-5 leading-tight">
               Padelero está donde<br />
-              <span style={{ background:'linear-gradient(135deg,#C8F542,#7ec800)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>vos jugás</span>
+              <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>vos jugás</span>
             </h2>
-            <p className="text-zinc-300 text-lg max-w-xl mx-auto mb-10">Desde una cancha en el conurbano hasta un rooftop en Palermo. La plataforma que conecta a todos los jugadores de Argentina.</p>
-            <Link href="https://app.padelero.app/clubes" className="inline-flex items-center gap-2 border border-white/30 bg-white/5 backdrop-blur text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/15 transition-all">
+            <p className="text-foreground-subtle text-lg max-w-xl mx-auto mb-10">Desde una cancha en el conurbano hasta un rooftop en Palermo. La plataforma que conecta a todos los jugadores de Argentina.</p>
+            <Link href="https://app.padelero.app/clubes" className="inline-flex items-center gap-2 border border-foreground/30 bg-foreground/5 backdrop-blur text-foreground font-semibold px-8 py-3.5 rounded-xl hover:bg-foreground/15 transition-all">
               Ver todos los clubes <ArrowRight size={16} />
             </Link>
           </Reveal>
@@ -653,11 +653,11 @@ export default function LandingPage() {
       </section>
 
       {/* ══ FUNCIONES — grid ════════════════════════════════════════════════════ */}
-      <section id="funciones" className="py-20 px-5 bg-zinc-950">
+      <section id="funciones" className="py-20 px-5 bg-background">
         <div className="max-w-5xl mx-auto">
           <Reveal><div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Todo incluido</h2>
-            <p className="text-zinc-400">Una sola plataforma para jugadores y clubes</p>
+            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">Todo incluido</h2>
+            <p className="text-muted-foreground">Una sola plataforma para jugadores y clubes</p>
           </div></Reveal>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
@@ -672,9 +672,9 @@ export default function LandingPage() {
               { icon:Star,         l:'Reseñas de jugadores' },
             ].map((f,i)=>(
               <Reveal key={f.l} delay={i*40}>
-                <div className="flex items-center gap-3 p-4 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-zinc-600 hover:bg-zinc-800/70 transition-all">
-                  <f.icon className="w-4 h-4 text-[#C8F542] flex-shrink-0" />
-                  <span className="text-zinc-300 text-sm font-medium">{f.l}</span>
+                <div className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl hover:border-border-strong hover:bg-surface-2/70 transition-all">
+                  <f.icon className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span className="text-foreground-subtle text-sm font-medium">{f.l}</span>
                 </div>
               </Reveal>
             ))}
@@ -686,12 +686,12 @@ export default function LandingPage() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={IMG.night} alt="Cancha de pádel de noche en Argentina" fill className="object-cover opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/80" />
         </div>
         <div className="relative max-w-6xl mx-auto px-5">
           <Reveal><div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">A cualquier hora, en cualquier cancha</h2>
-            <p className="text-zinc-400 max-w-lg mx-auto">El agente de Padelero responde de noche, de madrugada o un domingo a las 7. Tu cancha no espera.</p>
+            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">A cualquier hora, en cualquier cancha</h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">El agente de Padelero responde de noche, de madrugada o un domingo a las 7. Tu cancha no espera.</p>
           </div></Reveal>
           <div className="grid md:grid-cols-3 gap-5">
             {[
@@ -700,12 +700,12 @@ export default function LandingPage() {
               { name:'Lucía R.',   role:'Jugadora · Rosario',       text:'La función de buscar partidos es genial. Encontré gente de mi nivel para días que antes me quedaba sin rival.' },
             ].map((t,i)=>(
               <Reveal key={t.name} delay={i*80}>
-                <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all h-full flex flex-col">
-                  <div className="flex gap-0.5 mb-4">{[1,2,3,4,5].map(j=><Star key={j} size={12} className="fill-[#C8F542] text-[#C8F542]" />)}</div>
-                  <p className="text-zinc-300 text-sm leading-relaxed flex-1 mb-5">&quot;{t.text}&quot;</p>
+                <div className="bg-foreground/5 backdrop-blur border border-foreground/10 rounded-2xl p-6 hover:border-foreground/20 transition-all h-full flex flex-col">
+                  <div className="flex gap-0.5 mb-4">{[1,2,3,4,5].map(j=><Star key={j} size={12} className="fill-primary text-primary" />)}</div>
+                  <p className="text-foreground-subtle text-sm leading-relaxed flex-1 mb-5">&quot;{t.text}&quot;</p>
                   <div>
-                    <div className="text-white font-semibold text-sm">{t.name}</div>
-                    <div className="text-zinc-500 text-xs mt-0.5">{t.role}</div>
+                    <div className="text-foreground font-semibold text-sm">{t.name}</div>
+                    <div className="text-muted-foreground/70 text-xs mt-0.5">{t.role}</div>
                   </div>
                 </div>
               </Reveal>
@@ -718,54 +718,54 @@ export default function LandingPage() {
       <section className="relative py-36 overflow-hidden">
         <div className="absolute inset-0">
           <Image src={IMG.asado} alt="Pádel y asado argentino" fill className="object-cover opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#C8F542]/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/8 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative max-w-2xl mx-auto px-5 text-center">
           <Reveal>
             <div>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[.92] tracking-tight">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-[.92] tracking-tight">
                 Empezá a jugar <br />
-                <span style={{ background:'linear-gradient(135deg,#C8F542,#7ec800,#C8F542)', backgroundSize:'200% auto', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', animation:'shimmer 4s linear infinite' }}>hoy mismo</span>
+                <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)),hsl(var(--primary)))', backgroundSize:'200% auto', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', animation:'shimmer 4s linear infinite' }}>hoy mismo</span>
               </h2>
-              <p className="text-zinc-400 text-lg md:text-xl mb-10">Gratis para jugadores. Sin tarjeta de crédito.</p>
+              <p className="text-muted-foreground text-lg md:text-xl mb-10">Gratis para jugadores. Sin tarjeta de crédito.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-[#C8F542] text-black font-black text-lg px-10 py-4 rounded-2xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-2xl shadow-[#C8F542]/25">
+                <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-primary text-primary-foreground font-black text-lg px-10 py-4 rounded-2xl hover:bg-primary-hover transition-all hover:scale-105 shadow-2xl shadow-primary/25">
                   Crear cuenta gratis <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 border border-zinc-600 text-white font-semibold text-lg px-10 py-4 rounded-2xl hover:border-zinc-400 hover:bg-white/5 transition-all">
+                <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 border border-border-strong text-foreground font-semibold text-lg px-10 py-4 rounded-2xl hover:border-muted-foreground hover:bg-foreground/5 transition-all">
                   <WhatsAppIcon className="w-5 h-5" /> Contacto para clubes
                 </a>
               </div>
-              <p className="text-zinc-600 text-sm mt-8">🇦🇷 Ya somos {realStats ? `${realStats.jugadores}+` : '228+'} jugadores. Unite a la comunidad.</p>
+              <p className="text-muted-foreground/50 text-sm mt-8">🇦🇷 Ya somos {realStats ? `${realStats.jugadores}+` : '228+'} jugadores. Unite a la comunidad.</p>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* ══ MEJORAS: AI agents + comunidad ═══════════════════════════════════ */}
-      <section className="relative py-24 overflow-hidden border-t border-white/5" style={{ background: 'linear-gradient(180deg, #0a0a0a 0%, #050505 100%)' }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 30% 50%, rgba(200,245,66,0.06), transparent 60%)' }} />
+      <section className="relative py-24 overflow-hidden border-t border-foreground/5" style={{ background: 'linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--surface-sunken)) 100%)' }}>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 30% 50%, hsl(var(--primary) / 0.06), transparent 60%)' }} />
         <div className="relative max-w-5xl mx-auto px-5">
           <Reveal>
             <div className="text-center">
               <div
-                className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/30 rounded-full px-4 py-1.5 mb-6 text-xs font-bold uppercase tracking-widest"
-                style={{ color: '#C8F542' }}
+                className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-1.5 mb-6 text-xs font-bold uppercase tracking-widest"
+                style={{ color: 'hsl(var(--primary))' }}
               >
                 <span>🤖</span> Hecho con IA · construilo con nosotros
               </div>
               <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-6">
-                Padelero lo <span style={{ color: '#C8F542' }}>programan agentes de IA</span>.
+                Padelero lo <span style={{ color: 'hsl(var(--primary))' }}>programan agentes de IA</span>.
                 <br />
                 Vos elegís qué hacemos primero.
               </h2>
-              <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-3">
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mb-3">
                 Cada mejora que mandás entra al backlog, los agentes la
                 analizan y la pueden codear sin pasar por una agencia ni
                 esperar tres meses.
               </p>
-              <p className="text-zinc-500 text-sm leading-relaxed max-w-2xl mx-auto">
+              <p className="text-muted-foreground/70 text-sm leading-relaxed max-w-2xl mx-auto">
                 Mientras más votos junta una idea, más rápido la atacamos. Sin
                 betas pagas, sin promesas vacías — vos ves el roadmap entero
                 en tiempo real.
@@ -775,19 +775,19 @@ export default function LandingPage() {
                 <Link
                   href="/mejoras"
                   className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-base font-bold transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  style={{ background: '#C8F542', color: '#0a0a0a' }}
+                  style={{ background: 'hsl(var(--primary))', color: 'hsl(var(--primary-foreground))' }}
                 >
                   Ver el roadmap →
                 </Link>
                 <Link
                   href="/mejoras"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium text-white border border-white/15 hover:border-white/30 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium text-foreground border border-foreground/15 hover:border-foreground/30 transition-colors"
                 >
                   Sumá tu idea
                 </Link>
               </div>
 
-              <p className="text-zinc-600 text-xs mt-6">
+              <p className="text-muted-foreground/50 text-xs mt-6">
                 Abierto a jugadores, clubes, dueños, profes — cualquiera puede
                 proponer.
               </p>
@@ -797,40 +797,40 @@ export default function LandingPage() {
       </section>
 
       {/* ══ FOOTER ═══════════════════════════════════════════════════════════ */}
-      <footer className="border-t border-zinc-800 bg-zinc-950 px-5 py-14">
+      <footer className="border-t border-border bg-background px-5 py-14">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 mb-4">
                 <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
-                <span className="font-black text-white text-lg">Padelero</span>
+                <span className="font-black text-foreground text-lg">Padelero</span>
               </div>
-              <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">La plataforma de pádel en Argentina. Reservas, torneos y comunidad en un solo lugar.</p>
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">La plataforma de pádel en Argentina. Reservas, torneos y comunidad en un solo lugar.</p>
             </div>
             <div>
-              <h4 className="text-white font-bold text-xs mb-4 uppercase tracking-[.15em]">Producto</h4>
-              <div className="space-y-2.5 text-sm text-zinc-400">
-                <Link href="https://app.padelero.app/register" className="block hover:text-white transition-colors">Crear cuenta</Link>
-                <Link href="https://app.padelero.app/login"    className="block hover:text-white transition-colors">Ingresar</Link>
-                <a href="#funciones"   className="block hover:text-white transition-colors">Funciones</a>
-                <a href="#clubes"      className="block hover:text-white transition-colors">Para clubes</a>
-                <Link href="/torneos" className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Sistema de Torneos</Link>
-                <Link href="/clubes"  className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Para Clubes</Link>
-                <Link href="/mejoras" className="block hover:text-white transition-colors" style={{ color: '#C8F542' }}>Roadmap · Sugerí mejoras</Link>
+              <h4 className="text-foreground font-bold text-xs mb-4 uppercase tracking-[.15em]">Producto</h4>
+              <div className="space-y-2.5 text-sm text-muted-foreground">
+                <Link href="https://app.padelero.app/register" className="block hover:text-foreground transition-colors">Crear cuenta</Link>
+                <Link href="https://app.padelero.app/login"    className="block hover:text-foreground transition-colors">Ingresar</Link>
+                <a href="#funciones"   className="block hover:text-foreground transition-colors">Funciones</a>
+                <a href="#clubes"      className="block hover:text-foreground transition-colors">Para clubes</a>
+                <Link href="/torneos" className="block hover:text-foreground transition-colors" style={{ color: 'hsl(var(--primary))' }}>Sistema de Torneos</Link>
+                <Link href="/clubes"  className="block hover:text-foreground transition-colors" style={{ color: 'hsl(var(--primary))' }}>Para Clubes</Link>
+                <Link href="/mejoras" className="block hover:text-foreground transition-colors" style={{ color: 'hsl(var(--primary))' }}>Roadmap · Sugerí mejoras</Link>
               </div>
             </div>
             <div>
-              <h4 className="text-white font-bold text-xs mb-4 uppercase tracking-[.15em]">Contacto</h4>
-              <div className="space-y-2.5 text-sm text-zinc-400">
-                <a href="mailto:padeleroapp@gmail.com" className="block hover:text-white transition-colors">padeleroapp@gmail.com</a>
-                <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">WhatsApp +54 9 2324 549325</a>
-                <a href="https://instagram.com/padeleroapp" className="block hover:text-white transition-colors">@padeleroapp</a>
+              <h4 className="text-foreground font-bold text-xs mb-4 uppercase tracking-[.15em]">Contacto</h4>
+              <div className="space-y-2.5 text-sm text-muted-foreground">
+                <a href="mailto:padeleroapp@gmail.com" className="block hover:text-foreground transition-colors">padeleroapp@gmail.com</a>
+                <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="block hover:text-foreground transition-colors">WhatsApp +54 9 2324 549325</a>
+                <a href="https://instagram.com/padeleroapp" className="block hover:text-foreground transition-colors">@padeleroapp</a>
               </div>
             </div>
           </div>
-          <div className="border-t border-zinc-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
+          <div className="border-t border-border/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground/50">
             <span>© 2026 Padelero. Todos los derechos reservados.</span>
-            <div className="flex gap-6"><a href="#" className="hover:text-zinc-400 transition-colors">Términos</a><a href="#" className="hover:text-zinc-400 transition-colors">Privacidad</a></div>
+            <div className="flex gap-6"><a href="#" className="hover:text-muted-foreground transition-colors">Términos</a><a href="#" className="hover:text-muted-foreground transition-colors">Privacidad</a></div>
           </div>
         </div>
       </footer>

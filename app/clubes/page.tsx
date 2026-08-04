@@ -13,7 +13,7 @@ import {
 /* ─── constants ──────────────────────────────────────────────────── */
 
 const APP = 'https://app.padelero.app';
-const GREEN = '#C8F542';
+const GREEN = 'hsl(var(--primary))';
 const WA = 'https://wa.me/5492324549325';
 
 /* ─── hooks ──────────────────────────────────────────────────────── */
@@ -81,12 +81,12 @@ function WAppClub() {
   const { ref, inView } = useInView(0.2);
   return (
     <div ref={ref} className="relative mx-auto max-w-[280px]">
-      <div className="bg-[#111] rounded-[2.5rem] border-2 border-zinc-700 p-2.5 shadow-2xl">
+      <div className="bg-[#111] rounded-[2.5rem] border-2 border-border-strong p-2.5 shadow-2xl">
         <div className="rounded-[2rem] overflow-hidden bg-[#0e1117]">
           <div className="bg-[#075E54] px-4 py-2.5 flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-black font-black text-xs" style={{ background: GREEN }}>A</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-primary-foreground font-black text-xs" style={{ background: GREEN }}>A</div>
             <div>
-              <div className="text-white text-xs font-bold">Club Arena</div>
+              <div className="text-foreground text-xs font-bold">Club Arena</div>
               <div className="text-green-400 text-[10px]">Bot de reservas · en línea</div>
             </div>
           </div>
@@ -101,18 +101,18 @@ function WAppClub() {
                   transition: `opacity .4s ease ${m.d}ms, transform .4s ease ${m.d}ms`,
                 }}
               >
-                <div className={`max-w-[88%] rounded-xl px-2.5 py-1.5 text-[10px] whitespace-pre-line leading-relaxed ${m.u === 'user' ? 'bg-[#005C4B] text-white rounded-tr-none' : 'bg-[#202C33] text-zinc-100 rounded-tl-none'}`}>
+                <div className={`max-w-[88%] rounded-xl px-2.5 py-1.5 text-[10px] whitespace-pre-line leading-relaxed ${m.u === 'user' ? 'bg-[#005C4B] text-foreground rounded-tr-none' : 'bg-[#202C33] text-foreground rounded-tl-none'}`}>
                   {m.t}
                 </div>
               </div>
             ))}
           </div>
-          <div className="bg-[#1a1a1a] px-3 py-2 border-t border-white/5">
-            <div className="bg-[#2a2a2a] rounded-full px-3 py-1.5 text-zinc-600 text-[10px]">Escribí un mensaje...</div>
+          <div className="bg-[#1a1a1a] px-3 py-2 border-t border-foreground/5">
+            <div className="bg-[#2a2a2a] rounded-full px-3 py-1.5 text-muted-foreground/50 text-[10px]">Escribí un mensaje...</div>
           </div>
         </div>
       </div>
-      <div className="absolute -inset-6 rounded-full blur-3xl -z-10 pointer-events-none" style={{ background: `${GREEN}08` }} />
+      <div className="absolute -inset-6 rounded-full blur-3xl -z-10 pointer-events-none" style={{ background: `hsl(var(--primary) / 0.031)` }} />
     </div>
   );
 }
@@ -138,14 +138,14 @@ function Nav() {
   ];
 
   return (
-    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc ? 'bg-black/85 backdrop-blur-2xl border-b border-white/5 shadow-lg shadow-black/40' : ''}`}>
+    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc ? 'bg-background/85 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-scrim/40' : ''}`}>
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
-            <span className="font-black text-white text-lg tracking-tight">Padelero</span>
+            <span className="font-black text-foreground text-lg tracking-tight">Padelero</span>
           </Link>
-          <span className="hidden md:block text-zinc-600">/</span>
+          <span className="hidden md:block text-muted-foreground/50">/</span>
           <span className="hidden md:flex items-center gap-1.5 text-sm font-bold" style={{ color: GREEN }}>
             <Building2 size={13} /> Para Clubes
           </span>
@@ -153,7 +153,7 @@ function Nav() {
 
         <div className="hidden md:flex items-center gap-6">
           {links.map(([h, l]) => (
-            <a key={h} href={h} className="text-zinc-400 hover:text-white text-sm font-medium transition-colors">{l}</a>
+            <a key={h} href={h} className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">{l}</a>
           ))}
         </div>
 
@@ -163,21 +163,21 @@ function Nav() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-sm font-bold px-5 py-2 rounded-xl transition-all hover:scale-105 shadow-md"
-            style={{ background: GREEN, color: '#000', boxShadow: `0 4px 20px ${GREEN}33` }}
+            style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 4px 20px hsl(var(--primary) / 0.2)` }}
           >
             <WhatsAppIcon className="w-3.5 h-3.5" /> Hablar con nosotros
           </a>
         </div>
 
-        <button className="md:hidden text-zinc-300 hover:text-white" onClick={() => setOpen(v => !v)}>
+        <button className="md:hidden text-foreground-subtle hover:text-foreground" onClick={() => setOpen(v => !v)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-foreground/5 px-5 pb-5">
           {links.map(([h, l]) => (
-            <a key={h} href={h} onClick={() => setOpen(false)} className="block text-zinc-200 py-2.5 border-b border-zinc-800/60 last:border-0 font-medium">{l}</a>
+            <a key={h} href={h} onClick={() => setOpen(false)} className="block text-foreground-subtle py-2.5 border-b border-border/60 last:border-0 font-medium">{l}</a>
           ))}
           <div className="pt-3">
             <a
@@ -185,7 +185,7 @@ function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-black"
-              style={{ background: GREEN, color: '#000' }}
+              style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
             >
               <WhatsAppIcon className="w-4 h-4" /> Hablar con nosotros
             </a>
@@ -203,13 +203,13 @@ function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-16 overflow-hidden">
       <div className="absolute inset-0">
         <Image src="/landing/club-lleno.jpg" alt="Club de pádel lleno de noche" fill className="object-cover object-center" priority />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30" />
       </div>
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full blur-[120px] pointer-events-none" style={{ background: `${GREEN}15` }} />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full blur-[120px] pointer-events-none" style={{ background: `hsl(var(--primary) / 0.082)` }} />
 
       <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-8 text-sm font-semibold text-white">
+        <div className="inline-flex items-center gap-2 bg-foreground/10 backdrop-blur border border-foreground/20 rounded-full px-4 py-1.5 mb-8 text-sm font-semibold text-foreground">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: GREEN }} />
             <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: GREEN }} />
@@ -218,11 +218,11 @@ function Hero() {
         </div>
 
         <h1 className="text-5xl sm:text-7xl lg:text-[82px] font-black leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
-          <span className="block text-white">Más reservas.</span>
+          <span className="block text-foreground">Más reservas.</span>
           <span
             className="block mt-1"
             style={{
-              background: `linear-gradient(135deg,${GREEN} 0%,#7ec800 60%,${GREEN} 100%)`,
+              background: `linear-gradient(135deg,${GREEN} 0%,hsl(var(--brand-deep)) 60%,${GREEN} 100%)`,
               backgroundSize: '200% auto',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -231,10 +231,10 @@ function Hero() {
           >
             IA en WhatsApp.
           </span>
-          <span className="block text-white">Torneos y más.</span>
+          <span className="block text-foreground">Torneos y más.</span>
         </h1>
 
-        <p className="text-base md:text-xl text-zinc-300 max-w-xl mx-auto mb-10 leading-relaxed">
+        <p className="text-base md:text-xl text-foreground-subtle max-w-xl mx-auto mb-10 leading-relaxed">
           Agente de IA en WhatsApp que atiende tus reservas las 24 hs, torneos sin Excel, rankings que retienen jugadores y métricas de tu negocio. Todo en una sola plataforma.
         </p>
 
@@ -244,13 +244,13 @@ function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center justify-center gap-2 font-black text-base px-9 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
-            style={{ background: GREEN, color: '#000', boxShadow: `0 8px 40px ${GREEN}40` }}
+            style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
           >
             <WhatsAppIcon className="w-5 h-5" /> Consultá por tu club <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#agenda"
-            className="flex items-center justify-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-base px-9 py-4 rounded-2xl hover:bg-white/20 transition-all"
+            className="flex items-center justify-center gap-2 bg-foreground/10 backdrop-blur border border-foreground/20 text-foreground font-semibold text-base px-9 py-4 rounded-2xl hover:bg-foreground/20 transition-all"
           >
             Ver funciones
           </a>
@@ -262,16 +262,16 @@ function Hero() {
             { v: '+40%', l: 'más reservas', icon: TrendingUp },
             { v: '∞', l: 'Torneos y rankings', icon: Trophy },
           ].map(({ v, l, icon: Icon }) => (
-            <div key={l} className="bg-black/50 backdrop-blur border border-white/10 rounded-2xl p-3.5 text-center">
+            <div key={l} className="bg-background/50 backdrop-blur border border-foreground/10 rounded-2xl p-3.5 text-center">
               <Icon className="mx-auto mb-1.5" size={15} style={{ color: GREEN }} />
-              <p className="text-xl font-black text-white">{v}</p>
-              <p className="text-[10px] text-zinc-500 mt-0.5">{l}</p>
+              <p className="text-xl font-black text-foreground">{v}</p>
+              <p className="text-[10px] text-muted-foreground/70 mt-0.5">{l}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <a href="#dolor" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-white/40 hover:text-white/60 transition-colors" style={{ animation: 'bounce 2s infinite' }}>
+      <a href="#dolor" className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1 text-foreground/40 hover:text-foreground/60 transition-colors" style={{ animation: 'bounce 2s infinite' }}>
         <span className="text-[10px] uppercase tracking-[.3em]">Explorar</span>
         <ChevronDown size={15} />
       </a>
@@ -283,7 +283,7 @@ function Hero() {
 
 function Dolor() {
   return (
-    <section id="dolor" className="py-24 px-5 bg-zinc-950">
+    <section id="dolor" className="py-24 px-5 bg-background">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-14">
@@ -293,10 +293,10 @@ function Dolor() {
             >
               El problema
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
               ¿Te suena familiar?
             </h2>
-            <p className="text-zinc-400 text-lg max-w-lg mx-auto">
+            <p className="text-muted-foreground text-lg max-w-lg mx-auto">
               Así gestionan sus clubes la mayoría. Hay una forma mejor.
             </p>
           </div>
@@ -334,12 +334,12 @@ function Dolor() {
             },
           ].map(({ icon: Icon, title, desc, color, bg }, i) => (
             <Reveal key={title} delay={i * 70}>
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-zinc-600 transition-colors h-full">
+              <div className="bg-card border border-border rounded-3xl p-6 hover:border-border-strong transition-colors h-full">
                 <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4" style={{ background: bg }}>
                   <Icon size={20} style={{ color }} />
                 </div>
-                <h3 className="font-bold text-white mb-2">{title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-foreground mb-2">{title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
               </div>
             </Reveal>
           ))}
@@ -348,12 +348,12 @@ function Dolor() {
         <Reveal>
           <div
             className="rounded-3xl p-8 text-center"
-            style={{ background: `${GREEN}10`, border: `1px solid ${GREEN}30` }}
+            style={{ background: `hsl(var(--primary) / 0.063)`, border: `1px solid hsl(var(--primary) / 0.188)` }}
           >
-            <p className="text-xl md:text-2xl font-black text-white mb-2">
+            <p className="text-xl md:text-2xl font-black text-foreground mb-2">
               Padelero lo resuelve todo. <span style={{ color: GREEN }}>En uno.</span>
             </p>
-            <p className="text-zinc-400">Reservas, torneos, rankings y métricas — en una sola plataforma para tu club.</p>
+            <p className="text-muted-foreground">Reservas, torneos, rankings y métricas — en una sola plataforma para tu club.</p>
           </div>
         </Reveal>
       </div>
@@ -372,17 +372,17 @@ function AgenteWApp() {
             <div>
               <div
                 className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-                style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+                style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
               >
                 Agente WhatsApp con IA
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
                 Tu club atiende solo. <br />
-                <span style={{ background: `linear-gradient(135deg,${GREEN},#7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   Las 24 hs. Los 7 días.
                 </span>
               </h2>
-              <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 El bot de Padelero recibe reservas, consulta disponibilidad y confirma turnos por WhatsApp — sin que vos tengas que levantar el teléfono. Ni de día, ni de noche.
               </p>
               <div className="space-y-3 mb-8">
@@ -395,7 +395,7 @@ function AgenteWApp() {
                 ].map(t => (
                   <div key={t} className="flex items-start gap-3">
                     <CheckCircle2 size={16} style={{ color: GREEN }} className="flex-shrink-0 mt-0.5" />
-                    <span className="text-zinc-300 text-sm leading-relaxed">{t}</span>
+                    <span className="text-foreground-subtle text-sm leading-relaxed">{t}</span>
                   </div>
                 ))}
               </div>
@@ -405,7 +405,7 @@ function AgenteWApp() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-black px-7 py-3.5 rounded-xl transition-all hover:scale-105 shadow-lg"
-                  style={{ background: GREEN, color: '#000', boxShadow: `0 4px 20px ${GREEN}33` }}
+                  style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 4px 20px hsl(var(--primary) / 0.2)` }}
                 >
                   <WhatsAppIcon className="w-4 h-4" /> Quiero esto para mi club
                 </a>
@@ -417,13 +417,13 @@ function AgenteWApp() {
             <div className="space-y-5">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] mb-4">
                 <Image src="/landing/club-wapp-bot.jpg" alt="Reserva de pádel por WhatsApp" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               </div>
-              <div className="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-2xl p-4 max-w-[280px] mx-auto">
-                <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `${GREEN}20` }}>
+              <div className="flex items-center gap-3 bg-card border border-border rounded-2xl p-4 max-w-[280px] mx-auto">
+                <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: `hsl(var(--primary) / 0.125)` }}>
                   <Zap size={14} style={{ color: GREEN }} />
                 </div>
-                <p className="text-xs text-zinc-400"><strong className="text-white">0 mensajes manuales</strong> — el bot manejó esta reserva solo.</p>
+                <p className="text-xs text-muted-foreground"><strong className="text-foreground">0 mensajes manuales</strong> — el bot manejó esta reserva solo.</p>
               </div>
             </div>
           </Reveal>
@@ -437,39 +437,39 @@ function AgenteWApp() {
 
 function Agenda() {
   return (
-    <section id="agenda" className="relative py-24 px-5 bg-zinc-950 overflow-hidden">
+    <section id="agenda" className="relative py-24 px-5 bg-background overflow-hidden">
       <div className="absolute inset-0">
         <Image src="/landing/club-interior.jpg" alt="Interior de club de pádel" fill className="object-cover opacity-8" />
-        <div className="absolute inset-0 bg-black/93" />
+        <div className="absolute inset-0 bg-background/93" />
       </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Mock agenda */}
           <Reveal from="left">
             <div className="space-y-3">
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+              <div className="bg-card border border-border rounded-3xl p-6">
                 <div className="flex items-center justify-between mb-5">
-                  <p className="font-bold text-white">Agenda · Jueves 20 Mar</p>
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `${GREEN}25`, color: GREEN }}>3 canchas</span>
+                  <p className="font-bold text-foreground">Agenda · Jueves 20 Mar</p>
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: `hsl(var(--primary) / 0.145)`, color: GREEN }}>3 canchas</span>
                 </div>
                 <div className="space-y-2.5">
                   {[
                     { hora: '18:00', cancha: 'Cancha 1', jugador: 'Martín G. + 3', estado: 'confirmado', color: GREEN },
-                    { hora: '18:00', cancha: 'Cancha 2', jugador: 'Disponible', estado: 'libre', color: '#27272a' },
+                    { hora: '18:00', cancha: 'Cancha 2', jugador: 'Disponible', estado: 'libre', color: 'hsl(var(--surface-2))' },
                     { hora: '19:30', cancha: 'Cancha 1', jugador: 'Lucas M. + 3', estado: 'confirmado', color: GREEN },
                     { hora: '19:30', cancha: 'Cancha 2', jugador: 'Partido abierto · 2/4', estado: 'parcial', color: '#3b82f6' },
                     { hora: '19:30', cancha: 'Cancha 3', jugador: 'Facundo R. + 3', estado: 'confirmado', color: GREEN },
                     { hora: '21:00', cancha: 'Cancha 1', jugador: 'Turno fijo · Club Palmares', estado: 'fijo', color: '#a78bfa' },
                     { hora: '21:00', cancha: 'Cancha 2', jugador: 'Diego S. + 3', estado: 'confirmado', color: GREEN },
                   ].map(({ hora, cancha, jugador, estado, color }) => (
-                    <div key={`${hora}-${cancha}`} className="flex items-center gap-3 px-3 py-2.5 rounded-xl" style={{ background: '#27272a' }}>
+                    <div key={`${hora}-${cancha}`} className="flex items-center gap-3 px-3 py-2.5 rounded-xl" style={{ background: 'hsl(var(--surface-2))' }}>
                       <div className="flex-shrink-0 text-right w-10">
-                        <p className="text-xs font-bold text-white">{hora}</p>
+                        <p className="text-xs font-bold text-foreground">{hora}</p>
                       </div>
-                      <div className="w-px h-6 bg-zinc-700 flex-shrink-0" />
+                      <div className="w-px h-6 bg-surface-3 flex-shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <p className="text-[10px] font-bold text-zinc-500 uppercase">{cancha}</p>
-                        <p className="text-xs font-medium text-zinc-200 truncate">{jugador}</p>
+                        <p className="text-[10px] font-bold text-muted-foreground/70 uppercase">{cancha}</p>
+                        <p className="text-xs font-medium text-foreground-subtle truncate">{jugador}</p>
                       </div>
                       <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: color }} />
                     </div>
@@ -482,9 +482,9 @@ function Agenda() {
                   { v: '78%', l: 'Ocupación', c: GREEN },
                   { v: '2', l: 'Turnos fijos', c: '#a78bfa' },
                 ].map(({ v, l, c }) => (
-                  <div key={l} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-3 text-center">
+                  <div key={l} className="bg-card border border-border rounded-2xl p-3 text-center">
                     <p className="text-lg font-black" style={{ color: c }}>{v}</p>
-                    <p className="text-[10px] text-zinc-500 mt-0.5">{l}</p>
+                    <p className="text-[10px] text-muted-foreground/70 mt-0.5">{l}</p>
                   </div>
                 ))}
               </div>
@@ -496,14 +496,14 @@ function Agenda() {
             <div>
               <div
                 className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-                style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+                style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
               >
                 Reservas y Agenda
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
                 Tu agenda, en piloto automático
               </h2>
-              <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 Configurás tus canchas, horarios y precios una sola vez. Padelero hace el resto: gestiona reservas, envía recordatorios y mantiene tu agenda actualizada al segundo.
               </p>
               <div className="space-y-3">
@@ -513,13 +513,13 @@ function Agenda() {
                   { icon: Bell, t: 'Recordatorios automáticos', d: 'El sistema avisa a los jugadores antes de su turno. Sin que hagas nada.' },
                   { icon: Activity, t: 'Disponibilidad en tiempo real', d: 'Todos ven los slots libres al instante. Nadie te llama para preguntar.' },
                 ].map(({ icon: Icon, t, d }) => (
-                  <div key={t} className="flex gap-3 p-3.5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-zinc-600 transition-all">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${GREEN}20` }}>
+                  <div key={t} className="flex gap-3 p-3.5 bg-card border border-border rounded-xl hover:border-border-strong transition-all">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `hsl(var(--primary) / 0.125)` }}>
                       <Icon size={15} style={{ color: GREEN }} />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm">{t}</p>
-                      <p className="text-zinc-400 text-xs mt-0.5">{d}</p>
+                      <p className="text-foreground font-bold text-sm">{t}</p>
+                      <p className="text-muted-foreground text-xs mt-0.5">{d}</p>
                     </div>
                   </div>
                 ))}
@@ -539,22 +539,22 @@ function Partidos() {
     <section id="partidos" className="relative py-24 px-5 overflow-hidden">
       <div className="absolute inset-0">
         <Image src="/landing/partidos-activos.jpg" alt="Partidos activos en club de pádel" fill className="object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/80" />
       </div>
       <div className="relative max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-14">
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-              style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+              style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
             >
               Partidos
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
               Más partidos = <span style={{ color: GREEN }}>más ingresos</span>
             </h2>
-            <p className="text-zinc-400 text-lg max-w-xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               Los jugadores arman sus propios partidos en Padelero. Cada partido organizado es una cancha vendida — sin que vos hagas nada.
             </p>
           </div>
@@ -566,9 +566,9 @@ function Partidos() {
               tipo: 'Partido Abierto',
               icon: Users,
               color: GREEN,
-              bg: `${GREEN}20`,
+              bg: `hsl(var(--primary) / 0.125)`,
               badge: 'Más popular',
-              badgeBg: `${GREEN}25`,
+              badgeBg: `hsl(var(--primary) / 0.145)`,
               badgeColor: GREEN,
               desc: 'Un jugador crea el partido y los restantes se anotan solos desde la app. La cancha se llena sola.',
               detalle: ['Lucía R. · 5ta', 'Juan P. · 5ta', '2 lugares disponibles →'],
@@ -597,18 +597,18 @@ function Partidos() {
             },
           ].map(({ tipo, icon: Icon, color, bg, badge, badgeBg, badgeColor, desc, detalle }, i) => (
             <Reveal key={tipo} delay={i * 80}>
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-7 hover:border-zinc-600 transition-colors h-full flex flex-col">
+              <div className="bg-card border border-border rounded-3xl p-7 hover:border-border-strong transition-colors h-full flex flex-col">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-11 h-11 rounded-2xl flex items-center justify-center" style={{ background: bg }}>
                     <Icon size={20} style={{ color }} />
                   </div>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: badgeBg, color: badgeColor }}>{badge}</span>
                 </div>
-                <h3 className="font-bold text-white text-lg mb-2">{tipo}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">{desc}</p>
-                <div className="space-y-1.5 p-3 rounded-xl bg-black/40 border border-white/5">
+                <h3 className="font-bold text-foreground text-lg mb-2">{tipo}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{desc}</p>
+                <div className="space-y-1.5 p-3 rounded-xl bg-background/40 border border-foreground/5">
                   {detalle.map((d, j) => (
-                    <p key={j} className="text-[11px]" style={{ color: j === detalle.length - 1 ? color : '#d4d4d8' }}>{d}</p>
+                    <p key={j} className="text-[11px]" style={{ color: j === detalle.length - 1 ? color : 'hsl(var(--foreground-subtle))' }}>{d}</p>
                   ))}
                 </div>
               </div>
@@ -617,7 +617,7 @@ function Partidos() {
         </div>
 
         <Reveal>
-          <div className="rounded-3xl p-8 text-center" style={{ background: `${GREEN}10`, border: `1px solid ${GREEN}28` }}>
+          <div className="rounded-3xl p-8 text-center" style={{ background: `hsl(var(--primary) / 0.063)`, border: `1px solid hsl(var(--primary) / 0.157)` }}>
             <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto">
               {[
                 { v: '+40%', l: 'más reservas en clubes digitalizados' },
@@ -626,7 +626,7 @@ function Partidos() {
               ].map(({ v, l }) => (
                 <div key={v} className="text-center">
                   <p className="text-3xl font-black" style={{ color: GREEN }}>{v}</p>
-                  <p className="text-zinc-400 text-xs mt-1">{l}</p>
+                  <p className="text-muted-foreground text-xs mt-1">{l}</p>
                 </div>
               ))}
             </div>
@@ -641,7 +641,7 @@ function Partidos() {
 
 function TorneosTeaser() {
   return (
-    <section id="torneos" className="py-10 px-5 bg-zinc-950">
+    <section id="torneos" className="py-10 px-5 bg-background">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <Link
@@ -650,20 +650,20 @@ function TorneosTeaser() {
           >
             <div className="relative w-full md:w-[420px] aspect-[16/9] md:aspect-[4/3] flex-shrink-0">
               <Image src="/landing/torneo-accion.png" alt="Sistema de torneos Padelero" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-zinc-900 hidden md:block" />
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900 md:hidden" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card hidden md:block" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card md:hidden" />
             </div>
-            <div className="flex-1 bg-zinc-900 border border-zinc-800 group-hover:border-[#C8F542]/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
+            <div className="flex-1 bg-card border border-border group-hover:border-primary/30 transition-colors md:rounded-r-3xl md:-ml-1 p-8 md:p-10 w-full">
               <div
                 className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-                style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+                style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
               >
                 <Trophy className="w-3 h-3" /> Sistema de Torneos
               </div>
-              <h2 className="text-2xl md:text-3xl font-black text-white mb-3 leading-tight">
+              <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3 leading-tight">
                 Organizá torneos sin<br />Excel ni papel
               </h2>
-              <p className="text-zinc-400 mb-6 leading-relaxed text-sm md:text-base">
+              <p className="text-muted-foreground mb-6 leading-relaxed text-sm md:text-base">
                 Creá torneos, gestioná inscripciones, cargá resultados y observá ascensos — todo desde el panel de organizador. Brackets automáticos, puntos calculados al instante.
               </p>
               <div className="grid grid-cols-2 gap-2 mb-7">
@@ -673,15 +673,15 @@ function TorneosTeaser() {
                   { v: '∞', l: 'Circuitos anuales' },
                   { v: '1 clic', l: 'Para ascender' },
                 ].map(({ v, l }) => (
-                  <div key={l} className="bg-black/40 rounded-xl p-3 text-center border border-white/5">
+                  <div key={l} className="bg-background/40 rounded-xl p-3 text-center border border-foreground/5">
                     <p className="text-lg font-black" style={{ color: GREEN }}>{v}</p>
-                    <p className="text-[10px] text-zinc-500">{l}</p>
+                    <p className="text-[10px] text-muted-foreground/70">{l}</p>
                   </div>
                 ))}
               </div>
               <div
                 className="inline-flex items-center gap-2 font-black px-6 py-3 rounded-xl transition-colors"
-                style={{ background: GREEN, color: '#000' }}
+                style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
               >
                 Ver sistema completo de torneos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -705,10 +705,10 @@ function Ranking() {
   ];
 
   return (
-    <section id="ranking" className="relative py-24 px-5 overflow-hidden bg-zinc-950">
+    <section id="ranking" className="relative py-24 px-5 overflow-hidden bg-background">
       <div className="absolute inset-0">
         <Image src="/landing/club-ranking-board.jpg" alt="Ranking board en club de pádel" fill className="object-cover opacity-10" />
-        <div className="absolute inset-0 bg-black/88" />
+        <div className="absolute inset-0 bg-background/88" />
       </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -717,17 +717,17 @@ function Ranking() {
             <div>
               <div
                 className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-                style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+                style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
               >
                 Rankings
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
                 Tus jugadores compiten. <br />
-                <span style={{ background: `linear-gradient(135deg,${GREEN},#7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   Tu club retiene.
                 </span>
               </h2>
-              <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 El ranking es el motor de retención. Jugadores que siguen su posición vuelven más seguido, participan en más torneos y reservan más canchas.
               </p>
               <div className="space-y-3 mb-8">
@@ -737,13 +737,13 @@ function Ranking() {
                   { icon: Star, t: 'Sistema "Observado"', d: 'Marcás a un jugador como candidato a ascenso. Aparece en su perfil público.' },
                   { icon: Activity, t: 'Actualización automática', d: 'Cada resultado de torneo actualiza los rankings en tiempo real, sin carga manual.' },
                 ].map(({ icon: Icon, t, d }) => (
-                  <div key={t} className="flex gap-3 p-3.5 bg-zinc-900 border border-zinc-800 rounded-xl hover:border-zinc-600 transition-all">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `${GREEN}20` }}>
+                  <div key={t} className="flex gap-3 p-3.5 bg-card border border-border rounded-xl hover:border-border-strong transition-all">
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: `hsl(var(--primary) / 0.125)` }}>
                       <Icon size={15} style={{ color: GREEN }} />
                     </div>
                     <div>
-                      <p className="text-white font-bold text-sm">{t}</p>
-                      <p className="text-zinc-400 text-xs mt-0.5">{d}</p>
+                      <p className="text-foreground font-bold text-sm">{t}</p>
+                      <p className="text-muted-foreground text-xs mt-0.5">{d}</p>
                     </div>
                   </div>
                 ))}
@@ -761,16 +761,16 @@ function Ranking() {
           {/* Mock */}
           <Reveal from="right" delay={100}>
             <div className="space-y-3">
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+              <div className="bg-card border border-border rounded-3xl p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <p className="font-bold text-white">Ranking · 5ta categoría</p>
+                  <p className="font-bold text-foreground">Ranking · 5ta categoría</p>
                 </div>
                 <div className="flex gap-2 mb-5 flex-wrap">
                   {['Club Arena', 'General ARG', '5ta', 'Caballeros'].map((f, i) => (
                     <span
                       key={f}
                       className="text-[11px] font-bold px-3 py-1 rounded-full"
-                      style={i === 0 ? { background: GREEN, color: '#000' } : { background: '#27272a', color: '#71717a' }}
+                      style={i === 0 ? { background: GREEN, color: 'hsl(var(--primary-foreground))' } : { background: 'hsl(var(--surface-2))', color: 'hsl(var(--muted-foreground) / 0.7)' }}
                     >
                       {f}
                     </span>
@@ -778,25 +778,25 @@ function Ranking() {
                 </div>
                 <div className="space-y-3.5">
                   {players.map(({ rank, name, pts, cat, club }) => {
-                    const rankColor = rank === 1 ? '#facc15' : rank === 2 ? '#d1d5db' : rank === 3 ? '#d97706' : '#71717a';
+                    const rankColor = rank === 1 ? '#facc15' : rank === 2 ? '#d1d5db' : rank === 3 ? '#d97706' : 'hsl(var(--muted-foreground) / 0.7)';
                     return (
                       <div key={rank} className="flex items-center gap-3">
                         <div className="relative flex-shrink-0">
-                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black" style={{ background: `${GREEN}20`, color: GREEN }}>
+                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black" style={{ background: `hsl(var(--primary) / 0.125)`, color: GREEN }}>
                             {name.slice(0, 2)}
                           </div>
-                          <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black" style={{ background: rankColor, color: rank <= 2 ? '#000' : '#fff' }}>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black" style={{ background: rankColor, color: rank <= 2 ? 'hsl(var(--background))' : 'hsl(var(--foreground))' }}>
                             {rank}
                           </div>
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <p className="text-sm font-semibold text-white truncate">{name}</p>
+                            <p className="text-sm font-semibold text-foreground truncate">{name}</p>
                             {club && (
-                              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: `${GREEN}25`, color: GREEN }}>tu club</span>
+                              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: `hsl(var(--primary) / 0.145)`, color: GREEN }}>tu club</span>
                             )}
                           </div>
-                          <p className="text-[10px] text-zinc-500">{cat}</p>
+                          <p className="text-[10px] text-muted-foreground/70">{cat}</p>
                         </div>
                         <p className="text-base font-black" style={{ color: GREEN }}>{pts} pts</p>
                       </div>
@@ -806,13 +806,13 @@ function Ranking() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 text-center">
+                <div className="bg-card border border-border rounded-2xl p-4 text-center">
                   <p className="text-2xl font-black" style={{ color: GREEN }}>3/5</p>
-                  <p className="text-xs text-zinc-400 mt-1">jugadores del top 5 son de tu club</p>
+                  <p className="text-xs text-muted-foreground mt-1">jugadores del top 5 son de tu club</p>
                 </div>
-                <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 text-center">
+                <div className="bg-card border border-border rounded-2xl p-4 text-center">
                   <p className="text-2xl font-black text-amber-400">↑ 12%</p>
-                  <p className="text-xs text-zinc-400 mt-1">más reservas por jugadores con ranking</p>
+                  <p className="text-xs text-muted-foreground mt-1">más reservas por jugadores con ranking</p>
                 </div>
               </div>
             </div>
@@ -830,7 +830,7 @@ function Metricas() {
     <section id="metricas" className="relative py-24 px-5 overflow-hidden">
       <div className="absolute inset-0">
         <Image src="/landing/club-admin-dashboard.jpg" alt="Admin revisando métricas del club" fill className="object-cover opacity-12" />
-        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 bg-background/90" />
       </div>
       <div className="relative max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -845,20 +845,20 @@ function Metricas() {
                   { label: 'Jugadores activos', value: '89', sub: '23 reservaron esta semana', color: '#fb923c', icon: Users },
                   { label: 'Reservas hoy', value: '14', sub: '3 pendientes de confirmar', color: '#a78bfa', icon: Calendar },
                 ].map(({ label, value, sub, color, icon: Icon }) => (
-                  <div key={label} className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                  <div key={label} className="bg-card border border-border rounded-2xl p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon size={13} style={{ color }} />
-                      <p className="text-[10px] text-zinc-500 uppercase tracking-wide">{label}</p>
+                      <p className="text-[10px] text-muted-foreground/70 uppercase tracking-wide">{label}</p>
                     </div>
-                    <p className="text-2xl font-black text-white">{value}</p>
+                    <p className="text-2xl font-black text-foreground">{value}</p>
                     <p className="text-[10px] mt-1" style={{ color }}>{sub}</p>
                   </div>
                 ))}
               </div>
 
               {/* Occupancy by time slot */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-5">
-                <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-4">Ocupación por horario · esta semana</p>
+              <div className="bg-card border border-border rounded-3xl p-5">
+                <p className="text-xs font-bold text-muted-foreground/70 uppercase tracking-widest mb-4">Ocupación por horario · esta semana</p>
                 <div className="space-y-2.5">
                   {[
                     { hora: '08:00 — 10:00', pct: 35, label: 'Baja' },
@@ -868,18 +868,18 @@ function Metricas() {
                     { hora: '21:30 — 23:00', pct: 71, label: 'Media-alta' },
                   ].map(({ hora, pct, peak }) => (
                     <div key={hora} className="flex items-center gap-3">
-                      <span className="text-[10px] text-zinc-500 w-28 flex-shrink-0">{hora}</span>
-                      <div className="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <span className="text-[10px] text-muted-foreground/70 w-28 flex-shrink-0">{hora}</span>
+                      <div className="flex-1 h-2 bg-surface-2 rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full transition-all"
-                          style={{ width: `${pct}%`, background: peak ? GREEN : '#52525b' }}
+                          style={{ width: `${pct}%`, background: peak ? GREEN : 'hsl(var(--muted-foreground) / 0.5)' }}
                         />
                       </div>
-                      <span className="text-[10px] font-black w-8 text-right" style={{ color: peak ? GREEN : '#71717a' }}>{pct}%</span>
+                      <span className="text-[10px] font-black w-8 text-right" style={{ color: peak ? GREEN : 'hsl(var(--muted-foreground) / 0.7)' }}>{pct}%</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-[10px] text-zinc-600 mt-3">🔑 Horario 19-21:30 genera el 54% de tus ingresos semanales.</p>
+                <p className="text-[10px] text-muted-foreground/50 mt-3">🔑 Horario 19-21:30 genera el 54% de tus ingresos semanales.</p>
               </div>
             </div>
           </Reveal>
@@ -889,17 +889,17 @@ function Metricas() {
             <div>
               <div
                 className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-                style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+                style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
               >
                 Métricas
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
                 Tomá decisiones con <br />
-                <span style={{ background: `linear-gradient(135deg,${GREEN},#7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   datos reales
                 </span>
               </h2>
-              <p className="text-zinc-400 text-lg mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 ¿Cuál es tu cancha más rentable? ¿Qué horario siempre está lleno? ¿Cuánto facturaste este mes? Padelero te lo muestra en tiempo real, sin planillas.
               </p>
               <div className="space-y-3">
@@ -912,7 +912,7 @@ function Metricas() {
                 ].map(t => (
                   <div key={t} className="flex items-start gap-3">
                     <CheckCircle2 size={16} style={{ color: GREEN }} className="flex-shrink-0 mt-0.5" />
-                    <span className="text-zinc-300 text-sm leading-relaxed">{t}</span>
+                    <span className="text-foreground-subtle text-sm leading-relaxed">{t}</span>
                   </div>
                 ))}
               </div>
@@ -928,27 +928,27 @@ function Metricas() {
 
 function Onboarding() {
   return (
-    <section className="py-24 px-5 bg-zinc-950">
+    <section className="py-24 px-5 bg-background">
       <div className="max-w-5xl mx-auto">
         <Reveal>
           <div className="text-center mb-14">
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-              style={{ background: `${GREEN}18`, border: `1px solid ${GREEN}35`, color: GREEN }}
+              style={{ background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.208)`, color: GREEN }}
             >
               Cómo empezar
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
               Arrancás en <span style={{ color: GREEN }}>24 horas</span>
             </h2>
-            <p className="text-zinc-400 text-lg max-w-lg mx-auto">
+            <p className="text-muted-foreground text-lg max-w-lg mx-auto">
               Sin curva de aprendizaje. Sin IT. Sin meses de implementación.
             </p>
           </div>
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-5 relative">
-          <div className="hidden md:block absolute top-10 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px" style={{ background: `${GREEN}20` }} />
+          <div className="hidden md:block absolute top-10 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px" style={{ background: `hsl(var(--primary) / 0.125)` }} />
           {[
             {
               n: '01',
@@ -956,7 +956,7 @@ function Onboarding() {
               title: 'Nos contactás',
               desc: 'Mandanos un WhatsApp. En menos de 24 hs configuramos tus canchas, horarios y precios en la plataforma.',
               color: GREEN,
-              bg: `${GREEN}20`,
+              bg: `hsl(var(--primary) / 0.125)`,
             },
             {
               n: '02',
@@ -984,13 +984,13 @@ function Onboarding() {
                   <Icon size={28} style={{ color }} />
                   <span
                     className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black"
-                    style={{ background: color, color: '#000' }}
+                    style={{ background: color, color: 'hsl(var(--background))' }}
                   >
                     {n}
                   </span>
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-foreground font-bold text-lg mb-2">{title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
               </div>
             </Reveal>
           ))}
@@ -1003,7 +1003,7 @@ function Onboarding() {
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 font-black text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
-              style={{ background: GREEN, color: '#000', boxShadow: `0 8px 40px ${GREEN}40` }}
+              style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
             >
               <WhatsAppIcon className="w-5 h-5" /> Empezar ahora <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
@@ -1021,22 +1021,22 @@ function CTA() {
     <section className="relative py-36 px-5 overflow-hidden">
       <div className="absolute inset-0">
         <Image src="/landing/club-exterior-golden.jpg" alt="Club de pádel al atardecer en Buenos Aires" fill className="object-cover object-center opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/65 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/65 to-background" />
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-[100px] pointer-events-none" style={{ background: `${GREEN}10` }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-[100px] pointer-events-none" style={{ background: `hsl(var(--primary) / 0.063)` }} />
       <div className="relative max-w-2xl mx-auto text-center">
         <Reveal>
           <div>
-            <div className="w-16 h-16 rounded-3xl flex items-center justify-center mx-auto mb-6" style={{ background: `${GREEN}25`, border: `1px solid ${GREEN}40` }}>
+            <div className="w-16 h-16 rounded-3xl flex items-center justify-center mx-auto mb-6" style={{ background: `hsl(var(--primary) / 0.145)`, border: `1px solid hsl(var(--primary) / 0.251)` }}>
               <Building2 size={28} style={{ color: GREEN }} />
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[.92] tracking-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-[.92] tracking-tight">
               Tu club merece <br />
-              <span style={{ background: `linear-gradient(135deg,${GREEN},#7ec800,${GREEN})`, backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'shimmer 4s linear infinite' }}>
+              <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)),${GREEN})`, backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'shimmer 4s linear infinite' }}>
                 la mejor herramienta
               </span>
             </h2>
-            <p className="text-zinc-400 text-lg md:text-xl mb-10">
+            <p className="text-muted-foreground text-lg md:text-xl mb-10">
               Sin costo de implementación. Sin permanencia. En 24 hs estás operando.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1045,18 +1045,18 @@ function CTA() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-center gap-2 font-black text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
-                style={{ background: GREEN, color: '#000', boxShadow: `0 8px 40px ${GREEN}40` }}
+                style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
               >
                 <WhatsAppIcon className="w-5 h-5" /> Consultá por tu club <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <Link
                 href={APP}
-                className="flex items-center justify-center gap-2 border border-zinc-600 text-white font-semibold text-lg px-10 py-4 rounded-2xl hover:border-zinc-400 hover:bg-white/5 transition-all"
+                className="flex items-center justify-center gap-2 border border-border-strong text-foreground font-semibold text-lg px-10 py-4 rounded-2xl hover:border-muted-foreground hover:bg-foreground/5 transition-all"
               >
                 Ver la plataforma
               </Link>
             </div>
-            <p className="text-zinc-600 text-sm mt-8">🇦🇷 Ya son más de 12 clubes usando Padelero en Argentina.</p>
+            <p className="text-muted-foreground/50 text-sm mt-8">🇦🇷 Ya son más de 12 clubes usando Padelero en Argentina.</p>
           </div>
         </Reveal>
       </div>
@@ -1068,42 +1068,42 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-zinc-800 bg-zinc-950 px-5 py-14">
+    <footer className="border-t border-border bg-background px-5 py-14">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
-              <span className="font-black text-white text-lg">Padelero</span>
+              <span className="font-black text-foreground text-lg">Padelero</span>
             </div>
-            <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">La plataforma de pádel en Argentina. Reservas, torneos, rankings y comunidad en un solo lugar.</p>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">La plataforma de pádel en Argentina. Reservas, torneos, rankings y comunidad en un solo lugar.</p>
           </div>
           <div>
-            <h4 className="text-white font-bold text-xs mb-4 uppercase tracking-[.15em]">Para Clubes</h4>
-            <div className="space-y-2.5 text-sm text-zinc-400">
-              <a href="#agenda" className="block hover:text-white transition-colors">Reservas y Agenda</a>
-              <a href="#partidos" className="block hover:text-white transition-colors">Partidos</a>
-              <a href="#torneos" className="block hover:text-white transition-colors">Torneos</a>
-              <a href="#ranking" className="block hover:text-white transition-colors">Rankings</a>
-              <a href="#metricas" className="block hover:text-white transition-colors">Métricas</a>
+            <h4 className="text-foreground font-bold text-xs mb-4 uppercase tracking-[.15em]">Para Clubes</h4>
+            <div className="space-y-2.5 text-sm text-muted-foreground">
+              <a href="#agenda" className="block hover:text-foreground transition-colors">Reservas y Agenda</a>
+              <a href="#partidos" className="block hover:text-foreground transition-colors">Partidos</a>
+              <a href="#torneos" className="block hover:text-foreground transition-colors">Torneos</a>
+              <a href="#ranking" className="block hover:text-foreground transition-colors">Rankings</a>
+              <a href="#metricas" className="block hover:text-foreground transition-colors">Métricas</a>
             </div>
           </div>
           <div>
-            <h4 className="text-white font-bold text-xs mb-4 uppercase tracking-[.15em]">Contacto</h4>
-            <div className="space-y-2.5 text-sm text-zinc-400">
-              <a href={WA} target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">WhatsApp +54 9 2324 549325</a>
-              <a href="mailto:padeleroapp@gmail.com" className="block hover:text-white transition-colors">padeleroapp@gmail.com</a>
-              <a href="https://instagram.com/padeleroapp" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">@padeleroapp</a>
-              <Link href="/" className="block hover:text-white transition-colors">Inicio</Link>
-              <Link href="/torneos" className="block hover:text-white transition-colors" style={{ color: GREEN }}>Sistema de Torneos</Link>
+            <h4 className="text-foreground font-bold text-xs mb-4 uppercase tracking-[.15em]">Contacto</h4>
+            <div className="space-y-2.5 text-sm text-muted-foreground">
+              <a href={WA} target="_blank" rel="noopener noreferrer" className="block hover:text-foreground transition-colors">WhatsApp +54 9 2324 549325</a>
+              <a href="mailto:padeleroapp@gmail.com" className="block hover:text-foreground transition-colors">padeleroapp@gmail.com</a>
+              <a href="https://instagram.com/padeleroapp" target="_blank" rel="noopener noreferrer" className="block hover:text-foreground transition-colors">@padeleroapp</a>
+              <Link href="/" className="block hover:text-foreground transition-colors">Inicio</Link>
+              <Link href="/torneos" className="block hover:text-foreground transition-colors" style={{ color: GREEN }}>Sistema de Torneos</Link>
             </div>
           </div>
         </div>
-        <div className="border-t border-zinc-800/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
+        <div className="border-t border-border/60 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground/50">
           <span>© 2026 Padelero. Todos los derechos reservados.</span>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-zinc-400 transition-colors">Términos</a>
-            <a href="#" className="hover:text-zinc-400 transition-colors">Privacidad</a>
+            <a href="#" className="hover:text-muted-foreground transition-colors">Términos</a>
+            <a href="#" className="hover:text-muted-foreground transition-colors">Privacidad</a>
           </div>
         </div>
       </div>
@@ -1115,7 +1115,7 @@ function Footer() {
 
 export default function ClubesLanding() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav />
       <Hero />
       <Dolor />

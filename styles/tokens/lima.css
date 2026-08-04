@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════════════════
+   TEMA "LIMA" — identidad ACTUAL de producción (lima #C8F542 sobre negro)
+   Este archivo es el DEFAULT. No cambia el aspecto de producción.
+   ───────────────────────────────────────────────────────────────────
+
+   ⚠ FORMATO DE TOKEN — CRÍTICO E INNEGOCIABLE
+
+   Todos los tokens de color se escriben como TRIPLETE HSL SIN COMAS
+   ("75 90% 61%") y se consumen SIEMPRE como hsl(var(--x)).
+
+   Motivo verificado: Tailwind 3.4.1 solo inyecta el modificador de
+   opacidad (bg-primary/10, border-border/50, text-foreground/70) si
+   puede parsear la notación funcional hsl() o rgb() y reescribirla
+   como hsl(var(--x) / <alpha-value>). Si usás oklch, hex crudo o
+   color-mix, las 1.429 clases con opacidad del repo DESAPARECEN
+   silenciosamente: sin error de build, sin warning, sin nada.
+   No cambies el formato. Si necesitás un color nuevo, sumá un
+   triplete más; nunca un hex ni un oklch.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Superficies ──────────────────────────────────────────────── */
+  /* Background — true deep black */
+  --background: 0 0% 4%;
+  --foreground: 0 0% 97%;
+  /* NUEVO — hoy el repo lo simula con text-foreground/70 y text-white/70 */
+  --foreground-subtle: 0 0% 78%;
+
+  /* Cards — elevated surface with more contrast */
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 97%;
+
+  /* Popover — slightly elevated from card */
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 97%;
+
+  /* NUEVOS — escala de elevación que hoy se simula a mano con
+     bg-white/5, bg-white/[0.06], bg-secondary, etc. */
+  --surface-2: 0 0% 15%;
+  --surface-3: 0 0% 20%;
+  --surface-sunken: 0 0% 2%;
+
+  /* NUEVO — velo de modales. Hoy hardcodeado como rgba(0,0,0,0.6)
+     en .modal-backdrop. Se consume con alfa: hsl(var(--scrim) / 0.6) */
+  --scrim: 0 0% 0%;
+
+  /* ── Marca ────────────────────────────────────────────────────── */
+  /* Primary — Lime Green #C8F542 */
+  --primary: 75 90% 61%;
+  --primary-foreground: 0 0% 0%;
+  --primary-text: 75 90% 61%;
+  /* NUEVO — hoy se simula con hover:bg-primary/90 */
+  --primary-hover: 75 90% 68%;
+
+  /* NUEVO — segundo color de marca.
+     En lima NO existe el latón: el único "segundo color" real del sistema
+     actual es el teal #2FD6C4 con el que cierra el gradiente firma.
+     Se registra ese para que el token exista en ambos temas. */
+  --accent-premium: 173.5 67.1% 51.2%; /* #2FD6C4 exacto */
+  --accent-premium-foreground: 174 60% 8%;
+
+  /* NUEVO — color del glow. Hoy hardcodeado 8 veces como
+     rgba(200,245,66,·) en globals.css y tailwind.config.ts */
+  --glow: 75 90% 61%;
+
+  /* NUEVO — gradiente firma (#C8F542 → #7EE0A0 → #2FD6C4).
+     Hoy repetido literal en .text-gradient-lime, bg-lime-gradient,
+     bg-lime-soft y .border-gradient-lime */
+  --brand-from: 75 90% 61%;        /* #C8F542 */
+  --brand-via: 140.8 61.2% 68.6%;  /* #7EE0A0 */
+  --brand-to: 173.5 67.1% 51.2%;   /* #2FD6C4 */
+
+  /* ── Neutros de UI ────────────────────────────────────────────── */
+  /* Secondary — visible dark surface */
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 97%;
+
+  /* Muted — better contrast for readability */
+  --muted: 0 0% 13%;
+  --muted-foreground: 220 8% 62%;
+
+  /* Accent */
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 97%;
+
+  /* ── Semánticos ───────────────────────────────────────────────── */
+  /* Destructive */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Success.
+     ⚠ DEUDA HEREDADA: en lima --success es EXACTAMENTE igual a --primary.
+     "Pagado / confirmado" y "botón de marca" son el mismo color.
+     NO se toca acá porque esto es producción; en pino ya está separado. */
+  --success: 75 90% 61%;
+  --success-foreground: 0 0% 0%;
+
+  /* Warning */
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 0%;
+
+  /* NUEVO — informativo. Hoy no existe: los estados neutros/informativos
+     se pintan con azules sueltos (blue-400/blue-500) en los componentes. */
+  --info: 205 85% 60%;
+  --info-foreground: 205 60% 10%;
+
+  /* ── Bordes ───────────────────────────────────────────────────── */
+  --border: 0 0% 18%;
+  /* NUEVO — hoy se simula con border-white/20 o border-white/[0.14] */
+  --border-strong: 0 0% 28%;
+  --input: 0 0% 13%;
+  --ring: 75 90% 61%;
+
+  --radius: 0.875rem;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   CONTRASTE WCAG 2.1 — tema lima (calculado, no estimado)
+
+   foreground / background        #F7F7F7 sobre #0A0A0A   18.48:1  AA / AAA
+   primary-fg / primary           #000000 sobre #C8F542   16.60:1  AA / AAA
+   muted-foreground / background  #969CA6 sobre #0A0A0A    7.17:1  AA / AAA
+   foreground / card              #F7F7F7 sobre #171717   16.73:1  AA / AAA
+   primary(texto) / background    #C8F542 sobre #0A0A0A   15.65:1  AA / AAA
+   muted-foreground / card        #969CA6 sobre #171717    6.49:1  AA
+   foreground-subtle / background #C7C7C7 sobre #0A0A0A   11.71:1  AA / AAA
+   warning-fg / warning           #000000 sobre #F59F0A    9.85:1  AA / AAA
+
+   ⚠ ADVERTENCIA (deuda preexistente de producción, NO la corrijo acá
+   porque cambiaría el aspecto actual):
+   destructive-fg / destructive   #FFFFFF sobre #EF4343    3.78:1
+     → pasa AA solo para texto grande (≥18.66px bold o ≥24px). El texto
+       normal en blanco sobre el rojo destructivo NO llega a 4.5:1.
+       Para arreglarlo habría que bajar --destructive a 0 84% 46%
+       (ratio 5.22:1). Queda anotado, sin aplicar.
+   ─────────────────────────────────────────────────────────────────── */

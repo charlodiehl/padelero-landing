@@ -27,7 +27,7 @@ interface TicketFormProps {
   onSuccess?: (ticketId: string) => void;
 }
 
-const PRIMARY = '#C8F542';
+const PRIMARY = 'hsl(var(--primary))';
 const TIPOS: ReadonlyArray<{
   value: 'idea' | 'bug';
   label: string;
@@ -174,11 +174,11 @@ export function TicketForm({
       <div
         style={{
           background: '#0f0f0f',
-          border: '1px solid rgba(200,245,66,0.3)',
+          border: '1px solid hsl(var(--primary) / 0.3)',
           borderRadius: 16,
           padding: 28,
           textAlign: 'center',
-          color: '#fff',
+          color: 'hsl(var(--foreground))',
           fontFamily: 'system-ui, -apple-system, sans-serif',
         }}
       >
@@ -191,7 +191,7 @@ export function TicketForm({
         <div
           style={{
             fontSize: 13,
-            color: 'rgba(255,255,255,0.6)',
+            color: 'hsl(var(--foreground) / 0.6)',
             marginBottom: 14,
           }}
         >
@@ -201,7 +201,7 @@ export function TicketForm({
           style={{
             fontSize: 11,
             fontFamily: 'monospace',
-            color: 'rgba(255,255,255,0.35)',
+            color: 'hsl(var(--foreground) / 0.35)',
           }}
         >
           #{submitted.id.slice(0, 8)}
@@ -215,10 +215,10 @@ export function TicketForm({
       onSubmit={handleSubmit}
       style={{
         background: '#0f0f0f',
-        border: '1px solid rgba(255,255,255,0.08)',
+        border: '1px solid hsl(var(--foreground) / 0.08)',
         borderRadius: 16,
         padding: 18,
-        color: '#fff',
+        color: 'hsl(var(--foreground))',
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
@@ -232,12 +232,12 @@ export function TicketForm({
               type="button"
               onClick={() => setTipo(t.value)}
               style={{
-                background: selected ? `${PRIMARY}15` : 'rgba(255,255,255,0.03)',
-                border: `1px solid ${selected ? PRIMARY : 'rgba(255,255,255,0.08)'}`,
+                background: selected ? `${PRIMARY}15` : 'hsl(var(--foreground) / 0.03)',
+                border: `1px solid ${selected ? PRIMARY : 'hsl(var(--foreground) / 0.08)'}`,
                 borderRadius: 12,
                 padding: 14,
                 textAlign: 'left',
-                color: selected ? PRIMARY : 'rgba(255,255,255,0.85)',
+                color: selected ? PRIMARY : 'hsl(var(--foreground) / 0.85)',
                 cursor: 'pointer',
                 transition: 'all 0.15s',
               }}
@@ -249,7 +249,7 @@ export function TicketForm({
               <div
                 style={{
                   fontSize: 11,
-                  color: 'rgba(255,255,255,0.5)',
+                  color: 'hsl(var(--foreground) / 0.5)',
                   marginTop: 2,
                 }}
               >
@@ -278,7 +278,7 @@ export function TicketForm({
       {/* Descripción */}
       <label style={labelStyle}>
         Descripción
-        <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400, marginLeft: 6 }}>
+        <span style={{ color: 'hsl(var(--foreground) / 0.4)', fontWeight: 400, marginLeft: 6 }}>
           (qué pasó / qué querés)
         </span>
       </label>
@@ -298,7 +298,7 @@ export function TicketForm({
         style={{
           fontSize: 10,
           textAlign: 'right',
-          color: 'rgba(255,255,255,0.3)',
+          color: 'hsl(var(--foreground) / 0.3)',
           marginTop: -6,
           marginBottom: 4,
         }}
@@ -309,7 +309,7 @@ export function TicketForm({
       {/* Imagen */}
       <label style={labelStyle}>
         Imagen
-        <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400, marginLeft: 6 }}>
+        <span style={{ color: 'hsl(var(--foreground) / 0.4)', fontWeight: 400, marginLeft: 6 }}>
           (opcional, hasta 5MB)
         </span>
       </label>
@@ -326,11 +326,11 @@ export function TicketForm({
           onClick={pickFile}
           style={{
             width: '100%',
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px dashed rgba(255,255,255,0.15)',
+            background: 'hsl(var(--foreground) / 0.03)',
+            border: '1px dashed hsl(var(--foreground) / 0.15)',
             borderRadius: 12,
             padding: '18px 14px',
-            color: 'rgba(255,255,255,0.55)',
+            color: 'hsl(var(--foreground) / 0.55)',
             fontSize: 13,
             cursor: 'pointer',
             display: 'flex',
@@ -348,8 +348,8 @@ export function TicketForm({
             position: 'relative',
             borderRadius: 12,
             overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.1)',
-            background: '#000',
+            border: '1px solid hsl(var(--foreground) / 0.1)',
+            background: 'hsl(var(--background))',
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -374,8 +374,8 @@ export function TicketForm({
               position: 'absolute',
               top: 8,
               right: 8,
-              background: 'rgba(0,0,0,0.7)',
-              color: '#fff',
+              background: 'hsl(var(--scrim) / 0.7)',
+              color: 'hsl(var(--foreground))',
               border: 'none',
               borderRadius: '50%',
               width: 28,
@@ -400,15 +400,15 @@ export function TicketForm({
               marginTop: 14,
               padding: 12,
               borderRadius: 10,
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.06)',
+              background: 'hsl(var(--foreground) / 0.03)',
+              border: '1px solid hsl(var(--foreground) / 0.06)',
             }}
           >
             <div
               style={{
                 fontSize: 11,
                 fontWeight: 700,
-                color: 'rgba(255,255,255,0.65)',
+                color: 'hsl(var(--foreground) / 0.65)',
                 marginBottom: 8,
                 textTransform: 'uppercase',
                 letterSpacing: 1,
@@ -459,7 +459,7 @@ export function TicketForm({
           width: '100%',
           marginTop: 14,
           background: PRIMARY,
-          color: '#0a0a0a',
+          color: 'hsl(var(--primary-foreground))',
           border: 'none',
           padding: '12px 16px',
           borderRadius: 12,
@@ -479,7 +479,7 @@ const labelStyle: React.CSSProperties = {
   display: 'block',
   fontSize: 11,
   fontWeight: 700,
-  color: 'rgba(255,255,255,0.7)',
+  color: 'hsl(var(--foreground) / 0.7)',
   textTransform: 'uppercase',
   letterSpacing: 1,
   marginTop: 16,
@@ -490,9 +490,9 @@ const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '11px 12px',
   borderRadius: 10,
-  border: '1px solid rgba(255,255,255,0.1)',
+  border: '1px solid hsl(var(--foreground) / 0.1)',
   background: '#1a1a1a',
-  color: '#fff',
+  color: 'hsl(var(--foreground))',
   fontSize: 14,
   outline: 'none',
   fontFamily: 'inherit',

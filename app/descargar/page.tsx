@@ -35,26 +35,26 @@ export default function Descargar() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-white flex flex-col items-center justify-center px-6 text-center">
+    <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-6 text-center">
       <Image src="/logo.png" alt="Padelero" width={56} height={56} className="rounded-2xl mb-5" />
       <h1 className="text-2xl font-black tracking-tight">Descargá Padelero</h1>
-      <p className="text-zinc-400 mt-2 text-sm">
+      <p className="text-muted-foreground mt-2 text-sm">
         {redirigiendo ? 'Te estamos llevando a tu tienda…' : 'Elegí dónde querés bajar la app:'}
       </p>
 
       <div className="flex flex-col gap-3 mt-7 w-full max-w-xs">
-        <a href={IOS} className="flex items-center justify-center gap-2 bg-white text-black font-bold py-3.5 rounded-2xl hover:bg-zinc-200 transition-colors">
+        <a href={IOS} className="flex items-center justify-center gap-2 bg-foreground text-background font-bold py-3.5 rounded-2xl hover:bg-foreground-subtle transition-colors">
           App Store
         </a>
-        <a href={ANDROID} className="flex items-center justify-center gap-2 bg-white text-black font-bold py-3.5 rounded-2xl hover:bg-zinc-200 transition-colors">
+        <a href={ANDROID} className="flex items-center justify-center gap-2 bg-foreground text-background font-bold py-3.5 rounded-2xl hover:bg-foreground-subtle transition-colors">
           Google Play
         </a>
-        <a href={WEB} className="flex items-center justify-center gap-2 border border-white/20 bg-white/5 text-white font-semibold py-3.5 rounded-2xl hover:bg-white/10 transition-colors">
+        <a href={WEB} className="flex items-center justify-center gap-2 border border-foreground/20 bg-foreground/5 text-foreground font-semibold py-3.5 rounded-2xl hover:bg-foreground/10 transition-colors">
           Usar en la web
         </a>
       </div>
 
-      <p className="text-zinc-600 text-xs mt-8">padelero.app</p>
+      <p className="text-muted-foreground/50 text-xs mt-8">padelero.app</p>
     </main>
   );
 }

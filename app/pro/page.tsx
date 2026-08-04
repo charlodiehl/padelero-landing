@@ -17,7 +17,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-const GREEN = '#C8F542';
+const GREEN = 'hsl(var(--primary))';
 const WA = 'https://wa.me/5492324549325';
 const WA_MSG = (clubName = '') =>
   `${WA}?text=${encodeURIComponent(
@@ -67,45 +67,45 @@ function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
   return (
-    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc ? 'bg-black/85 backdrop-blur-2xl border-b border-white/5 shadow-lg shadow-black/40' : ''}`}>
+    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc ? 'bg-background/85 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-scrim/40' : ''}`}>
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Image src="/logo.png" alt="Padelero" width={28} height={28} className="rounded-md" />
-          <span className="font-black text-white text-xl tracking-tight">Padelero</span>
+          <span className="font-black text-foreground text-xl tracking-tight">Padelero</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
-          <Link href="/torneos" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10" style={{ color: GREEN }}>
+          <Link href="/torneos" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10" style={{ color: GREEN }}>
             <Trophy size={14} /> Torneos
           </Link>
-          <Link href="/clubes" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10" style={{ color: GREEN }}>
+          <Link href="/clubes" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10" style={{ color: GREEN }}>
             <Home size={14} /> Clubes
           </Link>
-          <Link href="/pro" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg bg-[#C8F542]/10" style={{ color: GREEN }}>
+          <Link href="/pro" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg bg-primary/10" style={{ color: GREEN }}>
             <Sparkles size={14} /> Padelero Pro
           </Link>
-          <Link href="/nosotros" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-[#C8F542]/10" style={{ color: GREEN }}>
+          <Link href="/nosotros" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10" style={{ color: GREEN }}>
             <Users size={14} /> Nosotros
           </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <Link href="https://app.padelero.app/login" className="text-zinc-400 hover:text-white text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
-          <Link href="https://app.padelero.app/register" className="bg-[#C8F542] text-black text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#d4ff4a] transition-all hover:scale-105 shadow-md shadow-[#C8F542]/20">
+          <Link href="https://app.padelero.app/login" className="text-muted-foreground hover:text-foreground text-sm px-3 py-1.5 transition-colors">Ingresar</Link>
+          <Link href="https://app.padelero.app/register" className="bg-primary text-primary-foreground text-sm font-bold px-5 py-2 rounded-xl hover:bg-primary-hover transition-all hover:scale-105 shadow-md shadow-primary/20">
             Empezar gratis
           </Link>
         </div>
-        <button className="md:hidden text-zinc-300 hover:text-white" onClick={() => setOpen(v => !v)}>
+        <button className="md:hidden text-foreground-subtle hover:text-foreground" onClick={() => setOpen(v => !v)}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/5 px-5 pb-5">
-          <Link href="/torneos" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>🏆 Torneos</Link>
-          <Link href="/clubes" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>🏠 Clubes</Link>
-          <Link href="/pro" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>✨ Padelero Pro</Link>
-          <Link href="/nosotros" onClick={() => setOpen(false)} className="block py-2.5 border-b border-zinc-800/60 font-bold" style={{ color: GREEN }}>🚀 Nosotros</Link>
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-foreground/5 px-5 pb-5">
+          <Link href="/torneos" onClick={() => setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: GREEN }}>🏆 Torneos</Link>
+          <Link href="/clubes" onClick={() => setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: GREEN }}>🏠 Clubes</Link>
+          <Link href="/pro" onClick={() => setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: GREEN }}>✨ Padelero Pro</Link>
+          <Link href="/nosotros" onClick={() => setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: GREEN }}>🚀 Nosotros</Link>
           <div className="pt-3 space-y-2">
-            <Link href="https://app.padelero.app/login" className="block w-full text-center border border-zinc-700 text-white py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-[#C8F542] text-black py-3 rounded-xl font-black">Empezar gratis</Link>
+            <Link href="https://app.padelero.app/login" className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold">Ingresar</Link>
+            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-black">Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -155,7 +155,7 @@ export default function ProPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav />
 
       {/* HERO */}
@@ -169,47 +169,47 @@ export default function ProPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/55 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30" />
         </div>
-        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-[#C8F542]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative max-w-5xl mx-auto text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/30 rounded-full px-4 py-1.5 mb-6 text-sm font-bold uppercase tracking-widest" style={{ color: GREEN }}>
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-1.5 mb-6 text-sm font-bold uppercase tracking-widest" style={{ color: GREEN }}>
               <Sparkles className="w-4 h-4" /> Padelero Pro
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-[.95] mb-6 tracking-tight">
-              Tu club que <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>crece solo</span><br />con inteligencia artificial.
+              Tu club que <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>crece solo</span><br />con inteligencia artificial.
             </h1>
-            <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto mb-3 leading-relaxed">
-              Padelero gratis te da todo lo que tienen las otras apps. <strong className="text-white">Con Pro</strong>, activás un agente de IA que vende más turnos vacíos, recupera jugadores perdidos y sube tu facturación mes a mes — desde el mismo WhatsApp que ya usás.
+            <p className="text-base sm:text-lg text-foreground-subtle max-w-2xl mx-auto mb-3 leading-relaxed">
+              Padelero gratis te da todo lo que tienen las otras apps. <strong className="text-foreground">Con Pro</strong>, activás un agente de IA que vende más turnos vacíos, recupera jugadores perdidos y sube tu facturación mes a mes — desde el mismo WhatsApp que ya usás.
             </p>
-            <p className="text-sm text-zinc-500 mb-10 italic">
+            <p className="text-sm text-muted-foreground/70 mb-10 italic">
               Sin app extra. Sin número nuevo. Sin instalación.
             </p>
           </Reveal>
 
           <Reveal delay={150}>
             {/* Precio — modelo de créditos */}
-            <div className="inline-flex flex-col items-center gap-1 mb-8 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 max-w-md">
+            <div className="inline-flex flex-col items-center gap-1 mb-8 rounded-2xl border border-foreground/10 bg-foreground/5 px-6 py-4 max-w-md">
               <span className="text-3xl sm:text-4xl font-black">Pagás por uso</span>
-              <span className="text-sm text-zinc-300">Comprás créditos y el agente trabaja mientras tengas saldo</span>
-              <span className="text-xs text-zinc-500">Sin cuota fija ni % de tu facturación · cada acción cuesta centavos</span>
+              <span className="text-sm text-foreground-subtle">Comprás créditos y el agente trabaja mientras tengas saldo</span>
+              <span className="text-xs text-muted-foreground/70">Sin cuota fija ni % de tu facturación · cada acción cuesta centavos</span>
             </div>
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-emerald-500/20">
+              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-foreground font-black text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-emerald-500/20">
                 <MessageCircle className="w-5 h-5" />
                 Hablá con Carlos por WhatsApp
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#tools" className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 transition-all">
+              <a href="#tools" className="inline-flex items-center justify-center gap-2 bg-foreground/5 border border-foreground/10 text-foreground font-semibold px-8 py-4 rounded-2xl hover:bg-foreground/10 transition-all">
                 Ver qué hace el agente
               </a>
             </div>
 
-            <p className="text-xs text-zinc-500 italic mt-5">
+            <p className="text-xs text-muted-foreground/70 italic mt-5">
               Carlos Diehl · Especialista en agentes de inteligencia artificial
             </p>
           </Reveal>
@@ -225,15 +225,15 @@ export default function ProPage() {
             fill
             className="object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-zinc-950/80" />
+          <div className="absolute inset-0 bg-background/80" />
         </div>
         <div className="relative max-w-5xl mx-auto">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-black text-center mb-3">¿Cómo funciona?</h2>
-            <p className="text-zinc-400 text-center mb-14">3 pasos y tu club empieza a crecer solo.</p>
+            <p className="text-muted-foreground text-center mb-14">3 pasos y tu club empieza a crecer solo.</p>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-5 relative">
-            <div className="hidden md:block absolute top-10 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-gradient-to-r from-transparent via-[#C8F542]/25 to-transparent" />
+            <div className="hidden md:block absolute top-10 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
             {[
               { n: '01', icon: MessageCircle, t: 'Hablamos por WhatsApp', d: '15-20 min de conversación. Vemos tu club, tu facturación, tus horarios débiles. Configuramos los agentes según tu realidad.' },
               { n: '02', icon: Sparkles,      t: 'Activamos los agentes', d: 'Cada 6 horas, el agente analiza tus turnos, jugadores y facturación. Te propone acciones en el panel. Vos aprobás (o las dejás automáticas).' },
@@ -241,12 +241,12 @@ export default function ProPage() {
             ].map((s, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="flex flex-col items-center text-center p-6">
-                  <div className="relative w-20 h-20 rounded-full border-2 border-zinc-700 bg-zinc-900 flex items-center justify-center mb-5">
-                    <s.icon className="w-7 h-7 text-[#C8F542]" />
-                    <span className="absolute -top-1.5 -right-1.5 bg-[#C8F542] text-black text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
+                  <div className="relative w-20 h-20 rounded-full border-2 border-border-strong bg-card flex items-center justify-center mb-5">
+                    <s.icon className="w-7 h-7 text-primary" />
+                    <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
                   </div>
-                  <h3 className="text-white font-bold text-lg mb-2">{s.t}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{s.d}</p>
+                  <h3 className="text-foreground font-bold text-lg mb-2">{s.t}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -255,18 +255,18 @@ export default function ProPage() {
       </section>
 
       {/* DIAGRAMA DE AGENTES */}
-      <section id="agentes" className="py-20 px-5 bg-gradient-to-b from-zinc-950 via-black to-zinc-950">
+      <section id="agentes" className="py-20 px-5 bg-gradient-to-b from-background via-background to-background">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Arquitectura
               </div>
               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
-                4 agentes especializados trabajando <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>en serie</span>
+                4 agentes especializados trabajando <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>en serie</span>
               </h2>
-              <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-                Un <strong className="text-white">Cerebro</strong> planea, <strong className="text-white">3 Trabajadores</strong> ejecutan, un <strong className="text-white">Validador</strong> revisa antes de mandar nada al jugador.
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                Un <strong className="text-foreground">Cerebro</strong> planea, <strong className="text-foreground">3 Trabajadores</strong> ejecutan, un <strong className="text-foreground">Validador</strong> revisa antes de mandar nada al jugador.
               </p>
             </div>
           </Reveal>
@@ -311,17 +311,17 @@ export default function ProPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-purple-300">Trabajador Operaciones · reacciona a eventos</h3>
-                <p className="text-zinc-400 text-sm mt-1">
+                <p className="text-muted-foreground text-sm mt-1">
                   Además del loop cada 6 horas, hay tareas que se disparan en tiempo real:
                 </p>
                 <div className="mt-3 grid sm:grid-cols-2 gap-3">
                   <div className="text-sm">
                     <span className="text-purple-300 font-bold">🛡️ Anti No-Show.</span>{' '}
-                    <span className="text-zinc-300">4h antes pide confirmación. Si no, libera la cancha automáticamente.</span>
+                    <span className="text-foreground-subtle">4h antes pide confirmación. Si no, libera la cancha automáticamente.</span>
                   </div>
                   <div className="text-sm">
                     <span className="text-purple-300 font-bold">🔁 Reagendado Auto.</span>{' '}
-                    <span className="text-zinc-300">Cuando alguien cancela, le ofrece 3 horarios alternativos antes de soltar el slot.</span>
+                    <span className="text-foreground-subtle">Cuando alguien cancela, le ofrece 3 horarios alternativos antes de soltar el slot.</span>
                   </div>
                 </div>
               </div>
@@ -331,22 +331,22 @@ export default function ProPage() {
           {/* MODOS */}
           <Reveal delay={240}>
             <div className="mt-12">
-              <h3 className="text-center text-lg font-bold text-zinc-300 mb-6">Vos decidís el nivel de autonomía por cada herramienta</h3>
+              <h3 className="text-center text-lg font-bold text-foreground-subtle mb-6">Vos decidís el nivel de autonomía por cada herramienta</h3>
               <div className="grid sm:grid-cols-3 gap-4">
-                <div className="rounded-2xl border border-zinc-700 bg-zinc-900/50 p-5 text-center">
+                <div className="rounded-2xl border border-border-strong bg-card/50 p-5 text-center">
                   <div className="text-4xl mb-3">🔴</div>
                   <h4 className="font-bold text-base mb-1">Apagado</h4>
-                  <p className="text-xs text-zinc-400">La herramienta está desactivada. El agente nunca la usa.</p>
+                  <p className="text-xs text-muted-foreground">La herramienta está desactivada. El agente nunca la usa.</p>
                 </div>
                 <div className="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5 text-center">
                   <div className="text-4xl mb-3">🟡</div>
                   <h4 className="font-bold text-base mb-1 text-amber-300">Sugerir</h4>
-                  <p className="text-xs text-zinc-400">Propone y vos aprobás. Por defecto el primer mes.</p>
+                  <p className="text-xs text-muted-foreground">Propone y vos aprobás. Por defecto el primer mes.</p>
                 </div>
                 <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5 text-center">
                   <div className="text-4xl mb-3">🟢</div>
                   <h4 className="font-bold text-base mb-1 text-emerald-300">Auto-seguro</h4>
-                  <p className="text-xs text-zinc-400">Ejecuta solo, siempre pasando por el validador crítico.</p>
+                  <p className="text-xs text-muted-foreground">Ejecuta solo, siempre pasando por el validador crítico.</p>
                 </div>
               </div>
             </div>
@@ -359,13 +359,13 @@ export default function ProPage() {
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/20 rounded-full px-4 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Las 12 capacidades
               </div>
               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
-                Todo lo que hace el agente <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>por vos</span>
+                Todo lo que hace el agente <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>por vos</span>
               </h2>
-              <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Cada acción está pensada para una situación específica. El agente las combina según tu club lo necesita.
               </p>
             </div>
@@ -374,13 +374,13 @@ export default function ProPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {TOOLS.map((t, i) => (
               <Reveal key={t.title} delay={i * 30}>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/10 transition-colors h-full flex flex-col">
+                <div className="rounded-2xl border border-foreground/10 bg-foreground/5 p-5 hover:bg-foreground/10 transition-colors h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="text-3xl">{t.emoji}</div>
                     <h3 className="font-bold text-base">{t.title}</h3>
                   </div>
-                  <p className="text-sm text-zinc-400 leading-relaxed flex-1">{t.desc}</p>
-                  <p className="text-[11px] text-[#C8F542]/80 italic mt-3 border-t border-white/5 pt-3">
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">{t.desc}</p>
+                  <p className="text-[11px] text-primary/80 italic mt-3 border-t border-foreground/5 pt-3">
                     Ej: {t.example}
                   </p>
                 </div>
@@ -391,29 +391,29 @@ export default function ProPage() {
       </section>
 
       {/* CALCULADORA — versión vendedora · número anual gigante */}
-      <section className="py-20 bg-zinc-950/80 px-5">
+      <section className="py-20 bg-background/80 px-5">
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 bg-[#C8F542]/10 border border-[#C8F542]/30 rounded-full px-3 py-1 text-[#C8F542] text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-3 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Tu plata real
               </div>
               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
-                Cuánto <span style={{ background: `linear-gradient(135deg, ${GREEN}, #7ec800)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>se mete</span> tu club por año
+                Cuánto <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>se mete</span> tu club por año
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
                 Moviendo el slider con tu facturación mensual ves cuánto te dejamos extra a vos en 12 meses.
-                Estimado conservador <strong className="text-white">(+20% mensual)</strong> sobre clubes argentinos reales.
+                Estimado conservador <strong className="text-foreground">(+20% mensual)</strong> sobre clubes argentinos reales.
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="rounded-3xl border-2 border-white/10 bg-gradient-to-br from-white/[0.03] via-[#C8F542]/[0.02] to-white/[0.03] p-6 sm:p-10 space-y-6">
+            <div className="rounded-3xl border-2 border-foreground/10 bg-gradient-to-br from-foreground/[0.03] via-primary/[0.02] to-foreground/[0.03] p-6 sm:p-10 space-y-6">
               {/* Slider GMV */}
               <div>
                 <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
-                  <span className="text-sm text-zinc-400">Tu facturación mensual por Padelero:</span>
+                  <span className="text-sm text-muted-foreground">Tu facturación mensual por Padelero:</span>
                   <span className="text-2xl sm:text-3xl font-black tabular-nums">${gmv.toLocaleString('es-AR')}</span>
                 </div>
                 <input
@@ -423,9 +423,9 @@ export default function ProPage() {
                   step={100_000}
                   value={gmv}
                   onChange={(e) => setGmv(Number(e.target.value))}
-                  className="w-full accent-[#C8F542]"
+                  className="w-full accent-primary"
                 />
-                <div className="flex justify-between text-[10px] text-zinc-500 mt-1">
+                <div className="flex justify-between text-[10px] text-muted-foreground/70 mt-1">
                   <span>$500k</span>
                   <span>$5M</span>
                   <span>$20M</span>
@@ -433,9 +433,9 @@ export default function ProPage() {
               </div>
 
               {/* DISPLAY GIGANTE — número anual */}
-              <div className="rounded-3xl border-2 p-6 md:p-10 text-center relative overflow-hidden border-[#C8F542]/50 bg-gradient-to-br from-[#C8F542]/20 via-emerald-500/15 to-[#C8F542]/5 shadow-2xl shadow-[#C8F542]/10">
+              <div className="rounded-3xl border-2 p-6 md:p-10 text-center relative overflow-hidden border-primary/50 bg-gradient-to-br from-primary/20 via-emerald-500/15 to-primary/5 shadow-2xl shadow-primary/10">
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute -top-10 left-1/4 w-72 h-72 rounded-full blur-3xl" style={{ backgroundColor: `${GREEN}50` }} />
+                  <div className="absolute -top-10 left-1/4 w-72 h-72 rounded-full blur-3xl" style={{ backgroundColor: `hsl(var(--primary) / 0.314)` }} />
                   <div className="absolute -bottom-10 right-1/4 w-64 h-64 bg-emerald-500/30 rounded-full blur-3xl" />
                 </div>
                 <div className="relative">
@@ -446,28 +446,28 @@ export default function ProPage() {
                   <div className="text-5xl md:text-7xl font-black tabular-nums leading-none drop-shadow-2xl" style={{ color: GREEN }}>
                     +${crecimientoAnual.toLocaleString('es-AR')}
                   </div>
-                  <div className="text-xl md:text-2xl font-extrabold text-white mt-3">
+                  <div className="text-xl md:text-2xl font-extrabold text-foreground mt-3">
                     por año
                   </div>
-                  <div className="text-sm text-zinc-300 mt-4 max-w-xl mx-auto">
-                    Estimado conservador: <strong className="text-white">+20% de crecimiento mensual</strong> sobre tu facturación. Son{' '}
-                    <strong style={{ color: GREEN }}>+${crecimientoMensual.toLocaleString('es-AR')}/mes</strong>. El agente <strong className="text-white">se paga solo</strong> con créditos por uso.
+                  <div className="text-sm text-foreground-subtle mt-4 max-w-xl mx-auto">
+                    Estimado conservador: <strong className="text-foreground">+20% de crecimiento mensual</strong> sobre tu facturación. Son{' '}
+                    <strong style={{ color: GREEN }}>+${crecimientoMensual.toLocaleString('es-AR')}/mes</strong>. El agente <strong className="text-foreground">se paga solo</strong> con créditos por uso.
                   </div>
                 </div>
               </div>
 
               {/* CASO NARRADO mes 1 */}
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-5 sm:p-6 space-y-4">
+              <div className="rounded-2xl border border-foreground/10 bg-background/30 p-5 sm:p-6 space-y-4">
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1">
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold mb-1">
                     Lo que pasa típicamente · mes 1
                   </div>
-                  <h3 className="font-bold text-base sm:text-lg text-white">
+                  <h3 className="font-bold text-base sm:text-lg text-foreground">
                     De dónde sale ese{' '}
                     <span style={{ color: GREEN }}>+${crecimientoMensual.toLocaleString('es-AR')}</span>{' '}
                     de crecimiento
                   </h3>
-                  <p className="text-xs text-zinc-400 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     Estimación basada en clubes argentinos mid-size. Tu caso puede variar arriba o abajo.
                   </p>
                 </div>
@@ -483,8 +483,8 @@ export default function ProPage() {
                     <div key={i} className="flex items-center gap-3 py-1">
                       <div className="text-base flex-shrink-0">{row.emoji}</div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-sm font-semibold text-white">{row.label}</div>
-                        <div className="text-[11px] text-zinc-500">{row.detail}</div>
+                        <div className="text-sm font-semibold text-foreground">{row.label}</div>
+                        <div className="text-[11px] text-muted-foreground/70">{row.detail}</div>
                       </div>
                       <div className="text-sm font-bold tabular-nums flex-shrink-0" style={{ color: GREEN }}>
                         +${row.amount.toLocaleString('es-AR')}
@@ -493,15 +493,15 @@ export default function ProPage() {
                   ))}
                 </div>
 
-                <div className="border-t border-white/10 pt-3 flex items-center justify-between">
-                  <div className="text-sm font-semibold text-white">Crecimiento total mes 1</div>
+                <div className="border-t border-foreground/10 pt-3 flex items-center justify-between">
+                  <div className="text-sm font-semibold text-foreground">Crecimiento total mes 1</div>
                   <div className="text-xl font-extrabold tabular-nums" style={{ color: GREEN }}>
                     +${crecimientoMensual.toLocaleString('es-AR')}
                   </div>
                 </div>
-                <div className="rounded-xl bg-[#C8F542]/5 border border-[#C8F542]/20 p-3">
-                  <p className="text-xs text-zinc-400">
-                    <strong className="text-white">Sin cuota fija ni % de tu facturación.</strong> El agente se paga con créditos por uso: cada acción cuesta centavos. Cargás el saldo que quieras y recargás cuando se agota.
+                <div className="rounded-xl bg-primary/5 border border-primary/20 p-3">
+                  <p className="text-xs text-muted-foreground">
+                    <strong className="text-foreground">Sin cuota fija ni % de tu facturación.</strong> El agente se paga con créditos por uso: cada acción cuesta centavos. Cargás el saldo que quieras y recargás cuando se agota.
                   </p>
                 </div>
               </div>
@@ -510,16 +510,16 @@ export default function ProPage() {
 
           {/* VOS sin Pro vs Vos con Pro */}
           <Reveal delay={200}>
-            <div className="mt-10 rounded-3xl border-2 border-white/10 bg-zinc-900/40 overflow-hidden">
-              <div className="p-6 sm:p-8 border-b border-white/10">
-                <h3 className="font-black text-xl sm:text-2xl text-white">
-                  Vos sin Pro <span className="text-zinc-500">·</span> Vos con Pro
+            <div className="mt-10 rounded-3xl border-2 border-foreground/10 bg-card/40 overflow-hidden">
+              <div className="p-6 sm:p-8 border-b border-foreground/10">
+                <h3 className="font-black text-xl sm:text-2xl text-foreground">
+                  Vos sin Pro <span className="text-muted-foreground/70">·</span> Vos con Pro
                 </h3>
-                <p className="text-sm text-zinc-400 mt-1">
+                <p className="text-sm text-muted-foreground mt-1">
                   Lo que cambia el día que activás el agente.
                 </p>
               </div>
-              <div className="divide-y divide-white/5">
+              <div className="divide-y divide-foreground/5">
                 {[
                   { task: 'Marketing por WhatsApp',  before: 'Mandás manual cuando te acordás (5-8h/sem)', after: 'Auto. Cada acción pasa por validador antes.' },
                   { task: 'Recuperar inactivos',     before: 'Nada o muy poco. Se van y no vuelven.',       after: 'Auto. 28 rescates/mes con mensaje personalizado.' },
@@ -530,14 +530,14 @@ export default function ProPage() {
                   { task: 'Decisiones de gestión',   before: 'A "ojímetro". No sabés qué funciona.',        after: 'Reflexión semanal automatizada con learnings.' },
                 ].map((row, i) => (
                   <div key={i} className="px-6 sm:px-8 py-4 grid grid-cols-1 sm:grid-cols-[180px_1fr_1fr] gap-2 sm:gap-4 items-start">
-                    <div className="text-sm font-bold text-white">{row.task}</div>
+                    <div className="text-sm font-bold text-foreground">{row.task}</div>
                     <div className="flex items-start gap-2 text-xs">
                       <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-zinc-500 line-through">{row.before}</span>
+                      <span className="text-muted-foreground/70 line-through">{row.before}</span>
                     </div>
                     <div className="flex items-start gap-2 text-xs">
                       <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: GREEN }} />
-                      <span className="text-zinc-200 font-medium">{row.after}</span>
+                      <span className="text-foreground-subtle font-medium">{row.after}</span>
                     </div>
                   </div>
                 ))}
@@ -553,8 +553,8 @@ export default function ProPage() {
                   <RefreshCw className="w-5 h-5 text-red-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-black text-base text-white">Cada mes que esperás cuesta plata</div>
-                  <p className="text-sm text-zinc-300 mt-1 leading-relaxed">
+                  <div className="font-black text-base text-foreground">Cada mes que esperás cuesta plata</div>
+                  <p className="text-sm text-foreground-subtle mt-1 leading-relaxed">
                     Si esperás 6 meses para activar Pro, son{' '}
                     <strong className="text-red-400 tabular-nums">−${(crecimientoMensual * 6).toLocaleString('es-AR')}</strong>{' '}
                     que el agente te hubiera dejado en el bolsillo. La competencia que active antes te lleva ventaja en data y diferenciación.
@@ -577,7 +577,7 @@ export default function ProPage() {
               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
                 Los torneos son <span className="text-amber-400">$6,4 millones/mes</span><br className="hidden sm:block"/> que hoy se te escapan
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
                 Datos típicos de clubes argentinos mid-size: 2 torneos por fin de semana,
                 32 jugadores cada uno, $25.000 de inscripción.
               </p>
@@ -586,27 +586,27 @@ export default function ProPage() {
 
           <Reveal delay={100}>
             {/* La cuenta del mercado */}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 mb-5">
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5 sm:p-6 mb-5">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Torneos</div>
-                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-white">8/mes</div>
-                  <div className="text-[11px] text-zinc-500 mt-1">2 por finde</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Torneos</div>
+                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-foreground">8/mes</div>
+                  <div className="text-[11px] text-muted-foreground/70 mt-1">2 por finde</div>
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Jugadores</div>
-                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-white">32</div>
-                  <div className="text-[11px] text-zinc-500 mt-1">por torneo</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Jugadores</div>
+                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-foreground">32</div>
+                  <div className="text-[11px] text-muted-foreground/70 mt-1">por torneo</div>
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Inscripción</div>
-                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-white">$25k</div>
-                  <div className="text-[11px] text-zinc-500 mt-1">por jugador</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Inscripción</div>
+                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-foreground">$25k</div>
+                  <div className="text-[11px] text-muted-foreground/70 mt-1">por jugador</div>
                 </div>
                 <div className="bg-amber-500/10 rounded-xl py-2 -my-2">
                   <div className="text-[10px] uppercase tracking-widest text-amber-400 font-bold">Potencial</div>
                   <div className="text-2xl sm:text-3xl font-black text-amber-400 tabular-nums mt-1">$6,4M</div>
-                  <div className="text-[11px] text-zinc-500 mt-1">por mes</div>
+                  <div className="text-[11px] text-muted-foreground/70 mt-1">por mes</div>
                 </div>
               </div>
             </div>
@@ -618,14 +618,14 @@ export default function ProPage() {
               <div className="rounded-2xl border-2 border-red-500/30 bg-red-500/[0.06] p-5 sm:p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <X className="w-5 h-5 text-red-400" />
-                  <h3 className="font-black text-base text-white">Hoy sin Pro</h3>
+                  <h3 className="font-black text-base text-foreground">Hoy sin Pro</h3>
                 </div>
-                <ul className="space-y-3 text-sm text-zinc-300">
+                <ul className="space-y-3 text-sm text-foreground-subtle">
                   <li className="flex items-start gap-2">
                     <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
                     <div>
-                      <strong className="text-white">~25% no se llenan completos.</strong>
-                      <div className="text-xs text-zinc-500 mt-0.5">
+                      <strong className="text-foreground">~25% no se llenan completos.</strong>
+                      <div className="text-xs text-muted-foreground/70 mt-0.5">
                         Quedan 4-8 cupos vacíos por torneo · $200k+ que dejás en la mesa
                       </div>
                     </div>
@@ -633,8 +633,8 @@ export default function ProPage() {
                   <li className="flex items-start gap-2">
                     <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
                     <div>
-                      <strong className="text-white">O delegás al organizador externo.</strong>
-                      <div className="text-xs text-zinc-500 mt-0.5">
+                      <strong className="text-foreground">O delegás al organizador externo.</strong>
+                      <div className="text-xs text-muted-foreground/70 mt-0.5">
                         Te llevás solo el 20% de la inscripción · el 80% se va afuera
                       </div>
                     </div>
@@ -642,17 +642,17 @@ export default function ProPage() {
                   <li className="flex items-start gap-2">
                     <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
                     <div>
-                      <strong className="text-white">Mucho tiempo armando convocatorias.</strong>
-                      <div className="text-xs text-zinc-500 mt-0.5">
+                      <strong className="text-foreground">Mucho tiempo armando convocatorias.</strong>
+                      <div className="text-xs text-muted-foreground/70 mt-0.5">
                         4-6h por torneo entre WhatsApp, listas y categorías
                       </div>
                     </div>
                   </li>
                 </ul>
                 <div className="mt-4 pt-4 border-t border-red-500/20 text-center">
-                  <div className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Te quedás con</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Te quedás con</div>
                   <div className="text-3xl font-black text-red-400 tabular-nums mt-1">~$960k/mes</div>
-                  <div className="text-[11px] text-zinc-500 mt-1">si delegás al 80%</div>
+                  <div className="text-[11px] text-muted-foreground/70 mt-1">si delegás al 80%</div>
                 </div>
               </div>
 
@@ -660,23 +660,23 @@ export default function ProPage() {
               <div
                 className="rounded-2xl border-2 p-5 sm:p-6 relative overflow-hidden shadow-2xl"
                 style={{
-                  borderColor: `${GREEN}66`,
-                  background: `linear-gradient(135deg, ${GREEN}15, ${GREEN}05, transparent)`,
-                  boxShadow: `0 25px 50px -12px ${GREEN}1a`,
+                  borderColor: `hsl(var(--primary) / 0.4)`,
+                  background: `linear-gradient(135deg, hsl(var(--primary) / 0.082), hsl(var(--primary) / 0.02), transparent)`,
+                  boxShadow: `0 25px 50px -12px hsl(var(--primary) / 0.102)`,
                 }}
               >
-                <div className="absolute -top-10 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: `${GREEN}30` }} />
+                <div className="absolute -top-10 right-0 w-48 h-48 rounded-full blur-3xl pointer-events-none" style={{ backgroundColor: `hsl(var(--primary) / 0.188)` }} />
                 <div className="relative">
                   <div className="flex items-center gap-2 mb-3">
                     <CheckCircle2 className="w-5 h-5" style={{ color: GREEN }} />
-                    <h3 className="font-black text-base text-white">Con Padelero Pro</h3>
+                    <h3 className="font-black text-base text-foreground">Con Padelero Pro</h3>
                   </div>
-                  <ul className="space-y-3 text-sm text-zinc-300">
+                  <ul className="space-y-3 text-sm text-foreground-subtle">
                     <li className="flex items-start gap-2">
                       <span style={{ color: GREEN }} className="flex-shrink-0 mt-0.5">•</span>
                       <div>
-                        <strong className="text-white">Match Maker llena al 100%.</strong>
-                        <div className="text-xs text-zinc-500 mt-0.5">
+                        <strong className="text-foreground">Match Maker llena al 100%.</strong>
+                        <div className="text-xs text-muted-foreground/70 mt-0.5">
                           Detecta jugadores compatibles y los invita por WhatsApp segmentado
                         </div>
                       </div>
@@ -684,8 +684,8 @@ export default function ProPage() {
                     <li className="flex items-start gap-2">
                       <span style={{ color: GREEN }} className="flex-shrink-0 mt-0.5">•</span>
                       <div>
-                        <strong className="text-white">Capturás el 100% de la comisión.</strong>
-                        <div className="text-xs text-zinc-500 mt-0.5">
+                        <strong className="text-foreground">Capturás el 100% de la comisión.</strong>
+                        <div className="text-xs text-muted-foreground/70 mt-0.5">
                           El agente reemplaza al organizador externo · te quedás con todo
                         </div>
                       </div>
@@ -693,17 +693,17 @@ export default function ProPage() {
                     <li className="flex items-start gap-2">
                       <span style={{ color: GREEN }} className="flex-shrink-0 mt-0.5">•</span>
                       <div>
-                        <strong className="text-white">+ 1 torneo extra/mes automático.</strong>
-                        <div className="text-xs text-zinc-500 mt-0.5">
+                        <strong className="text-foreground">+ 1 torneo extra/mes automático.</strong>
+                        <div className="text-xs text-muted-foreground/70 mt-0.5">
                           Segmentado por nivel · armado y promocionado solo
                         </div>
                       </div>
                     </li>
                   </ul>
-                  <div className="mt-4 pt-4 border-t text-center" style={{ borderColor: `${GREEN}33` }}>
+                  <div className="mt-4 pt-4 border-t text-center" style={{ borderColor: `hsl(var(--primary) / 0.2)` }}>
                     <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: GREEN }}>Te quedás con</div>
                     <div className="text-3xl font-black tabular-nums mt-1" style={{ color: GREEN }}>~$7,2M/mes</div>
-                    <div className="text-[11px] text-zinc-500 mt-1">capturando el 100%</div>
+                    <div className="text-[11px] text-muted-foreground/70 mt-1">capturando el 100%</div>
                   </div>
                 </div>
               </div>
@@ -714,9 +714,9 @@ export default function ProPage() {
             <div
               className="mt-5 rounded-2xl border-2 p-5 sm:p-6 text-center shadow-2xl"
               style={{
-                borderColor: `${GREEN}66`,
-                background: `linear-gradient(135deg, #10b98125, ${GREEN}15, #10b98105)`,
-                boxShadow: `0 25px 50px -12px ${GREEN}1a`,
+                borderColor: `hsl(var(--primary) / 0.4)`,
+                background: `linear-gradient(135deg, #10b98125, hsl(var(--primary) / 0.082), #10b98105)`,
+                boxShadow: `0 25px 50px -12px hsl(var(--primary) / 0.102)`,
               }}
             >
               <div className="text-[10px] uppercase tracking-widest text-emerald-300 font-bold mb-2">
@@ -725,15 +725,15 @@ export default function ProPage() {
               <div className="text-4xl md:text-6xl font-black tabular-nums" style={{ color: GREEN }}>
                 +$6.240.000 / mes
               </div>
-              <div className="text-sm text-zinc-300 mt-3 max-w-xl mx-auto">
-                Eso son <strong className="text-white">+$74.880.000/año</strong> que hoy se van
+              <div className="text-sm text-foreground-subtle mt-3 max-w-xl mx-auto">
+                Eso son <strong className="text-foreground">+$74.880.000/año</strong> que hoy se van
                 afuera del club. Con Pro, se quedan en tu bolsillo (menos el costo del Pro,
                 que se paga solo varias veces).
               </div>
             </div>
           </Reveal>
 
-          <p className="text-[11px] text-zinc-500 text-center mt-4 italic max-w-2xl mx-auto">
+          <p className="text-[11px] text-muted-foreground/70 text-center mt-4 italic max-w-2xl mx-auto">
             Si vos hoy organizás los torneos sin delegar, el agente igual te ayuda a llenarlos al
             100% (+$1,6M/mes) y a hacer un torneo extra cada mes (+$800k). Cualquier caso,
             convertís lo que hoy es esfuerzo en plata.
@@ -758,9 +758,9 @@ export default function ProPage() {
               { q: '¿A los jugadores no les molesta recibir mensajes?', a: 'Solo le mandamos a jugadores que tienen tu club marcado como favorito (= dieron opt-in implícito). Y respetamos un máximo de 2 mensajes por jugador por semana entre todos los clubes que use Padelero. Anti-spam por diseño.' },
             ].map((f, i) => (
               <Reveal key={i} delay={i * 50}>
-                <details className="rounded-xl border border-white/10 bg-white/5 p-4">
+                <details className="rounded-xl border border-foreground/10 bg-foreground/5 p-4">
                   <summary className="cursor-pointer font-bold text-sm">{f.q}</summary>
-                  <p className="text-sm text-zinc-400 leading-relaxed mt-3">{f.a}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-3">{f.a}</p>
                 </details>
               </Reveal>
             ))}
@@ -778,24 +778,24 @@ export default function ProPage() {
             className="object-cover opacity-30"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
         <div className="relative max-w-3xl mx-auto">
           <Reveal>
-            <div className="rounded-3xl border border-[#C8F542]/30 bg-gradient-to-br from-[#C8F542]/10 to-zinc-900/60 backdrop-blur-sm p-8 sm:p-12 text-center space-y-6">
+            <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 to-card/60 backdrop-blur-sm p-8 sm:p-12 text-center space-y-6">
               <Sparkles className="w-12 h-12 mx-auto" style={{ color: GREEN }} />
               <h3 className="text-2xl sm:text-3xl font-black">
                 ¿Activamos Padelero Pro en tu club?
               </h3>
-              <p className="text-sm sm:text-base text-zinc-300 max-w-md mx-auto">
+              <p className="text-sm sm:text-base text-foreground-subtle max-w-md mx-auto">
                 Te escribo por WhatsApp. Conocemos tu club juntos y, si cierra, configuramos los agentes. Empiezan a trabajar al día siguiente.
               </p>
-              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-emerald-500/20">
+              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-foreground font-black text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-emerald-500/20">
                 <MessageCircle className="w-5 h-5" />
                 wa.me/2324549325
                 <ArrowRight size={18} />
               </a>
-              <p className="text-xs text-zinc-400 italic">
+              <p className="text-xs text-muted-foreground italic">
                 Carlos Diehl · Especialista en agentes de IA
               </p>
             </div>
@@ -804,8 +804,8 @@ export default function ProPage() {
       </section>
 
       {/* Footer simple */}
-      <footer className="border-t border-white/5 py-10 px-5 text-center text-xs text-zinc-500">
-        <Link href="/" className="hover:text-white">← Volver a Padelero</Link>
+      <footer className="border-t border-foreground/5 py-10 px-5 text-center text-xs text-muted-foreground/70">
+        <Link href="/" className="hover:text-foreground">← Volver a Padelero</Link>
         <p className="mt-3">© {new Date().getFullYear()} Padelero · Argentina 🇦🇷</p>
       </footer>
     </div>
@@ -822,28 +822,28 @@ function AgentDiagramLanding() {
     <div className="w-full max-w-4xl mx-auto">
       {/* Orchestrator */}
       <div className="flex justify-center">
-        <div className="rounded-2xl border-2 border-[#C8F542]/50 bg-gradient-to-br from-[#C8F542]/20 via-[#C8F542]/10 to-transparent px-6 py-4 shadow-xl shadow-[#C8F542]/10 text-center min-w-[240px]">
+        <div className="rounded-2xl border-2 border-primary/50 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent px-6 py-4 shadow-xl shadow-primary/10 text-center min-w-[240px]">
           <div className="flex items-center justify-center gap-2">
             <Brain className="h-5 w-5" style={{ color: GREEN }} />
-            <span className="font-bold text-base text-white">Cerebro</span>
+            <span className="font-bold text-base text-foreground">Cerebro</span>
           </div>
-          <div className="text-xs text-zinc-400 mt-1">Planea tareas cada 6 horas</div>
-          <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Claude Sonnet</div>
+          <div className="text-xs text-muted-foreground mt-1">Planea tareas cada 6 horas</div>
+          <div className="text-[10px] text-muted-foreground/70 mt-0.5 uppercase tracking-wider">Claude Sonnet</div>
         </div>
       </div>
 
       {/* Conector */}
       <div className="flex justify-center my-2">
-        <div className="w-px h-8 bg-gradient-to-b from-[#C8F542]/60 to-zinc-700" />
+        <div className="w-px h-8 bg-gradient-to-b from-primary/60 to-surface-3" />
       </div>
 
       {/* Línea horizontal + 3 workers */}
       <div className="relative">
-        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[66%] h-px bg-zinc-700" />
+        <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[66%] h-px bg-surface-3" />
         <div className="hidden md:flex justify-around absolute top-0 left-[16%] right-[16%]">
-          <div className="w-px h-4 bg-zinc-700" />
-          <div className="w-px h-4 bg-zinc-700" />
-          <div className="w-px h-4 bg-zinc-700" />
+          <div className="w-px h-4 bg-surface-3" />
+          <div className="w-px h-4 bg-surface-3" />
+          <div className="w-px h-4 bg-surface-3" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 pt-4 md:pt-6">
@@ -855,7 +855,7 @@ function AgentDiagramLanding() {
 
       {/* Workers → Validator */}
       <div className="flex justify-center my-2 mt-4">
-        <div className="w-px h-8 bg-gradient-to-b from-zinc-700 to-purple-500/60" />
+        <div className="w-px h-8 bg-gradient-to-b from-surface-3 to-purple-500/60" />
       </div>
 
       {/* Validator */}
@@ -863,10 +863,10 @@ function AgentDiagramLanding() {
         <div className="rounded-2xl border-2 border-purple-500/50 bg-gradient-to-br from-purple-500/15 via-purple-500/5 to-transparent px-6 py-4 shadow-xl shadow-purple-500/10 text-center min-w-[280px]">
           <div className="flex items-center justify-center gap-2">
             <ShieldCheck className="h-5 w-5 text-purple-400" />
-            <span className="font-bold text-base text-white">Validador</span>
+            <span className="font-bold text-base text-foreground">Validador</span>
           </div>
-          <div className="text-xs text-zinc-400 mt-1">Reglas estrictas + IA crítica</div>
-          <div className="text-[10px] text-zinc-500 mt-0.5 uppercase tracking-wider">Aprueba o rechaza</div>
+          <div className="text-xs text-muted-foreground mt-1">Reglas estrictas + IA crítica</div>
+          <div className="text-[10px] text-muted-foreground/70 mt-0.5 uppercase tracking-wider">Aprueba o rechaza</div>
         </div>
       </div>
 
@@ -889,7 +889,7 @@ function AgentDiagramLanding() {
 function MiniWorker({ icon: Icon, color, name, hint }: { icon: LucideIcon; color: string; name: string; hint: string }) {
   return (
     <div
-      className="rounded-2xl border-2 p-4 shadow-sm transition-all hover:shadow-md bg-white/5"
+      className="rounded-2xl border-2 p-4 shadow-sm transition-all hover:shadow-md bg-foreground/5"
       style={{ borderColor: `${color}40` }}
     >
       <div className="flex items-center gap-3">
@@ -900,8 +900,8 @@ function MiniWorker({ icon: Icon, color, name, hint }: { icon: LucideIcon; color
           <Icon className="h-5 w-5" style={{ color }} aria-hidden />
         </div>
         <div>
-          <div className="font-bold text-sm text-white">{name}</div>
-          <div className="text-[11px] text-zinc-400 leading-tight">{hint}</div>
+          <div className="font-bold text-sm text-foreground">{name}</div>
+          <div className="text-[11px] text-muted-foreground leading-tight">{hint}</div>
         </div>
       </div>
     </div>
@@ -916,7 +916,7 @@ function WorkerCardLanding({
 }) {
   return (
     <div
-      className="rounded-2xl border-2 p-5 bg-white/5 backdrop-blur-sm transition-all hover:bg-white/[0.07]"
+      className="rounded-2xl border-2 p-5 bg-foreground/5 backdrop-blur-sm transition-all hover:bg-foreground/[0.07]"
       style={{ borderColor: `${color}40` }}
     >
       <div className="flex items-center gap-3 mb-3">
@@ -927,11 +927,11 @@ function WorkerCardLanding({
           <Icon className="h-6 w-6" style={{ color }} aria-hidden />
         </div>
         <div>
-          <h3 className="font-bold text-base text-white">{title}</h3>
-          <p className="text-[11px] text-zinc-400">{subtitle}</p>
+          <h3 className="font-bold text-base text-foreground">{title}</h3>
+          <p className="text-[11px] text-muted-foreground">{subtitle}</p>
         </div>
       </div>
-      <p className="text-sm text-zinc-300 leading-relaxed">{description}</p>
+      <p className="text-sm text-foreground-subtle leading-relaxed">{description}</p>
       <div className="mt-4 flex flex-wrap gap-1.5">
         {tools.map((t) => (
           <span

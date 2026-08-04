@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import { BRAND, DEFAULT_THEME } from '@/lib/theme/brand';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -7,7 +8,10 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#C8F542',
+  // El <meta name="theme-color"> lo parsea el navegador antes de que exista
+  // CSS: no puede ser hsl(var(--primary)). Sale del gemelo en hex de los
+  // mismos tripletes (lib/theme/brand.ts), así que no se desincroniza.
+  themeColor: BRAND[DEFAULT_THEME].primary,
 };
 
 export const metadata: Metadata = {
