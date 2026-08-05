@@ -156,8 +156,7 @@ function Nav() {
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc?'bg-background/85 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-scrim/40':''}`}>
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <Image src="/logo.png" alt="Padelero" width={28} height={28} className="rounded-md" />
-          <span className="font-black text-foreground text-xl tracking-tight">Padelero</span>
+          <span className="font-wordmark text-foreground text-3xl leading-none">Padelero</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           <Link
@@ -802,8 +801,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
-                <span className="font-black text-foreground text-lg">Padelero</span>
+                <span className="font-wordmark text-foreground text-2xl leading-none">Padelero</span>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">La plataforma de pádel en Argentina. Reservas, torneos y comunidad en un solo lugar.</p>
             </div>

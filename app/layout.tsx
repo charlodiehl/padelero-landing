@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Hanken_Grotesk, Cormorant_Garamond, JetBrains_Mono } from 'next/font/google';
+import { Hanken_Grotesk, Cormorant_Garamond, JetBrains_Mono, Pinyon_Script } from 'next/font/google';
 import { BRAND, DEFAULT_THEME } from '@/lib/theme/brand';
 import './globals.css';
 
@@ -17,6 +17,14 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
   weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
+});
+// Wordmark de marca. El manual la reserva EXCLUSIVAMENTE para el logotipo:
+// nunca texto corrido, nunca por debajo de 32px (el trazo fino desaparece).
+const pinyon = Pinyon_Script({
+  subsets: ['latin'],
+  variable: '--font-wordmark',
+  display: 'swap',
+  weight: ['400'],
 });
 const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
@@ -55,7 +63,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" data-theme="pino" className={`${inter.variable} ${cormorant.variable} ${jetbrains.variable}`}>
+    <html lang="es" data-theme="pino" className={`${inter.variable} ${cormorant.variable} ${jetbrains.variable} ${pinyon.variable}`}>
       <body>{children}</body>
     </html>
   );

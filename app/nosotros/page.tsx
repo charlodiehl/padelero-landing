@@ -53,8 +53,7 @@ function Nav() {
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${sc ? 'bg-background/85 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-scrim/40' : ''}`}>
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <Image src="/logo.png" alt="Padelero" width={28} height={28} className="rounded-md" />
-          <span className="font-black text-foreground text-xl tracking-tight">Padelero</span>
+          <span className="font-wordmark text-foreground text-3xl leading-none">Padelero</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
           <Link href="/torneos" className="flex items-center gap-1.5 text-sm font-bold px-4 py-1.5 rounded-lg transition-all hover:bg-primary/10" style={{ color: GREEN }}>

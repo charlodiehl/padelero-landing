@@ -114,8 +114,7 @@ function Nav() {
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Image src="/logo.png" alt="Padelero" width={26} height={26} className="rounded-md" />
-            <span className="font-black text-foreground text-lg tracking-tight">Padelero</span>
+            <span className="font-wordmark text-foreground text-2xl leading-none">Padelero</span>
           </Link>
           <span className="hidden md:block text-muted-foreground/50">/</span>
           <span className="hidden md:flex items-center gap-1.5 text-sm font-bold" style={{ color: GREEN }}>
