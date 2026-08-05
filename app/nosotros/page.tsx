@@ -257,7 +257,10 @@ export default function NosotrosPage() {
             </Reveal>
             <Reveal delay={120} className="rounded-2xl border-2 p-6 bg-primary/[0.04]" style={{ borderColor: `hsl(var(--primary) / 0.333)` }}>
               <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: GREEN }}>El experimento</div>
-              <h3 className="text-xl font-black mb-2">Padelero</h3>
+              {/* La marca al lado de "Playtomic": el script es lo que hace que
+                  una de las dos tenga identidad y la otra sea sólo un nombre.
+                  28px de script ≈ el peso óptico de la sans-bold de 20 del par. */}
+              <h3 className="font-wordmark text-[28px] leading-none mb-3">Padelero</h3>
               <p className="text-foreground-subtle leading-relaxed text-sm">
                 Lo mismo, para Argentina y LatAm. Hecho por <strong className="text-foreground">1 persona</strong> +
                 un equipo de <strong style={{ color: GREEN }}>agentes de IA</strong>. La pregunta que
@@ -380,8 +383,7 @@ export default function NosotrosPage() {
       <footer className="border-t border-foreground/5 px-5 py-10">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Padelero" width={24} height={24} className="rounded-md" />
-            <span className="font-black text-foreground">Padelero</span>
+            <span className="font-wordmark text-foreground text-2xl leading-none">Padelero</span>
           </Link>
           <div className="flex items-center gap-5 text-sm text-muted-foreground">
             <Link href="/torneos" className="hover:text-foreground transition-colors">Torneos</Link>
