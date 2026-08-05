@@ -17,6 +17,7 @@
 
 import { useState, useRef } from 'react';
 import { Lightbulb, Bug, Paperclip, CheckCircle2, X, type LucideIcon } from 'lucide-react';
+import { alfa } from '../../lib/color';
 
 interface TicketFormProps {
   source: 'app' | 'landing' | 'club-portal';
@@ -46,7 +47,7 @@ const TIPOS: ReadonlyArray<{
     value: 'bug',
     label: 'Reportar un problema',
     Icon: Bug,
-    color: '#f87171',
+    color: 'hsl(var(--destructive))',
     desc: 'Algo no está funcionando bien',
   },
 ];
@@ -173,7 +174,7 @@ export function TicketForm({
     return (
       <div
         style={{
-          background: '#0f0f0f',
+          background: 'hsl(var(--card))',
           border: '1px solid hsl(var(--primary) / 0.3)',
           borderRadius: 16,
           padding: 28,
@@ -214,7 +215,7 @@ export function TicketForm({
     <form
       onSubmit={handleSubmit}
       style={{
-        background: '#0f0f0f',
+        background: 'hsl(var(--card))',
         border: '1px solid hsl(var(--foreground) / 0.08)',
         borderRadius: 16,
         padding: 18,
@@ -232,7 +233,7 @@ export function TicketForm({
               type="button"
               onClick={() => setTipo(t.value)}
               style={{
-                background: selected ? `${PRIMARY}15` : 'hsl(var(--foreground) / 0.03)',
+                background: selected ? alfa(PRIMARY, 8) : 'hsl(var(--foreground) / 0.03)',
                 border: `1px solid ${selected ? PRIMARY : 'hsl(var(--foreground) / 0.08)'}`,
                 borderRadius: 12,
                 padding: 14,
@@ -443,7 +444,7 @@ export function TicketForm({
             background: 'rgba(248,113,113,0.1)',
             border: '1px solid rgba(248,113,113,0.3)',
             borderRadius: 8,
-            color: '#fca5a5',
+            color: 'hsl(var(--destructive))',
             fontSize: 12,
           }}
         >

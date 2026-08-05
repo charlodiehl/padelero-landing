@@ -16,6 +16,7 @@ import {
   Building2, Calendar, Brain, Gauge, Cog,
   type LucideIcon,
 } from 'lucide-react';
+import { alfa } from '@/lib/color';
 
 const GREEN = 'hsl(var(--primary))';
 const WA = 'https://wa.me/5492324549325';
@@ -104,7 +105,7 @@ function Nav() {
           <Link href="/nosotros" onClick={() => setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: GREEN }}>🚀 Nosotros</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-black">Empezar gratis</Link>
+            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-bold">Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -191,14 +192,14 @@ export default function ProPage() {
           <Reveal delay={150}>
             {/* Precio — modelo de créditos */}
             <div className="inline-flex flex-col items-center gap-1 mb-8 rounded-2xl border border-foreground/10 bg-foreground/5 px-6 py-4 max-w-md">
-              <span className="text-3xl sm:text-4xl font-black">Pagás por uso</span>
+              <span className="text-3xl sm:text-4xl font-bold">Pagás por uso</span>
               <span className="text-sm text-foreground-subtle">Comprás créditos y el agente trabaja mientras tengas saldo</span>
               <span className="text-xs text-muted-foreground/70">Sin cuota fija ni % de tu facturación · cada acción cuesta centavos</span>
             </div>
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-foreground font-black text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-emerald-500/20">
+              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary text-foreground font-bold text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-primary/20">
                 <MessageCircle className="w-5 h-5" />
                 Hablá con Carlos por WhatsApp
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -242,7 +243,7 @@ export default function ProPage() {
                 <div className="flex flex-col items-center text-center p-6">
                   <div className="relative w-20 h-20 rounded-full border-2 border-border-strong bg-card flex items-center justify-center mb-5">
                     <s.icon className="w-7 h-7 text-primary" />
-                    <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
+                    <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-bold rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
                   </div>
                   <h3 className="text-foreground font-bold text-lg mb-2">{s.t}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
@@ -278,7 +279,7 @@ export default function ProPage() {
           <div className="grid md:grid-cols-3 gap-5 mt-16">
             <WorkerCardLanding
               icon={Gauge}
-              color="#22c55e"
+              color="hsl(var(--primary))"
               title="Ocupación"
               subtitle="Llena canchas + ajusta precio"
               description="Detecta horarios flojos y los ataca con promo flash o ajuste de precio dentro de tu piso/techo."
@@ -286,7 +287,7 @@ export default function ProPage() {
             />
             <WorkerCardLanding
               icon={Heart}
-              color="#0ea5e9"
+              color="hsl(var(--info))"
               title="Fidelización"
               subtitle="Cuida tus jugadores"
               description="Rescata jugadores que dejaron de venir, los incentiva con un beneficio y los saluda en su cumpleaños."
@@ -294,7 +295,7 @@ export default function ProPage() {
             />
             <WorkerCardLanding
               icon={Megaphone}
-              color="#f59e0b"
+              color="hsl(var(--warning))"
               title="Promoción"
               subtitle="Atrae nueva demanda"
               description="Crea cancha abierta cuando hay hueco, arma equipos compatibles, llena clases con cupo libre."
@@ -304,22 +305,22 @@ export default function ProPage() {
 
           {/* OPS BOX */}
           <Reveal delay={180}>
-            <div className="mt-8 rounded-2xl border border-purple-500/30 bg-purple-500/5 p-6 md:p-8 grid md:grid-cols-[auto_1fr] gap-6 items-center">
-              <div className="w-16 h-16 rounded-2xl bg-purple-500/20 border-2 border-purple-500/40 flex items-center justify-center flex-shrink-0">
-                <Cog className="w-8 h-8 text-purple-300" />
+            <div className="mt-8 rounded-2xl border border-premium/30 bg-premium/5 p-6 md:p-8 grid md:grid-cols-[auto_1fr] gap-6 items-center">
+              <div className="w-16 h-16 rounded-2xl bg-premium/20 border-2 border-premium/40 flex items-center justify-center flex-shrink-0">
+                <Cog className="w-8 h-8 text-premium" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-purple-300">Trabajador Operaciones · reacciona a eventos</h3>
+                <h3 className="text-xl font-bold text-premium">Trabajador Operaciones · reacciona a eventos</h3>
                 <p className="text-muted-foreground text-sm mt-1">
                   Además del loop cada 6 horas, hay tareas que se disparan en tiempo real:
                 </p>
                 <div className="mt-3 grid sm:grid-cols-2 gap-3">
                   <div className="text-sm">
-                    <span className="text-purple-300 font-bold">🛡️ Anti No-Show.</span>{' '}
+                    <span className="text-premium font-bold">🛡️ Anti No-Show.</span>{' '}
                     <span className="text-foreground-subtle">4h antes pide confirmación. Si no, libera la cancha automáticamente.</span>
                   </div>
                   <div className="text-sm">
-                    <span className="text-purple-300 font-bold">🔁 Reagendado Auto.</span>{' '}
+                    <span className="text-premium font-bold">🔁 Reagendado Auto.</span>{' '}
                     <span className="text-foreground-subtle">Cuando alguien cancela, le ofrece 3 horarios alternativos antes de soltar el slot.</span>
                   </div>
                 </div>
@@ -337,14 +338,14 @@ export default function ProPage() {
                   <h4 className="font-bold text-base mb-1">Apagado</h4>
                   <p className="text-xs text-muted-foreground">La herramienta está desactivada. El agente nunca la usa.</p>
                 </div>
-                <div className="rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5 text-center">
+                <div className="rounded-2xl border border-warning/40 bg-warning/5 p-5 text-center">
                   <div className="text-4xl mb-3">🟡</div>
-                  <h4 className="font-bold text-base mb-1 text-amber-300">Sugerir</h4>
+                  <h4 className="font-bold text-base mb-1 text-warning">Sugerir</h4>
                   <p className="text-xs text-muted-foreground">Propone y vos aprobás. Por defecto el primer mes.</p>
                 </div>
-                <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/5 p-5 text-center">
+                <div className="rounded-2xl border border-primary/40 bg-primary/5 p-5 text-center">
                   <div className="text-4xl mb-3">🟢</div>
-                  <h4 className="font-bold text-base mb-1 text-emerald-300">Auto-seguro</h4>
+                  <h4 className="font-bold text-base mb-1 text-primary">Auto-seguro</h4>
                   <p className="text-xs text-muted-foreground">Ejecuta solo, siempre pasando por el validador crítico.</p>
                 </div>
               </div>
@@ -413,7 +414,7 @@ export default function ProPage() {
               <div>
                 <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
                   <span className="text-sm text-muted-foreground">Tu facturación mensual por Padelero:</span>
-                  <span className="text-2xl sm:text-3xl font-black tabular-nums">${gmv.toLocaleString('es-AR')}</span>
+                  <span className="text-2xl sm:text-3xl font-bold tabular-nums">${gmv.toLocaleString('es-AR')}</span>
                 </div>
                 <input
                   type="range"
@@ -432,17 +433,17 @@ export default function ProPage() {
               </div>
 
               {/* DISPLAY GIGANTE — número anual */}
-              <div className="rounded-3xl border-2 p-6 md:p-10 text-center relative overflow-hidden border-primary/50 bg-gradient-to-br from-primary/20 via-emerald-500/15 to-primary/5 shadow-2xl shadow-primary/10">
+              <div className="rounded-3xl border-2 p-6 md:p-10 text-center relative overflow-hidden border-primary/50 bg-gradient-to-br from-primary/20 via-primary/15 to-primary/5 shadow-2xl shadow-primary/10">
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="absolute -top-10 left-1/4 w-72 h-72 rounded-full blur-3xl" style={{ backgroundColor: `hsl(var(--primary) / 0.314)` }} />
-                  <div className="absolute -bottom-10 right-1/4 w-64 h-64 bg-emerald-500/30 rounded-full blur-3xl" />
+                  <div className="absolute -bottom-10 right-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl" />
                 </div>
                 <div className="relative">
                   <div className="text-[10px] uppercase tracking-widest font-bold mb-3 flex items-center justify-center gap-2" style={{ color: GREEN }}>
                     <Sparkles className="w-3.5 h-3.5" />
                     Lo que el agente te genera de más
                   </div>
-                  <div className="text-5xl md:text-7xl font-black tabular-nums leading-none drop-shadow-2xl" style={{ color: GREEN }}>
+                  <div className="text-5xl md:text-7xl font-bold tabular-nums leading-none drop-shadow-2xl" style={{ color: GREEN }}>
                     +${crecimientoAnual.toLocaleString('es-AR')}
                   </div>
                   <div className="text-xl md:text-2xl font-extrabold text-foreground mt-3">
@@ -511,7 +512,7 @@ export default function ProPage() {
           <Reveal delay={200}>
             <div className="mt-10 rounded-3xl border-2 border-foreground/10 bg-card/40 overflow-hidden">
               <div className="p-6 sm:p-8 border-b border-foreground/10">
-                <h3 className="font-black text-xl sm:text-2xl text-foreground">
+                <h3 className="font-bold text-xl sm:text-2xl text-foreground">
                   Vos sin Pro <span className="text-muted-foreground/70">·</span> Vos con Pro
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -531,7 +532,7 @@ export default function ProPage() {
                   <div key={i} className="px-6 sm:px-8 py-4 grid grid-cols-1 sm:grid-cols-[180px_1fr_1fr] gap-2 sm:gap-4 items-start">
                     <div className="text-sm font-bold text-foreground">{row.task}</div>
                     <div className="flex items-start gap-2 text-xs">
-                      <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0 mt-0.5" />
+                      <X className="w-3.5 h-3.5 text-destructive flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground/70 line-through">{row.before}</span>
                     </div>
                     <div className="flex items-start gap-2 text-xs">
@@ -546,16 +547,16 @@ export default function ProPage() {
 
           {/* Costo de inacción */}
           <Reveal delay={300}>
-            <div className="mt-6 rounded-2xl border-2 border-red-500/30 bg-red-500/[0.05] p-5 sm:p-6">
+            <div className="mt-6 rounded-2xl border-2 border-destructive/30 bg-destructive/[0.05] p-5 sm:p-6">
               <div className="flex items-start gap-3">
-                <div className="h-10 w-10 rounded-xl bg-red-500/15 grid place-items-center flex-shrink-0">
-                  <RefreshCw className="w-5 h-5 text-red-400" />
+                <div className="h-10 w-10 rounded-xl bg-destructive/15 grid place-items-center flex-shrink-0">
+                  <RefreshCw className="w-5 h-5 text-destructive" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-black text-base text-foreground">Cada mes que esperás cuesta plata</div>
+                  <div className="font-bold text-base text-foreground">Cada mes que esperás cuesta plata</div>
                   <p className="text-sm text-foreground-subtle mt-1 leading-relaxed">
                     Si esperás 6 meses para activar Pro, son{' '}
-                    <strong className="text-red-400 tabular-nums">−${(crecimientoMensual * 6).toLocaleString('es-AR')}</strong>{' '}
+                    <strong className="text-destructive tabular-nums">−${(crecimientoMensual * 6).toLocaleString('es-AR')}</strong>{' '}
                     que el agente te hubiera dejado en el bolsillo. La competencia que active antes te lleva ventaja en data y diferenciación.
                   </p>
                 </div>
@@ -570,11 +571,11 @@ export default function ProPage() {
         <div className="max-w-5xl mx-auto">
           <Reveal>
             <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-3 py-1 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="inline-flex items-center gap-2 bg-warning/10 border border-warning/30 rounded-full px-3 py-1 text-warning text-xs font-bold uppercase tracking-widest mb-4">
                 🏆 El caso más grande
               </div>
               <h2 className="font-display text-3xl md:text-5xl font-semibold mb-3 leading-tight">
-                Los torneos son <span className="text-amber-400">$6,4 millones/mes</span><br className="hidden sm:block"/> que hoy se te escapan
+                Los torneos son <span className="text-warning">$6,4 millones/mes</span><br className="hidden sm:block"/> que hoy se te escapan
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
                 Datos típicos de clubes argentinos mid-size: 2 torneos por fin de semana,
@@ -589,22 +590,22 @@ export default function ProPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Torneos</div>
-                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-foreground">8/mes</div>
+                  <div className="text-2xl sm:text-3xl font-bold tabular-nums mt-1 text-foreground">8/mes</div>
                   <div className="text-[11px] text-muted-foreground/70 mt-1">2 por finde</div>
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Jugadores</div>
-                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-foreground">32</div>
+                  <div className="text-2xl sm:text-3xl font-bold tabular-nums mt-1 text-foreground">32</div>
                   <div className="text-[11px] text-muted-foreground/70 mt-1">por torneo</div>
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Inscripción</div>
-                  <div className="text-2xl sm:text-3xl font-black tabular-nums mt-1 text-foreground">$25k</div>
+                  <div className="text-2xl sm:text-3xl font-bold tabular-nums mt-1 text-foreground">$25k</div>
                   <div className="text-[11px] text-muted-foreground/70 mt-1">por jugador</div>
                 </div>
-                <div className="bg-amber-500/10 rounded-xl py-2 -my-2">
-                  <div className="text-[10px] uppercase tracking-widest text-amber-400 font-bold">Potencial</div>
-                  <div className="text-2xl sm:text-3xl font-black text-amber-400 tabular-nums mt-1">$6,4M</div>
+                <div className="bg-warning/10 rounded-xl py-2 -my-2">
+                  <div className="text-[10px] uppercase tracking-widest text-warning font-bold">Potencial</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-warning tabular-nums mt-1">$6,4M</div>
                   <div className="text-[11px] text-muted-foreground/70 mt-1">por mes</div>
                 </div>
               </div>
@@ -614,14 +615,14 @@ export default function ProPage() {
           <Reveal delay={200}>
             <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
               {/* Sin Pro */}
-              <div className="rounded-2xl border-2 border-red-500/30 bg-red-500/[0.06] p-5 sm:p-6">
+              <div className="rounded-2xl border-2 border-destructive/30 bg-destructive/[0.06] p-5 sm:p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <X className="w-5 h-5 text-red-400" />
-                  <h3 className="font-black text-base text-foreground">Hoy sin Pro</h3>
+                  <X className="w-5 h-5 text-destructive" />
+                  <h3 className="font-bold text-base text-foreground">Hoy sin Pro</h3>
                 </div>
                 <ul className="space-y-3 text-sm text-foreground-subtle">
                   <li className="flex items-start gap-2">
-                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
+                    <span className="text-destructive flex-shrink-0 mt-0.5">•</span>
                     <div>
                       <strong className="text-foreground">~25% no se llenan completos.</strong>
                       <div className="text-xs text-muted-foreground/70 mt-0.5">
@@ -630,7 +631,7 @@ export default function ProPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
+                    <span className="text-destructive flex-shrink-0 mt-0.5">•</span>
                     <div>
                       <strong className="text-foreground">O delegás al organizador externo.</strong>
                       <div className="text-xs text-muted-foreground/70 mt-0.5">
@@ -639,7 +640,7 @@ export default function ProPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
+                    <span className="text-destructive flex-shrink-0 mt-0.5">•</span>
                     <div>
                       <strong className="text-foreground">Mucho tiempo armando convocatorias.</strong>
                       <div className="text-xs text-muted-foreground/70 mt-0.5">
@@ -648,9 +649,9 @@ export default function ProPage() {
                     </div>
                   </li>
                 </ul>
-                <div className="mt-4 pt-4 border-t border-red-500/20 text-center">
+                <div className="mt-4 pt-4 border-t border-destructive/20 text-center">
                   <div className="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-bold">Te quedás con</div>
-                  <div className="text-3xl font-black text-red-400 tabular-nums mt-1">~$960k/mes</div>
+                  <div className="text-3xl font-bold text-destructive tabular-nums mt-1">~$960k/mes</div>
                   <div className="text-[11px] text-muted-foreground/70 mt-1">si delegás al 80%</div>
                 </div>
               </div>
@@ -668,7 +669,7 @@ export default function ProPage() {
                 <div className="relative">
                   <div className="flex items-center gap-2 mb-3">
                     <CheckCircle2 className="w-5 h-5" style={{ color: GREEN }} />
-                    <h3 className="font-black text-base text-foreground">Con Padelero Pro</h3>
+                    <h3 className="font-bold text-base text-foreground">Con Padelero Pro</h3>
                   </div>
                   <ul className="space-y-3 text-sm text-foreground-subtle">
                     <li className="flex items-start gap-2">
@@ -701,7 +702,7 @@ export default function ProPage() {
                   </ul>
                   <div className="mt-4 pt-4 border-t text-center" style={{ borderColor: `hsl(var(--primary) / 0.2)` }}>
                     <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: GREEN }}>Te quedás con</div>
-                    <div className="text-3xl font-black tabular-nums mt-1" style={{ color: GREEN }}>~$7,2M/mes</div>
+                    <div className="text-3xl font-bold tabular-nums mt-1" style={{ color: GREEN }}>~$7,2M/mes</div>
                     <div className="text-[11px] text-muted-foreground/70 mt-1">capturando el 100%</div>
                   </div>
                 </div>
@@ -714,14 +715,14 @@ export default function ProPage() {
               className="mt-5 rounded-2xl border-2 p-5 sm:p-6 text-center shadow-2xl"
               style={{
                 borderColor: `hsl(var(--primary) / 0.4)`,
-                background: `linear-gradient(135deg, #10b98125, hsl(var(--primary) / 0.082), #10b98105)`,
+                background: `linear-gradient(135deg, hsl(var(--primary) / 0.145), hsl(var(--primary) / 0.082), hsl(var(--primary) / 0.02))`,
                 boxShadow: `0 25px 50px -12px hsl(var(--primary) / 0.102)`,
               }}
             >
-              <div className="text-[10px] uppercase tracking-widest text-emerald-300 font-bold mb-2">
+              <div className="text-[10px] uppercase tracking-widest text-primary font-bold mb-2">
                 💰 Solo de torneos, si hoy delegás al 80%
               </div>
-              <div className="text-4xl md:text-6xl font-black tabular-nums" style={{ color: GREEN }}>
+              <div className="text-4xl md:text-6xl font-bold tabular-nums" style={{ color: GREEN }}>
                 +$6.240.000 / mes
               </div>
               <div className="text-sm text-foreground-subtle mt-3 max-w-xl mx-auto">
@@ -783,13 +784,13 @@ export default function ProPage() {
           <Reveal>
             <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 to-card/60 backdrop-blur-sm p-8 sm:p-12 text-center space-y-6">
               <Sparkles className="w-12 h-12 mx-auto" style={{ color: GREEN }} />
-              <h3 className="text-2xl sm:text-3xl font-black">
+              <h3 className="text-2xl sm:text-3xl font-bold">
                 ¿Activamos Padelero Pro en tu club?
               </h3>
               <p className="text-sm sm:text-base text-foreground-subtle max-w-md mx-auto">
                 Te escribo por WhatsApp. Conocemos tu club juntos y, si cierra, configuramos los agentes. Empiezan a trabajar al día siguiente.
               </p>
-              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-foreground font-black text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-emerald-500/20">
+              <a href={WA_MSG()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary text-foreground font-bold text-base px-8 py-4 rounded-2xl transition-all hover:scale-105 shadow-xl shadow-primary/20">
                 <MessageCircle className="w-5 h-5" />
                 wa.me/2324549325
                 <ArrowRight size={18} />
@@ -846,22 +847,22 @@ function AgentDiagramLanding() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 pt-4 md:pt-6">
-          <MiniWorker icon={Gauge} color="#22c55e" name="Ocupación" hint="Llena canchas vacías" />
-          <MiniWorker icon={Heart} color="#0ea5e9" name="Fidelización" hint="Cuida jugadores" />
-          <MiniWorker icon={Megaphone} color="#f59e0b" name="Promoción" hint="Atrae demanda" />
+          <MiniWorker icon={Gauge} color="hsl(var(--primary))" name="Ocupación" hint="Llena canchas vacías" />
+          <MiniWorker icon={Heart} color="hsl(var(--info))" name="Fidelización" hint="Cuida jugadores" />
+          <MiniWorker icon={Megaphone} color="hsl(var(--warning))" name="Promoción" hint="Atrae demanda" />
         </div>
       </div>
 
       {/* Workers → Validator */}
       <div className="flex justify-center my-2 mt-4">
-        <div className="w-px h-8 bg-gradient-to-b from-surface-3 to-purple-500/60" />
+        <div className="w-px h-8 bg-gradient-to-b from-surface-3 to-premium/60" />
       </div>
 
       {/* Validator */}
       <div className="flex justify-center">
-        <div className="rounded-2xl border-2 border-purple-500/50 bg-gradient-to-br from-purple-500/15 via-purple-500/5 to-transparent px-6 py-4 shadow-xl shadow-purple-500/10 text-center min-w-[280px]">
+        <div className="rounded-2xl border-2 border-premium/50 bg-gradient-to-br from-premium/15 via-premium/5 to-transparent px-6 py-4 shadow-xl shadow-premium/10 text-center min-w-[280px]">
           <div className="flex items-center justify-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-purple-400" />
+            <ShieldCheck className="h-5 w-5 text-premium" />
             <span className="font-bold text-base text-foreground">Validador</span>
           </div>
           <div className="text-xs text-muted-foreground mt-1">Reglas estrictas + IA crítica</div>
@@ -871,14 +872,14 @@ function AgentDiagramLanding() {
 
       {/* Validator → Acción */}
       <div className="flex justify-center my-2">
-        <div className="w-px h-8 bg-gradient-to-b from-purple-500/60 to-emerald-500/60" />
+        <div className="w-px h-8 bg-gradient-to-b from-premium/60 to-primary/60" />
       </div>
 
       {/* Acciones */}
       <div className="flex justify-center">
-        <div className="inline-flex items-center gap-2 rounded-full border-2 border-emerald-500/50 bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 px-5 py-2 shadow-md">
-          <Zap className="h-4 w-4 text-emerald-400 fill-emerald-400/30" />
-          <span className="font-bold text-sm text-emerald-300">Acciones ejecutadas</span>
+        <div className="inline-flex items-center gap-2 rounded-full border-2 border-primary/50 bg-gradient-to-r from-primary/20 to-primary/10 px-5 py-2 shadow-md">
+          <Zap className="h-4 w-4 text-primary fill-primary/30" />
+          <span className="font-bold text-sm text-primary">Acciones ejecutadas</span>
         </div>
       </div>
     </div>
@@ -889,12 +890,12 @@ function MiniWorker({ icon: Icon, color, name, hint }: { icon: LucideIcon; color
   return (
     <div
       className="rounded-2xl border-2 p-4 shadow-sm transition-all hover:shadow-md bg-foreground/5"
-      style={{ borderColor: `${color}40` }}
+      style={{ borderColor: alfa(color, 25) }}
     >
       <div className="flex items-center gap-3">
         <div
           className="h-10 w-10 rounded-xl grid place-items-center shadow-inner flex-shrink-0"
-          style={{ backgroundColor: `${color}25`, border: `2px solid ${color}50` }}
+          style={{ backgroundColor: alfa(color, 15), border: `2px solid ${alfa(color, 31)}` }}
         >
           <Icon className="h-5 w-5" style={{ color }} aria-hidden />
         </div>
@@ -916,12 +917,12 @@ function WorkerCardLanding({
   return (
     <div
       className="rounded-2xl border-2 p-5 bg-foreground/5 backdrop-blur-sm transition-all hover:bg-foreground/[0.07]"
-      style={{ borderColor: `${color}40` }}
+      style={{ borderColor: alfa(color, 25) }}
     >
       <div className="flex items-center gap-3 mb-3">
         <div
           className="h-12 w-12 rounded-xl grid place-items-center"
-          style={{ backgroundColor: `${color}25`, border: `2px solid ${color}50` }}
+          style={{ backgroundColor: alfa(color, 15), border: `2px solid ${alfa(color, 31)}` }}
         >
           <Icon className="h-6 w-6" style={{ color }} aria-hidden />
         </div>
@@ -936,7 +937,7 @@ function WorkerCardLanding({
           <span
             key={t}
             className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md"
-            style={{ backgroundColor: `${color}20`, color, border: `1px solid ${color}40` }}
+            style={{ backgroundColor: alfa(color, 12), color, border: `1px solid ${alfa(color, 25)}` }}
           >
             {t}
           </span>

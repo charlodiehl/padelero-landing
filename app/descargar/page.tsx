@@ -37,7 +37,7 @@ export default function Descargar() {
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-6 text-center">
       <Image src="/logo.png" alt="Padelero" width={56} height={56} className="rounded-2xl mb-5" />
-      <h1 className="text-2xl font-black tracking-tight">Descargá Padelero</h1>
+      <h1 className="text-2xl font-bold tracking-tight">Descargá Padelero</h1>
       <p className="text-muted-foreground mt-2 text-sm">
         {redirigiendo ? 'Te estamos llevando a tu tienda…' : 'Elegí dónde querés bajar la app:'}
       </p>

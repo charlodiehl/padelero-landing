@@ -120,7 +120,7 @@ function Nav() {
           ))}
           <div className="pt-3 space-y-2">
             <Link href={`${APP}/login`} className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href={`${APP}/register`} className="block w-full text-center py-3 rounded-xl font-black" style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}>Empezar gratis</Link>
+            <Link href={`${APP}/register`} className="block w-full text-center py-3 rounded-xl font-bold" style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}>Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -174,7 +174,7 @@ function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <Link
             href={`${APP}/register`}
-            className="group flex items-center justify-center gap-2 font-black text-base px-9 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
+            className="group flex items-center justify-center gap-2 font-bold text-base px-9 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
             style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
           >
             Crear cuenta gratis <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -196,7 +196,7 @@ function Hero() {
           ].map(({ v, l, icon: Icon }) => (
             <div key={l} className="bg-background/50 backdrop-blur border border-foreground/10 rounded-2xl p-3.5 text-center">
               <Icon className="mx-auto mb-1.5" size={15} style={{ color: GREEN }} />
-              <p className="text-xl font-black text-foreground">{v}</p>
+              <p className="text-xl font-bold text-foreground">{v}</p>
               <p className="text-[10px] text-muted-foreground/70 mt-0.5">{l}</p>
             </div>
           ))}
@@ -250,16 +250,16 @@ function Formatos() {
               </p>
               <div className="space-y-2.5">
                 {[
-                  { pos: 'Campeón', pts: 100, color: '#facc15' },
-                  { pos: 'Finalista', pts: 80, color: '#d1d5db' },
-                  { pos: 'Semifinalista', pts: 60, color: '#d97706' },
-                  { pos: 'Cuartos de final', pts: 40, color: '#9ca3af' },
-                  { pos: 'Octavos de final', pts: 20, color: '#6b7280' },
-                  { pos: '16avos · 32avos', pts: 10, color: '#4b5563' },
+                  { pos: 'Campeón', pts: 100, color: 'hsl(var(--accent-premium))' },
+                  { pos: 'Finalista', pts: 80, color: 'hsl(var(--foreground) / 0.65)' },
+                  { pos: 'Semifinalista', pts: 60, color: 'hsl(var(--warning))' },
+                  { pos: 'Cuartos de final', pts: 40, color: 'hsl(var(--muted-foreground))' },
+                  { pos: 'Octavos de final', pts: 20, color: 'hsl(var(--muted-foreground) / 0.7)' },
+                  { pos: '16avos · 32avos', pts: 10, color: 'hsl(var(--muted-foreground) / 0.5)' },
                 ].map(({ pos, pts, color }) => (
                   <div key={pos} className="flex items-center justify-between">
                     <span className="text-sm font-medium" style={{ color }}>{pos}</span>
-                    <span className="text-sm font-black" style={{ color: GREEN }}>{pts} pts</span>
+                    <span className="text-sm font-bold" style={{ color: GREEN }}>{pts} pts</span>
                   </div>
                 ))}
               </div>
@@ -269,27 +269,27 @@ function Formatos() {
           {/* Americano */}
           <Reveal from="right">
             <div className="bg-card border border-border rounded-3xl p-8 hover:border-border-strong transition-colors h-full">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 bg-blue-500/20">
-                <Users size={24} className="text-blue-400" />
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 bg-info/20">
+                <Users size={24} className="text-info" />
               </div>
               <div className="flex items-center gap-3 mb-3">
                 <h3 className="text-xl font-bold text-foreground">Americano · Cortos</h3>
-                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400">Más social</span>
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-info/20 text-info">Más social</span>
               </div>
               <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                 Todos juegan contra todos. Sets cortos, rotación de parejas. Ideal para conocer nuevos jugadores.
               </p>
               <div className="space-y-2.5">
                 {[
-                  { pos: 'Campeón', pts: 80, color: '#facc15' },
-                  { pos: 'Finalista', pts: 60, color: '#d1d5db' },
-                  { pos: 'Semifinalista', pts: 40, color: '#d97706' },
-                  { pos: 'Cuartos de final', pts: 30, color: '#9ca3af' },
-                  { pos: 'Fase de grupos', pts: 15, color: '#6b7280' },
+                  { pos: 'Campeón', pts: 80, color: 'hsl(var(--accent-premium))' },
+                  { pos: 'Finalista', pts: 60, color: 'hsl(var(--foreground) / 0.65)' },
+                  { pos: 'Semifinalista', pts: 40, color: 'hsl(var(--warning))' },
+                  { pos: 'Cuartos de final', pts: 30, color: 'hsl(var(--muted-foreground))' },
+                  { pos: 'Fase de grupos', pts: 15, color: 'hsl(var(--muted-foreground) / 0.7)' },
                 ].map(({ pos, pts, color }) => (
                   <div key={pos} className="flex items-center justify-between">
                     <span className="text-sm font-medium" style={{ color }}>{pos}</span>
-                    <span className="text-sm font-black text-blue-400">{pts} pts</span>
+                    <span className="text-sm font-bold text-info">{pts} pts</span>
                   </div>
                 ))}
               </div>
@@ -299,15 +299,15 @@ function Formatos() {
 
         {/* Suma tournaments */}
         <Reveal>
-          <div className="bg-card border border-orange-500/25 rounded-3xl p-6">
+          <div className="bg-card border border-warning/25 rounded-3xl p-6">
             <div className="flex items-start gap-4">
-              <div className="w-11 h-11 rounded-xl bg-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Target size={20} className="text-orange-400" />
+              <div className="w-11 h-11 rounded-xl bg-warning/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Target size={20} className="text-warning" />
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="font-bold text-foreground text-lg">Torneos &ldquo;Suma de categorías&rdquo;</h3>
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400">Especial</span>
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-warning/20 text-warning">Especial</span>
                 </div>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
                   La suma de las categorías de la pareja debe alcanzar un mínimo definido. Por ejemplo, en un <strong className="text-foreground">Suma 13</strong>: 7ma + 6ta = 13 ✓, pero 8va + 7ma = 15 ✗ (excede). También puede ser <strong className="text-foreground">Suma mínima 13</strong> donde se necesita ≥ 13. Estos torneos <strong className="text-foreground">no otorgan puntos de ranking ni de circuito</strong>. Los torneos Mixtos tampoco dan puntos.
@@ -381,8 +381,8 @@ function Inscripcion() {
                 <div className="flex gap-2 flex-wrap mb-4">
                   {[
                     { l: '6ta', bg: `hsl(var(--primary) / 0.145)`, c: GREEN },
-                    { l: 'Caballeros', bg: '#3b82f620', c: '#60a5fa' },
-                    { l: '3 sets', bg: '#f9731625', c: '#fb923c' },
+                    { l: 'Caballeros', bg: '#3b82f620', c: 'hsl(var(--info))' },
+                    { l: '3 sets', bg: '#f9731625', c: 'hsl(var(--warning))' },
                   ].map(({ l, bg, c }) => (
                     <span key={l} className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: bg, color: c }}>{l}</span>
                   ))}
@@ -403,7 +403,7 @@ function Inscripcion() {
                   ))}
                 </div>
                 <button
-                  className="mt-5 w-full py-3 rounded-xl text-sm font-black transition-all hover:scale-[1.02]"
+                  className="mt-5 w-full py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.02]"
                   style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
                 >
                   Confirmar inscripción
@@ -414,7 +414,7 @@ function Inscripcion() {
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { l: 'Caballeros', sub: 'Da puntos ✓', border: `hsl(var(--primary) / 0.251)`, text: GREEN },
-                  { l: 'Damas', sub: 'Da puntos ✓', border: '#3b82f640', text: '#60a5fa' },
+                  { l: 'Damas', sub: 'Da puntos ✓', border: '#3b82f640', text: 'hsl(var(--info))' },
                   { l: 'Mixto', sub: 'No da puntos', border: 'hsl(var(--foreground) / 0.082)', text: 'hsl(var(--muted-foreground) / 0.7)' },
                 ].map(({ l, sub, border, text }) => (
                   <div key={l} className="rounded-2xl p-3 border text-center bg-card" style={{ borderColor: border }}>
@@ -452,7 +452,7 @@ function Ranking() {
               <div className="bg-card border border-border rounded-3xl p-6">
                 <div className="flex items-center justify-between mb-4">
                   <p className="font-bold text-foreground">Ranking General · 6ta</p>
-                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400">Caballeros</span>
+                  <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-info/20 text-info">Caballeros</span>
                 </div>
                 {/* Filters */}
                 <div className="flex gap-2 mb-4 flex-wrap">
@@ -462,14 +462,14 @@ function Ranking() {
                 </div>
                 <div className="space-y-3.5">
                   {players.map(({ rank, name, pts, torneos, rating, obs }) => {
-                    const rankColor = rank === 1 ? '#facc15' : rank === 2 ? '#d1d5db' : rank === 3 ? '#d97706' : 'hsl(var(--muted-foreground) / 0.7)';
+                    const rankColor = rank === 1 ? 'hsl(var(--accent-premium))' : rank === 2 ? 'hsl(var(--foreground) / 0.65)' : rank === 3 ? 'hsl(var(--warning))' : 'hsl(var(--muted-foreground) / 0.7)';
                     return (
                       <div key={rank} className="flex items-center gap-3">
                         <div className="relative flex-shrink-0">
-                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black" style={{ background: `hsl(var(--primary) / 0.125)`, color: GREEN }}>
+                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: `hsl(var(--primary) / 0.125)`, color: GREEN }}>
                             {name.slice(0, 2)}
                           </div>
-                          <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black" style={{ background: rankColor, color: rank <= 2 ? 'hsl(var(--background))' : 'hsl(var(--foreground))' }}>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold" style={{ background: rankColor, color: rank <= 2 ? 'hsl(var(--background))' : 'hsl(var(--foreground))' }}>
                             {rank}
                           </div>
                         </div>
@@ -477,11 +477,11 @@ function Ranking() {
                           <p className="text-sm font-semibold text-foreground truncate">{name}</p>
                           <div className="flex items-center gap-2 mt-0.5">
                             <span className="text-[10px] text-muted-foreground/70">{rating}</span>
-                            {obs && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400">Observado</span>}
+                            {obs && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-warning/20 text-warning">Observado</span>}
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-base font-black" style={{ color: GREEN }}>{pts}</p>
+                          <p className="text-base font-bold" style={{ color: GREEN }}>{pts}</p>
                           <p className="text-[10px] text-muted-foreground/50">{torneos} torneos</p>
                         </div>
                       </div>
@@ -572,7 +572,7 @@ function Circuito() {
               <Reveal key={n} delay={n * 80}>
                 <div className={`flex flex-col items-center text-center ${done ? '' : 'opacity-35'}`}>
                   <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center font-black text-sm mb-3 relative z-10"
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm mb-3 relative z-10"
                     style={done ? { background: GREEN, color: 'hsl(var(--primary-foreground))' } : { background: 'hsl(var(--surface-2))', color: 'hsl(var(--muted-foreground) / 0.7)', border: '1px solid hsl(var(--border-strong))' }}
                   >
                     F{n}
@@ -582,7 +582,7 @@ function Circuito() {
                   {done && pts && (
                     <>
                       <p className="text-[10px] text-muted-foreground mt-1">{pos}</p>
-                      <p className="text-sm font-black mt-1" style={{ color: GREEN }}>+{pts} pts</p>
+                      <p className="text-sm font-bold mt-1" style={{ color: GREEN }}>+{pts} pts</p>
                     </>
                   )}
                   {!done && <p className="text-[10px] text-muted-foreground/50 mt-1">{pos}</p>}
@@ -596,10 +596,10 @@ function Circuito() {
         <Reveal>
           <div className="rounded-3xl p-8 md:p-12 text-center" style={{ background: `hsl(var(--primary) / 0.071)`, border: `1px solid hsl(var(--primary) / 0.188)` }}>
             <Award className="mx-auto mb-4" size={32} style={{ color: GREEN }} />
-            <p className="text-5xl font-black mb-2" style={{ color: GREEN }}>240 pts</p>
+            <p className="text-5xl font-bold mb-2" style={{ color: GREEN }}>240 pts</p>
             <p className="text-muted-foreground mb-6">Acumulados en 3 fechas · Circuito 2026 · 6ta Caballeros</p>
             <div className="flex items-center justify-center gap-2">
-              <Crown size={18} className="text-yellow-400" />
+              <Crown size={18} className="text-warning" />
               <span className="font-bold text-foreground text-lg">#1 en el ranking del circuito</span>
             </div>
             <p className="text-muted-foreground/70 text-sm mt-4">2 fechas restantes — seguís acumulando puntos</p>
@@ -642,11 +642,11 @@ function Categorias() {
                 <div className="space-y-3">
                   {[
                     { rating: '6.1', label: 'Listo para ascender', pct: '8%', color: GREEN },
-                    { rating: '6.4', label: 'En la media', pct: '40%', color: '#60a5fa' },
-                    { rating: '6.7', label: 'Recién llegó a la categoría', pct: '70%', color: '#fb923c' },
+                    { rating: '6.4', label: 'En la media', pct: '40%', color: 'hsl(var(--info))' },
+                    { rating: '6.7', label: 'Recién llegó a la categoría', pct: '70%', color: 'hsl(var(--warning))' },
                   ].map(({ rating, label, pct, color }) => (
                     <div key={rating} className="flex items-center gap-3">
-                      <span className="text-sm font-black w-9 flex-shrink-0" style={{ color }}>{rating}</span>
+                      <span className="text-sm font-bold w-9 flex-shrink-0" style={{ color }}>{rating}</span>
                       <div className="flex-1 h-2 bg-surface-2 rounded-full overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: pct, background: color }} />
                       </div>
@@ -700,7 +700,7 @@ function Categorias() {
                       className="flex items-center gap-3 rounded-xl px-3 py-2.5"
                       style={isHighlight ? { background: `hsl(var(--primary) / 0.094)`, border: `1px solid hsl(var(--primary) / 0.251)` } : { background: 'hsl(var(--surface-2))' }}
                     >
-                      <span className="text-sm font-black w-8 flex-shrink-0" style={{ color: isHighlight ? GREEN : 'hsl(var(--muted-foreground) / 0.7)' }}>{cat}</span>
+                      <span className="text-sm font-bold w-8 flex-shrink-0" style={{ color: isHighlight ? GREEN : 'hsl(var(--muted-foreground) / 0.7)' }}>{cat}</span>
                       <div className="flex-1 h-1.5 bg-surface-2 rounded-full overflow-hidden">
                         <div className="h-full rounded-full" style={{ width: `${pct}%`, background: isHighlight ? GREEN : 'hsl(var(--border-strong))' }} />
                       </div>
@@ -753,13 +753,13 @@ function Ascensos() {
         {/* Steps */}
         <div className="grid md:grid-cols-3 gap-5 mb-12">
           {[
-            { step: '01', icon: Star, title: 'Club te observa', desc: 'El administrador del club marca tu perfil como candidato a ascenso. Aparece el label "Observado" en tu ranking.', color: '#facc15', bg: '#facc1520' },
+            { step: '01', icon: Star, title: 'Club te observa', desc: 'El administrador del club marca tu perfil como candidato a ascenso. Aparece el label "Observado" en tu ranking.', color: 'hsl(var(--accent-premium))', bg: 'hsl(var(--accent-premium) / 0.125)' },
             { step: '02', icon: Shield, title: 'Club decide ascenderte', desc: 'Un solo club puede ejecutar el ascenso directamente. No necesitás la aprobación de múltiples clubes.', color: GREEN, bg: `hsl(var(--primary) / 0.125)` },
-            { step: '03', icon: Crown, title: '¡Nueva categoría!', desc: 'Empezás en X.7 de la nueva categoría. El 50% de tus puntos de circuito se transfieren. Recibís una notificación al instante.', color: '#a78bfa', bg: '#a78bfa20' },
+            { step: '03', icon: Crown, title: '¡Nueva categoría!', desc: 'Empezás en X.7 de la nueva categoría. El 50% de tus puntos de circuito se transfieren. Recibís una notificación al instante.', color: 'hsl(var(--accent-premium))', bg: 'hsl(var(--accent-premium) / 0.125)' },
           ].map(({ step, icon: Icon, title, desc, color, bg }) => (
             <Reveal key={step} delay={parseInt(step) * 80}>
               <div className="bg-card border border-border rounded-3xl p-7 relative hover:border-border-strong transition-colors h-full">
-                <span className="absolute top-5 right-5 text-5xl font-black text-foreground/4">{step}</span>
+                <span className="absolute top-5 right-5 text-5xl font-bold text-foreground/4">{step}</span>
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ background: bg }}>
                   <Icon size={24} style={{ color }} />
                 </div>
@@ -777,18 +777,18 @@ function Ascensos() {
               <div className="text-center">
                 <p className="text-xs text-muted-foreground/70 uppercase tracking-widest mb-3">Antes</p>
                 <div className="w-24 h-24 rounded-full flex flex-col items-center justify-center border-2 border-border-strong bg-card">
-                  <span className="text-2xl font-black text-foreground">6ta</span>
+                  <span className="text-2xl font-bold text-foreground">6ta</span>
                   <span className="text-xs text-muted-foreground/70">6.2</span>
                 </div>
               </div>
               <div className="flex flex-col items-center gap-1">
                 <ArrowRight size={28} style={{ color: GREEN }} />
-                <p className="text-xs font-black" style={{ color: GREEN }}>ASCENSO</p>
+                <p className="text-xs font-bold" style={{ color: GREEN }}>ASCENSO</p>
               </div>
               <div className="text-center">
                 <p className="text-xs text-muted-foreground/70 uppercase tracking-widest mb-3">Después</p>
                 <div className="w-24 h-24 rounded-full flex flex-col items-center justify-center" style={{ border: `2px solid hsl(var(--primary) / 0.376)`, background: `hsl(var(--primary) / 0.082)` }}>
-                  <span className="text-2xl font-black" style={{ color: GREEN }}>5ta</span>
+                  <span className="text-2xl font-bold" style={{ color: GREEN }}>5ta</span>
                   <span className="text-xs" style={{ color: `hsl(var(--primary) / 0.502)` }}>5.7</span>
                 </div>
               </div>
@@ -862,7 +862,7 @@ function ParaClubes() {
                 href="https://wa.me/5492324549325"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-black px-7 py-3.5 rounded-xl transition-all hover:scale-105 shadow-xl"
+                className="inline-flex items-center gap-2 font-bold px-7 py-3.5 rounded-xl transition-all hover:scale-105 shadow-xl"
                 style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 30px hsl(var(--primary) / 0.208)` }}
               >
                 Consultá por tu club <ArrowRight size={16} />
@@ -879,7 +879,7 @@ function ParaClubes() {
                 { v: '1', l: 'clic', s: 'Para ascender un jugador' },
               ].map(({ v, l, s }) => (
                 <div key={l} className="bg-background/60 backdrop-blur border border-foreground/10 rounded-2xl p-4 text-center hover:border-foreground/25 transition-colors">
-                  <div className="text-2xl font-black mb-0.5" style={{ color: GREEN }}>{v}</div>
+                  <div className="text-2xl font-bold mb-0.5" style={{ color: GREEN }}>{v}</div>
                   <div className="text-foreground text-xs font-bold leading-tight">{l}</div>
                   <div className="text-muted-foreground/70 text-[9px] mt-1">{s}</div>
                 </div>
@@ -920,7 +920,7 @@ function CTA() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={`${APP}/register`}
-                className="group flex items-center justify-center gap-2 font-black text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
+                className="group flex items-center justify-center gap-2 font-bold text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
                 style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
               >
                 Crear cuenta gratis <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

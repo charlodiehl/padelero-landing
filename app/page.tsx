@@ -10,6 +10,7 @@ import {
   Sparkles, Heart, Medal, GraduationCap, Swords, Lightbulb, Rocket,
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
+import { alfa } from '@/lib/color';
 
 // ─── WhatsApp Icon SVG ────────────────────────────────────────────────────────
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -85,7 +86,7 @@ function Stat({ n, label, suffix='+', active }: { n:number; label:string; suffix
   const v = useCounter(n, 1600, active);
   return (
     <div className="text-center">
-      <div className="text-4xl md:text-6xl font-black text-primary tabular-nums">{v.toLocaleString('es-AR')}{suffix}</div>
+      <div className="text-4xl md:text-6xl font-bold text-primary tabular-nums">{v.toLocaleString('es-AR')}{suffix}</div>
       <div className="text-[11px] text-muted-foreground mt-2 font-bold uppercase tracking-[.2em]">{label}</div>
     </div>
   );
@@ -120,8 +121,8 @@ function WApp() {
       <div className="bg-[#111] rounded-[2.5rem] border-2 border-border-strong p-2.5 shadow-2xl">
         <div className="rounded-[2rem] overflow-hidden bg-[#0e1117]">
           <div className="bg-[#075E54] px-4 py-2.5 flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-black text-xs">P</div>
-            <div><div className="text-foreground text-xs font-bold">Padelero</div><div className="text-green-400 text-[10px]">en línea</div></div>
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xs">P</div>
+            <div><div className="text-foreground text-xs font-bold">Padelero</div><div className="text-primary text-[10px]">en línea</div></div>
           </div>
           <div className="min-h-[300px] p-2.5 space-y-2">
             {MSGS.map((m,i) => (
@@ -214,7 +215,7 @@ function Nav() {
           <Link href="/nosotros" onClick={()=>setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: 'hsl(var(--primary))' }}>🚀 Nosotros</Link>
           <div className="pt-3 space-y-2">
             <Link href="https://app.padelero.app/login" className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-black">Empezar gratis</Link>
+            <Link href="https://app.padelero.app/register" className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-bold">Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -286,7 +287,7 @@ export default function LandingPage() {
             Reservas, torneos, clases, ranking, matchmaking, partidos abiertos y agente WhatsApp 24/7.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.padelero.app/login" className="group flex items-center justify-center gap-2 bg-primary text-primary-foreground font-black text-base px-9 py-4 rounded-2xl hover:bg-primary-hover transition-all hover:scale-105 shadow-xl shadow-primary/30">
+            <Link href="https://app.padelero.app/login" className="group flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold text-base px-9 py-4 rounded-2xl hover:bg-primary-hover transition-all hover:scale-105 shadow-xl shadow-primary/30">
               Iniciar sesión <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link href="https://app.padelero.app/register" className="flex items-center justify-center gap-2 bg-foreground/10 backdrop-blur border border-foreground/20 text-foreground font-semibold text-base px-9 py-4 rounded-2xl hover:bg-foreground/20 transition-all">
@@ -363,7 +364,7 @@ export default function LandingPage() {
                 <Image src={IMG.lifestyle} alt="Amigos jugando pádel en Argentina" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 bg-background/60 backdrop-blur border border-foreground/10 rounded-xl px-4 py-2">
-                  <div className="text-primary font-black text-lg">30 seg</div>
+                  <div className="text-primary font-bold text-lg">30 seg</div>
                   <div className="text-muted-foreground text-xs">para reservar tu cancha</div>
                 </div>
               </div>
@@ -403,11 +404,11 @@ export default function LandingPage() {
             </p>
             <div className="flex flex-wrap gap-2.5 mb-6">
               {[
-                { e: '🟢', t: 'Soltero', c: '#22c55e' },
-                { e: '🟡', t: 'Si pinta pinta', c: '#eab308' },
-                { e: '🔴', t: 'Casado', c: '#ef4444' },
+                { e: '🟢', t: 'Soltero', c: 'hsl(var(--primary))' },
+                { e: '🟡', t: 'Si pinta pinta', c: 'hsl(var(--warning))' },
+                { e: '🔴', t: 'Casado', c: 'hsl(var(--destructive))' },
               ].map((s) => (
-                <span key={s.t} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold" style={{ background: `${s.c}1a`, color: s.c, border: `1px solid ${s.c}44` }}>
+                <span key={s.t} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold" style={{ background: alfa(s.c, 10), color: s.c, border: `1px solid ${alfa(s.c, 27)}` }}>
                   {s.e} {s.t}
                 </span>
               ))}
@@ -442,7 +443,7 @@ export default function LandingPage() {
                 <div className="flex flex-col items-center text-center p-6">
                   <div className="relative w-18 h-18 rounded-full border-2 border-border-strong bg-card flex items-center justify-center mb-5 w-20 h-20">
                     <s.icon className="w-7 h-7 text-primary" />
-                    <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-black rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
+                    <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[9px] font-bold rounded-full w-5 h-5 flex items-center justify-center">{s.n}</span>
                   </div>
                   <h3 className="text-foreground font-bold text-lg mb-2">{s.t}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{s.d}</p>
@@ -519,7 +520,7 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-primary text-primary-foreground font-black px-7 py-3.5 rounded-xl hover:bg-primary-hover transition-all hover:scale-105 shadow-xl shadow-primary/20">
+                  <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-7 py-3.5 rounded-xl hover:bg-primary-hover transition-all hover:scale-105 shadow-xl shadow-primary/20">
                     <WhatsAppIcon className="w-4 h-4" /> Escribinos por WhatsApp <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                   </a>
                   <Link href="/clubes" className="inline-flex items-center gap-2 border border-border-strong text-foreground font-semibold px-7 py-3.5 rounded-xl hover:border-primary/50 hover:bg-foreground/5 transition-all">
@@ -537,7 +538,7 @@ export default function LandingPage() {
                   { v:'∞',   l:'torneos posibles',    s:'Brackets automáticos' },
                 ].map(s=>(
                   <div key={s.l} className="bg-background/60 backdrop-blur border border-foreground/10 rounded-2xl p-4 text-center hover:border-primary/30 transition-colors">
-                    <div className="text-primary font-black text-2xl mb-0.5">{s.v}</div>
+                    <div className="text-primary font-bold text-2xl mb-0.5">{s.v}</div>
                     <div className="text-foreground text-xs font-bold leading-tight">{s.l}</div>
                     <div className="text-muted-foreground/70 text-[9px] mt-1">{s.s}</div>
                   </div>
@@ -578,12 +579,12 @@ export default function LandingPage() {
                     { v: '∞', l: 'Circuitos' },
                   ].map(({ v, l }) => (
                     <div key={l} className="bg-background/40 rounded-xl p-3 text-center border border-foreground/5">
-                      <p className="text-lg font-black text-primary">{v}</p>
+                      <p className="text-lg font-bold text-primary">{v}</p>
                       <p className="text-[10px] text-muted-foreground/70">{l}</p>
                     </div>
                   ))}
                 </div>
-                <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-black px-6 py-3 rounded-xl group-hover:bg-primary-hover transition-colors">
+                <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-6 py-3 rounded-xl group-hover:bg-primary-hover transition-colors">
                   Ver sistema de torneos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -616,12 +617,12 @@ export default function LandingPage() {
                     { v: '24 hs', l: 'para empezar' },
                   ].map(({ v, l }) => (
                     <div key={l} className="bg-background/40 rounded-xl p-3 text-center border border-foreground/5">
-                      <p className="text-lg font-black text-primary">{v}</p>
+                      <p className="text-lg font-bold text-primary">{v}</p>
                       <p className="text-[10px] text-muted-foreground/70">{l}</p>
                     </div>
                   ))}
                 </div>
-                <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-black px-6 py-3 rounded-xl group-hover:bg-primary-hover transition-colors">
+                <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-6 py-3 rounded-xl group-hover:bg-primary-hover transition-colors">
                   Ver plataforma para clubes <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
@@ -729,7 +730,7 @@ export default function LandingPage() {
               </h2>
               <p className="text-muted-foreground text-lg md:text-xl mb-10">Gratis para jugadores. Sin tarjeta de crédito.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-primary text-primary-foreground font-black text-lg px-10 py-4 rounded-2xl hover:bg-primary-hover transition-all hover:scale-105 shadow-2xl shadow-primary/25">
+                <Link href="https://app.padelero.app/register" className="group flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold text-lg px-10 py-4 rounded-2xl hover:bg-primary-hover transition-all hover:scale-105 shadow-2xl shadow-primary/25">
                   Crear cuenta gratis <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a href="https://wa.me/5492324549325" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 border border-border-strong text-foreground font-semibold text-lg px-10 py-4 rounded-2xl hover:border-muted-foreground hover:bg-foreground/5 transition-all">

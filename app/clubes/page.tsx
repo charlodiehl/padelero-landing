@@ -84,10 +84,10 @@ function WAppClub() {
       <div className="bg-[#111] rounded-[2.5rem] border-2 border-border-strong p-2.5 shadow-2xl">
         <div className="rounded-[2rem] overflow-hidden bg-[#0e1117]">
           <div className="bg-[#075E54] px-4 py-2.5 flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-primary-foreground font-black text-xs" style={{ background: GREEN }}>A</div>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-primary-foreground font-bold text-xs" style={{ background: GREEN }}>A</div>
             <div>
               <div className="text-foreground text-xs font-bold">Club Arena</div>
-              <div className="text-green-400 text-[10px]">Bot de reservas · en línea</div>
+              <div className="text-primary text-[10px]">Bot de reservas · en línea</div>
             </div>
           </div>
           <div className="min-h-[300px] p-2.5 space-y-2">
@@ -183,7 +183,7 @@ function Nav() {
               href={WA}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-black"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold"
               style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
             >
               <WhatsAppIcon className="w-4 h-4" /> Hablar con nosotros
@@ -242,7 +242,7 @@ function Hero() {
             href={WA}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-2 font-black text-base px-9 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
+            className="group flex items-center justify-center gap-2 font-bold text-base px-9 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
             style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
           >
             <WhatsAppIcon className="w-5 h-5" /> Consultá por tu club <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -263,7 +263,7 @@ function Hero() {
           ].map(({ v, l, icon: Icon }) => (
             <div key={l} className="bg-background/50 backdrop-blur border border-foreground/10 rounded-2xl p-3.5 text-center">
               <Icon className="mx-auto mb-1.5" size={15} style={{ color: GREEN }} />
-              <p className="text-xl font-black text-foreground">{v}</p>
+              <p className="text-xl font-bold text-foreground">{v}</p>
               <p className="text-[10px] text-muted-foreground/70 mt-0.5">{l}</p>
             </div>
           ))}
@@ -288,7 +288,7 @@ function Dolor() {
           <div className="text-center mb-14">
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest mb-5"
-              style={{ background: '#ef444418', border: '1px solid #ef444435', color: '#f87171' }}
+              style={{ background: 'hsl(var(--destructive) / 0.094)', border: '1px solid hsl(var(--destructive) / 0.208)', color: 'hsl(var(--destructive))' }}
             >
               El problema
             </div>
@@ -307,29 +307,29 @@ function Dolor() {
               icon: MessageCircle,
               title: 'Mensajes a las 11pm',
               desc: '"¿Hay cancha mañana a las 20?" — tu celular no descansa nunca.',
-              color: '#f87171',
-              bg: '#ef444418',
+              color: 'hsl(var(--destructive))',
+              bg: 'hsl(var(--destructive) / 0.094)',
             },
             {
               icon: Calendar,
               title: 'Agenda en papel o WhatsApp',
               desc: 'Turnos mal anotados, grupos saturados, confusiones y cancelaciones de último momento.',
-              color: '#fb923c',
+              color: 'hsl(var(--warning))',
               bg: '#f9731618',
             },
             {
               icon: Trophy,
               title: 'Torneos en Excel',
               desc: 'Cuadros a mano, inscripciones por mensaje, resultados que hay que cargar uno por uno.',
-              color: '#facc15',
-              bg: '#facc1518',
+              color: 'hsl(var(--accent-premium))',
+              bg: 'hsl(var(--accent-premium) / 0.094)',
             },
             {
               icon: BarChart3,
               title: 'Sin datos del negocio',
               desc: 'No sabés cuál cancha rinde más, qué horario llena siempre o cuánto facturaste este mes.',
-              color: '#a78bfa',
-              bg: '#a78bfa18',
+              color: 'hsl(var(--accent-premium))',
+              bg: 'hsl(var(--accent-premium) / 0.094)',
             },
           ].map(({ icon: Icon, title, desc, color, bg }, i) => (
             <Reveal key={title} delay={i * 70}>
@@ -349,7 +349,7 @@ function Dolor() {
             className="rounded-3xl p-8 text-center"
             style={{ background: `hsl(var(--primary) / 0.063)`, border: `1px solid hsl(var(--primary) / 0.188)` }}
           >
-            <p className="text-xl md:text-2xl font-black text-foreground mb-2">
+            <p className="text-xl md:text-2xl font-bold text-foreground mb-2">
               Padelero lo resuelve todo. <span style={{ color: GREEN }}>En uno.</span>
             </p>
             <p className="text-muted-foreground">Reservas, torneos, rankings y métricas — en una sola plataforma para tu club.</p>
@@ -403,7 +403,7 @@ function AgenteWApp() {
                   href={WA}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-black px-7 py-3.5 rounded-xl transition-all hover:scale-105 shadow-lg"
+                  className="inline-flex items-center gap-2 font-bold px-7 py-3.5 rounded-xl transition-all hover:scale-105 shadow-lg"
                   style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 4px 20px hsl(var(--primary) / 0.2)` }}
                 >
                   <WhatsAppIcon className="w-4 h-4" /> Quiero esto para mi club
@@ -456,9 +456,9 @@ function Agenda() {
                     { hora: '18:00', cancha: 'Cancha 1', jugador: 'Martín G. + 3', estado: 'confirmado', color: GREEN },
                     { hora: '18:00', cancha: 'Cancha 2', jugador: 'Disponible', estado: 'libre', color: 'hsl(var(--surface-2))' },
                     { hora: '19:30', cancha: 'Cancha 1', jugador: 'Lucas M. + 3', estado: 'confirmado', color: GREEN },
-                    { hora: '19:30', cancha: 'Cancha 2', jugador: 'Partido abierto · 2/4', estado: 'parcial', color: '#3b82f6' },
+                    { hora: '19:30', cancha: 'Cancha 2', jugador: 'Partido abierto · 2/4', estado: 'parcial', color: 'hsl(var(--info))' },
                     { hora: '19:30', cancha: 'Cancha 3', jugador: 'Facundo R. + 3', estado: 'confirmado', color: GREEN },
-                    { hora: '21:00', cancha: 'Cancha 1', jugador: 'Turno fijo · Club Palmares', estado: 'fijo', color: '#a78bfa' },
+                    { hora: '21:00', cancha: 'Cancha 1', jugador: 'Turno fijo · Club Palmares', estado: 'fijo', color: 'hsl(var(--accent-premium))' },
                     { hora: '21:00', cancha: 'Cancha 2', jugador: 'Diego S. + 3', estado: 'confirmado', color: GREEN },
                   ].map(({ hora, cancha, jugador, estado, color }) => (
                     <div key={`${hora}-${cancha}`} className="flex items-center gap-3 px-3 py-2.5 rounded-xl" style={{ background: 'hsl(var(--surface-2))' }}>
@@ -479,10 +479,10 @@ function Agenda() {
                 {[
                   { v: '7/9', l: 'Canchas ocupadas', c: GREEN },
                   { v: '78%', l: 'Ocupación', c: GREEN },
-                  { v: '2', l: 'Turnos fijos', c: '#a78bfa' },
+                  { v: '2', l: 'Turnos fijos', c: 'hsl(var(--accent-premium))' },
                 ].map(({ v, l, c }) => (
                   <div key={l} className="bg-card border border-border rounded-2xl p-3 text-center">
-                    <p className="text-lg font-black" style={{ color: c }}>{v}</p>
+                    <p className="text-lg font-bold" style={{ color: c }}>{v}</p>
                     <p className="text-[10px] text-muted-foreground/70 mt-0.5">{l}</p>
                   </div>
                 ))}
@@ -575,22 +575,22 @@ function Partidos() {
             {
               tipo: 'Partido Privado',
               icon: Shield,
-              color: '#60a5fa',
-              bg: '#3b82f620',
+              color: 'hsl(var(--info))',
+              bg: 'hsl(var(--info) / 0.125)',
               badge: 'Invitación',
-              badgeBg: '#3b82f620',
-              badgeColor: '#60a5fa',
+              badgeBg: 'hsl(var(--info) / 0.125)',
+              badgeColor: 'hsl(var(--info))',
               desc: 'El creador elige quiénes juegan. Ideal para grupos de amigos que quieren reservar juntos.',
               detalle: ['Marcos V. · 4ta', 'Diego R. · 4ta', 'Nicolás P. · 4ta', 'Matías G. · 4ta'],
             },
             {
               tipo: 'Por Categoría',
               icon: Target,
-              color: '#fb923c',
+              color: 'hsl(var(--warning))',
               bg: '#f9731620',
               badge: 'Filtrado',
               badgeBg: '#f9731620',
-              badgeColor: '#fb923c',
+              badgeColor: 'hsl(var(--warning))',
               desc: 'Se filtra por nivel. Solo jugadores de la categoría indicada pueden sumarse al partido.',
               detalle: ['Solo 6ta Caballeros', 'Andrés G. · 6.2', '3 lugares disponibles →'],
             },
@@ -624,7 +624,7 @@ function Partidos() {
                 { v: '∞', l: 'canchas llenas de forma orgánica' },
               ].map(({ v, l }) => (
                 <div key={v} className="text-center">
-                  <p className="text-3xl font-black" style={{ color: GREEN }}>{v}</p>
+                  <p className="text-3xl font-bold" style={{ color: GREEN }}>{v}</p>
                   <p className="text-muted-foreground text-xs mt-1">{l}</p>
                 </div>
               ))}
@@ -673,13 +673,13 @@ function TorneosTeaser() {
                   { v: '1 clic', l: 'Para ascender' },
                 ].map(({ v, l }) => (
                   <div key={l} className="bg-background/40 rounded-xl p-3 text-center border border-foreground/5">
-                    <p className="text-lg font-black" style={{ color: GREEN }}>{v}</p>
+                    <p className="text-lg font-bold" style={{ color: GREEN }}>{v}</p>
                     <p className="text-[10px] text-muted-foreground/70">{l}</p>
                   </div>
                 ))}
               </div>
               <div
-                className="inline-flex items-center gap-2 font-black px-6 py-3 rounded-xl transition-colors"
+                className="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl transition-colors"
                 style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
               >
                 Ver sistema completo de torneos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -777,14 +777,14 @@ function Ranking() {
                 </div>
                 <div className="space-y-3.5">
                   {players.map(({ rank, name, pts, cat, club }) => {
-                    const rankColor = rank === 1 ? '#facc15' : rank === 2 ? '#d1d5db' : rank === 3 ? '#d97706' : 'hsl(var(--muted-foreground) / 0.7)';
+                    const rankColor = rank === 1 ? 'hsl(var(--accent-premium))' : rank === 2 ? 'hsl(var(--foreground) / 0.65)' : rank === 3 ? 'hsl(var(--warning))' : 'hsl(var(--muted-foreground) / 0.7)';
                     return (
                       <div key={rank} className="flex items-center gap-3">
                         <div className="relative flex-shrink-0">
-                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-black" style={{ background: `hsl(var(--primary) / 0.125)`, color: GREEN }}>
+                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: `hsl(var(--primary) / 0.125)`, color: GREEN }}>
                             {name.slice(0, 2)}
                           </div>
-                          <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-black" style={{ background: rankColor, color: rank <= 2 ? 'hsl(var(--background))' : 'hsl(var(--foreground))' }}>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold" style={{ background: rankColor, color: rank <= 2 ? 'hsl(var(--background))' : 'hsl(var(--foreground))' }}>
                             {rank}
                           </div>
                         </div>
@@ -797,7 +797,7 @@ function Ranking() {
                           </div>
                           <p className="text-[10px] text-muted-foreground/70">{cat}</p>
                         </div>
-                        <p className="text-base font-black" style={{ color: GREEN }}>{pts} pts</p>
+                        <p className="text-base font-bold" style={{ color: GREEN }}>{pts} pts</p>
                       </div>
                     );
                   })}
@@ -806,11 +806,11 @@ function Ranking() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-card border border-border rounded-2xl p-4 text-center">
-                  <p className="text-2xl font-black" style={{ color: GREEN }}>3/5</p>
+                  <p className="text-2xl font-bold" style={{ color: GREEN }}>3/5</p>
                   <p className="text-xs text-muted-foreground mt-1">jugadores del top 5 son de tu club</p>
                 </div>
                 <div className="bg-card border border-border rounded-2xl p-4 text-center">
-                  <p className="text-2xl font-black text-amber-400">↑ 12%</p>
+                  <p className="text-2xl font-bold text-warning">↑ 12%</p>
                   <p className="text-xs text-muted-foreground mt-1">más reservas por jugadores con ranking</p>
                 </div>
               </div>
@@ -840,16 +840,16 @@ function Metricas() {
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: 'Ocupación hoy', value: '78%', sub: '+12% vs sem. ant.', color: GREEN, icon: Activity },
-                  { label: 'Ingresos del mes', value: '$1.24M', sub: '+8% vs mes ant.', color: '#60a5fa', icon: DollarSign },
-                  { label: 'Jugadores activos', value: '89', sub: '23 reservaron esta semana', color: '#fb923c', icon: Users },
-                  { label: 'Reservas hoy', value: '14', sub: '3 pendientes de confirmar', color: '#a78bfa', icon: Calendar },
+                  { label: 'Ingresos del mes', value: '$1.24M', sub: '+8% vs mes ant.', color: 'hsl(var(--info))', icon: DollarSign },
+                  { label: 'Jugadores activos', value: '89', sub: '23 reservaron esta semana', color: 'hsl(var(--warning))', icon: Users },
+                  { label: 'Reservas hoy', value: '14', sub: '3 pendientes de confirmar', color: 'hsl(var(--accent-premium))', icon: Calendar },
                 ].map(({ label, value, sub, color, icon: Icon }) => (
                   <div key={label} className="bg-card border border-border rounded-2xl p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon size={13} style={{ color }} />
                       <p className="text-[10px] text-muted-foreground/70 uppercase tracking-wide">{label}</p>
                     </div>
-                    <p className="text-2xl font-black text-foreground">{value}</p>
+                    <p className="text-2xl font-bold text-foreground">{value}</p>
                     <p className="text-[10px] mt-1" style={{ color }}>{sub}</p>
                   </div>
                 ))}
@@ -874,7 +874,7 @@ function Metricas() {
                           style={{ width: `${pct}%`, background: peak ? GREEN : 'hsl(var(--muted-foreground) / 0.5)' }}
                         />
                       </div>
-                      <span className="text-[10px] font-black w-8 text-right" style={{ color: peak ? GREEN : 'hsl(var(--muted-foreground) / 0.7)' }}>{pct}%</span>
+                      <span className="text-[10px] font-bold w-8 text-right" style={{ color: peak ? GREEN : 'hsl(var(--muted-foreground) / 0.7)' }}>{pct}%</span>
                     </div>
                   ))}
                 </div>
@@ -962,16 +962,16 @@ function Onboarding() {
               icon: Zap,
               title: 'Tu bot empieza a atender',
               desc: 'El agente de WhatsApp ya está activo. Tus jugadores reservan solos. Vos no movés un dedo.',
-              color: '#60a5fa',
-              bg: '#3b82f620',
+              color: 'hsl(var(--info))',
+              bg: 'hsl(var(--info) / 0.125)',
             },
             {
               n: '03',
               icon: TrendingUp,
               title: 'Tu club crece',
               desc: 'Torneos, rankings, partidos y métricas. Todos los jugadores en un solo lugar, tu negocio con datos reales.',
-              color: '#a78bfa',
-              bg: '#a78bfa20',
+              color: 'hsl(var(--accent-premium))',
+              bg: 'hsl(var(--accent-premium) / 0.125)',
             },
           ].map(({ n, icon: Icon, title, desc, color, bg }) => (
             <Reveal key={n} delay={parseInt(n) * 80}>
@@ -982,7 +982,7 @@ function Onboarding() {
                 >
                   <Icon size={28} style={{ color }} />
                   <span
-                    className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black"
+                    className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold"
                     style={{ background: color, color: 'hsl(var(--background))' }}
                   >
                     {n}
@@ -1001,7 +1001,7 @@ function Onboarding() {
               href={WA}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-black text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
+              className="group inline-flex items-center gap-2 font-bold text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
               style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
             >
               <WhatsAppIcon className="w-5 h-5" /> Empezar ahora <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -1043,7 +1043,7 @@ function CTA() {
                 href={WA}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 font-black text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
+                className="group flex items-center justify-center gap-2 font-bold text-lg px-10 py-4 rounded-2xl transition-all hover:scale-105 shadow-2xl"
                 style={{ background: GREEN, color: 'hsl(var(--primary-foreground))', boxShadow: `0 8px 40px hsl(var(--primary) / 0.251)` }}
               >
                 <WhatsAppIcon className="w-5 h-5" /> Consultá por tu club <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

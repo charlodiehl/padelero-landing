@@ -87,7 +87,7 @@ function Nav() {
           <Link href="/nosotros" onClick={() => setOpen(false)} className="block py-2.5 border-b border-border/60 font-bold" style={{ color: GREEN }}>Nosotros</Link>
           <div className="pt-3 space-y-2">
             <Link href={`${APP}/login`} className="block w-full text-center border border-border-strong text-foreground py-3 rounded-xl font-semibold">Ingresar</Link>
-            <Link href={`${APP}/register`} className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-black">Empezar gratis</Link>
+            <Link href={`${APP}/register`} className="block w-full text-center bg-primary text-primary-foreground py-3 rounded-xl font-bold">Empezar gratis</Link>
           </div>
         </div>
       )}
@@ -113,12 +113,12 @@ function FotoCarlos() {
 }
 
 const AGENTES: { color: string; name: string; role: string }[] = [
-  { color: '#a78bfa', name: 'Product Manager', role: 'Convierte ideas crudas en specs implementables.' },
-  { color: '#60a5fa', name: 'Engineer',        role: 'Escribe el código, agrega tests y abre los PRs.' },
-  { color: '#f59e0b', name: 'Reviewer',        role: 'Code review: bugs, regresiones, race conditions.' },
-  { color: '#34d399', name: 'QA',              role: 'Prueba cada feature end-to-end, en producción.' },
-  { color: '#22d3ee', name: 'Data Analyst',    role: 'Métricas, retención, GMV y reportes claros.' },
-  { color: '#fb7185', name: 'Marketing',       role: 'Copys, campañas y contenido con voz de marca.' },
+  { color: 'hsl(var(--accent-premium))', name: 'Product Manager', role: 'Convierte ideas crudas en specs implementables.' },
+  { color: 'hsl(var(--info))', name: 'Engineer',        role: 'Escribe el código, agrega tests y abre los PRs.' },
+  { color: 'hsl(var(--warning))', name: 'Reviewer',        role: 'Code review: bugs, regresiones, race conditions.' },
+  { color: 'hsl(var(--success))', name: 'QA',              role: 'Prueba cada feature end-to-end, en producción.' },
+  { color: 'hsl(var(--foreground) / 0.55)', name: 'Data Analyst',    role: 'Métricas, retención, GMV y reportes claros.' },
+  { color: 'hsl(var(--destructive))', name: 'Marketing',       role: 'Copys, campañas y contenido con voz de marca.' },
   { color: GREEN,     name: 'Support',         role: 'Responde a los clubes con el contexto del repo.' },
 ];
 
@@ -127,7 +127,7 @@ const FEATURES = ['Reservas y turnos', 'Torneos y ranking', 'Matchmaking y comun
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-5 text-center">
-      <div className="text-3xl md:text-4xl font-black" style={{ color: GREEN }}>{n}</div>
+      <div className="text-3xl md:text-4xl font-bold" style={{ color: GREEN }}>{n}</div>
       <div className="text-xs md:text-sm text-muted-foreground mt-1 leading-tight">{label}</div>
     </div>
   );
@@ -205,7 +205,7 @@ export default function NosotrosPage() {
               <FotoCarlos />
             </div>
             <div className="mt-3 text-center">
-              <div className="font-black text-lg">Carlos Diehl</div>
+              <div className="font-bold text-lg">Carlos Diehl</div>
               <div className="text-sm" style={{ color: GREEN }}>Fundador · Solo founder</div>
             </div>
           </Reveal>
@@ -248,7 +248,7 @@ export default function NosotrosPage() {
           <div className="grid md:grid-cols-2 gap-4 mt-8">
             <Reveal className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-6">
               <div className="text-muted-foreground text-xs font-bold uppercase tracking-wider mb-2">La referencia</div>
-              <h3 className="text-xl font-black mb-2">Playtomic</h3>
+              <h3 className="text-xl font-bold mb-2">Playtomic</h3>
               <p className="text-foreground-subtle leading-relaxed text-sm">
                 La app de pádel líder del mundo. Respaldada por fondos de primer nivel,
                 <strong className="text-foreground"> valuada en cientos de millones de dólares</strong> y operada por
@@ -300,7 +300,7 @@ export default function NosotrosPage() {
                 <FotoCarlos />
               </div>
               <div className="text-left">
-                <div className="font-black">Carlos Diehl</div>
+                <div className="font-bold">Carlos Diehl</div>
                 <div className="text-xs text-muted-foreground">Founder · estrategia y dirección</div>
               </div>
             </div>
@@ -345,7 +345,7 @@ export default function NosotrosPage() {
           <Reveal delay={120}>
             <div className="mt-8 rounded-2xl border-2 p-6" style={{ borderColor: `hsl(var(--primary) / 0.333)`, background: `hsl(var(--primary) / 0.039)` }}>
               <div className="text-sm text-muted-foreground uppercase tracking-wider font-bold">Próximo objetivo</div>
-              <div className="text-xl md:text-2xl font-black mt-1">
+              <div className="text-xl md:text-2xl font-bold mt-1">
                 10.000 jugadores en los próximos 6 meses
               </div>
             </div>
@@ -367,7 +367,7 @@ export default function NosotrosPage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link href={WA} target="_blank"
-                className="inline-flex items-center justify-center bg-primary text-primary-foreground font-black px-6 py-3.5 rounded-xl hover:bg-primary-hover transition-all hover:scale-105">
+                className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold px-6 py-3.5 rounded-xl hover:bg-primary-hover transition-all hover:scale-105">
                 Hablemos
               </Link>
               <Link href={`${APP}/register`}

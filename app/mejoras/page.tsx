@@ -49,18 +49,18 @@ const ESTADO_LABEL: Record<RoadmapItem['estado'], string> = {
 };
 
 const ESTADO_COLOR: Record<RoadmapItem['estado'], string> = {
-  en_inbox: '#a78bfa',
+  en_inbox: 'hsl(var(--accent-premium))',
   en_progreso: GREEN,
-  resuelto: '#34d399',
+  resuelto: 'hsl(var(--success))',
 };
 
 // Iconos propios (lucide) por tipo — mismo set que usa el resto de la app
 // y la landing, en vez de emojis genéricos.
 const TIPO_ICON: Record<RoadmapItem['tipo'], { Icon: LucideIcon; color: string }> = {
-  bug: { Icon: Bug, color: '#f87171' },
+  bug: { Icon: Bug, color: 'hsl(var(--destructive))' },
   idea: { Icon: Lightbulb, color: GREEN },
-  duda: { Icon: HelpCircle, color: '#60a5fa' },
-  urgente: { Icon: AlertTriangle, color: '#fb923c' },
+  duda: { Icon: HelpCircle, color: 'hsl(var(--info))' },
+  urgente: { Icon: AlertTriangle, color: 'hsl(var(--warning))' },
   sin_clasificar: { Icon: Sparkles, color: 'hsl(var(--foreground) / 0.55)' },
 };
 
@@ -176,7 +176,7 @@ function Nav() {
             </Link>
             <Link
               href={`${APP}/register`}
-              className="block w-full text-center py-3 rounded-xl font-black"
+              className="block w-full text-center py-3 rounded-xl font-bold"
               style={{ background: GREEN, color: 'hsl(var(--primary-foreground))' }}
             >
               Empezar gratis
