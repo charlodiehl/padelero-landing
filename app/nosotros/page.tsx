@@ -159,7 +159,7 @@ export default function NosotrosPage() {
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <Reveal><Eyebrow>La oportunidad</Eyebrow></Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-4xl md:text-6xl font-black leading-[1.05] tracking-tight">
+            <h1 className="font-display mt-6 text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
               Una persona.<br />
               <span style={{ color: GREEN }}>Un equipo de agentes de IA.</span><br />
               Una misión.
@@ -179,7 +179,7 @@ export default function NosotrosPage() {
       <section className="px-5 py-16 border-t border-foreground/5">
         <div className="max-w-4xl mx-auto">
           <Reveal>
-            <h2 className="text-2xl md:text-3xl font-black mb-4">¿Qué es Padelero?</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold mb-4">¿Qué es Padelero?</h2>
             <p className="text-foreground-subtle text-lg leading-relaxed">
               La plataforma que une <strong className="text-foreground">jugadores y clubes</strong> de pádel en un solo lugar:
               reservas, torneos, ranking, partidos abiertos, matchmaking y comunidad. Y para los clubes,
@@ -212,7 +212,7 @@ export default function NosotrosPage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h2 className="text-2xl md:text-3xl font-black mb-4">La historia</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold mb-4">La historia</h2>
             <div className="space-y-4 text-foreground-subtle leading-relaxed">
               <p>
                 Antes de Padelero fundé una startup de <strong className="text-foreground">pagos en criptomonedas</strong> que
@@ -238,7 +238,7 @@ export default function NosotrosPage() {
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <Eyebrow>El mercado</Eyebrow>
-            <h2 className="text-2xl md:text-3xl font-black mt-4 mb-4">Una categoría enorme, sin dueño local</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold mt-4 mb-4">Una categoría enorme, sin dueño local</h2>
             <p className="text-foreground-subtle text-lg leading-relaxed">
               El pádel es uno de los deportes que más crece en el mundo, y Argentina es una de sus capitales:
               miles de canchas, una comunidad gigante… y <strong className="text-foreground">ningún jugador local</strong> que
@@ -273,7 +273,7 @@ export default function NosotrosPage() {
       <section className="px-5 py-16 border-t border-foreground/5">
         <div className="max-w-3xl mx-auto text-center">
           <Reveal>
-            <h2 className="text-2xl md:text-3xl font-black mb-4">+200 personas vs. 1 persona + IA</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold mb-4">+200 personas vs. 1 persona + IA</h2>
             <p className="text-foreground-subtle text-lg leading-relaxed">
               No es magia: es apalancamiento. Cada función que en una startup tradicional ocupa un equipo,
               acá la ejecuta un <strong className="text-foreground">agente de IA</strong> coordinado por una sola persona.
@@ -287,7 +287,7 @@ export default function NosotrosPage() {
       <section className="px-5 py-16 border-t border-foreground/5">
         <div className="max-w-5xl mx-auto">
           <Reveal className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-black">El organigrama</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold">El organigrama</h2>
             <p className="text-muted-foreground mt-2">Una cabeza humana. Un equipo de agentes ejecutando.</p>
           </Reveal>
 
@@ -331,7 +331,7 @@ export default function NosotrosPage() {
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <Eyebrow>Track record</Eyebrow>
-            <h2 className="text-2xl md:text-3xl font-black mt-4 mb-8">Lo que pasó en 3 meses</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold mt-4 mb-8">Lo que pasó en 3 meses</h2>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <Reveal delay={0}><Stat n="3" label="meses de vida" /></Reveal>
@@ -355,7 +355,7 @@ export default function NosotrosPage() {
       <section className="px-5 py-20 border-t border-foreground/5">
         <div className="max-w-2xl mx-auto text-center">
           <Reveal>
-            <h2 className="text-2xl md:text-4xl font-black leading-tight">
+            <h2 className="font-display text-2xl md:text-4xl font-semibold leading-tight">
               No pedimos nada.<br />
               <span style={{ color: GREEN }}>Mostramos lo que se puede construir hoy.</span>
             </h2>

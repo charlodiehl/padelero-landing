@@ -39,6 +39,12 @@
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-border: hsl(var(--border));
   --color-border-strong: hsl(var(--border-strong));
+
+  /* Tipografía del manual, igual que la app:
+     sans → Hanken Grotesk · display → Cormorant Garamond (SERIF) · mono → JetBrains Mono */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--brand-display), Georgia, ui-serif, serif;
+  --font-mono: var(--brand-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 /* ───────────────────────────────────────────────────────────────────

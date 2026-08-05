@@ -217,7 +217,7 @@ function Hero() {
           Plataforma para Clubes · Padelero
         </div>
 
-        <h1 className="text-5xl sm:text-7xl lg:text-[82px] font-black leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
+        <h1 className="font-display text-5xl sm:text-7xl lg:text-[82px] font-semibold leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
           <span className="block text-foreground">Más reservas.</span>
           <span
             className="block mt-1"
@@ -293,7 +293,7 @@ function Dolor() {
             >
               El problema
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
               ¿Te suena familiar?
             </h2>
             <p className="text-muted-foreground text-lg max-w-lg mx-auto">
@@ -376,7 +376,7 @@ function AgenteWApp() {
               >
                 Agente WhatsApp con IA
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Tu club atiende solo. <br />
                 <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   Las 24 hs. Los 7 días.
@@ -500,7 +500,7 @@ function Agenda() {
               >
                 Reservas y Agenda
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Tu agenda, en piloto automático
               </h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
@@ -551,7 +551,7 @@ function Partidos() {
             >
               Partidos
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
               Más partidos = <span style={{ color: GREEN }}>más ingresos</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -660,7 +660,7 @@ function TorneosTeaser() {
               >
                 <Trophy className="w-3 h-3" /> Sistema de Torneos
               </div>
-              <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3 leading-tight">
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-3 leading-tight">
                 Organizá torneos sin<br />Excel ni papel
               </h2>
               <p className="text-muted-foreground mb-6 leading-relaxed text-sm md:text-base">
@@ -721,7 +721,7 @@ function Ranking() {
               >
                 Rankings
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Tus jugadores compiten. <br />
                 <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   Tu club retiene.
@@ -893,7 +893,7 @@ function Metricas() {
               >
                 Métricas
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Tomá decisiones con <br />
                 <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   datos reales
@@ -938,7 +938,7 @@ function Onboarding() {
             >
               Cómo empezar
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
               Arrancás en <span style={{ color: GREEN }}>24 horas</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-lg mx-auto">
@@ -1030,7 +1030,7 @@ function CTA() {
             <div className="w-16 h-16 rounded-3xl flex items-center justify-center mx-auto mb-6" style={{ background: `hsl(var(--primary) / 0.145)`, border: `1px solid hsl(var(--primary) / 0.251)` }}>
               <Building2 size={28} style={{ color: GREEN }} />
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-[.92] tracking-tight">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-6 leading-[.92] tracking-tight">
               Tu club merece <br />
               <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)),${GREEN})`, backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'shimmer 4s linear infinite' }}>
                 la mejor herramienta

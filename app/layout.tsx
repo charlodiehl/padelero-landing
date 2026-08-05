@@ -1,9 +1,29 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Hanken_Grotesk, Cormorant_Garamond, JetBrains_Mono } from 'next/font/google';
 import { BRAND, DEFAULT_THEME } from '@/lib/theme/brand';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+// Tipografía del manual "Pino Nocturno" — igual que la app, para que los dos
+// dominios se lean como el mismo producto. Se conservan los nombres de variable.
+const inter = Hanken_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+});
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--brand-display',
+  display: 'swap',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+});
+const jetbrains = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--brand-mono',
+  display: 'swap',
+  weight: ['400', '500'],
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -35,7 +55,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" data-theme="pino" className={inter.variable}>
+    <html lang="es" data-theme="pino" className={`${inter.variable} ${cormorant.variable} ${jetbrains.variable}`}>
       <body>{children}</body>
     </html>
   );

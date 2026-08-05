@@ -263,7 +263,7 @@ export default function LandingPage() {
             </span>
             {realStats ? `${realStats.jugadores}+` : '228+'} jugadores activos en Argentina
           </div>
-          <h1 className="text-5xl sm:text-7xl lg:text-[90px] font-black leading-[.95] mb-6 tracking-tight drop-shadow-2xl">
+          <h1 className="font-display text-5xl sm:text-7xl lg:text-[90px] font-semibold leading-[.95] mb-6 tracking-tight drop-shadow-2xl">
             <span className="block text-foreground">La mejor app</span>
             <span className="block text-foreground">de pádel de</span>
             <span
@@ -349,7 +349,7 @@ export default function LandingPage() {
           <Reveal>
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">Para jugadores</div>
-              <h2 className="text-3xl md:text-5xl font-black mb-4 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mb-4 leading-tight">
                 Todo lo que necesitás
                 <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}> para jugar más</span>
               </h2>
@@ -391,7 +391,7 @@ export default function LandingPage() {
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">
               🔥 Nuevo · Match
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-[1.05] mb-4">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground leading-[1.05] mb-4">
               El pádel ya no es{' '}
               <span style={{ background: 'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 solo pádel
@@ -429,7 +429,7 @@ export default function LandingPage() {
       <section className="py-20 bg-background/80 px-5">
         <div className="max-w-5xl mx-auto">
           <Reveal><div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">Reservar es así de fácil</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">Reservar es así de fácil</h2>
             <p className="text-muted-foreground">Tres pasos y estás en la cancha</p>
           </div></Reveal>
           <div className="grid md:grid-cols-3 gap-5 relative">
@@ -460,7 +460,7 @@ export default function LandingPage() {
           <Reveal from="left">
             <div>
               <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">Agente WhatsApp con IA</div>
-              <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mb-6 leading-tight">
                 Reservás sin <br />
                 <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>salir de WhatsApp</span>
               </h2>
@@ -494,7 +494,7 @@ export default function LandingPage() {
             <Reveal from="left">
               <div>
                 <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/15 rounded-full px-4 py-1 text-foreground text-xs font-bold uppercase tracking-widest mb-5">Para clubes</div>
-                <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+                <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                   Digitalizá tu club. <br />
                   <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>En 24 horas.</span>
                 </h2>
@@ -565,7 +565,7 @@ export default function LandingPage() {
                 <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">
                   <Trophy className="w-3 h-3" /> Sistema de Torneos
                 </div>
-                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3 leading-tight">
+                <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-3 leading-tight">
                   Ranking, circuitos anuales<br />y categorías reales
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed text-sm md:text-base">
@@ -603,7 +603,7 @@ export default function LandingPage() {
                 <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-5">
                   <Building2 className="w-3 h-3" /> Para Clubes
                 </div>
-                <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3 leading-tight">
+                <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-3 leading-tight">
                   Más reservas. IA en WhatsApp.<br />Torneos y más.
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed text-sm md:text-base">
@@ -640,7 +640,7 @@ export default function LandingPage() {
         <div className="relative max-w-5xl mx-auto px-5 text-center">
           <Reveal>
             <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/15 rounded-full px-4 py-1 text-foreground text-xs font-bold uppercase tracking-widest mb-6">Buenos Aires · Córdoba · Rosario</div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-5 leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-5 leading-tight">
               Padelero está donde<br />
               <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)))', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>vos jugás</span>
             </h2>
@@ -656,7 +656,7 @@ export default function LandingPage() {
       <section id="funciones" className="py-20 px-5 bg-background">
         <div className="max-w-5xl mx-auto">
           <Reveal><div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">Todo incluido</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">Todo incluido</h2>
             <p className="text-muted-foreground">Una sola plataforma para jugadores y clubes</p>
           </div></Reveal>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -690,7 +690,7 @@ export default function LandingPage() {
         </div>
         <div className="relative max-w-6xl mx-auto px-5">
           <Reveal><div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-foreground mb-3">A cualquier hora, en cualquier cancha</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">A cualquier hora, en cualquier cancha</h2>
             <p className="text-muted-foreground max-w-lg mx-auto">El agente de Padelero responde de noche, de madrugada o un domingo a las 7. Tu cancha no espera.</p>
           </div></Reveal>
           <div className="grid md:grid-cols-3 gap-5">
@@ -724,7 +724,7 @@ export default function LandingPage() {
         <div className="relative max-w-2xl mx-auto px-5 text-center">
           <Reveal>
             <div>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-[.92] tracking-tight">
+              <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-6 leading-[.92] tracking-tight">
                 Empezá a jugar <br />
                 <span style={{ background:'linear-gradient(135deg,hsl(var(--primary)),hsl(var(--brand-deep)),hsl(var(--primary)))', backgroundSize:'200% auto', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', animation:'shimmer 4s linear infinite' }}>hoy mismo</span>
               </h2>
@@ -755,7 +755,7 @@ export default function LandingPage() {
               >
                 <span>🤖</span> Hecho con IA · construilo con nosotros
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-6">
+              <h2 className="font-display text-3xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
                 Padelero lo <span style={{ color: 'hsl(var(--primary))' }}>programan agentes de IA</span>.
                 <br />
                 Vos elegís qué hacemos primero.

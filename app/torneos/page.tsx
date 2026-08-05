@@ -151,7 +151,7 @@ function Hero() {
           Sistema de Torneos · Padelero
         </div>
 
-        <h1 className="text-5xl sm:text-7xl lg:text-[82px] font-black leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
+        <h1 className="font-display text-5xl sm:text-7xl lg:text-[82px] font-semibold leading-[.92] mb-6 tracking-tight drop-shadow-2xl">
           <span className="block text-foreground">Competí.</span>
           <span
             className="block mt-1"
@@ -226,7 +226,7 @@ function Formatos() {
             >
               Formatos de juego
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
               Dos formatos, una sola plataforma
             </h2>
             <p className="text-muted-foreground text-lg max-w-lg mx-auto">
@@ -342,7 +342,7 @@ function Inscripcion() {
               >
                 Inscripción
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Inscribite en minutos
               </h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
@@ -506,7 +506,7 @@ function Ranking() {
               >
                 Ranking
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Tu posición, en tiempo real
               </h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
@@ -552,7 +552,7 @@ function Circuito() {
             >
               Circuito anual
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">Un año entero de competencia</h2>
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">Un año entero de competencia</h2>
             <p className="text-muted-foreground text-lg max-w-lg mx-auto">
               Los clubes arman circuitos con múltiples fechas. Cada torneo del circuito acumula puntos para un ranking del año.
             </p>
@@ -630,7 +630,7 @@ function Categorias() {
               >
                 Categorías
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Un sistema de niveles real
               </h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
@@ -742,7 +742,7 @@ function Ascensos() {
             >
               Sistema de ascensos
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 leading-tight">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
               Ascendé cuando lo merecés
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -831,7 +831,7 @@ function ParaClubes() {
               <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/15 rounded-full px-4 py-1 text-foreground text-xs font-bold uppercase tracking-widest mb-5">
                 Para organizadores
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
                 Organizá torneos <br />
                 <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   sin Excel ni papel
@@ -909,7 +909,7 @@ function CTA() {
             <div className="w-16 h-16 rounded-3xl flex items-center justify-center mx-auto mb-6" style={{ background: `hsl(var(--primary) / 0.145)`, border: `1px solid hsl(var(--primary) / 0.251)` }}>
               <Trophy size={28} style={{ color: GREEN }} />
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-foreground mb-6 leading-[.92] tracking-tight">
+            <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground mb-6 leading-[.92] tracking-tight">
               ¿Listo para <br />
               <span style={{ background: `linear-gradient(135deg,${GREEN},hsl(var(--brand-deep)),${GREEN})`, backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'shimmer 4s linear infinite' }}>
                 competir?

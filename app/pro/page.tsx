@@ -178,7 +178,7 @@ export default function ProPage() {
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-1.5 mb-6 text-sm font-bold uppercase tracking-widest" style={{ color: GREEN }}>
               <Sparkles className="w-4 h-4" /> Padelero Pro
             </div>
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-[.95] mb-6 tracking-tight">
+            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-semibold leading-[.95] mb-6 tracking-tight">
               Tu club que <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>crece solo</span><br />con inteligencia artificial.
             </h1>
             <p className="text-base sm:text-lg text-foreground-subtle max-w-2xl mx-auto mb-3 leading-relaxed">
@@ -229,7 +229,7 @@ export default function ProPage() {
         </div>
         <div className="relative max-w-5xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-3">¿Cómo funciona?</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-center mb-3">¿Cómo funciona?</h2>
             <p className="text-muted-foreground text-center mb-14">3 pasos y tu club empieza a crecer solo.</p>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-5 relative">
@@ -262,7 +262,7 @@ export default function ProPage() {
               <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Arquitectura
               </div>
-              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mb-3 leading-tight">
                 4 agentes especializados trabajando <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>en serie</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -362,7 +362,7 @@ export default function ProPage() {
               <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Las 12 capacidades
               </div>
-              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mb-3 leading-tight">
                 Todo lo que hace el agente <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>por vos</span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -398,7 +398,7 @@ export default function ProPage() {
               <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-3 py-1 text-primary text-xs font-bold uppercase tracking-widest mb-4">
                 Tu plata real
               </div>
-              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mb-3 leading-tight">
                 Cuánto <span style={{ background: `linear-gradient(135deg, ${GREEN}, hsl(var(--brand-deep)))`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>se mete</span> tu club por año
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
@@ -574,7 +574,7 @@ export default function ProPage() {
               <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-3 py-1 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
                 🏆 El caso más grande
               </div>
-              <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">
+              <h2 className="font-display text-3xl md:text-5xl font-semibold mb-3 leading-tight">
                 Los torneos son <span className="text-amber-400">$6,4 millones/mes</span><br className="hidden sm:block"/> que hoy se te escapan
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
@@ -745,7 +745,7 @@ export default function ProPage() {
       <section className="py-20 px-5">
         <div className="max-w-3xl mx-auto">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-12">Preguntas frecuentes</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-center mb-12">Preguntas frecuentes</h2>
           </Reveal>
           <div className="space-y-3">
             {[
